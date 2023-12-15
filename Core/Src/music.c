@@ -74,7 +74,7 @@ void PauseMusic(UART_HandleTypeDef *huart)
 {
     /* Pause Music */
     MusicMessage newMusicMessage = (MusicMessage){
-            .huart = &huart,
+            .huart = huart,
             .CMD = 0x04,
             .DataLength=1
     };
