@@ -11,6 +11,8 @@
 extern QueueHandle_t MusicMessageQueueHandle;
 extern QueueHandle_t MusicUartMessageQueueHandle;
 
+extern EventGroupHandle_t MusicEventGroup;
+
 // 音乐发送数据函数
 void MusicSendData(UART_HandleTypeDef *huart, uint8_t CMD, const uint8_t *data, size_t dataLength)
 {
@@ -29,6 +31,57 @@ void MusicSendData(UART_HandleTypeDef *huart, uint8_t CMD, const uint8_t *data, 
     HAL_UART_Transmit(huart,txBuffer, dataLength+4,HAL_MAX_DELAY);
 }
 
+void PlayMusicName(UART_HandleTypeDef *huart,const char* FileName,size_t FileNameSize, uint8_t PlayMode)
+{
+    if (FileNameSize>64)
+        return;
+
+    /* Set playMode */
+    MusicMessage newMusicMessage = (MusicMessage){
+            .huart = huart,
+            .CMD = 0x0B,
+            .DataLength=2
+    };
+
+    newMusicMessage.Data[0] = 0x01;
+    newMusicMessage.Data[1] = PlayMode;
+
+//    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+
+    /* Play music form fileName */
+    newMusicMessage.CMD = 0x04;
+    newMusicMessage.Data[0] = 0x07;
+    memcpy(&newMusicMessage.Data[1],FileName,FileNameSize);
+    newMusicMessage.DataLength = FileNameSize+1;
+
+    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+}
+
+void PlayMusic(UART_HandleTypeDef *huart)
+{
+    /* Plau Music */
+    MusicMessage newMusicMessage = (MusicMessage){
+            .huart = huart,
+            .CMD = 0x04,
+            .DataLength=1
+    };
+
+    newMusicMessage.Data[0] = 0x01;
+    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+}
+
+void PauseMusic(UART_HandleTypeDef *huart)
+{
+    /* Pause Music */
+    MusicMessage newMusicMessage = (MusicMessage){
+            .huart = &huart,
+            .CMD = 0x04,
+            .DataLength=1
+    };
+
+    newMusicMessage.Data[0] = 0x02;
+    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+}
 
 //音乐事件处理任务
 void StartMusicTask(void const * argument)
@@ -36,6 +89,8 @@ void StartMusicTask(void const * argument)
     /* USER CODE BEGIN StartMusicTask */
     MusicMessage newMusicMessage;
     UartMessage newUartMessage;
+    GPIO_PinState Music1BusyState = HAL_GPIO_ReadPin(MUSIC1_BUSY_GPIO_Port,MUSIC1_BUSY_Pin);
+    GPIO_PinState Music2BusyState = HAL_GPIO_ReadPin(MUSIC2_BUSY_GPIO_Port,MUSIC2_BUSY_Pin);
     /* Infinite loop */
     for(;;)
     {
@@ -51,6 +106,29 @@ void StartMusicTask(void const * argument)
             TxBuffer[newUartMessage.length+2] = 0xFF;
             HAL_UART_Transmit(&huart1,TxBuffer,newUartMessage.length+3,HAL_MAX_DELAY);
         }
+        if ((Music1BusyState==GPIO_PIN_SET)&&(HAL_GPIO_ReadPin(MUSIC1_BUSY_GPIO_Port,MUSIC1_BUSY_Pin)==GPIO_PIN_RESET))
+        {
+            //Music1开始播放
+            xEventGroupClearBits(MusicEventGroup, MUSIC1_BUSY_EVENT);
+        }
+        if ((Music1BusyState==GPIO_PIN_RESET)&&(HAL_GPIO_ReadPin(MUSIC1_BUSY_GPIO_Port,MUSIC1_BUSY_Pin)==GPIO_PIN_SET))
+        {
+            //Music1播
+            xEventGroupSetBits(MusicEventGroup, MUSIC1_BUSY_EVENT);
+        }
+        if ((Music2BusyState==GPIO_PIN_SET)&&(HAL_GPIO_ReadPin(MUSIC2_BUSY_GPIO_Port,MUSIC2_BUSY_Pin)==GPIO_PIN_RESET))
+        {
+            //Music2开始播放
+            xEventGroupClearBits(MusicEventGroup, MUSIC2_BUSY_EVENT);
+        }
+        if ((Music2BusyState==GPIO_PIN_RESET)&&(HAL_GPIO_ReadPin(MUSIC2_BUSY_GPIO_Port,MUSIC2_BUSY_Pin)==GPIO_PIN_SET))
+        {
+            //Music2播放结束
+            xEventGroupSetBits(MusicEventGroup, MUSIC2_BUSY_EVENT);
+        }
+        Music1BusyState = HAL_GPIO_ReadPin(MUSIC1_BUSY_GPIO_Port,MUSIC1_BUSY_Pin);
+        Music2BusyState = HAL_GPIO_ReadPin(MUSIC2_BUSY_GPIO_Port,MUSIC2_BUSY_Pin);
+
         osDelay(1);
     }
     /* USER CODE END StartMusicTask */

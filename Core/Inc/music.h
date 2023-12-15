@@ -7,6 +7,7 @@
 
 #endif //FKS1_MUSIC_H
 
+#include "stm32f1xx_hal.h"
 #include "usart.h"
 #include "FreeRTOS.h"
 #include "queue.h"
@@ -16,48 +17,18 @@
 #define MUSIC_1 huart2
 #define MUSIC_2 huart3
 
+#define MUSIC1_BUSY_EVENT (1<<0)
+#define MUSIC2_BUSY_EVENT (1<<8)
 
 typedef struct {
     UART_HandleTypeDef *huart;
     uint8_t CMD;
-    uint8_t Data[32];
+    uint8_t Data[64];
     size_t DataLength;
 } MusicMessage;
 
-void MUSIC_PLAY(UART_HandleTypeDef *huart, uint8_t *FileName, size_t FileNameLength);
+void PlayMusicName(UART_HandleTypeDef *huart,const char* FileName,size_t FileNameSize, uint8_t PlayMode);
 
-#define 查询播放状态 0x00
-#define U盘 0x00
-#define SD卡 0x01
-#define Flash 0x02
+#define 单曲循环 0x01
 
-#define 播放 0x01
-
-#define 暂停 0x02
-
-#define 暂停 0x02
-
-
-// 播放时间控制
-#define PLAY_TIME_CONTROL_CMD 0x05
-
-// 音量控制
-#define VOLUME_CONTROL_CMD 0x06
-
-// 复读控制
-#define REPEAT_CONTROL_CMD 0x08
-
-// 插播控制
-#define INTERJECT_CONTROL_CMD 0x09
-
-// 循环模式控制
-#define LOOP_MODE_CONTROL_CMD 0x0B
-
-// 组合播放指令
-#define COMBINED_PLAY_CMD 0x0C
-
-// 循环次数指令
-#define LOOP_COUNT_CMD 0x0B
-
-// EQ选择指令
-#define EQ_SELECT_CMD 0x07
+#define 单曲停止 0x04

@@ -61,6 +61,8 @@ void Error_Handler(void);
 #define OSC8_IN_GPIO_Port GPIOD
 #define OSC8_OUT_Pin GPIO_PIN_1
 #define OSC8_OUT_GPIO_Port GPIOD
+#define MUSIC1_BUSY_Pin GPIO_PIN_1
+#define MUSIC1_BUSY_GPIO_Port GPIOA
 #define MUSIC1_TX_Pin GPIO_PIN_2
 #define MUSIC1_TX_GPIO_Port GPIOA
 #define MUSIC1_RX_Pin GPIO_PIN_3
@@ -71,6 +73,8 @@ void Error_Handler(void);
 #define HC595_SHCP_GPIO_Port GPIOA
 #define HC595_DS_Pin GPIO_PIN_7
 #define HC595_DS_GPIO_Port GPIOA
+#define MUSIC2_BUSY_Pin GPIO_PIN_2
+#define MUSIC2_BUSY_GPIO_Port GPIOB
 #define MUSIC2_TX_Pin GPIO_PIN_10
 #define MUSIC2_TX_GPIO_Port GPIOB
 #define MUSIC2_RX_Pin GPIO_PIN_11

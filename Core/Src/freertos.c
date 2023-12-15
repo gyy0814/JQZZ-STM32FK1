@@ -29,7 +29,6 @@
 #include "queue.h"
 #include "gpio.h"
 #include "music.h"
-#include "user.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,6 +59,8 @@ QueueHandle_t MusicUartMessageQueueHandle;
 //Input Event 0-15Bit UP  16-31 DOWN
 EventGroupHandle_t InputEventGroup;
 
+//Music Event 0-15Bit Music1  16-31Bit Music2
+EventGroupHandle_t MusicEventGroup;
 
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
@@ -120,14 +121,15 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
     InputEventGroup = xEventGroupCreate();
+    MusicEventGroup = xEventGroupCreate();
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
-    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�?????????10个uint8_t大小的元�?????????
-    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�?????????10个uint8_t大小的元�?????????
-    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�?????????10个uint8_t大小的元�?????????
-    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�?????????10个uint8_t大小的元�?????????
+    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????10个uint8_t大小的元�???????????
+    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????10个uint8_t大小的元�???????????
+    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�???????????10个uint8_t大小的元�???????????
+    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�???????????10个uint8_t大小的元�???????????
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */

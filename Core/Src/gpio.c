@@ -20,7 +20,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
-#include "usart.h"
 
 /* USER CODE BEGIN 0 */
 
@@ -69,12 +68,24 @@ void MX_GPIO_Init(void)
                           |OUTPUT_3_Pin|OUTPUT_4_Pin|OUTPUT_5_Pin|OUTPUT_6_Pin
                           |OUTPUT_7_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = MUSIC1_BUSY_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(MUSIC1_BUSY_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pins : PAPin PAPin PAPin PAPin */
   GPIO_InitStruct.Pin = HC595_STCP_Pin|HC595_SHCP_Pin|HC595_DS_Pin|OUTPUT_0_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = MUSIC2_BUSY_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(MUSIC2_BUSY_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PBPin PBPin PBPin PBPin
                            PBPin PBPin PBPin PBPin
@@ -122,16 +133,16 @@ void HC595Output(const GPIO_PinState *pOutputState,int OutputNum)
         {
             HC595_DSH;
         }
-        /*--step2CLK引脚实现上升�????????*/
+        /*--step2CLK引脚实现上升�?????????*/
         HC595_SHCPL;
         osDelay(1);
-        //是否�????????要延�????????
+        //是否�?????????要延�?????????
         HC595_SHCPH;
     }
     /*--step3发�?�完成后存储到寄存器*/
     HC595_STCPL;
     osDelay(1);
-    //是否�????????要延�????????
+    //是否�?????????要延�?????????
     HC595_STCPH;
 }
 
@@ -214,6 +225,9 @@ void InputRecv(GPIO_PinState *pInputState)
                     xEventGroupSetBits(InputEventGroup, (1<<i));
                 else
                     xEventGroupSetBits(InputEventGroup, (1<<(i+8)));
+
+                uint8_t TxBuffer[5] ={0xCC,0x01,i,ReadInput(i),0xFF};
+                HAL_UART_Transmit(&huart1,TxBuffer,5,HAL_MAX_DELAY);
             }
 
             previousInputState[i] = InputState[i];

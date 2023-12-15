@@ -12,6 +12,7 @@
 #include "queue.h"
 #include "main.h"
 #include "cmsis_os.h"
+#include "music.h"
 
 #define I0_UP_EVENT (1<<0)
 #define I1_UP_EVENT (1<<1)

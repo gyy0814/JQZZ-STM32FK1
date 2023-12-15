@@ -34,6 +34,8 @@ extern "C" {
 #include "queue.h"
 #include "main.h"
 #include "cmsis_os.h"
+
+#include "usart.h"
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN Private defines */
