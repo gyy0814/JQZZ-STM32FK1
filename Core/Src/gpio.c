@@ -47,58 +47,59 @@ extern EventGroupHandle_t InputEventGroup[(INPUT_NUM / 32) + 1];
         * EVENT_OUT
         * EXTI
 */
-void MX_GPIO_Init(void) {
+void MX_GPIO_Init(void)
+{
 
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-    /* GPIO Ports Clock Enable */
-    __HAL_RCC_GPIOD_CLK_ENABLE();
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOB_CLK_ENABLE();
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOD_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
-    /*Configure GPIO pin Output Level */
-    HAL_GPIO_WritePin(GPIOA, HC595_STCP_Pin | HC595_SHCP_Pin | HC595_DS_Pin | OUTPUT_0_Pin, GPIO_PIN_RESET);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, HC595_STCP_Pin|HC595_SHCP_Pin|HC595_DS_Pin|OUTPUT_0_Pin, GPIO_PIN_RESET);
 
-    /*Configure GPIO pin Output Level */
-    HAL_GPIO_WritePin(GPIOB, HC165_PL__Pin | HC165_CP_Pin | OUTPUT_1_Pin | OUTPUT_2_Pin
-                             | OUTPUT_3_Pin | OUTPUT_4_Pin | OUTPUT_5_Pin | OUTPUT_6_Pin
-                             | OUTPUT_7_Pin, GPIO_PIN_RESET);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, HC165_PL__Pin|HC165_CP_Pin|OUTPUT_1_Pin|OUTPUT_2_Pin
+                          |OUTPUT_3_Pin|OUTPUT_4_Pin|OUTPUT_5_Pin|OUTPUT_6_Pin
+                          |OUTPUT_7_Pin, GPIO_PIN_RESET);
 
-    /*Configure GPIO pin : PtPin */
-    GPIO_InitStruct.Pin = MUSIC1_BUSY_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_PULLUP;
-    HAL_GPIO_Init(MUSIC1_BUSY_GPIO_Port, &GPIO_InitStruct);
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = MUSIC1_BUSY_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(MUSIC1_BUSY_GPIO_Port, &GPIO_InitStruct);
 
-    /*Configure GPIO pins : PAPin PAPin PAPin PAPin */
-    GPIO_InitStruct.Pin = HC595_STCP_Pin | HC595_SHCP_Pin | HC595_DS_Pin | OUTPUT_0_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  /*Configure GPIO pins : PAPin PAPin PAPin PAPin */
+  GPIO_InitStruct.Pin = HC595_STCP_Pin|HC595_SHCP_Pin|HC595_DS_Pin|OUTPUT_0_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-    /*Configure GPIO pin : PtPin */
-    GPIO_InitStruct.Pin = MUSIC2_BUSY_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_PULLUP;
-    HAL_GPIO_Init(MUSIC2_BUSY_GPIO_Port, &GPIO_InitStruct);
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = MUSIC2_BUSY_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(MUSIC2_BUSY_GPIO_Port, &GPIO_InitStruct);
 
-    /*Configure GPIO pins : PBPin PBPin PBPin PBPin
-                             PBPin PBPin PBPin PBPin
-                             PBPin */
-    GPIO_InitStruct.Pin = HC165_PL__Pin | HC165_CP_Pin | OUTPUT_1_Pin | OUTPUT_2_Pin
-                          | OUTPUT_3_Pin | OUTPUT_4_Pin | OUTPUT_5_Pin | OUTPUT_6_Pin
-                          | OUTPUT_7_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  /*Configure GPIO pins : PBPin PBPin PBPin PBPin
+                           PBPin PBPin PBPin PBPin
+                           PBPin */
+  GPIO_InitStruct.Pin = HC165_PL__Pin|HC165_CP_Pin|OUTPUT_1_Pin|OUTPUT_2_Pin
+                          |OUTPUT_3_Pin|OUTPUT_4_Pin|OUTPUT_5_Pin|OUTPUT_6_Pin
+                          |OUTPUT_7_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-    /*Configure GPIO pin : PtPin */
-    GPIO_InitStruct.Pin = HC165_DS_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(HC165_DS_GPIO_Port, &GPIO_InitStruct);
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = HC165_DS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(HC165_DS_GPIO_Port, &GPIO_InitStruct);
 
 }
 
@@ -124,16 +125,16 @@ void HC595Output(const GPIO_PinState *pOutputState, int OutputNum) {
         } else {
             HC595_DSH;
         }
-        /*--step2CLK引脚实现上升�??????????*/
+        /*--step2CLK引脚实现上升�???????????*/
         HC595_SHCPL;
         osDelay(1);
-        //是否�??????????要延�??????????
+        //是否�???????????要延�???????????
         HC595_SHCPH;
     }
     /*--step3发�?�完成后存储到寄存器*/
     HC595_STCPL;
     osDelay(1);
-    //是否�??????????要延�??????????
+    //是否�???????????要延�???????????
     HC595_STCPH;
 }
 

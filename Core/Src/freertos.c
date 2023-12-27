@@ -68,6 +68,7 @@ osThreadId defaultTaskHandle;
 osThreadId Uart1ReadHandleHandle;
 osThreadId GPIOTaskHandle;
 osThreadId musicTaskHandle;
+osThreadId myASCTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -78,6 +79,7 @@ void StartDefaultTask(void const * argument);
 void Uart1ReadHandler(void const * argument);
 void StartGPIOTask(void const * argument);
 void StartMusicTask(void const * argument);
+void StartASCTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -127,10 +129,10 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
-    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�?????????????10个uint8_t大小的元�?????????????
-    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�?????????????10个uint8_t大小的元�?????????????
-    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�?????????????10个uint8_t大小的元�?????????????
-    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�?????????????10个uint8_t大小的元�?????????????
+    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�??????????????10个uint8_t大小的元�??????????????
+    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�??????????????10个uint8_t大小的元�??????????????
+    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�??????????????10个uint8_t大小的元�??????????????
+    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�??????????????10个uint8_t大小的元�??????????????
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -149,6 +151,10 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of musicTask */
   osThreadDef(musicTask, StartMusicTask, osPriorityIdle, 0, 256);
   musicTaskHandle = osThreadCreate(osThread(musicTask), NULL);
+
+  /* definition and creation of myASCTask */
+  osThreadDef(myASCTask, StartASCTask, osPriorityIdle, 0, 128);
+  myASCTaskHandle = osThreadCreate(osThread(myASCTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -243,15 +249,6 @@ void Uart1ReadHandler(void const * argument)
 
                   break;
               }
-              case 0x05:
-              {
-                    if(newMessage.data[3] == 0x01)
-                        CreateTask(newMessage.data[2]);
-                    else
-                        DestroyTask(newMessage.data[2]);
-
-                  break;
-              }
               default:
                   break;
           }
@@ -295,6 +292,24 @@ __weak void StartMusicTask(void const * argument)
     osDelay(1);
   }
   /* USER CODE END StartMusicTask */
+}
+
+/* USER CODE BEGIN Header_StartASCTask */
+/**
+* @brief Function implementing the myASCTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartASCTask */
+__weak void StartASCTask(void const * argument)
+{
+  /* USER CODE BEGIN StartASCTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartASCTask */
 }
 
 /* Private application code --------------------------------------------------*/
