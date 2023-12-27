@@ -5,7 +5,6 @@
 #ifndef FKS1_MUSIC_H
 #define FKS1_MUSIC_H
 
-#endif //FKS1_MUSIC_H
 
 #include "stm32f1xx_hal.h"
 #include "usart.h"
@@ -32,3 +31,6 @@ void PlayMusicName(UART_HandleTypeDef *huart,const char* FileName,size_t FileNam
 #define 单曲循环 0x01
 
 #define 单曲停止 0x04
+
+
+#endif //FKS1_MUSIC_H

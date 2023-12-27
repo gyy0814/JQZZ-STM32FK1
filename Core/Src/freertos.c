@@ -29,6 +29,7 @@
 #include "queue.h"
 #include "gpio.h"
 #include "music.h"
+#include "user.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,7 +58,7 @@ QueueHandle_t MusicMessageQueueHandle;
 QueueHandle_t MusicUartMessageQueueHandle;
 
 //Input Event 0-15Bit UP  16-31 DOWN
-EventGroupHandle_t InputEventGroup;
+EventGroupHandle_t InputEventGroup[(INPUT_NUM / 32) + 1];
 
 //Music Event 0-15Bit Music1  16-31Bit Music2
 EventGroupHandle_t MusicEventGroup;
@@ -67,8 +68,6 @@ osThreadId defaultTaskHandle;
 osThreadId Uart1ReadHandleHandle;
 osThreadId GPIOTaskHandle;
 osThreadId musicTaskHandle;
-osThreadId userTaskHandle;
-osThreadId user1TaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -79,8 +78,6 @@ void StartDefaultTask(void const * argument);
 void Uart1ReadHandler(void const * argument);
 void StartGPIOTask(void const * argument);
 void StartMusicTask(void const * argument);
-void StartUserTask(void const * argument);
-void Startuser1Task(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -98,6 +95,7 @@ void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackTy
   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
   /* place for user code */
 }
+
 /* USER CODE END GET_IDLE_TASK_MEMORY */
 
 /**
@@ -120,16 +118,19 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
-    InputEventGroup = xEventGroupCreate();
+    for (int i = 0; i <= INPUT_NUM / 32; ++i) {
+
+        InputEventGroup[i] = xEventGroupCreate();
+    }
     MusicEventGroup = xEventGroupCreate();
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
-    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????10个uint8_t大小的元�???????????
-    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????10个uint8_t大小的元�???????????
-    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�???????????10个uint8_t大小的元�???????????
-    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�???????????10个uint8_t大小的元�???????????
+    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�?????????????10个uint8_t大小的元�?????????????
+    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�?????????????10个uint8_t大小的元�?????????????
+    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�?????????????10个uint8_t大小的元�?????????????
+    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�?????????????10个uint8_t大小的元�?????????????
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -148,14 +149,6 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of musicTask */
   osThreadDef(musicTask, StartMusicTask, osPriorityIdle, 0, 256);
   musicTaskHandle = osThreadCreate(osThread(musicTask), NULL);
-
-  /* definition and creation of userTask */
-  osThreadDef(userTask, StartUserTask, osPriorityIdle, 0, 128);
-  userTaskHandle = osThreadCreate(osThread(userTask), NULL);
-
-  /* definition and creation of user1Task */
-  osThreadDef(user1Task, Startuser1Task, osPriorityIdle, 0, 128);
-  user1TaskHandle = osThreadCreate(osThread(user1Task), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -250,6 +243,15 @@ void Uart1ReadHandler(void const * argument)
 
                   break;
               }
+              case 0x05:
+              {
+                    if(newMessage.data[3] == 0x01)
+                        CreateTask(newMessage.data[2]);
+                    else
+                        DestroyTask(newMessage.data[2]);
+
+                  break;
+              }
               default:
                   break;
           }
@@ -293,42 +295,6 @@ __weak void StartMusicTask(void const * argument)
     osDelay(1);
   }
   /* USER CODE END StartMusicTask */
-}
-
-/* USER CODE BEGIN Header_StartUserTask */
-/**
-* @brief Function implementing the userTask thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartUserTask */
-__weak void StartUserTask(void const * argument)
-{
-  /* USER CODE BEGIN StartUserTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
-  /* USER CODE END StartUserTask */
-}
-
-/* USER CODE BEGIN Header_Startuser1Task */
-/**
-* @brief Function implementing the user1Task thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_Startuser1Task */
-__weak void Startuser1Task(void const * argument)
-{
-  /* USER CODE BEGIN Startuser1Task */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
-  /* USER CODE END Startuser1Task */
 }
 
 /* Private application code --------------------------------------------------*/

@@ -40,6 +40,9 @@ extern "C" {
 
 /* USER CODE BEGIN Private defines */
 
+#define OUTPUT_NUM 112
+#define INPUT_NUM 48
+
 typedef struct {
     uint16_t GPIO_Pin;
     GPIO_PinState PinState;
@@ -77,7 +80,7 @@ void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
-void StartGPIOTask(void const * argument);
+void StartGPIOTask(void const *argument);
 
 BaseType_t SetOutput(int Pin, GPIO_PinState state);
 /* USER CODE END Prototypes */
