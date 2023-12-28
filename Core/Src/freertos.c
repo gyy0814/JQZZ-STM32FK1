@@ -69,6 +69,8 @@ osThreadId Uart1ReadHandleHandle;
 osThreadId GPIOTaskHandle;
 osThreadId musicTaskHandle;
 osThreadId myASCTaskHandle;
+osThreadId GameTaskHandle;
+osThreadId PerTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -80,6 +82,8 @@ void Uart1ReadHandler(void const * argument);
 void StartGPIOTask(void const * argument);
 void StartMusicTask(void const * argument);
 void StartASCTask(void const * argument);
+void StartGameTask(void const * argument);
+void StartPerTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -129,10 +133,10 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
-    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�??????????????10个uint8_t大小的元�??????????????
-    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�??????????????10个uint8_t大小的元�??????????????
-    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�??????????????10个uint8_t大小的元�??????????????
-    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�??????????????10个uint8_t大小的元�??????????????
+    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
+    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
+    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
+    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -155,6 +159,14 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of myASCTask */
   osThreadDef(myASCTask, StartASCTask, osPriorityIdle, 0, 128);
   myASCTaskHandle = osThreadCreate(osThread(myASCTask), NULL);
+
+  /* definition and creation of GameTask */
+  osThreadDef(GameTask, StartGameTask, osPriorityIdle, 0, 128);
+  GameTaskHandle = osThreadCreate(osThread(GameTask), NULL);
+
+  /* definition and creation of PerTask */
+  osThreadDef(PerTask, StartPerTask, osPriorityIdle, 0, 128);
+  PerTaskHandle = osThreadCreate(osThread(PerTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -310,6 +322,42 @@ __weak void StartASCTask(void const * argument)
     osDelay(1);
   }
   /* USER CODE END StartASCTask */
+}
+
+/* USER CODE BEGIN Header_StartGameTask */
+/**
+* @brief Function implementing the GameTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartGameTask */
+__weak void StartGameTask(void const * argument)
+{
+  /* USER CODE BEGIN StartGameTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartGameTask */
+}
+
+/* USER CODE BEGIN Header_StartPerTask */
+/**
+* @brief Function implementing the PerTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartPerTask */
+__weak void StartPerTask(void const * argument)
+{
+  /* USER CODE BEGIN StartPerTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartPerTask */
 }
 
 /* Private application code --------------------------------------------------*/

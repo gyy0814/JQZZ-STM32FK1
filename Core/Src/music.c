@@ -29,6 +29,7 @@ void MusicSendData(UART_HandleTypeDef *huart, uint8_t CMD, const uint8_t *data, 
     }
 
     HAL_UART_Transmit(huart,txBuffer, dataLength+4,HAL_MAX_DELAY);
+    osDelay(200);
 }
 
 void PlayMusicName(UART_HandleTypeDef *huart,const char* FileName,size_t FileNameSize, uint8_t PlayMode)
@@ -46,7 +47,7 @@ void PlayMusicName(UART_HandleTypeDef *huart,const char* FileName,size_t FileNam
     newMusicMessage.Data[0] = 0x01;
     newMusicMessage.Data[1] = PlayMode;
 
-//    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
 
     /* Play music form fileName */
     newMusicMessage.CMD = 0x04;

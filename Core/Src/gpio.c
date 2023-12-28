@@ -125,16 +125,16 @@ void HC595Output(const GPIO_PinState *pOutputState, int OutputNum) {
         } else {
             HC595_DSH;
         }
-        /*--step2CLK引脚实现上升�???????????*/
+        /*--step2CLK引脚实现上升�???????????*/
         HC595_SHCPL;
         osDelay(1);
-        //是否�???????????要延�???????????
+        //是否�???????????要延�???????????
         HC595_SHCPH;
     }
     /*--step3发�?�完成后存储到寄存器*/
     HC595_STCPL;
     osDelay(1);
-    //是否�???????????要延�???????????
+    //是否�???????????要延�???????????
     HC595_STCPH;
 }
 
@@ -202,12 +202,12 @@ void InputRecv(GPIO_PinState *pInputState) {
     HC165Input(pInputState, INPUT_NUM);
     for (int i = 0; i < INPUT_NUM; i++) {
         if (IsEdgeDetected(i)) {
+            if (ReadInput(i) == GPIO_PIN_SET) {
+                xEventGroupSetBits(InputEventGroup[i / 32], (1 << (i % 16)));
+            } else {
+                xEventGroupClearBits(InputEventGroup[i / 16], (1 << (i % 16)));
+            }
             if (IsSetup != 0) {
-                if (ReadInput(i) == GPIO_PIN_SET) {
-                    xEventGroupSetBits(InputEventGroup[i / 32], (1 << (i % 16)));
-                } else {
-                    xEventGroupClearBits(InputEventGroup[i / 16], (1 << (i % 16)));
-                }
                 uint8_t TxBuffer[5] = {0xCC, 0x01, i, ReadInput(i), 0xFF};
                 HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
 
