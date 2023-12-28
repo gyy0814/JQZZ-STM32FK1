@@ -178,6 +178,12 @@ void StartGameTask(void const *argument) {
             }
             case 6://等待敲门机关
             {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(敲门输入), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if (bits & TO_BIT(敲门输入))
+                {
+                    gameFlag++;
+                }
                 break;
             }
             case 7://关闭煤气灯 开密室门 留声机播放音频3
@@ -221,6 +227,23 @@ void StartGameTask(void const *argument) {
             }
             case 11://开地窖门 延时音频/灯效
             {
+
+                char *MusicName="/BGM/001.mp3";
+                PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲停止);
+                SetOutput(地窖门电源,GPIO_PIN_SET);
+                osDelay(5000);
+                SetOutput(地窖门控制,GPIO_PIN_SET);
+                osDelay(4000);
+                SetOutput(地窖门控制,GPIO_PIN_RESET);
+                SetOutput(地窖门电源,GPIO_PIN_RESET);
+                osDelay(15000);
+
+                MusicName="/BGM/002.mp3";
+                PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲停止);
+
+                MusicName="/BGM/003.mp3";
+                PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲循环);
+
                 gameFlag++;
                 break;
             }

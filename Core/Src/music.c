@@ -37,6 +37,7 @@ void PlayMusicName(UART_HandleTypeDef *huart,const char* FileName,size_t FileNam
     if (FileNameSize>64)
         return;
 
+
     /* Set playMode */
     MusicMessage newMusicMessage = (MusicMessage){
             .huart = huart,
@@ -44,9 +45,15 @@ void PlayMusicName(UART_HandleTypeDef *huart,const char* FileName,size_t FileNam
             .DataLength=2
     };
 
+    newMusicMessage.CMD = 0x04;
+    newMusicMessage.Data[0] = 0x0A;
+    newMusicMessage.DataLength=1;
+    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+
+    newMusicMessage.CMD = 0x0B;
     newMusicMessage.Data[0] = 0x01;
     newMusicMessage.Data[1] = PlayMode;
-
+    newMusicMessage.DataLength=2;
     xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
 
     /* Play music form fileName */
