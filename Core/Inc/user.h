@@ -16,6 +16,5 @@
 #define TO_BIT(num) (1<<(num%32))
 
 #define ASC(num) (num-1)
-#define ASC_LOOK(num) (num+24)
-
+#define LOOK(num) (num+25)
 #endif //FKS1_USER_H
