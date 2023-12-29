@@ -13,6 +13,13 @@
 #include "cmsis_os.h"
 #include "music.h"
 
+
+typedef struct {
+    uint8_t CMD;
+    uint8_t Data[64];
+    size_t DataLength;
+} GameMessage;
+
 #define TO_BIT(num) (1<<(num%32))
 
 //灯光

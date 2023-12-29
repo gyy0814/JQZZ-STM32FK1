@@ -56,6 +56,8 @@ QueueHandle_t Uart1RxMsgQueueHandle;
 QueueHandle_t OutputMessageQueueHandle;
 QueueHandle_t MusicMessageQueueHandle;
 QueueHandle_t MusicUartMessageQueueHandle;
+QueueHandle_t GameMessageQueueHandle;
+
 
 //Input Event 0-15Bit UP  16-31 DOWN
 EventGroupHandle_t InputEventGroup[(INPUT_NUM / 32) + 1];
@@ -133,10 +135,11 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
-    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
-    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
-    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
-    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
+    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
+    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
+    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
+    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
+    GameMessageQueueHandle = xQueueCreate(5, sizeof(GameMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -260,6 +263,20 @@ void Uart1ReadHandler(void const * argument)
                   }
 
                   break;
+              }
+              case 0x05:
+              {
+                  GameMessage newGameMessage;
+                  newGameMessage.CMD = newMessage.data[2];
+                  newGameMessage.DataLength=newMessage.length-4;
+                  memcpy(newGameMessage.Data,&newMessage.data[3],newGameMessage.DataLength);
+                  BaseType_t result = xQueueSend(GameMessageQueueHandle,&newGameMessage,0);
+                  if (result != pdPASS)
+                  {
+                      newMessage.data[0]=0xEE;
+                      HAL_UART_Transmit(&huart1,newMessage.data,newMessage.length,HAL_MAX_DELAY);
+                  }
+
               }
               default:
                   break;

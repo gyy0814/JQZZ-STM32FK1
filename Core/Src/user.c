@@ -11,6 +11,7 @@
 #include "cmsis_os.h"
 #include "gpio.h"
 
+extern QueueHandle_t GameMessageQueueHandle;
 extern EventGroupHandle_t InputEventGroup[(INPUT_NUM / 32) + 1];
 extern EventGroupHandle_t MusicEventGroup;
 extern QueueHandle_t OutputMessageQueueHandle;
@@ -89,6 +90,7 @@ void BlinkLight(void *argument) {
 void StartGameTask(void const *argument) {
     int gameFlag = 0;
     TaskHandle_t BlinkTaskHandle = NULL;
+    GameMessage newGameMessage;
     for (;;) {
         switch (gameFlag) {
             case 0: // 等待钢琴输入
@@ -300,6 +302,12 @@ void StartGameTask(void const *argument) {
             }
             default:
                 break;
+        }
+        if(xQueueReceive(GameMessageQueueHandle,&newGameMessage,0)==pdTRUE)
+        {
+            if(newGameMessage.CMD == 0x00){
+                gameFlag = newGameMessage.Data[0];
+            }
         }
     }
 
