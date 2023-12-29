@@ -22,9 +22,14 @@
 
 //输入
 #define 钢琴输入 5
+#define 戒指输入 6
+#define 花砖1 9
+#define 花砖2 10
 #define 插香输入 11
 #define 抽屉打开输入 12
+#define 毒药检测 13
 #define 敲门输入 14
+
 #define 电闸输入 NULL
 
 //输出
@@ -33,9 +38,13 @@
 #define 水幕开 12
 #define 水幕关 13
 #define 视频播放 14
-#define 地窖门控制 15
-#define 地窖门电源 16
+#define 地窖门控制 61
+#define 地窖门电源 62
+#define 留声机音乐1 17
+#define 留声机音乐2 16
+#define 留声机音乐3 15
 
+#define 白骨射灯 49
 #define 爆闪灯 NULL
 
 

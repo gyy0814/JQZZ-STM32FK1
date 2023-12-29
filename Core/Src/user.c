@@ -146,6 +146,9 @@ void StartGameTask(void const *argument) {
                 PlayMusicName(&MUSIC_1,MusicName, strlen(MusicName),单曲循环);
 
                 // 留声机播放音频1
+                SetOutput(留声机音乐1,GPIO_PIN_SET);
+                osDelay(200);
+                SetOutput(留声机音乐1,GPIO_PIN_RESET);
 
                 // 抽屉锁断电
                 SetOutput(抽屉锁,GPIO_PIN_SET);
@@ -165,6 +168,9 @@ void StartGameTask(void const *argument) {
             case 5://煤气灯闪烁 留声机播放音频2
             {
                 // 留声机播放音频2
+                SetOutput(留声机音乐2,GPIO_PIN_SET);
+                osDelay(200);
+                SetOutput(留声机音乐2,GPIO_PIN_RESET);
 
                 //恐怖音效2
                 char *MusicName="/BGM/002.mp3";
@@ -182,20 +188,20 @@ void StartGameTask(void const *argument) {
                                                        0);  // 等待1秒
                 if (bits & TO_BIT(敲门输入))
                 {
+                    osDelay(1000);
                     gameFlag++;
                 }
                 break;
             }
-            case 7://关闭煤气灯 开密室门 留声机播放音频3
+            case 7://关闭煤气灯 开密室门
             {
+
                 // 开密室门
                 if (!ASCTaskHandle[6]) {
                     ASCTaskHandle[6] = true;
                     int ASCNum = 6;
                     xTaskCreate(OpenDoor, "Opendoor", 128, &ASCNum, 1, NULL);
                 }
-
-                //留声机播放音频3
 
                 //关闭煤气灯
                 if (BlinkTaskHandle != NULL)
@@ -209,25 +215,44 @@ void StartGameTask(void const *argument) {
             }
             case 8://等待毒药检测
             {
-
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(毒药检测), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if (bits & TO_BIT(毒药检测))
+                {
+                    gameFlag++;
+                }
                 break;
             }
-            case 9:// 开卧室门 留声机播放音频4
+            case 9:// 开卧室门 留声机播放音频3
             {
                 //开卧室门
+                if (!ASCTaskHandle[5]) {
+                    ASCTaskHandle[5] = true;
+                    int ASCNum = 5;
+                    xTaskCreate(OpenDoor, "Opendoor", 128, &ASCNum, 1, NULL);
+                }
 
-                //留声机播放音频4
+                //留声机播放音频3
+                SetOutput(留声机音乐3,GPIO_PIN_SET);
+                osDelay(200);
+                SetOutput(留声机音乐3,GPIO_PIN_RESET);
 
                 gameFlag++;
                 break;
             }
             case 10: // 等待花砖检测
             {
+
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(花砖1), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if (bits & TO_BIT(花砖1))
+                {
+                    gameFlag++;
+                }
                 break;
             }
-            case 11://开地窖门 延时音频/灯效
+            case 11://开地窖门
             {
-
                 char *MusicName="/BGM/001.mp3";
                 PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲停止);
                 SetOutput(地窖门电源,GPIO_PIN_SET);
@@ -236,15 +261,41 @@ void StartGameTask(void const *argument) {
                 osDelay(4000);
                 SetOutput(地窖门控制,GPIO_PIN_RESET);
                 SetOutput(地窖门电源,GPIO_PIN_RESET);
+
                 osDelay(15000);
+
+                //开射灯
+                SetOutput(白骨射灯,GPIO_PIN_SET);
+
+                gameFlag++;
+                break;
+            }
+            case 12://等待戒指机关
+            {
+
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(戒指输入), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if ((bits & TO_BIT(戒指输入))==0)
+                {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 13:
+            {
+                char *MusicName="/BGM/003.mp3";
+                PlayMusicName(&MUSIC_1,MusicName, strlen(MusicName),单曲循环);
 
                 MusicName="/BGM/002.mp3";
                 PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲停止);
-
-                MusicName="/BGM/003.mp3";
-                PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲循环);
-
-                gameFlag++;
+                break;
+            }
+            case 14:
+            {
+                break;
+            }
+            case 15:
+            {
                 break;
             }
             default:
