@@ -72,7 +72,7 @@ osThreadId GPIOTaskHandle;
 osThreadId musicTaskHandle;
 osThreadId myASCTaskHandle;
 osThreadId GameTaskHandle;
-osThreadId PerTaskHandle;
+osThreadId PianoTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -85,7 +85,7 @@ void StartGPIOTask(void const * argument);
 void StartMusicTask(void const * argument);
 void StartASCTask(void const * argument);
 void StartGameTask(void const * argument);
-void StartPerTask(void const * argument);
+void StartPianoTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -135,11 +135,11 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
-    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
-    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
-    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
-    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
-    GameMessageQueueHandle = xQueueCreate(5, sizeof(GameMessage));  // 创建队列，可以容�???????????????10个uint8_t大小的元�???????????????
+    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�????????????????10个uint8_t大小的元�????????????????
+    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�????????????????10个uint8_t大小的元�????????????????
+    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�????????????????10个uint8_t大小的元�????????????????
+    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�????????????????10个uint8_t大小的元�????????????????
+    GameMessageQueueHandle = xQueueCreate(5, sizeof(GameMessage));  // 创建队列，可以容�????????????????10个uint8_t大小的元�????????????????
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -167,9 +167,9 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(GameTask, StartGameTask, osPriorityIdle, 0, 128);
   GameTaskHandle = osThreadCreate(osThread(GameTask), NULL);
 
-  /* definition and creation of PerTask */
-  osThreadDef(PerTask, StartPerTask, osPriorityIdle, 0, 128);
-  PerTaskHandle = osThreadCreate(osThread(PerTask), NULL);
+  /* definition and creation of PianoTask */
+  osThreadDef(PianoTask, StartPianoTask, osPriorityIdle, 0, 128);
+  PianoTaskHandle = osThreadCreate(osThread(PianoTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -359,22 +359,22 @@ __weak void StartGameTask(void const * argument)
   /* USER CODE END StartGameTask */
 }
 
-/* USER CODE BEGIN Header_StartPerTask */
+/* USER CODE BEGIN Header_StartPianoTask */
 /**
-* @brief Function implementing the PerTask thread.
+* @brief Function implementing the PianoTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartPerTask */
-__weak void StartPerTask(void const * argument)
+/* USER CODE END Header_StartPianoTask */
+__weak void StartPianoTask(void const * argument)
 {
-  /* USER CODE BEGIN StartPerTask */
+  /* USER CODE BEGIN StartPianoTask */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END StartPerTask */
+  /* USER CODE END StartPianoTask */
 }
 
 /* Private application code --------------------------------------------------*/

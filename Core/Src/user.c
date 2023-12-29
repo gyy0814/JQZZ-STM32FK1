@@ -93,34 +93,7 @@ void StartGameTask(void const *argument) {
     GameMessage newGameMessage;
     for (;;) {
         switch (gameFlag) {
-            case 0: // 等待钢琴输入
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(钢琴输入), pdFALSE, pdTRUE,
-                                                       0);  // 等待1秒
-                if (bits & TO_BIT(钢琴输入)) {
-                    gameFlag++;
-                }
-                break;
-            }
-            case 1: // 开启水幕投影 关闭灯光
-            {
-                //开水幕机
-                SetOutput(水幕开,GPIO_PIN_SET);
-                osDelay(500);
-                SetOutput(水幕开,GPIO_PIN_RESET);
-
-                osDelay(500);
-
-                //开投影
-                SetOutput(视频播放,GPIO_PIN_SET);
-
-
-                // 关场灯
-                SetOutput(场灯(大厅灯光), GPIO_PIN_SET);
-                gameFlag++;
-                break;
-            }
-            case 2://等待插香
+            case 1://等待插香
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(插香输入), pdFALSE, pdTRUE,
                                                        0);  // 等待1秒
@@ -129,12 +102,8 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 3://开卧室门 留声机播放音频1 抽屉锁断电
+            case 2://开卧室门 留声机播放音频1 抽屉锁断电
             {
-                //关水幕机
-                SetOutput(水幕关,GPIO_PIN_SET);
-                osDelay(500);
-                SetOutput(水幕关,GPIO_PIN_RESET);
 
                 // 开卧室门
                 if (!ASCTaskHandle[5]) {
@@ -157,7 +126,7 @@ void StartGameTask(void const *argument) {
                 gameFlag++;
                 break;
             }
-            case 4://等待抽屉打开检测
+            case 3://等待抽屉打开检测
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(抽屉打开输入), pdFALSE, pdTRUE,
                                                        0);  // 等待1秒
@@ -167,7 +136,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 5://煤气灯闪烁 留声机播放音频2
+            case 4://煤气灯闪烁 留声机播放音频2
             {
                 // 留声机播放音频2
                 SetOutput(留声机音乐2,GPIO_PIN_SET);
@@ -184,7 +153,7 @@ void StartGameTask(void const *argument) {
                 gameFlag++;
                 break;
             }
-            case 6://等待敲门机关
+            case 5://等待敲门机关
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(敲门输入), pdFALSE, pdTRUE,
                                                        0);  // 等待1秒
@@ -195,7 +164,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 7://关闭煤气灯 开密室门
+            case 6://关闭煤气灯 开密室门
             {
 
                 // 开密室门
@@ -215,7 +184,7 @@ void StartGameTask(void const *argument) {
                 gameFlag++;
                 break;
             }
-            case 8://等待毒药检测
+            case 7://等待毒药检测
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(毒药检测), pdFALSE, pdTRUE,
                                                        0);  // 等待1秒
@@ -225,7 +194,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 9:// 开卧室门 留声机播放音频3
+            case 8:// 开卧室门 留声机播放音频3
             {
                 //开卧室门
                 if (!ASCTaskHandle[5]) {
@@ -242,7 +211,7 @@ void StartGameTask(void const *argument) {
                 gameFlag++;
                 break;
             }
-            case 10: // 等待花砖检测
+            case 9: // 等待花砖检测
             {
 
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(花砖1), pdFALSE, pdTRUE,
@@ -253,7 +222,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 11://开地窖门
+            case 10://开地窖门
             {
                 char *MusicName="/BGM/001.mp3";
                 PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲停止);
@@ -272,7 +241,7 @@ void StartGameTask(void const *argument) {
                 gameFlag++;
                 break;
             }
-            case 12://等待戒指机关
+            case 11://等待戒指机关
             {
 
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(戒指输入), pdFALSE, pdTRUE,
@@ -283,20 +252,17 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 13:
+            case 12:
             {
                 char *MusicName="/BGM/003.mp3";
                 PlayMusicName(&MUSIC_1,MusicName, strlen(MusicName),单曲循环);
 
                 MusicName="/BGM/002.mp3";
                 PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲停止);
+                gameFlag++;
                 break;
             }
-            case 14:
-            {
-                break;
-            }
-            case 15:
+            case 13:
             {
                 break;
             }
@@ -313,23 +279,43 @@ void StartGameTask(void const *argument) {
 
 }
 
-void StartPerTask1(void const *argument)
-{
+void StartPianoTask(void const *argument) {
+    for (;;) {
+        int gameFlag = 0;
+        switch (gameFlag) {
+            case 1:
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(钢琴输入), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if (bits & TO_BIT(钢琴输入)) {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 2: // 开启水幕投影 关闭灯光
+            {
+                //开水幕机
+                SetOutput(水幕开, GPIO_PIN_SET);
+                osDelay(500);
+                SetOutput(水幕开, GPIO_PIN_RESET);
 
-    bool BlinkLight = false;
-        EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(1), pdFALSE, pdTRUE,
-                                               0);  // 等待1秒
-        if (bits & TO_BIT(钢琴输入)) {
-            if(!BlinkLight){
-                BlinkLight = true;
-//                SetOutput(爆闪灯, GPIO_PIN_SET);
+                osDelay(500);
+
+                //开投影
+                SetOutput(视频播放, GPIO_PIN_SET);
+
+
+                // 关场灯
+                SetOutput(场灯(大厅灯光), GPIO_PIN_SET);
+                gameFlag++;
+                break;
             }
-        }
-        else
-        {
-            if(BlinkLight){
-                BlinkLight = false;
-//                SetOutput(爆闪灯, GPIO_PIN_RESET);
+            case 3:
+            {
+                break;
             }
+
         }
+
+    }
 }
