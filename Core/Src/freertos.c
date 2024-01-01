@@ -71,8 +71,9 @@ osThreadId Uart1ReadHandleHandle;
 osThreadId GPIOTaskHandle;
 osThreadId musicTaskHandle;
 osThreadId myASCTaskHandle;
-osThreadId GameTaskHandle;
+osThreadId Game1TaskHandle;
 osThreadId PianoTaskHandle;
+osThreadId Game2TaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -84,8 +85,9 @@ void Uart1ReadHandler(void const * argument);
 void StartGPIOTask(void const * argument);
 void StartMusicTask(void const * argument);
 void StartASCTask(void const * argument);
-void StartGameTask(void const * argument);
+void StartGame1Task(void const * argument);
 void StartPianoTask(void const * argument);
+void StartGame2Task(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -163,13 +165,17 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(myASCTask, StartASCTask, osPriorityIdle, 0, 128);
   myASCTaskHandle = osThreadCreate(osThread(myASCTask), NULL);
 
-  /* definition and creation of GameTask */
-  osThreadDef(GameTask, StartGameTask, osPriorityIdle, 0, 128);
-  GameTaskHandle = osThreadCreate(osThread(GameTask), NULL);
+  /* definition and creation of Game1Task */
+  osThreadDef(Game1Task, StartGame1Task, osPriorityIdle, 0, 128);
+  Game1TaskHandle = osThreadCreate(osThread(Game1Task), NULL);
 
   /* definition and creation of PianoTask */
   osThreadDef(PianoTask, StartPianoTask, osPriorityIdle, 0, 128);
   PianoTaskHandle = osThreadCreate(osThread(PianoTask), NULL);
+
+  /* definition and creation of Game2Task */
+  osThreadDef(Game2Task, StartGame2Task, osPriorityIdle, 0, 128);
+  Game2TaskHandle = osThreadCreate(osThread(Game2Task), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -341,22 +347,22 @@ __weak void StartASCTask(void const * argument)
   /* USER CODE END StartASCTask */
 }
 
-/* USER CODE BEGIN Header_StartGameTask */
+/* USER CODE BEGIN Header_StartGame1Task */
 /**
-* @brief Function implementing the GameTask thread.
+* @brief Function implementing the Game1Task thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartGameTask */
-__weak void StartGameTask(void const * argument)
+/* USER CODE END Header_StartGame1Task */
+__weak void StartGame1Task(void const * argument)
 {
-  /* USER CODE BEGIN StartGameTask */
+  /* USER CODE BEGIN StartGame1Task */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END StartGameTask */
+  /* USER CODE END StartGame1Task */
 }
 
 /* USER CODE BEGIN Header_StartPianoTask */
@@ -375,6 +381,24 @@ __weak void StartPianoTask(void const * argument)
     osDelay(1);
   }
   /* USER CODE END StartPianoTask */
+}
+
+/* USER CODE BEGIN Header_StartGame2Task */
+/**
+* @brief Function implementing the Game2Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartGame2Task */
+__weak void StartGame2Task(void const * argument)
+{
+  /* USER CODE BEGIN StartGame2Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartGame2Task */
 }
 
 /* Private application code --------------------------------------------------*/

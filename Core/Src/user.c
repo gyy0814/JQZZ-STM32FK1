@@ -1,6 +1,7 @@
 //
 // Created by 26913 on 2023/12/14.
 //
+//
 
 #include <string.h>
 #include <stdio.h>
@@ -15,7 +16,8 @@ extern QueueHandle_t GameMessageQueueHandle;
 extern EventGroupHandle_t InputEventGroup[(INPUT_NUM / 32) + 1];
 extern EventGroupHandle_t MusicEventGroup;
 extern QueueHandle_t OutputMessageQueueHandle;
-bool ASCTaskHandle[8];
+bool ASCTaskHandle[9];
+TaskHandle_t BlinkTaskHandle = NULL;
 
 void OpenDoor(void *pvParameters) {
     int *pNum = (int *) pvParameters;
@@ -86,213 +88,22 @@ void BlinkLight(void *argument) {
         osDelay(1000);
     }
 }
-
+/*
 void StartGameTask(void const *argument) {
     int gameFlag = 0;
-    TaskHandle_t BlinkTaskHandle = NULL;
     GameMessage newGameMessage;
     for (;;) {
         switch (gameFlag) {
-            case 1://等待插香
+            case 0:
             {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(插香输入), pdFALSE, pdTRUE,
-                                                       0);  // 等待1秒
-                if (bits & TO_BIT(插香输入)) {
-                    gameFlag++;
-                }
-                break;
-            }
-            case 2://开卧室门 留声机播放音频1 抽屉锁断电
-            {
-
-                // 开卧室门
-                if (!ASCTaskHandle[5]) {
-                    ASCTaskHandle[5] = true;
-                    int ASCNum = 5;
-                    xTaskCreate(OpenDoor, "Opendoor", 128, &ASCNum, 1, NULL);
-                }
-
-                //恐怖音效1
-                char* MusicName="/BGM/001.mp3";
-                PlayMusicName(&MUSIC_1,MusicName, strlen(MusicName),单曲循环);
-
-                // 留声机播放音频1
-                SetOutput(留声机音乐1,GPIO_PIN_SET);
-                osDelay(200);
-                SetOutput(留声机音乐1,GPIO_PIN_RESET);
-
-                // 抽屉锁断电
-                SetOutput(抽屉锁,GPIO_PIN_SET);
-                gameFlag++;
-                break;
-            }
-            case 3://等待抽屉打开检测
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(抽屉打开输入), pdFALSE, pdTRUE,
-                                                       0);  // 等待1秒
-                if ((bits & TO_BIT(抽屉打开输入))==0)
-                {
-                    gameFlag++;
-                }
-                break;
-            }
-            case 4://煤气灯闪烁 留声机播放音频2
-            {
-                // 留声机播放音频2
-                SetOutput(留声机音乐2,GPIO_PIN_SET);
-                osDelay(200);
-                SetOutput(留声机音乐2,GPIO_PIN_RESET);
-
-                //恐怖音效2
-                char *MusicName="/BGM/002.mp3";
-                PlayMusicName(&MUSIC_1,MusicName, strlen(MusicName),单曲循环);
-
-                //煤气灯闪烁
-                if (BlinkTaskHandle == NULL)
-                    xTaskCreate(BlinkLight, "Blink", 128, NULL, 1, &BlinkTaskHandle);
-                gameFlag++;
-                break;
-            }
-            case 5://等待敲门机关
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(敲门输入), pdFALSE, pdTRUE,
-                                                       0);  // 等待1秒
-                if (bits & TO_BIT(敲门输入))
-                {
-                    osDelay(1000);
-                    gameFlag++;
-                }
-                break;
-            }
-            case 6://关闭煤气灯 开密室门
-            {
-
-                // 开密室门
-                if (!ASCTaskHandle[6]) {
-                    ASCTaskHandle[6] = true;
-                    int ASCNum = 6;
-                    xTaskCreate(OpenDoor, "Opendoor", 128, &ASCNum, 1, NULL);
-                }
-
-                //关闭煤气灯
-                if (BlinkTaskHandle != NULL)
-                {
-                    vTaskDelete(BlinkTaskHandle);
-                    BlinkTaskHandle = NULL;
-                    SetOutput(煤气灯输出, GPIO_PIN_RESET);
-                }
-                gameFlag++;
-                break;
-            }
-            case 7://等待毒药检测
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(毒药检测), pdFALSE, pdTRUE,
-                                                       0);  // 等待1秒
-                if (bits & TO_BIT(毒药检测))
-                {
-                    gameFlag++;
-                }
-                break;
-            }
-            case 8:// 开卧室门 留声机播放音频3
-            {
-                //开卧室门
-                if (!ASCTaskHandle[5]) {
-                    ASCTaskHandle[5] = true;
-                    int ASCNum = 5;
-                    xTaskCreate(OpenDoor, "Opendoor", 128, &ASCNum, 1, NULL);
-                }
-
-                //留声机播放音频3
-                SetOutput(留声机音乐3,GPIO_PIN_SET);
-                osDelay(200);
-                SetOutput(留声机音乐3,GPIO_PIN_RESET);
-
-                gameFlag++;
-                break;
-            }
-            case 9: // 等待花砖检测
-            {
-
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(花砖1), pdFALSE, pdTRUE,
-                                                       0);  // 等待1秒
-                if (bits & TO_BIT(花砖1))
-                {
-                    gameFlag++;
-                }
-                break;
-            }
-            case 10://开地窖门
-            {
-                char *MusicName="/BGM/001.mp3";
-                PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲停止);
-                SetOutput(地窖门电源,GPIO_PIN_SET);
-                osDelay(5000);
-                SetOutput(地窖门控制,GPIO_PIN_SET);
-                osDelay(4000);
-                SetOutput(地窖门控制,GPIO_PIN_RESET);
-                SetOutput(地窖门电源,GPIO_PIN_RESET);
-
-                osDelay(15000);
-
-                //开射灯
-                SetOutput(白骨射灯,GPIO_PIN_SET);
-
-                gameFlag++;
-                break;
-            }
-            case 11://等待戒指机关
-            {
-
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(戒指输入), pdFALSE, pdTRUE,
-                                                       0);  // 等待1秒
-                if ((bits & TO_BIT(戒指输入))==0)
-                {
-                    gameFlag++;
-                }
-                break;
-            }
-            case 12:
-            {
-                char *MusicName="/BGM/003.mp3";
-                PlayMusicName(&MUSIC_1,MusicName, strlen(MusicName),单曲循环);
-
-                MusicName="/BGM/002.mp3";
-                PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲停止);
-                gameFlag++;
-                break;
-            }
-            case 13:
-            {
-                break;
-            }
-            default:
-                break;
-        }
-        if(xQueueReceive(GameMessageQueueHandle,&newGameMessage,0)==pdTRUE)
-        {
-            if(newGameMessage.CMD == 0x00){
-                gameFlag = newGameMessage.Data[0];
-            }
-        }
-    }
-
-}
-
-void StartPianoTask(void const *argument) {
-    for (;;) {
-        int gameFlag = 0;
-        switch (gameFlag) {
-            case 1:
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(钢琴输入), pdFALSE, pdTRUE,
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(钢琴输入), pdTRUE, pdTRUE,
                                                        0);  // 等待1秒
                 if (bits & TO_BIT(钢琴输入)) {
                     gameFlag++;
                 }
                 break;
             }
-            case 2: // 开启水幕投影 关闭灯光
+            case 1: // 开启水幕投影 关闭灯光
             {
                 //开水幕机
                 SetOutput(水幕开, GPIO_PIN_SET);
@@ -310,11 +121,310 @@ void StartPianoTask(void const *argument) {
                 gameFlag++;
                 break;
             }
-            case 3:
+            case 3://等待插香
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(插香输入), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if (bits & TO_BIT(插香输入)) {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 4://开卧室门 留声机播放音频1 抽屉锁断电
+            {
+
+
+
+                // 抽屉锁断电
+                SetOutput(抽屉锁,GPIO_PIN_SET);
+                gameFlag++;
+                break;
+            }
+            case 5://等待抽屉打开检测
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(抽屉打开输入), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if ((bits & TO_BIT(抽屉打开输入))==0)
+                {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 6://煤气灯闪烁 留声机播放音频2
+            {
+                // 留声机播放音频2
+                SetOutput(留声机音乐2,GPIO_PIN_SET);
+                osDelay(200);
+                SetOutput(留声机音乐2,GPIO_PIN_RESET);
+
+                //恐怖音效2
+                char *MusicName="/BGM/002.mp3";
+                PlayMusicName(&MUSIC_1,MusicName, strlen(MusicName),单曲循环);
+
+                //煤气灯闪烁
+                if (BlinkTaskHandle == NULL)
+                    xTaskCreate(BlinkLight, "Blink", 128, NULL, 1, &BlinkTaskHandle);
+                gameFlag++;
+                break;
+            }
+            case 7://等待敲门机关
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(敲门输入), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if (bits & TO_BIT(敲门输入))
+                {
+                    osDelay(1000);
+                    gameFlag++;
+                }
+                break;
+            }
+            case 8://关闭煤气灯 开密室门
+            {
+
+                gameFlag++;
+                break;
+            }
+            case 9://等待毒药检测
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(毒药检测), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if (bits & TO_BIT(毒药检测))
+                {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 10:// 开卧室门 留声机播放音频3
+            {
+
+                gameFlag++;
+                break;
+            }
+            case 11: // 等待花砖检测
+            {
+
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(花砖1), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if (bits & TO_BIT(花砖1))
+                {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 12://开地窖门
+            {
+                //延时
+                char *MusicName="/BGM/001.mp3";
+                PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲停止);
+                SetOutput(地窖门电源,GPIO_PIN_SET);
+                osDelay(7000);
+                SetOutput(地窖门控制,GPIO_PIN_SET);
+                osDelay(6000);
+                SetOutput(地窖门控制,GPIO_PIN_RESET);
+                SetOutput(地窖门电源,GPIO_PIN_RESET);
+
+                osDelay(15000);
+
+                //开射灯
+                SetOutput(白骨射灯,GPIO_PIN_SET);
+
+                gameFlag++;
+                break;
+            }
+            case 13://等待戒指机关
+            {
+
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(戒指输入), pdFALSE, pdTRUE,
+                                                       0);  // 等待1秒
+                if ((bits & TO_BIT(戒指输入))==0)
+                {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 14:
+            {
+                gameFlag++;
+                break;
+            }
+            case 15:
             {
                 break;
             }
+            default:
+                break;
+        }
+        if(xQueueReceive(GameMessageQueueHandle,&newGameMessage,0)==pdTRUE)
+        {
+            if(newGameMessage.CMD == 0x00){
+                gameFlag = newGameMessage.Data[0];
+            }
+        }
+    }
 
+}
+*/
+// 已经测试
+void StartPianoTask (void const *argument) {
+    for (;;) {
+        xEventGroupWaitBits(InputEventGroup[0], TO_BIT(钢琴输入),pdTRUE,pdTRUE,portMAX_DELAY);
+
+        SetOutput(水幕开, GPIO_PIN_SET);
+        osDelay(1000);
+        SetOutput(水幕开, GPIO_PIN_RESET);
+        osDelay(1000);
+        //开投影
+        SetOutput(视频播放, GPIO_PIN_SET);
+        osDelay(1000);
+        SetOutput(视频播放, GPIO_PIN_RESET);
+        // 关场灯
+        SetOutput(场灯(副厅灯光), GPIO_PIN_SET);
+        SetOutput(场灯(大厅灯光), GPIO_PIN_SET);
+
+        osDelay(40000);
+        // 关场灯
+        SetOutput(场灯(副厅灯光), GPIO_PIN_RESET);
+        SetOutput(场灯(大厅灯光), GPIO_PIN_RESET);
+
+        SetOutput(水幕关, GPIO_PIN_SET);
+        osDelay(1000);
+        SetOutput(水幕关, GPIO_PIN_RESET);
+
+
+    }
+}
+
+void StartGame1Task(void const *argument)
+{
+    for(;;)
+    {
+        EventBits_t waitBits = TO_BIT(插香输入)|TO_BIT(敲门输入)| TO_BIT(毒药检测);
+        EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], waitBits,pdTRUE,pdFALSE,portMAX_DELAY);
+        if (bits& TO_BIT(插香输入))
+        {
+            // 开卧室门
+            if (!ASCTaskHandle[5]) {
+                ASCTaskHandle[5] = true;
+                int ASCNum = 5;
+                xTaskCreate(OpenDoor, "Opendoor", 128, &ASCNum, 1, NULL);
+            }
+
+            //恐怖音效1
+            char* MusicName="/BGM/001.mp3";
+            PlayMusicName(&MUSIC_1,MusicName, strlen(MusicName),单曲循环);
+
+            // 留声机播放音频1
+            SetOutput(留声机音乐1,GPIO_PIN_SET);
+            osDelay(200);
+            SetOutput(留声机音乐1,GPIO_PIN_RESET);
+            SetOutput(抽屉锁,GPIO_PIN_SET);
+        }
+
+        if (bits& TO_BIT(敲门输入))
+        {
+            // 开密室门
+            if (!ASCTaskHandle[6]) {
+                ASCTaskHandle[6] = true;
+                int ASCNum = 6;
+                xTaskCreate(OpenDoor, "Opendoor", 128, &ASCNum, 1, NULL);
+            }
+
+            //关闭煤气灯
+            if (BlinkTaskHandle != NULL)
+            {
+                vTaskDelete(BlinkTaskHandle);
+                BlinkTaskHandle = NULL;
+                SetOutput(煤气灯输出, GPIO_PIN_RESET);
+            }
+            osDelay(5000);
+        }
+
+        if (bits& TO_BIT(毒药检测))
+        {
+            //开卧室门
+            if (!ASCTaskHandle[5]) {
+                ASCTaskHandle[5] = true;
+                int ASCNum = 5;
+                xTaskCreate(OpenDoor, "Opendoor", 128, &ASCNum, 1, NULL);
+            }
+
+            //留声机播放音频3
+            SetOutput(留声机音乐3,GPIO_PIN_SET);
+            osDelay(200);
+            SetOutput(留声机音乐3,GPIO_PIN_RESET);
+        }
+
+
+    }
+}
+
+void StartGame2Task(void const *argument)
+{
+
+    for (;;)
+    {
+        EventBits_t bits = xEventGroupGetBits(InputEventGroup[0]);
+
+        static int a = 1;
+        if (((bits& TO_BIT(戒指输入))==0)&&(a==0))
+        {
+                char *MusicName = "/BGM/003.mp3";
+                PlayMusicName(&MUSIC_1, MusicName, strlen(MusicName), 单曲循环);
+            osDelay(200);
+                MusicName = "/BGM/002.mp3";
+                PlayMusicName(&MUSIC_2, MusicName, strlen(MusicName), 单曲停止);
+                a=1;
+        }
+        if (bits& TO_BIT(戒指输入))
+        {
+            a = 0;
+        }
+
+
+        static int b = 1;
+        if (((bits& TO_BIT(抽屉打开输入))==0)&&(b==0))
+        {
+
+            SetOutput(抽屉锁,GPIO_PIN_RESET);
+            // 留声机播放音频2
+            SetOutput(留声机音乐2,GPIO_PIN_SET);
+            osDelay(200);
+            SetOutput(留声机音乐2,GPIO_PIN_RESET);
+
+            //恐怖音效2
+            char *MusicName="/BGM/002.mp3";
+            PlayMusicName(&MUSIC_1,MusicName, strlen(MusicName),单曲循环);
+
+            //煤气灯闪烁
+            if (BlinkTaskHandle == NULL)
+                xTaskCreate(BlinkLight, "Blink", 128, NULL, 1, &BlinkTaskHandle);
+
+            b=1;
+        }
+        if (bits& TO_BIT(抽屉打开输入))
+        {
+            b = 0;
+        }
+
+        static int c = 0;
+        if (((bits& TO_BIT(花砖检测))==0)&&(c==1))
+        {
+            SetOutput(地窖门控制,GPIO_PIN_RESET);
+            SetOutput(地窖门电源,GPIO_PIN_SET);
+            osDelay(10000);
+            SetOutput(地窖门电源,GPIO_PIN_RESET);
+            c=0;
+        }
+        else if ((bits& TO_BIT(花砖检测))&&(c==0))
+        {
+            char *MusicName="/BGM/001.mp3";
+            PlayMusicName(&MUSIC_2,MusicName, strlen(MusicName),单曲停止);
+            SetOutput(地窖门电源,GPIO_PIN_SET);
+            SetOutput(地窖门控制,GPIO_PIN_SET);
+            osDelay(25000);
+            SetOutput(地窖门控制,GPIO_PIN_RESET);
+            SetOutput(地窖门电源,GPIO_PIN_RESET);
+            c=1;
         }
 
     }
