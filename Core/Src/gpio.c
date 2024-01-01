@@ -28,6 +28,7 @@ GPIO_PinState OutputState[OUTPUT_NUM];
 GPIO_PinState InputState[INPUT_NUM];
 GPIO_PinState previousInputState[INPUT_NUM];
 
+extern SemaphoreHandle_t xConnectSemaphore;
 extern QueueHandle_t OutputMessageQueueHandle;
 
 extern EventGroupHandle_t InputEventGroup[(INPUT_NUM / 32) + 1];
@@ -210,7 +211,7 @@ void InputRecv(GPIO_PinState *pInputState) {
             if (IsSetup != 0) {
                 uint8_t TxBuffer[5] = {0xCC, 0x01, i, ReadInput(i), 0xFF};
                 HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
-
+                osDelay(100);
             }
 
             previousInputState[i] = InputState[i];
@@ -231,6 +232,24 @@ void StartGPIOTask(void const *argument) {
                 uint8_t TxBuffer[5] = {0xCC, 0x02, newMessage.GPIO_Pin, (newMessage.PinState == GPIO_PIN_SET) ? 1 : 0,
                                        0xFF};
                 HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
+            }
+        }
+        if (xSemaphoreTake(xConnectSemaphore, 0) == pdPASS) {
+            for (int i = 0; i < INPUT_NUM; ++i) {
+                if (InputState[i]==GPIO_PIN_SET)
+                {
+                    uint8_t TxBuffer[5] = {0xCC,0x01,i,0x01,0xFF};
+                    HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
+                    osDelay(100);
+                }
+            }
+            for (int i = 0; i < OUTPUT_NUM; ++i) {
+                if (OutputState[i]==GPIO_PIN_SET)
+                {
+                    uint8_t TxBuffer[5] = {0xCC,0x02,i,0x01,0xFF};
+                    HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
+                    osDelay(100);
+                }
             }
         }
         osDelay(1);

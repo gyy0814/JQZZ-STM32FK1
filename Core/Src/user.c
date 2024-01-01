@@ -59,7 +59,7 @@ void OpenDoor(void *pvParameters) {
 void StartASCTask(void const *argument) {
     EventBits_t waitBits = TO_BIT(0) | TO_BIT(1) | TO_BIT(2) | TO_BIT(3) | TO_BIT(4);
     for (;;) {
-        EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], waitBits, pdFALSE, pdFALSE, portMAX_DELAY);
+        EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], waitBits, pdTRUE, pdFALSE, portMAX_DELAY);
         for (int i = 0; i < 5; i++) {
             if (bits & TO_BIT(i)) {
                 if (!ASCTaskHandle[i]) {
