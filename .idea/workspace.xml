@@ -20,16 +20,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1367dda7-aca8-44d5-9c94-00cdecdd0995" name="更改" comment="2023/12/31">
+    <list default="true" id="1367dda7-aca8-44d5-9c94-00cdecdd0995" name="更改" comment="2024/01/01 增加输入触发功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/freertos.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/freertos.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/gpio.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/gpio.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/user.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.hex" afterDir="false" />
@@ -112,11 +109,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FKS1.elf" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FKS1" TARGET_NAME="FKS1.elf" CONFIG_NAME="Debug" version="1" RUN_TARGET_PROJECT_NAME="FKS1" RUN_TARGET_NAME="FKS1.elf">
       <openocd version="1" gdb-port="3333" telnet-port="4444" board-config="C:\Users\26913\Documents\stm32\FKS1\config\stmlink.cfg" reset-type="INIT" download-type="UPDATED_ONLY">
         <debugger kind="GDB" isBundled="true" />
@@ -152,6 +144,7 @@
       <workItem from="1703827089723" duration="549000" />
       <workItem from="1704012940964" duration="17870000" />
       <workItem from="1704082029828" duration="4750000" />
+      <workItem from="1704109182183" duration="1130000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交GIT &#10;串口正常板 大概运行正常">
       <option name="closed" value="true" />
@@ -228,15 +221,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="2023/12/28 侦缉处 调试到敲门机关" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Core/Src/freertos.c</url>
-          <line>227</line>
-          <option name="timeStamp" value="372" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="com.jetbrains.cidr.embedded.openocd.conf.type">
         <watch expression="pOutputState" />

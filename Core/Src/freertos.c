@@ -225,7 +225,10 @@ void Uart1ReadHandler(void const * argument)
 
               case 0x01:
               {
-                  xEventGroupSetBits(InputEventGroup[newMessage.data[2] / 32], (1 << (newMessage.data[2] % 32)));
+                  if(newMessage.data[3]==0x01)
+                    xEventGroupSetBits(InputEventGroup[newMessage.data[2] / 32], (1 << (newMessage.data[2] % 32)));
+                  else if(newMessage.data[3]==0x00)
+                      xEventGroupClearBits(InputEventGroup[newMessage.data[2] / 32], (1 << (newMessage.data[2] % 32)));
                   break;
               }
               case CMD_OUTPUT:

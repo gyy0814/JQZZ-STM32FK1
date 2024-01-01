@@ -211,7 +211,6 @@ void InputRecv(GPIO_PinState *pInputState) {
             if (IsSetup != 0) {
                 uint8_t TxBuffer[5] = {0xCC, 0x01, i, ReadInput(i), 0xFF};
                 HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
-                osDelay(100);
             }
 
             previousInputState[i] = InputState[i];
@@ -240,7 +239,6 @@ void StartGPIOTask(void const *argument) {
                 {
                     uint8_t TxBuffer[5] = {0xCC,0x01,i,0x01,0xFF};
                     HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
-                    osDelay(100);
                 }
             }
             for (int i = 0; i < OUTPUT_NUM; ++i) {
@@ -248,7 +246,6 @@ void StartGPIOTask(void const *argument) {
                 {
                     uint8_t TxBuffer[5] = {0xCC,0x02,i,0x01,0xFF};
                     HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
-                    osDelay(100);
                 }
             }
         }
