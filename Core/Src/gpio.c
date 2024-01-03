@@ -59,7 +59,7 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, HC595_STCP_Pin|HC595_SHCP_Pin|HC595_DS_Pin|OUTPUT_0_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, HC595_SHCP_Pin|HC595_STCP_Pin|HC595_DS_Pin|OUTPUT_0_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, HC165_PL__Pin|HC165_CP_Pin|OUTPUT_1_Pin|OUTPUT_2_Pin
@@ -73,7 +73,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(MUSIC1_BUSY_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PAPin PAPin PAPin PAPin */
-  GPIO_InitStruct.Pin = HC595_STCP_Pin|HC595_SHCP_Pin|HC595_DS_Pin|OUTPUT_0_Pin;
+  GPIO_InitStruct.Pin = HC595_SHCP_Pin|HC595_STCP_Pin|HC595_DS_Pin|OUTPUT_0_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -126,16 +126,16 @@ void HC595Output(const GPIO_PinState *pOutputState, int OutputNum) {
         } else {
             HC595_DSH;
         }
-        /*--step2CLK引脚实现上升�?????????????*/
+        /*--step2CLK引脚实现上升�??????????????*/
         HC595_SHCPL;
         osDelay(1);
-        //是否�?????????????要延�?????????????
+        //是否�??????????????要延�??????????????
         HC595_SHCPH;
     }
     /*--step3发�?�完成后存储到寄存器*/
     HC595_STCPL;
     osDelay(1);
-    //是否�?????????????要延�?????????????
+    //是否�??????????????要延�??????????????
     HC595_STCPH;
 }
 

@@ -72,9 +72,8 @@ osThreadId Uart1ReadHandleHandle;
 osThreadId GPIOTaskHandle;
 osThreadId musicTaskHandle;
 osThreadId myASCTaskHandle;
-osThreadId Game1TaskHandle;
-osThreadId PianoTaskHandle;
-osThreadId Game2TaskHandle;
+osThreadId GameFlagTaskHandle;
+osThreadId GameTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -86,9 +85,8 @@ void Uart1ReadHandler(void const * argument);
 void StartGPIOTask(void const * argument);
 void StartMusicTask(void const * argument);
 void StartASCTask(void const * argument);
-void StartGame1Task(void const * argument);
-void StartPianoTask(void const * argument);
-void StartGame2Task(void const * argument);
+void StartGameFlagTask(void const * argument);
+void StartGameTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -134,17 +132,17 @@ void MX_FREERTOS_Init(void) {
         InputEventGroup[i] = xEventGroupCreate();
     }
     MusicEventGroup = xEventGroupCreate();
-
+    GameInit();
     xConnectSemaphore = xSemaphoreCreateBinary();
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
-    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�????????????????10个uint8_t大小的元�????????????????
-    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�????????????????10个uint8_t大小的元�????????????????
-    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�????????????????10个uint8_t大小的元�????????????????
-    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�????????????????10个uint8_t大小的元�????????????????
-    GameMessageQueueHandle = xQueueCreate(5, sizeof(GameMessage));  // 创建队列，可以容�????????????????10个uint8_t大小的元�????????????????
+    Uart1RxMsgQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�?????????????????10个uint8_t大小的元�?????????????????
+    MusicUartMessageQueueHandle = xQueueCreate(5, sizeof(UartMessage));  // 创建队列，可以容�?????????????????10个uint8_t大小的元�?????????????????
+    OutputMessageQueueHandle = xQueueCreate(5, sizeof(GPIOMessage));  // 创建队列，可以容�?????????????????10个uint8_t大小的元�?????????????????
+    MusicMessageQueueHandle = xQueueCreate(5, sizeof(MusicMessage));  // 创建队列，可以容�?????????????????10个uint8_t大小的元�?????????????????
+    GameMessageQueueHandle = xQueueCreate(5, sizeof(GameMessage));  // 创建队列，可以容�?????????????????10个uint8_t大小的元�?????????????????
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -168,17 +166,13 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(myASCTask, StartASCTask, osPriorityIdle, 0, 128);
   myASCTaskHandle = osThreadCreate(osThread(myASCTask), NULL);
 
-  /* definition and creation of Game1Task */
-  osThreadDef(Game1Task, StartGame1Task, osPriorityIdle, 0, 128);
-  Game1TaskHandle = osThreadCreate(osThread(Game1Task), NULL);
+  /* definition and creation of GameFlagTask */
+  osThreadDef(GameFlagTask, StartGameFlagTask, osPriorityIdle, 0, 128);
+  GameFlagTaskHandle = osThreadCreate(osThread(GameFlagTask), NULL);
 
-  /* definition and creation of PianoTask */
-  osThreadDef(PianoTask, StartPianoTask, osPriorityIdle, 0, 128);
-  PianoTaskHandle = osThreadCreate(osThread(PianoTask), NULL);
-
-  /* definition and creation of Game2Task */
-  osThreadDef(Game2Task, StartGame2Task, osPriorityIdle, 0, 128);
-  Game2TaskHandle = osThreadCreate(osThread(Game2Task), NULL);
+  /* definition and creation of GameTask */
+  osThreadDef(GameTask, StartGameTask, osPriorityIdle, 0, 128);
+  GameTaskHandle = osThreadCreate(osThread(GameTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -282,6 +276,14 @@ void Uart1ReadHandler(void const * argument)
 
                   break;
               }
+              case 0x05:
+              {
+                  GameMessage newGameMessage;
+                  newGameMessage.num = newMessage.data[2];
+                  newGameMessage.Data = newMessage.data[3];
+                  xQueueSend(GameMessageQueueHandle,&newGameMessage,0);
+                  break;
+              }
               case 0x10:
               {
                   xSemaphoreGive(xConnectSemaphore);
@@ -350,58 +352,40 @@ __weak void StartASCTask(void const * argument)
   /* USER CODE END StartASCTask */
 }
 
-/* USER CODE BEGIN Header_StartGame1Task */
+/* USER CODE BEGIN Header_StartGameFlagTask */
 /**
-* @brief Function implementing the Game1Task thread.
+* @brief Function implementing the GameFlagTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartGame1Task */
-__weak void StartGame1Task(void const * argument)
+/* USER CODE END Header_StartGameFlagTask */
+__weak void StartGameFlagTask(void const * argument)
 {
-  /* USER CODE BEGIN StartGame1Task */
+  /* USER CODE BEGIN StartGameFlagTask */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END StartGame1Task */
+  /* USER CODE END StartGameFlagTask */
 }
 
-/* USER CODE BEGIN Header_StartPianoTask */
+/* USER CODE BEGIN Header_StartGameTask */
 /**
-* @brief Function implementing the PianoTask thread.
+* @brief Function implementing the GameTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartPianoTask */
-__weak void StartPianoTask(void const * argument)
+/* USER CODE END Header_StartGameTask */
+__weak void StartGameTask(void const * argument)
 {
-  /* USER CODE BEGIN StartPianoTask */
+  /* USER CODE BEGIN StartGameTask */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END StartPianoTask */
-}
-
-/* USER CODE BEGIN Header_StartGame2Task */
-/**
-* @brief Function implementing the Game2Task thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartGame2Task */
-__weak void StartGame2Task(void const * argument)
-{
-  /* USER CODE BEGIN StartGame2Task */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
-  /* USER CODE END StartGame2Task */
+  /* USER CODE END StartGameTask */
 }
 
 /* Private application code --------------------------------------------------*/
