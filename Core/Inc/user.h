@@ -29,5 +29,6 @@ void GameInit(void);
 #define 门锁 2
 #define 语音识别电源 3
 #define 文房四宝柜 4
+#define 钥匙掉下 7
 
 #endif //FKS1_USER_H

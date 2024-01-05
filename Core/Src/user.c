@@ -185,6 +185,7 @@ void StartGameTask(void const *argument)
             case 16:
             {
                 //钥匙掉落?
+                SetOutput(钥匙掉下,GPIO_PIN_SET);
                 gameFlags[0]++;
                 break;
             }
@@ -209,6 +210,7 @@ void StartGameTask(void const *argument)
             }
             case 20: //复位
             {
+                SetOutput(钥匙掉下,GPIO_PIN_RESET);
                 SetOutput(语音识别电源,GPIO_PIN_RESET);
                 SetOutput(门锁,GPIO_PIN_SET);
                 SetOutput(文房四宝柜,GPIO_PIN_RESET);
