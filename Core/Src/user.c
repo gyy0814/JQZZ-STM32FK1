@@ -123,6 +123,7 @@ void StartGameTask(void const *argument)
             }
             case 8:// 打开语音识别
             {
+                SetOutput(文房四宝柜,GPIO_PIN_SET);
                 SetOutput(语音识别电源,GPIO_PIN_SET);
                 gameFlags[0]++;
                 break;
@@ -132,58 +133,14 @@ void StartGameTask(void const *argument)
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(语音识别2),pdTRUE,pdTRUE,0);
                 if(bits&TO_BIT(语音识别2))
                 {
-                    gameFlags[0]++;
+                    gameFlags[0]=16;
                 }
-                break;
-            }
-            case 10: // 播放语音3
-            {
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
-                char *fileName="/BGM/003.mp3";
-                PlayMusicName(&MUSIC_1,fileName, strlen(fileName),单曲停止);
-                GameTimeReset;
-                gameFlags[0]++;
-                break;
-            }
-            case 11:// 等待播放完毕
-            {
-                if (GameDelay(&RunTime,78000))
-                    gameFlags[0]++;
-                break;
-            }
-            case 12:// 打开语音识别
-            {
-                SetOutput(文房四宝柜,GPIO_PIN_SET);
-                SetOutput(语音识别电源,GPIO_PIN_SET);
-                gameFlags[0]++;
-                break;
-            }
-            case 13:// 等待语音识别3
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(语音识别1)|TO_BIT(语音识别2),pdTRUE,pdTRUE,0);
-                if((bits&TO_BIT(语音识别1)|TO_BIT(语音识别2))==(TO_BIT(语音识别1)|TO_BIT(语音识别2)))
-                {
-                    gameFlags[0]++;
-                }
-                break;
-            }
-            case 14: // 播放语音4
-            {
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
-                char *fileName="/BGM/004.mp3";
-                PlayMusicName(&MUSIC_1,fileName, strlen(fileName),单曲停止);
-                GameTimeReset;
-                gameFlags[0]++;
-                break;
-            }
-            case 15://等待播放结束
-            {
-                if (GameDelay(&RunTime,82000))
-                    gameFlags[0]++;
                 break;
             }
             case 16:
             {
+
+                SetOutput(语音识别电源,GPIO_PIN_RESET);
                 //钥匙掉落?
                 SetOutput(钥匙掉下,GPIO_PIN_SET);
                 gameFlags[0]++;
