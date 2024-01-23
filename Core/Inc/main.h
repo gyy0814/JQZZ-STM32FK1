@@ -67,10 +67,10 @@ void Error_Handler(void);
 #define MUSIC1_TX_GPIO_Port GPIOA
 #define MUSIC1_RX_Pin GPIO_PIN_3
 #define MUSIC1_RX_GPIO_Port GPIOA
-#define HC595_SHCP_Pin GPIO_PIN_4
-#define HC595_SHCP_GPIO_Port GPIOA
-#define HC595_STCP_Pin GPIO_PIN_5
+#define HC595_STCP_Pin GPIO_PIN_4
 #define HC595_STCP_GPIO_Port GPIOA
+#define HC595_SHCP_Pin GPIO_PIN_5
+#define HC595_SHCP_GPIO_Port GPIOA
 #define HC595_DS_Pin GPIO_PIN_7
 #define HC595_DS_GPIO_Port GPIOA
 #define MUSIC2_BUSY_Pin GPIO_PIN_2
