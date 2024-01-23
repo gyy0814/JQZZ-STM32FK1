@@ -31,7 +31,7 @@ GPIO_PinState previousInputState[INPUT_NUM];
 extern SemaphoreHandle_t xConnectSemaphore;
 extern QueueHandle_t OutputMessageQueueHandle;
 
-extern EventGroupHandle_t InputEventGroup[(INPUT_NUM / 32) + 1];
+extern EventGroupHandle_t InputEventGroup[(INPUT_NUM / 24) + 1];
 
 /* USER CODE END 0 */
 
@@ -126,16 +126,16 @@ void HC595Output(const GPIO_PinState *pOutputState, int OutputNum) {
         } else {
             HC595_DSH;
         }
-        /*--step2CLK引脚实现上升�??????????????*/
+        /*--step2CLK引脚实现上升�??????????????*/
         HC595_SHCPL;
         osDelay(1);
-        //是否�??????????????要延�??????????????
+        //是否�??????????????要延�??????????????
         HC595_SHCPH;
     }
     /*--step3发�?�完成后存储到寄存器*/
     HC595_STCPL;
     osDelay(1);
-    //是否�??????????????要延�??????????????
+    //是否�??????????????要延�??????????????
     HC595_STCPH;
 }
 
@@ -204,9 +204,9 @@ void InputRecv(GPIO_PinState *pInputState) {
     for (int i = 0; i < INPUT_NUM; i++) {
         if (IsEdgeDetected(i)) {
             if (ReadInput(i) == GPIO_PIN_SET) {
-                xEventGroupSetBits(InputEventGroup[i / 32], (1 << (i % 32)));
+                xEventGroupSetBits(InputEventGroup[i / 24], (1 << (i % 24)));
             } else {
-                xEventGroupClearBits(InputEventGroup[i / 32], (1 << (i % 32)));
+                xEventGroupClearBits(InputEventGroup[i / 24], (1 << (i % 24)));
             }
             if (IsSetup != 0) {
                 uint8_t TxBuffer[5] = {0xCC, 0x01, i, ReadInput(i), 0xFF};

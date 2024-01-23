@@ -17,7 +17,7 @@ int gameFlags[GameTaskNum] = {19};
 SemaphoreHandle_t xGameSemaphore[GameTaskNum];
 
 extern QueueHandle_t GameMessageQueueHandle;
-extern EventGroupHandle_t InputEventGroup[(INPUT_NUM / 32) + 1];
+extern EventGroupHandle_t InputEventGroup[(INPUT_NUM / 24) + 1];
 extern EventGroupHandle_t MusicEventGroup;
 extern QueueHandle_t OutputMessageQueueHandle;
 bool ASCTaskHandle[9];
