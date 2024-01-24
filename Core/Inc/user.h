@@ -73,8 +73,8 @@ void GameInit(void);
 #define 书房台灯 47
 #define 信息投影灯 48
 #define 卧室月球灯 49
-#define 书房月球灯 50
-
+#define 客厅房顶灯带 50
+#define 卧室灯带 51
 
 
 
