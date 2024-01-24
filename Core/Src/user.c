@@ -77,22 +77,24 @@ void StartGameTask(void const *argument)
 //                }
                 break;
             }
-            case 1: // 游戏开始音频
+            case 1: // 艾琳开始音频
             {
                 if (GameDelay(&RunTime,13000))
                     gameFlags[0]++;
                 break;
             }
-            case 2: // 播放语音1
+            case 2: // 播放bgm开场
             {
-                char *fileName="/BGM/001.mp3";
-                PlayMusicName(&MUSIC_1,fileName, strlen(fileName),单曲停止);
-                GameTimeReset;
+                char *fileName="/BGM/02.mp3";
+                PlayMusicName(&MUSIC_1,fileName, strlen(fileName),单曲循环);
                 gameFlags[0]++;
                 break;
             }
-            case 3:// 等待播放完毕
+            case 3:// 播放语音,这就是王晗雨的家了
             {
+                char *fileName="/BGM/03.mp3";
+                PlayMusicName(&MUSIC_2,fileName, strlen(fileName),单曲停止);
+
                 if (GameDelay(&RunTime,98000))
                     gameFlags[0]++;
                 break;

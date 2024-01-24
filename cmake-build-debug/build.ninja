@@ -362,48 +362,6 @@ build FKS1.elf: C_EXECUTABLE_LINKER__FKS1.2eelf_Debug CMakeFiles/FKS1.elf.dir/Co
   TARGET_FILE = FKS1.elf
   TARGET_PDB = FKS1.elf.dbg
 
-# =============================================================================
-# Object build statements for EXECUTABLE target user.c
-
-
-#############################################
-# Order-only phony target for user.c
-
-build cmake_object_order_depends_target_user.c: phony || CMakeFiles/user.c.dir
-
-build CMakeFiles/user.c.dir/Core/Src/user.c.obj: C_COMPILER__user.2ec_unscanned_Debug C$:/Users/D/Desktop/FK1.4/Core/Src/user.c || cmake_object_order_depends_target_user.c
-  DEFINES = -DDEBUG -DSTM32F103xB -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\user.c.dir\Core\Src\user.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m3 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -IC:/Users/D/Desktop/FK1.4/Core/Inc -IC:/Users/D/Desktop/FK1.4/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -IC:/Users/D/Desktop/FK1.4/Drivers/STM32F1xx_HAL_Driver/Inc -IC:/Users/D/Desktop/FK1.4/Middlewares/Third_Party/FreeRTOS/Source/include -IC:/Users/D/Desktop/FK1.4/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -IC:/Users/D/Desktop/FK1.4/Drivers/CMSIS/Device/ST/STM32F1xx/Include -IC:/Users/D/Desktop/FK1.4/Drivers/CMSIS/Include -IC:/Users/D/Desktop/FK1.4/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
-  OBJECT_DIR = CMakeFiles\user.c.dir
-  OBJECT_FILE_DIR = CMakeFiles\user.c.dir\Core\Src
-
-build CMakeFiles/user.c.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj: C_COMPILER__user.2ec_unscanned_Debug C$:/Users/D/Desktop/FK1.4/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c || cmake_object_order_depends_target_user.c
-  DEFINES = -DDEBUG -DSTM32F103xB -DUSE_HAL_DRIVER
-  DEP_FILE = CMakeFiles\user.c.dir\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mcpu=cortex-m3 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
-  INCLUDES = -IC:/Users/D/Desktop/FK1.4/Core/Inc -IC:/Users/D/Desktop/FK1.4/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -IC:/Users/D/Desktop/FK1.4/Drivers/STM32F1xx_HAL_Driver/Inc -IC:/Users/D/Desktop/FK1.4/Middlewares/Third_Party/FreeRTOS/Source/include -IC:/Users/D/Desktop/FK1.4/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -IC:/Users/D/Desktop/FK1.4/Drivers/CMSIS/Device/ST/STM32F1xx/Include -IC:/Users/D/Desktop/FK1.4/Drivers/CMSIS/Include -IC:/Users/D/Desktop/FK1.4/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
-  OBJECT_DIR = CMakeFiles\user.c.dir
-  OBJECT_FILE_DIR = CMakeFiles\user.c.dir\Middlewares\Third_Party\FreeRTOS\Source
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target user.c
-
-
-#############################################
-# Link the executable user.c
-
-build user.c: C_EXECUTABLE_LINKER__user.2ec_Debug CMakeFiles/user.c.dir/Core/Src/user.c.obj CMakeFiles/user.c.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
-  FLAGS = -g
-  LINK_FLAGS = -Wl,-gc-sections,--print-memory-usage,-Map=C:/Users/D/Desktop/FK1.4/cmake-build-debug/FKS1.map -mcpu=cortex-m3 -mthumb -mthumb-interwork -T C:/Users/D/Desktop/FK1.4/STM32F103C8TX_FLASH.ld
-  OBJECT_DIR = CMakeFiles\user.c.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = user.c
-  TARGET_PDB = user.c.dbg
-
 
 #############################################
 # Utility command for edit_cache
@@ -438,7 +396,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: C:/Users/D/Desktop/FK1.4/cmake-build-debug
 
-build all: phony FKS1.elf user.c
+build all: phony FKS1.elf
 
 # =============================================================================
 # Built-in targets
