@@ -130,7 +130,7 @@ CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/FKS1
 CMAKE_LINKER:FILEPATH=D:/APP/STM32CubeMX/gcc-arm-none-eabi/bin/arm-none-eabi-ld.exe
 
 //make program
-CMAKE_MAKE_PROGRAM:FILEPATH=D:/APP/CLion 2023.3.2/bin/ninja/win/x64/ninja.exe
+CMAKE_MAKE_PROGRAM:FILEPATH=D:/APP/CLION2~1.2/bin/ninja/win/x64/ninja.exe
 
 //Flags used by the linker during the creation of modules during
 // all build types.
