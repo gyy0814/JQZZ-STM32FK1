@@ -40,8 +40,8 @@ extern "C" {
 
 /* USER CODE BEGIN Private defines */
 
-#define OUTPUT_NUM 64
-#define INPUT_NUM 32
+#define OUTPUT_NUM 112
+#define INPUT_NUM 112
 
 typedef struct {
     uint16_t GPIO_Pin;
