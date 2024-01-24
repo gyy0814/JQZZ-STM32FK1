@@ -20,7 +20,7 @@ typedef struct {
 void GameInit(void);
 
 #define TO_BIT(num) (1<<(num%32))
-
+//输出
 #define 入口门锁 0
 #define 电视信号1 1
 #define 电视信号2 2
@@ -31,28 +31,86 @@ void GameInit(void);
 #define 接电话信号 7
 #define 卧室门锁  8
 #define 卧室柜锁 9
+
 #define 敲门锁 10
 #define 卧室柜下灯 11
-#define 电视信号4 12
-#define 电视信号5 13
-#define 电视信号6 14
-#define 接电话信号 15
+#define 卧室柜上灯 12
+#define 书房门锁 13
+#define 摄像头灯 14
+#define 书房灯带 15
+#define 线路轨门锁 16
+#define 快递柜门锁 17
+#define 扫描仪门锁 18
+#define 信息块1 19
+
+#define 信息块2 20
+#define 信息块3 21
+#define 信息块4 22
+#define 信息块5 23
+#define 信息块6 24
+#define 信息块7 25
+#define 信息块8 26
+#define 信息块9 27
+#define 信息块10 28
+
+#define 灯带 31
+#define 线路射灯 32
+#define 扫描灯1 33
+#define 扫描灯2 34
+#define 扫描灯3 35
+#define 扫描灯4 36
+#define 扫描灯5 37
+#define 扫描灯6 38
+#define 扫描灯7 39
+#define 扫描灯8 40
+
+#define 扫描灯9 41
+#define 扫描灯10 42
+#define 扫描激光 43
+#define 台灯 44
+#define 书房月球灯 45
+#define 电视背景灯带 46
+#define 书房台灯 47
+#define 信息投影灯 48
+#define 卧室月球灯 49
+#define 书房月球灯 50
 
 
 
 
+//输入
+#define 游戏开始 0
+#define 遥控器1 1
+#define 遥控器2 2
+#define 遥控器3 3
+#define 遥控器4 4
+#define 遥控器5 5
+#define 记忆卡刷卡1 6
+#define 记忆卡刷卡2 7
+#define 扫描仪1  8
+#define 扫描仪2 9
 
+#define 打电话 10
+#define 扫描仪3 11
+#define 扫描仪4 12
+#define 卧室密码器 13
+#define 录取通知 14
+#define 记忆卡拿走 15
+#define 敲门信号 16
+#define 扫描仪6 17
+#define 书房数独 18
+#define 卧室抽屉打开 19
 
-
-
-
-
-
-
-
-#define 门锁 2
-#define 语音识别电源 3
-#define 文房四宝柜 4
-#define 钥匙掉下 7
-
+#define 快递柜密码器 20
+#define 线路过关 21
+#define 艾利刷卡 22
+#define 扫描仪5 23
+#define 扫描仪6 24
+#define 扫描仪7 25
+#define 扫描仪8 26
+#define 扫描仪9 27
+#define 扫描仪10 28
+#define 矮桌 29
+#define 开关面板 30
+#define 艾琳开始 31
 #endif //FKS1_USER_H

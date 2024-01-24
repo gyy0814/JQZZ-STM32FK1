@@ -13,7 +13,7 @@
 #include "gpio.h"
 
 #define GameTaskNum 1
-int gameFlags[GameTaskNum] = {19};
+int gameFlags[GameTaskNum] = {100};
 SemaphoreHandle_t xGameSemaphore[GameTaskNum];
 
 extern QueueHandle_t GameMessageQueueHandle;
@@ -62,23 +62,29 @@ void StartGameTask(void const *argument)
     {
         xSemaphoreTake(xGameSemaphore[0], portMAX_DELAY);
         switch (gameFlags[0]) {
-            case 0:// 打开门锁
+            case 0://第一次按下遥控
             {
-                SetOutput(门锁,GPIO_PIN_RESET);
-                gameFlags[0]++;
-                break;
-            }
-            case 1: // 等待关门
-            {
-                if(xEventGroupWaitBits(InputEventGroup[0], TO_BIT(关门检测),pdTRUE,pdTRUE,0)==pdPASS)
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(艾琳开始),pdTRUE,pdTRUE,0);
+                if(bits&TO_BIT(艾琳开始))
                 {
                     gameFlags[0]++;
                 }
+//
+//                if(xEventGroupWaitBits(InputEventGroup[0], TO_BIT(艾琳开始),pdTRUE,pdTRUE,0)==pdPASS)
+//                {
+//                    //打开艾琳门口的语音
+//                    gameFlags[0]++;
+//                }
+                break;
+            }
+            case 1: // 游戏开始音频
+            {
+                if (GameDelay(&RunTime,13000))
+                    gameFlags[0]++;
                 break;
             }
             case 2: // 播放语音1
             {
-                SetOutput(门锁,GPIO_PIN_RESET);
                 char *fileName="/BGM/001.mp3";
                 PlayMusicName(&MUSIC_1,fileName, strlen(fileName),单曲停止);
                 GameTimeReset;
@@ -93,22 +99,16 @@ void StartGameTask(void const *argument)
             }
             case 4:// 打开语音识别
             {
-                SetOutput(语音识别电源,GPIO_PIN_SET);
                 gameFlags[0]++;
                 break;
             }
             case 5:// 等待语音识别1
             {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(语音识别1),pdTRUE,pdTRUE,0);
-                if(bits&TO_BIT(语音识别1))
-                {
-                    gameFlags[0]++;
-                }
+
                 break;
             }
             case 6:// 关闭语音识别 播放语音2
             {
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
                 char *fileName="/BGM/002.mp3";
                 PlayMusicName(&MUSIC_1,fileName, strlen(fileName),单曲停止);
                 GameTimeReset;
@@ -123,41 +123,26 @@ void StartGameTask(void const *argument)
             }
             case 8:// 打开语音识别
             {
-                SetOutput(文房四宝柜,GPIO_PIN_SET);
-                SetOutput(语音识别电源,GPIO_PIN_SET);
                 gameFlags[0]++;
                 break;
             }
             case 9:// 等待语音识别2
             {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(语音识别2),pdTRUE,pdTRUE,0);
-                if(bits&TO_BIT(语音识别2))
-                {
-                    gameFlags[0]=16;
-                }
                 break;
             }
             case 16:
             {
-
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
-                //钥匙掉落?
-                SetOutput(钥匙掉下,GPIO_PIN_SET);
                 gameFlags[0]++;
                 break;
             }
             case 17://等待钥匙
             {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(钥匙开门),pdTRUE,pdTRUE,0);
-                if (bits& TO_BIT(钥匙开门))
-                {
-                    gameFlags[0]++;
-                }
+
                 break;
             }
             case 18://开门
             {
-                SetOutput(门锁,GPIO_PIN_SET);
+
                 gameFlags[0]++;
                 break;
             }
@@ -167,17 +152,14 @@ void StartGameTask(void const *argument)
             }
             case 20: //复位
             {
-                SetOutput(钥匙掉下,GPIO_PIN_RESET);
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
-                SetOutput(门锁,GPIO_PIN_SET);
-                SetOutput(文房四宝柜,GPIO_PIN_RESET);
+
                 gameFlags[0] = 19;
             }
         }
         RunTime++;
         xSemaphoreGive(xGameSemaphore[0]);
         osDelay(1); //等待音频播放
-        static int oldGameFlag = 19;
+        static int oldGameFlag = 100;
         if(gameFlags[0]!=oldGameFlag)
         {
             uint8_t TxBuff[5] = {0xCC,0x05,0x00,gameFlags[0],0xFF};
