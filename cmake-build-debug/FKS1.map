@@ -1920,7 +1920,7 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
 .iplt           0x080056b0        0x0
  .iplt          0x080056b0        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.rodata         0x080056b0      0x308
+.rodata         0x080056b0      0x278
                 0x080056b0                . = ALIGN (0x4)
  *(.rodata)
  .rodata        0x080056b0       0xc4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
@@ -1935,64 +1935,64 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
                 0x080057e0        0x8 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
                 0x080057e0                APBPrescTable
  .rodata.StartGameTask.str1.4
-                0x080057e8      0x1b0 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+                0x080057e8      0x120 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
  .rodata.aPLLMULFactorTable.1
-                0x08005998       0x10 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08005908       0x10 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
  .rodata.aPredivFactorTable.0
-                0x080059a8        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
- *fill*         0x080059aa        0x2 
+                0x08005918        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+ *fill*         0x0800591a        0x2 
  .rodata.vTaskStartScheduler.str1.4
-                0x080059ac        0x5 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- *fill*         0x080059b1        0x3 
+                0x0800591c        0x5 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ *fill*         0x08005921        0x3 
  .rodata._global_impure_ptr
-                0x080059b4        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-impure.o)
-                0x080059b4                _global_impure_ptr
-                0x080059b8                . = ALIGN (0x4)
+                0x08005924        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-impure.o)
+                0x08005924                _global_impure_ptr
+                0x08005928                . = ALIGN (0x4)
 
-.rel.dyn        0x080059b8        0x0
- .rel.iplt      0x080059b8        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+.rel.dyn        0x08005928        0x0
+ .rel.iplt      0x08005928        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.ARM.extab      0x080059b8        0x0
-                0x080059b8                . = ALIGN (0x4)
+.ARM.extab      0x08005928        0x0
+                0x08005928                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x080059b8                . = ALIGN (0x4)
+                0x08005928                . = ALIGN (0x4)
 
-.ARM            0x080059b8        0x0
-                0x080059b8                . = ALIGN (0x4)
-                0x080059b8                __exidx_start = .
+.ARM            0x08005928        0x0
+                0x08005928                . = ALIGN (0x4)
+                0x08005928                __exidx_start = .
  *(.ARM.exidx*)
-                0x080059b8                __exidx_end = .
-                0x080059b8                . = ALIGN (0x4)
+                0x08005928                __exidx_end = .
+                0x08005928                . = ALIGN (0x4)
 
-.preinit_array  0x080059b8        0x0
-                0x080059b8                . = ALIGN (0x4)
-                0x080059b8                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08005928        0x0
+                0x08005928                . = ALIGN (0x4)
+                0x08005928                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x080059b8                PROVIDE (__preinit_array_end = .)
-                0x080059b8                . = ALIGN (0x4)
+                0x08005928                PROVIDE (__preinit_array_end = .)
+                0x08005928                . = ALIGN (0x4)
 
-.init_array     0x080059b8        0x8
-                0x080059b8                . = ALIGN (0x4)
-                0x080059b8                PROVIDE (__init_array_start = .)
+.init_array     0x08005928        0x8
+                0x08005928                . = ALIGN (0x4)
+                0x08005928                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x080059b8        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-__call_atexit.o)
+                0x08005928        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x080059bc        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
-                0x080059c0                PROVIDE (__init_array_end = .)
-                0x080059c0                . = ALIGN (0x4)
+ .init_array    0x0800592c        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x08005930                PROVIDE (__init_array_end = .)
+                0x08005930                . = ALIGN (0x4)
 
-.fini_array     0x080059c0        0x4
-                0x080059c0                . = ALIGN (0x4)
-                0x080059c0                PROVIDE (__fini_array_start = .)
+.fini_array     0x08005930        0x4
+                0x08005930                . = ALIGN (0x4)
+                0x08005930                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080059c0        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
-                0x080059c4                PROVIDE (__fini_array_end = .)
-                0x080059c4                . = ALIGN (0x4)
-                0x080059c4                _sidata = LOADADDR (.data)
+ .fini_array    0x08005930        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x08005934                PROVIDE (__fini_array_end = .)
+                0x08005934                . = ALIGN (0x4)
+                0x08005934                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x444 load address 0x080059c4
+.data           0x20000000      0x444 load address 0x08005934
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -2024,11 +2024,11 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
                 0x20000444                . = ALIGN (0x4)
                 0x20000444                _edata = .
 
-.igot.plt       0x20000444        0x0 load address 0x08005e08
+.igot.plt       0x20000444        0x0 load address 0x08005d78
  .igot.plt      0x20000444        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
                 0x20000444                . = ALIGN (0x4)
 
-.bss            0x20000444     0x3278 load address 0x08005e08
+.bss            0x20000444     0x3278 load address 0x08005d78
                 0x20000444                _sbss = .
                 0x20000444                __bss_start__ = _sbss
  *(.bss)
@@ -2209,7 +2209,7 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
                 0x200036bc                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x200036bc      0x604 load address 0x08005e08
+                0x200036bc      0x604 load address 0x08005d78
                 0x200036c0                . = ALIGN (0x8)
  *fill*         0x200036bc        0x4 
                 [!provide]                PROVIDE (end = .)
