@@ -380,7 +380,7 @@ void StartGameTask(void const *argument) {
                 PlayMusicName(&MUSIC_2, fileName3, strlen(fileName3), 单曲停止);
                 gameFlags[0]++;
             }
-            if (gameFlags[0] == 30)//播放
+            if (gameFlags[0] == 30)//扫描仪
             {
                 EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪1), pdTRUE, pdTRUE, 0);
                 if (bits1 & TO_BIT(扫描仪1)) {
@@ -521,10 +521,117 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 35)//复位
         {
+            SetOutput(电视信号1, GPIO_PIN_RESET);
+            SetOutput(电视信号2, GPIO_PIN_RESET);
+            SetOutput(电视信号3, GPIO_PIN_RESET);
+            SetOutput(电视信号4, GPIO_PIN_RESET);
+            SetOutput(电视信号5, GPIO_PIN_RESET);
+            SetOutput(电视信号6, GPIO_PIN_RESET);
+            SetOutput(接电话信号, GPIO_PIN_RESET);
+            SetOutput(卧室门锁, GPIO_PIN_SET);
+
+            SetOutput(卧室柜锁, GPIO_PIN_SET);
+            SetOutput(卧室柜下灯, GPIO_PIN_SET);
+            SetOutput(卧室柜上灯, GPIO_PIN_SET);
+            SetOutput(书房门锁, GPIO_PIN_SET);
+            SetOutput(摄像头灯, GPIO_PIN_RESET);
+            SetOutput(书房灯带, GPIO_PIN_SET);
+            SetOutput(线路轨门锁, GPIO_PIN_SET);
+            SetOutput(快递柜门锁, GPIO_PIN_SET);
+            SetOutput(扫描仪门锁, GPIO_PIN_SET);
+            SetOutput(信息块1, GPIO_PIN_SET);
+
+            SetOutput(信息块2, GPIO_PIN_SET);
+            SetOutput(信息块3, GPIO_PIN_SET);
+            SetOutput(信息块4, GPIO_PIN_SET);
+            SetOutput(信息块5, GPIO_PIN_SET);
+            SetOutput(信息块6, GPIO_PIN_SET);
+            SetOutput(信息块7, GPIO_PIN_SET);
+            SetOutput(信息块8, GPIO_PIN_SET);
+            SetOutput(信息块9, GPIO_PIN_SET);
+            SetOutput(信息块10, GPIO_PIN_SET);
+
+            SetOutput(灯带, GPIO_PIN_SET);
+            SetOutput(线路射灯, GPIO_PIN_SET);
+            SetOutput(扫描灯1, GPIO_PIN_RESET);
+            SetOutput(扫描灯2, GPIO_PIN_RESET);
+            SetOutput(扫描灯3, GPIO_PIN_RESET);
+            SetOutput(扫描灯4, GPIO_PIN_RESET);
+            SetOutput(扫描灯5, GPIO_PIN_RESET);
+            SetOutput(扫描灯6, GPIO_PIN_RESET);
+            SetOutput(扫描灯7, GPIO_PIN_RESET);
+            SetOutput(扫描灯8, GPIO_PIN_RESET);
+
+            SetOutput(扫描灯9, GPIO_PIN_RESET);
+            SetOutput(扫描灯10, GPIO_PIN_RESET);
+            SetOutput(扫描激光, GPIO_PIN_RESET);
+            SetOutput(电脑显示器, GPIO_PIN_SET);
+            SetOutput(书房月球灯, GPIO_PIN_SET);
+            SetOutput(电视背景灯带, GPIO_PIN_SET);
+            SetOutput(书房台灯, GPIO_PIN_SET);
+            SetOutput(信息投影灯, GPIO_PIN_SET);
+            SetOutput(卧室月球灯, GPIO_PIN_SET);
+            SetOutput(客厅房顶灯带, GPIO_PIN_SET);
+            SetOutput(卧室灯带, GPIO_PIN_SET);
+            SetOutput(前场电脑复位, GPIO_PIN_SET);
+            osDelay(1000);
+            SetOutput(前场电脑复位, GPIO_PIN_RESET);
             gameFlags[0] = 34;
         }
         if (gameFlags[0] == 36)//复场
-        {
+        {SetOutput(电视信号1, GPIO_PIN_RESET);
+            SetOutput(电视信号2, GPIO_PIN_RESET);
+            SetOutput(电视信号3, GPIO_PIN_RESET);
+            SetOutput(电视信号4, GPIO_PIN_RESET);
+            SetOutput(电视信号5, GPIO_PIN_RESET);
+            SetOutput(电视信号6, GPIO_PIN_RESET);
+            SetOutput(接电话信号, GPIO_PIN_RESET);
+            SetOutput(卧室门锁, GPIO_PIN_SET);
+
+            SetOutput(卧室柜锁, GPIO_PIN_SET);
+            SetOutput(卧室柜下灯, GPIO_PIN_RESET);
+            SetOutput(卧室柜上灯, GPIO_PIN_RESET);
+            SetOutput(书房门锁, GPIO_PIN_SET);
+            SetOutput(摄像头灯, GPIO_PIN_RESET);
+            SetOutput(书房灯带, GPIO_PIN_RESET);
+            SetOutput(线路轨门锁, GPIO_PIN_SET);
+            SetOutput(快递柜门锁, GPIO_PIN_SET);
+            SetOutput(扫描仪门锁, GPIO_PIN_SET);
+            SetOutput(信息块1, GPIO_PIN_SET);
+
+            SetOutput(信息块2, GPIO_PIN_SET);
+            SetOutput(信息块3, GPIO_PIN_SET);
+            SetOutput(信息块4, GPIO_PIN_SET);
+            SetOutput(信息块5, GPIO_PIN_SET);
+            SetOutput(信息块6, GPIO_PIN_SET);
+            SetOutput(信息块7, GPIO_PIN_SET);
+            SetOutput(信息块8, GPIO_PIN_SET);
+            SetOutput(信息块9, GPIO_PIN_SET);
+            SetOutput(信息块10, GPIO_PIN_SET);
+
+            SetOutput(灯带, GPIO_PIN_RESET);
+            SetOutput(线路射灯, GPIO_PIN_RESET);
+            SetOutput(扫描灯1, GPIO_PIN_RESET);
+            SetOutput(扫描灯2, GPIO_PIN_RESET);
+            SetOutput(扫描灯3, GPIO_PIN_RESET);
+            SetOutput(扫描灯4, GPIO_PIN_RESET);
+            SetOutput(扫描灯5, GPIO_PIN_RESET);
+            SetOutput(扫描灯6, GPIO_PIN_RESET);
+            SetOutput(扫描灯7, GPIO_PIN_RESET);
+            SetOutput(扫描灯8, GPIO_PIN_RESET);
+
+            SetOutput(扫描灯9, GPIO_PIN_RESET);
+            SetOutput(扫描灯10, GPIO_PIN_RESET);
+            SetOutput(扫描激光, GPIO_PIN_RESET);
+            SetOutput(电脑显示器, GPIO_PIN_SET);
+            SetOutput(书房月球灯, GPIO_PIN_RESET);
+            SetOutput(电视背景灯带, GPIO_PIN_RESET);
+            SetOutput(书房台灯, GPIO_PIN_RESET);
+            SetOutput(信息投影灯, GPIO_PIN_RESET);
+            SetOutput(卧室月球灯, GPIO_PIN_RESET);
+            SetOutput(客厅房顶灯带, GPIO_PIN_RESET);
+            SetOutput(卧室灯带, GPIO_PIN_RESET);
+
             gameFlags[0] = 34;
         }
         //RunTime++;
