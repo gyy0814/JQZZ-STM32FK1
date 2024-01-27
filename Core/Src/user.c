@@ -493,7 +493,7 @@ void StartGameTask(void const *argument) {
                 gameFlags[0]++;
             }
         }
-        if (gameFlags[0] == 33)//播放
+        if (gameFlags[0] == 33)//矮桌过关
         {
 
             char *fileName1 = "/BGM/43.mp3";
@@ -513,31 +513,23 @@ void StartGameTask(void const *argument) {
             osDelay(25000);
             SetOutput(电脑显示器, GPIO_PIN_RESET);
             SetOutput(信息投影灯, GPIO_PIN_RESET);
-
+            gameFlags[0]++;
         }
-        if (gameFlags[0] == 31)//播放
+        if (gameFlags[0] == 34)//空
         {
 
         }
-        if (gameFlags[0] == 31)//播放
+        if (gameFlags[0] == 35)//复位
         {
-
+            gameFlags[0] = 34;
         }
-        if (gameFlags[0] == 31)//播放
+        if (gameFlags[0] == 36)//复场
         {
-
+            gameFlags[0] = 34;
         }
-        if (gameFlags[0] == 31)//播放
-        {
-
-        }
-        if (gameFlags[0] == 31)//播放
-        {
-
-        }
-        RunTime++;
+        //RunTime++;
         xSemaphoreGive(xGameSemaphore[0]);
-        osDelay(1); //等待音频播放
+        //osDelay(1); //等待音频播放
         static int oldGameFlag = 100;
         if (gameFlags[0] != oldGameFlag) {
             uint8_t TxBuff[5] = {0xCC, 0x05, 0x00, gameFlags[0], 0xFF};
