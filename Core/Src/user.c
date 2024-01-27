@@ -274,40 +274,42 @@ void StartGameTask(void const *argument) {
             SetOutput(书房月球灯, GPIO_PIN_SET);
             gameFlags[0]++;
         }
-        if (gameFlags[0] >= 22&&gameFlags[0] <= 22)//等待开关
+        if (gameFlags[0] >= 22 && gameFlags[0] <= 22)//等待开关
         {
             EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(开关面板), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(开关面板)) {
 
             }
-
             static int a = 1;
-            if (((bits& TO_BIT(开关面板))==0)&&(a==0))
-            {
+            if (((bits & TO_BIT(开关面板)) == 0) && (a == 0)) {
                 SetOutput(书房灯带, GPIO_PIN_RESET);
                 SetOutput(书房台灯, GPIO_PIN_RESET);
                 SetOutput(书房月球灯, GPIO_PIN_RESET);
-                a=1;
+                a = 1;
             }
-            if (bits& TO_BIT(开关面板))
-            {
+            if (bits & TO_BIT(开关面板)) {
                 a = 0;
             }
-
         }
-        if (gameFlags[0] == 23)//播放
+        if (gameFlags[0] == 22)//等待记忆卡2
         {
-
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(记忆卡刷卡2), pdTRUE, pdTRUE, 0);
+            if (bits1 & TO_BIT(记忆卡刷卡2)) {
+                gameFlags[0]++;
+            }
+        }
+        if (gameFlags[0] == 23)//记忆卡2
+        {
+            SetOutput(书房门锁, GPIO_PIN_SET);
+            if (GameDelay(&RunTime, 44000)) {
+                SetOutput(电视信号6, GPIO_PIN_RESET);
+            }
         }
         if (gameFlags[0] == 24)//播放
         {
 
         }
         if (gameFlags[0] == 25)//播放
-        {
-
-        }
-        if (gameFlags[0] == 26)//播放
         {
 
         }
