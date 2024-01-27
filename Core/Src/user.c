@@ -330,11 +330,11 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 29)//艾利刷卡
         {
-            char *fileName = "/BGM/28.mp3";
-            PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲循环);
+            char *fileName1 = "/BGM/28.mp3";
+            PlayMusicName(&MUSIC_1, fileName1, strlen(fileName1), 单曲循环);
 
-            char *fileName = "/BGM/28.mp3";
-            PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲循环);
+            char *fileName2 = "/BGM/28.mp3";
+            PlayMusicName(&MUSIC_2, fileName2, strlen(fileName2), 单曲停止);
         }
         if (gameFlags[0] == 30)//播放
         {
