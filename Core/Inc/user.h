@@ -19,7 +19,7 @@ typedef struct {
 } GameMessage;
 void GameInit(void);
 
-#define TO_BIT(num) (1<<(num%32))
+#define TO_BIT(num) (1<<(num%24))
 //输出
 #define 入口门锁 0
 #define 电视信号1 1

@@ -57,7 +57,7 @@ void StartGameTask(void const *argument) {
         xSemaphoreTake(xGameSemaphore[0], portMAX_DELAY);
         if (gameFlags[0] == 0)//第一次按下遥控
         {
-            EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(艾琳开始), pdTRUE, pdTRUE, 0);
+            EventBits_t bits = xEventGroupWaitBits(InputEventGroup[1], TO_BIT(艾琳开始), pdTRUE, pdTRUE, 0);
             if (bits & TO_BIT(艾琳开始)) {
                 gameFlags[0]++;
             }
@@ -66,12 +66,19 @@ void StartGameTask(void const *argument) {
         if (gameFlags[0] == 1)//艾琳开始音频
         {
             SetOutput(电视背景灯带, GPIO_PIN_SET);
-            osDelay(13000);
-            SetOutput(电视背景灯带, GPIO_PIN_RESET);
-            gameFlags[0]++;
+            GameTimeReset;
+            gameFlags[0]=40;
+        }
+        if(gameFlags[0] == 40)
+        {
+            if(GameDelay(&RunTime,13000))
+            {
+                gameFlags[0]=2;
+            }
         }
         if (gameFlags[0] == 2)//播放bgm开场,播放语音,这就是王晗雨的家了,开灯
         {
+            SetOutput(电视背景灯带, GPIO_PIN_RESET);
             char *fileName1 = "/02.mp3";
             PlayMusicName(&MUSIC_1, fileName1, strlen(fileName1), 单曲循环);
             char *fileName2 = "/03.mp3";
@@ -96,7 +103,7 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] >= 5 && gameFlags[0] <= 27)//4 个按钮，按不同的按钮会播放不同的视频
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(遥控器2), pdTRUE, pdTRUE, 0);
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[遥控器2/24], TO_BIT(遥控器2), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(遥控器2)) {
                 SetOutput(电视信号2, GPIO_PIN_SET);
                 char *fileName = "/05.mp3";
@@ -258,10 +265,20 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] >= 22 && gameFlags[0] <= 27)//等待开关
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(开关面板), pdTRUE, pdTRUE, 0);
-            if (bits1 & TO_BIT(开关面板)) {
+            static int switchState = 0;
+            EventBits_t bits1 = xEventGroupGetBits(InputEventGroup[1]);
+            if ((bits1 & TO_BIT(开关面板))&&(switchState==0)) {
+                SetOutput(书房灯带,GPIO_PIN_SET);
+                switchState=1;
+            }
+            if(!((bits1 & TO_BIT(开关面板))||(switchState==0))) {
+                SetOutput(书房灯带,GPIO_PIN_RESET);
+                switchState=0;
+            }
+            if((bits1 & TO_BIT(开关面板))==0)
+            {
 
-//            }
+            }
 //            static int a = 1;
 //            if (((bits & TO_BIT(开关面板)) == 0) && (a == 0)) {
 //                SetOutput(书房灯带, GPIO_PIN_RESET);
@@ -272,7 +289,7 @@ void StartGameTask(void const *argument) {
 //            if (bits & TO_BIT(开关面板)) {
 //                a = 0;
 //            }
-            }
+        }
             if (gameFlags[0] == 22)//等待记忆卡2
             {
                 EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(记忆卡刷卡2), pdTRUE, pdTRUE, 0);
@@ -476,7 +493,7 @@ void StartGameTask(void const *argument) {
 
                 }
             }
-        }
+
         if (gameFlags[0] == 31)//十个扫描过关
         {
             osDelay(3000);
@@ -634,9 +651,9 @@ void StartGameTask(void const *argument) {
 
             gameFlags[0] = 34;
         }
-        //RunTime++;
+        RunTime++;
         xSemaphoreGive(xGameSemaphore[0]);
-        //osDelay(1); //等待音频播放
+        osDelay(1); //等待音频播放
         static int oldGameFlag = 100;
         if (gameFlags[0] != oldGameFlag) {
             uint8_t TxBuff[5] = {0xCC, 0x05, 0x00, gameFlags[0], 0xFF};
