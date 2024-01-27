@@ -75,7 +75,8 @@ void GameInit(void);
 #define 卧室月球灯 49
 #define 客厅房顶灯带 50
 #define 卧室灯带 51
-
+#define 前场电脑复位 52
+#define 前场电脑触发 53
 
 
 //输入
