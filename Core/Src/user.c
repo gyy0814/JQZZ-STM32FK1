@@ -74,7 +74,7 @@ void StartGameTask(void const *argument)
         {
             SetOutput(电视背景灯带,GPIO_PIN_SET);
             GameTimeReset;
-            while (GameDelay(&RunTime,13000))
+            if (GameDelay(&RunTime,13000))
             {
                 SetOutput(电视背景灯带,GPIO_PIN_RESET);
                 gameFlags[0]++;
