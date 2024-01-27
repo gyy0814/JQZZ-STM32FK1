@@ -24,7 +24,6 @@ void GameInit(void);
 #define 关门检测 0
 #define 语音识别1 1
 #define 语音识别2 2
-#define 钥匙开门 3
 
 #define 门锁 2
 #define 语音识别电源 3
