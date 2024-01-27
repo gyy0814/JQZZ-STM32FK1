@@ -14,6 +14,7 @@
 
 #define GameTaskNum 1
 int gameFlags[GameTaskNum] = {100};
+int saomiaoFlags[20] = {0};
 SemaphoreHandle_t xGameSemaphore[GameTaskNum];
 
 extern QueueHandle_t GameMessageQueueHandle;
@@ -93,7 +94,7 @@ void StartGameTask(void const *argument) {
             SetOutput(电视信号1, GPIO_PIN_RESET);
             gameFlags[0]++;
         }
-        if (gameFlags[0] >= 5 && gameFlags[0] <= 6)//4 个按钮，按不同的按钮会播放不同的视频
+        if (gameFlags[0] >= 5 && gameFlags[0] <= 27)//4 个按钮，按不同的按钮会播放不同的视频
         {
             EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(遥控器2), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(遥控器2)) {
@@ -146,7 +147,7 @@ void StartGameTask(void const *argument) {
         {
             char *fileName = "/BGM/14.mp3";
             PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲循环);
-            SetOutput(卧室门锁, GPIO_PIN_SET);
+            SetOutput(卧室门锁, GPIO_PIN_RESET);
             SetOutput(卧室月球灯, GPIO_PIN_SET);
             SetOutput(卧室灯带, GPIO_PIN_SET);
             gameFlags[0]++;
@@ -192,7 +193,7 @@ void StartGameTask(void const *argument) {
             osDelay(30000);
             char *fileName = "/BGM/4.mp3";
             PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
-            SetOutput(卧室柜锁, GPIO_PIN_SET);
+            SetOutput(卧室柜锁, GPIO_PIN_RESET);
             SetOutput(卧室柜下灯, GPIO_PIN_SET);
             gameFlags[0]++;
         }
@@ -234,7 +235,7 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 19)//敲门信号
         {
-            SetOutput(敲门锁, GPIO_PIN_SET);
+            SetOutput(敲门锁, GPIO_PIN_RESET);
             char *fileName = "/BGM/20.mp3";
             PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
         }
@@ -249,94 +250,272 @@ void StartGameTask(void const *argument) {
         {
             char *fileName = "/BGM/21.mp3";
             PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲循环);
-            SetOutput(书房门锁, GPIO_PIN_SET);
+            SetOutput(书房门锁, GPIO_PIN_RESET);
             SetOutput(书房灯带, GPIO_PIN_SET);
             SetOutput(书房台灯, GPIO_PIN_SET);
             SetOutput(书房月球灯, GPIO_PIN_SET);
             gameFlags[0]++;
         }
-        if (gameFlags[0] >= 22 && gameFlags[0] <= 22)//等待开关
+        if (gameFlags[0] >= 22 && gameFlags[0] <= 27)//等待开关
         {
             EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(开关面板), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(开关面板)) {
 
+//            }
+//            static int a = 1;
+//            if (((bits & TO_BIT(开关面板)) == 0) && (a == 0)) {
+//                SetOutput(书房灯带, GPIO_PIN_RESET);
+//                SetOutput(书房台灯, GPIO_PIN_RESET);
+//                SetOutput(书房月球灯, GPIO_PIN_RESET);
+//                a = 1;
+//            }
+//            if (bits & TO_BIT(开关面板)) {
+//                a = 0;
+//            }
             }
-            static int a = 1;
-            if (((bits & TO_BIT(开关面板)) == 0) && (a == 0)) {
-                SetOutput(书房灯带, GPIO_PIN_RESET);
-                SetOutput(书房台灯, GPIO_PIN_RESET);
-                SetOutput(书房月球灯, GPIO_PIN_RESET);
-                a = 1;
+            if (gameFlags[0] == 22)//等待记忆卡2
+            {
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(记忆卡刷卡2), pdTRUE, pdTRUE, 0);
+                if (bits1 & TO_BIT(记忆卡刷卡2)) {
+                    gameFlags[0]++;
+                }
             }
-            if (bits & TO_BIT(开关面板)) {
-                a = 0;
-            }
-        }
-        if (gameFlags[0] == 22)//等待记忆卡2
-        {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(记忆卡刷卡2), pdTRUE, pdTRUE, 0);
-            if (bits1 & TO_BIT(记忆卡刷卡2)) {
+            if (gameFlags[0] == 23)//记忆卡2
+            {
+                //SetOutput(电视信号7, GPIO_PIN_SET);
+                osDelay(1000);
+                //SetOutput(电视信号7, GPIO_PIN_RESET);
+                osDelay(43000);
+                char *fileName = "/BGM/23.mp3";
+                PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 gameFlags[0]++;
             }
-        }
-        if (gameFlags[0] == 23)//记忆卡2
-        {
-            //SetOutput(电视信号7, GPIO_PIN_SET);
-            osDelay(1000);
-            //SetOutput(电视信号7, GPIO_PIN_RESET);
-            osDelay(43000);
-            char *fileName = "/BGM/23.mp3";
-            PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
-            gameFlags[0]++;
-        }
-        if (gameFlags[0] == 24)//等待维修密码
-        {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(快递柜密码器), pdTRUE, pdTRUE, 0);
-            if (bits1 & TO_BIT(快递柜密码器)) {
+            if (gameFlags[0] == 24)//等待维修密码
+            {
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(快递柜密码器), pdTRUE, pdTRUE, 0);
+                if (bits1 & TO_BIT(快递柜密码器)) {
+                    gameFlags[0]++;
+                }
+            }
+            if (gameFlags[0] == 25)//维修密码
+            {
+                SetOutput(线路轨门锁, GPIO_PIN_RESET);
+                SetOutput(线路射灯, GPIO_PIN_SET);
                 gameFlags[0]++;
             }
-        }
-        if (gameFlags[0] == 25)//维修密码
-        {
-            SetOutput(线路轨门锁, GPIO_PIN_RESET);
-            gameFlags[0]++;
-        }
-        if (gameFlags[0] == 26)//等待线路过关
-        {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(线路过关), pdTRUE, pdTRUE, 0);
-            if (bits1 & TO_BIT(线路过关)) {
+            if (gameFlags[0] == 26)//等待线路过关
+            {
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(线路过关), pdTRUE, pdTRUE, 0);
+                if (bits1 & TO_BIT(线路过关)) {
+                    gameFlags[0]++;
+                }
+            }
+            if (gameFlags[0] == 27)//线路过关
+            {
+                char *fileName1 = "/BGM/25.mp3";
+                PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                osDelay(26000);
+                char *fileName2 = "/BGM/26.mp3";
+                PlayMusicName(&MUSIC_2, fileName2, strlen(fileName2), 单曲停止);
+                SetOutput(快递柜门锁, GPIO_PIN_RESET);
+                osDelay(6000);
+                char *fileName3 = "/BGM/27.mp3";
+                PlayMusicName(&MUSIC_2, fileName3, strlen(fileName3), 单曲停止);
                 gameFlags[0]++;
             }
-        }
-        if (gameFlags[0] == 27)//线路过关
-        {
-            char *fileName1 = "/BGM/25.mp3";
-            PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
-            osDelay(26000);
-            char *fileName2 = "/BGM/26.mp3";
-            PlayMusicName(&MUSIC_2, fileName2, strlen(fileName2), 单曲停止);
-            SetOutput(快递柜门锁, GPIO_PIN_RESET);
-            osDelay(6000);
-            char *fileName3 = "/BGM/27.mp3";
-            PlayMusicName(&MUSIC_2, fileName3, strlen(fileName3), 单曲停止);
-            gameFlags[0]++;
-        }
-        if (gameFlags[0] == 28)//等待艾利刷卡
-        {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(艾利刷卡), pdTRUE, pdTRUE, 0);
-            if (bits1 & TO_BIT(艾利刷卡)) {
-                gameFlags[0]++;
+            if (gameFlags[0] == 28)//等待艾利刷卡
+            {
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(艾利刷卡), pdTRUE, pdTRUE, 0);
+                if (bits1 & TO_BIT(艾利刷卡)) {
+                    gameFlags[0]++;
+                }
             }
-        }
-        if (gameFlags[0] == 29)//艾利刷卡
-        {
-            char *fileName1 = "/BGM/28.mp3";
-            PlayMusicName(&MUSIC_1, fileName1, strlen(fileName1), 单曲循环);
+            if (gameFlags[0] == 29)//艾利刷卡
+            {
+                PauseMusic(&MUSIC_1);
+                char *fileName2 = "/BGM/29.mp3";
+                PlayMusicName(&MUSIC_2, fileName2, strlen(fileName2), 单曲停止);
 
-            char *fileName2 = "/BGM/28.mp3";
-            PlayMusicName(&MUSIC_2, fileName2, strlen(fileName2), 单曲停止);
+                SetOutput(卧室柜下灯, GPIO_PIN_RESET);
+                SetOutput(卧室柜上灯, GPIO_PIN_RESET);
+                SetOutput(书房灯带, GPIO_PIN_RESET);
+                SetOutput(线路射灯, GPIO_PIN_RESET);
+                SetOutput(书房月球灯, GPIO_PIN_RESET);
+                SetOutput(电视背景灯带, GPIO_PIN_RESET);
+                SetOutput(书房台灯, GPIO_PIN_RESET);
+                SetOutput(卧室月球灯, GPIO_PIN_RESET);
+                SetOutput(客厅房顶灯带, GPIO_PIN_RESET);
+                SetOutput(卧室灯带, GPIO_PIN_RESET);
+
+
+                osDelay(5000);
+                SetOutput(扫描激光, GPIO_PIN_SET);
+                osDelay(2000);
+                SetOutput(扫描灯1, GPIO_PIN_SET);
+                osDelay(2000);
+                SetOutput(扫描灯2, GPIO_PIN_SET);
+                osDelay(2000);
+                SetOutput(扫描灯3, GPIO_PIN_SET);
+                osDelay(2000);
+                SetOutput(扫描灯4, GPIO_PIN_SET);
+                osDelay(2000);
+                SetOutput(扫描灯5, GPIO_PIN_SET);
+                osDelay(2000);
+                SetOutput(扫描灯6, GPIO_PIN_SET);
+                osDelay(2000);
+                SetOutput(扫描灯7, GPIO_PIN_SET);
+                osDelay(2000);
+                SetOutput(扫描灯8, GPIO_PIN_SET);
+                osDelay(2000);
+                SetOutput(扫描灯9, GPIO_PIN_SET);
+                osDelay(2000);
+                SetOutput(扫描灯10, GPIO_PIN_SET);
+
+                SetOutput(扫描激光, GPIO_PIN_RESET);
+                SetOutput(灯带, GPIO_PIN_SET);
+                SetOutput(扫描仪门锁, GPIO_PIN_RESET);
+                char *fileName1 = "/BGM/30.mp3";
+                PlayMusicName(&MUSIC_1, fileName1, strlen(fileName1), 单曲循环);
+                char *fileName3 = "/BGM/31.mp3";
+                PlayMusicName(&MUSIC_2, fileName3, strlen(fileName3), 单曲停止);
+                gameFlags[0]++;
+            }
+            if (gameFlags[0] == 30)//播放
+            {
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪1), pdTRUE, pdTRUE, 0);
+                if (bits1 & TO_BIT(扫描仪1)) {
+                    saomiaoFlags[1] = 1;
+                    SetOutput(信息块1, GPIO_PIN_RESET);
+                    SetOutput(扫描灯1, GPIO_PIN_RESET);
+                    char *fileName1 = "/BGM/32.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                }
+                EventBits_t bits2 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪2), pdTRUE, pdTRUE, 0);
+                if (bits2 & TO_BIT(扫描仪1)) {
+                    saomiaoFlags[2] = 1;
+                    SetOutput(信息块2, GPIO_PIN_RESET);
+                    SetOutput(扫描灯2, GPIO_PIN_RESET);
+                    char *fileName1 = "/BGM/33.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                }
+                EventBits_t bits3 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪3), pdTRUE, pdTRUE, 0);
+                if (bits3 & TO_BIT(扫描仪3)) {
+                    saomiaoFlags[3] = 1;
+                    SetOutput(信息块3, GPIO_PIN_RESET);
+                    SetOutput(扫描灯3, GPIO_PIN_RESET);
+                    char *fileName1 = "/BGM/34.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                }
+                EventBits_t bits4 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪4), pdTRUE, pdTRUE, 0);
+                if (bits4 & TO_BIT(扫描仪4)) {
+                    saomiaoFlags[4] = 1;
+                    SetOutput(信息块4, GPIO_PIN_RESET);
+                    SetOutput(扫描灯4, GPIO_PIN_RESET);
+                    char *fileName1 = "/BGM/35.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                }
+                EventBits_t bits5 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪5), pdTRUE, pdTRUE, 0);
+                if (bits5 & TO_BIT(扫描仪5)) {
+                    saomiaoFlags[5] = 1;
+                    SetOutput(信息块5, GPIO_PIN_RESET);
+                    SetOutput(扫描灯5, GPIO_PIN_RESET);
+                    char *fileName1 = "/BGM/36.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                }
+                EventBits_t bits6 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪6), pdTRUE, pdTRUE, 0);
+                if (bits6 & TO_BIT(扫描仪6)) {
+                    saomiaoFlags[6] = 1;
+                    SetOutput(信息块6, GPIO_PIN_RESET);
+                    SetOutput(扫描灯6, GPIO_PIN_RESET);
+                    char *fileName1 = "/BGM/37.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                }
+                EventBits_t bits7 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪7), pdTRUE, pdTRUE, 0);
+                if (bits7 & TO_BIT(扫描仪7)) {
+                    saomiaoFlags[7] = 1;
+                    SetOutput(信息块7, GPIO_PIN_RESET);
+                    SetOutput(扫描灯7, GPIO_PIN_RESET);
+                    char *fileName1 = "/BGM/38.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                }
+                EventBits_t bits8 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪8), pdTRUE, pdTRUE, 0);
+                if (bits8 & TO_BIT(扫描仪8)) {
+                    saomiaoFlags[8] = 1;
+                    SetOutput(信息块8, GPIO_PIN_RESET);
+                    SetOutput(扫描灯8, GPIO_PIN_RESET);
+                    char *fileName1 = "/BGM/39.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                }
+                EventBits_t bits9 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪9), pdTRUE, pdTRUE, 0);
+                if (bits9 & TO_BIT(扫描仪9)) {
+                    saomiaoFlags[9] = 1;
+                    SetOutput(信息块9, GPIO_PIN_RESET);
+                    SetOutput(扫描灯9, GPIO_PIN_RESET);
+                    char *fileName1 = "/BGM/40.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                }
+                EventBits_t bits10 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪10), pdTRUE, pdTRUE, 0);
+                if (bits10 & TO_BIT(扫描仪10)) {
+                    saomiaoFlags[10] = 1;
+                    SetOutput(信息块10, GPIO_PIN_RESET);
+                    SetOutput(扫描灯10, GPIO_PIN_RESET);
+                    char *fileName1 = "/BGM/41.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                }
+                if (saomiaoFlags[1] == 1 &&
+                    saomiaoFlags[2] == 1 &&
+                    saomiaoFlags[3] == 1 &&
+                    saomiaoFlags[4] == 1 &&
+                    saomiaoFlags[5] == 1 &&
+                    saomiaoFlags[6] == 1 &&
+                    saomiaoFlags[7] == 1 &&
+                    saomiaoFlags[8] == 1 &&
+                    saomiaoFlags[9] == 1 &&
+                    saomiaoFlags[10] == 1) {
+                    gameFlags[0]++;
+
+                }
+            }
         }
-        if (gameFlags[0] == 30)//播放
+        if (gameFlags[0] == 31)//十个扫描过关
+        {
+            osDelay(3000);
+            char *fileName1 = "/BGM/42.mp3";
+            PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+            osDelay(12000);
+            SetOutput(信息投影灯, GPIO_PIN_SET);
+            gameFlags[0]++;
+        }
+        if (gameFlags[0] == 32)//等待矮桌
+        {
+            EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(矮桌), pdTRUE, pdTRUE, 0);
+            if (bits & TO_BIT(矮桌)) {
+                gameFlags[0]++;
+            }
+        }
+        if (gameFlags[0] == 33)//播放
+        {
+
+            char *fileName1 = "/BGM/43.mp3";
+            PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+            osDelay(7000);
+            char *fileName2 = "/BGM/44.mp3";
+            PlayMusicName(&MUSIC_2, fileName2, strlen(fileName2), 单曲停止);
+            SetOutput(前场电脑触发, GPIO_PIN_SET);
+            osDelay(1000);
+            SetOutput(前场电脑触发, GPIO_PIN_RESET);
+
+            osDelay(45000);
+            char *fileName3 = "/BGM/45.mp3";
+            PlayMusicName(&MUSIC_1, fileName3, strlen(fileName3), 单曲停止);
+            char *fileName4 = "/BGM/46.mp3";
+            PlayMusicName(&MUSIC_2, fileName4, strlen(fileName4), 单曲停止);
+            osDelay(25000);
+            SetOutput(电脑显示器, GPIO_PIN_RESET);
+            SetOutput(信息投影灯, GPIO_PIN_RESET);
+
+        }
+        if (gameFlags[0] == 31)//播放
         {
 
         }
@@ -344,7 +523,18 @@ void StartGameTask(void const *argument) {
         {
 
         }
+        if (gameFlags[0] == 31)//播放
+        {
 
+        }
+        if (gameFlags[0] == 31)//播放
+        {
+
+        }
+        if (gameFlags[0] == 31)//播放
+        {
+
+        }
         RunTime++;
         xSemaphoreGive(xGameSemaphore[0]);
         osDelay(1); //等待音频播放

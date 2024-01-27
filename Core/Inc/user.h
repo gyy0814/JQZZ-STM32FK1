@@ -67,7 +67,7 @@ void GameInit(void);
 #define 扫描灯9 41
 #define 扫描灯10 42
 #define 扫描激光 43
-#define 台灯 44
+#define 电脑显示器 44
 #define 书房月球灯 45
 #define 电视背景灯带 46
 #define 书房台灯 47
