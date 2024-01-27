@@ -61,6 +61,7 @@ void StartGameTask(void const *argument) {
             if (bits & TO_BIT(艾琳开始)) {
                 gameFlags[0]++;
             }
+
         }
         if (gameFlags[0] == 1)//艾琳开始音频
         {
