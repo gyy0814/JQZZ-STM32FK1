@@ -278,10 +278,22 @@ void StartGameTask(void const *argument) {
         {
             EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(开关面板), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(开关面板)) {
+
+            }
+
+            static int a = 1;
+            if (((bits& TO_BIT(开关面板))==0)&&(a==0))
+            {
                 SetOutput(书房灯带, GPIO_PIN_RESET);
                 SetOutput(书房台灯, GPIO_PIN_RESET);
                 SetOutput(书房月球灯, GPIO_PIN_RESET);
+                a=1;
             }
+            if (bits& TO_BIT(开关面板))
+            {
+                a = 0;
+            }
+
         }
         if (gameFlags[0] == 23)//播放
         {
