@@ -54,8 +54,17 @@ bool GameDelay(int *pvRunTime, int waitTime) {
 void StartGameTask(void const *argument) {
     int RunTime = 0;
     for (;;) {
+        for(;;)
+        {
+
         xSemaphoreTake(xGameSemaphore[0], portMAX_DELAY);
-        if (gameFlags[0] == 0)//第一次按下遥控
+            switch (gameFlags[0]) {//第一次按下遥控
+                case 0:// 打开门锁
+                {
+                    SetOutput(门锁,GPIO_PIN_RESET);
+                    gameFlags[0]++;
+                    break;
+                }
         {
             EventBits_t bits = xEventGroupWaitBits(InputEventGroup[艾琳开始/24], TO_BIT(艾琳开始), pdTRUE, pdTRUE, 0);
             if (bits & TO_BIT(艾琳开始)) {
