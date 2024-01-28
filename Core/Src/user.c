@@ -57,11 +57,10 @@ void StartGameTask(void const *argument) {
         xSemaphoreTake(xGameSemaphore[0], portMAX_DELAY);
         if (gameFlags[0] == 0)//第一次按下遥控
         {
-            EventBits_t bits = xEventGroupWaitBits(InputEventGroup[1], TO_BIT(艾琳开始), pdTRUE, pdTRUE, 0);
+            EventBits_t bits = xEventGroupWaitBits(InputEventGroup[艾琳开始/24], TO_BIT(艾琳开始), pdTRUE, pdTRUE, 0);
             if (bits & TO_BIT(艾琳开始)) {
                 gameFlags[0]++;
             }
-
         }
         if (gameFlags[0] == 1)//艾琳开始音频
         {
@@ -89,7 +88,7 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 3)//等待检测遥控器1
         {
-            EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(遥控器1), pdTRUE, pdTRUE, 0);
+            EventBits_t bits = xEventGroupWaitBits(InputEventGroup[遥控器1/24], TO_BIT(遥控器1), pdTRUE, pdTRUE, 0);
             if (bits & TO_BIT(遥控器1)) {
                 gameFlags[0]++;
             }
@@ -111,7 +110,7 @@ void StartGameTask(void const *argument) {
                 osDelay(1000);
                 SetOutput(电视信号2, GPIO_PIN_RESET);
             }
-            EventBits_t bits2 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(遥控器3), pdTRUE, pdTRUE, 0);
+            EventBits_t bits2 = xEventGroupWaitBits(InputEventGroup[遥控器3/24], TO_BIT(遥控器3), pdTRUE, pdTRUE, 0);
             if (bits2 & TO_BIT(遥控器3)) {
                 SetOutput(电视信号3, GPIO_PIN_SET);
                 char *fileName = "/06.mp3";
@@ -119,7 +118,7 @@ void StartGameTask(void const *argument) {
                 osDelay(1000);
                 SetOutput(电视信号3, GPIO_PIN_RESET);
             }
-            EventBits_t bits3 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(遥控器4), pdTRUE, pdTRUE, 0);
+            EventBits_t bits3 = xEventGroupWaitBits(InputEventGroup[遥控器4/24], TO_BIT(遥控器4), pdTRUE, pdTRUE, 0);
             if (bits3 & TO_BIT(遥控器4)) {
                 SetOutput(电视信号4, GPIO_PIN_SET);
                 char *fileName = "/11.mp3";
@@ -127,7 +126,7 @@ void StartGameTask(void const *argument) {
                 osDelay(1000);
                 SetOutput(电视信号4, GPIO_PIN_RESET);
             }
-            EventBits_t bits4 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(遥控器5), pdTRUE, pdTRUE, 0);
+            EventBits_t bits4 = xEventGroupWaitBits(InputEventGroup[遥控器5/24], TO_BIT(遥控器5), pdTRUE, pdTRUE, 0);
             if (bits4 & TO_BIT(遥控器5)) {
                 SetOutput(电视信号5, GPIO_PIN_SET);
                 char *fileName = "/12.mp3";
@@ -138,14 +137,14 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 5)//等待打电话
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(打电话), pdTRUE, pdTRUE, 0);
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[打电话/24], TO_BIT(打电话), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(打电话)) {
                 gameFlags[0]++;
             }
         }
         if (gameFlags[0] == 6)//等待卧室密码器
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(卧室密码器), pdTRUE, pdTRUE, 0);
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[卧室密码器/24], TO_BIT(卧室密码器), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(卧室密码器)) {
                 gameFlags[0]++;
             }
@@ -168,7 +167,7 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 9)//等待卧室抽屉打开
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(卧室抽屉打开), pdTRUE, pdTRUE, 0);
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[卧室抽屉打开/24], TO_BIT(卧室抽屉打开), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(卧室抽屉打开)) {
                 gameFlags[0]++;
             }
@@ -183,7 +182,7 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 11)//等待录取通知
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(录取通知), pdTRUE, pdTRUE, 0);
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[录取通知/24], TO_BIT(录取通知), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(录取通知)) {
                 gameFlags[0]++;
             }
@@ -206,7 +205,7 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 14)//等待记忆卡拿走
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(记忆卡拿走), pdTRUE, pdTRUE, 0);
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[记忆卡拿走/24], TO_BIT(记忆卡拿走), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(记忆卡拿走)) {
                 gameFlags[0]++;
             }
@@ -219,7 +218,7 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 16)//等待记忆卡刷卡1
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(记忆卡刷卡1), pdTRUE, pdTRUE, 0);
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[记忆卡刷卡1/24], TO_BIT(记忆卡刷卡1), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(记忆卡刷卡1)) {
                 gameFlags[0]++;
             }
@@ -235,7 +234,7 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 18)//等待敲门信号
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(敲门信号), pdTRUE, pdTRUE, 0);
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[敲门信号/24], TO_BIT(敲门信号), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(敲门信号)) {
                 gameFlags[0]++;
             }
@@ -248,7 +247,7 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 20)//等待数独刷卡
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(书房数独), pdTRUE, pdTRUE, 0);
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[书房数独/24], TO_BIT(书房数独), pdTRUE, pdTRUE, 0);
             if (bits1 & TO_BIT(书房数独)) {
                 gameFlags[0]++;
             }
@@ -292,7 +291,7 @@ void StartGameTask(void const *argument) {
         }
             if (gameFlags[0] == 22)//等待记忆卡2
             {
-                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(记忆卡刷卡2), pdTRUE, pdTRUE, 0);
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[记忆卡刷卡2/24], TO_BIT(记忆卡刷卡2), pdTRUE, pdTRUE, 0);
                 if (bits1 & TO_BIT(记忆卡刷卡2)) {
                     gameFlags[0]++;
                 }
@@ -309,7 +308,7 @@ void StartGameTask(void const *argument) {
             }
             if (gameFlags[0] == 24)//等待维修密码
             {
-                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(快递柜密码器), pdTRUE, pdTRUE, 0);
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[快递柜密码器/24], TO_BIT(快递柜密码器), pdTRUE, pdTRUE, 0);
                 if (bits1 & TO_BIT(快递柜密码器)) {
                     gameFlags[0]++;
                 }
@@ -322,7 +321,7 @@ void StartGameTask(void const *argument) {
             }
             if (gameFlags[0] == 26)//等待线路过关
             {
-                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(线路过关), pdTRUE, pdTRUE, 0);
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[线路过关/24], TO_BIT(线路过关), pdTRUE, pdTRUE, 0);
                 if (bits1 & TO_BIT(线路过关)) {
                     gameFlags[0]++;
                 }
@@ -342,7 +341,7 @@ void StartGameTask(void const *argument) {
             }
             if (gameFlags[0] == 28)//等待艾利刷卡
             {
-                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(艾利刷卡), pdTRUE, pdTRUE, 0);
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[艾利刷卡/24], TO_BIT(艾利刷卡), pdTRUE, pdTRUE, 0);
                 if (bits1 & TO_BIT(艾利刷卡)) {
                     gameFlags[0]++;
                 }
@@ -399,7 +398,7 @@ void StartGameTask(void const *argument) {
             }
             if (gameFlags[0] == 30)//扫描仪
             {
-                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪1), pdTRUE, pdTRUE, 0);
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[扫描仪1/24], TO_BIT(扫描仪1), pdTRUE, pdTRUE, 0);
                 if (bits1 & TO_BIT(扫描仪1)) {
                     saomiaoFlags[1] = 1;
                     SetOutput(信息块1, GPIO_PIN_RESET);
@@ -407,7 +406,7 @@ void StartGameTask(void const *argument) {
                     char *fileName1 = "/32.mp3";
                     PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
                 }
-                EventBits_t bits2 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪2), pdTRUE, pdTRUE, 0);
+                EventBits_t bits2 = xEventGroupWaitBits(InputEventGroup[扫描仪2/24], TO_BIT(扫描仪2), pdTRUE, pdTRUE, 0);
                 if (bits2 & TO_BIT(扫描仪1)) {
                     saomiaoFlags[2] = 1;
                     SetOutput(信息块2, GPIO_PIN_RESET);
@@ -415,7 +414,7 @@ void StartGameTask(void const *argument) {
                     char *fileName1 = "/33.mp3";
                     PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
                 }
-                EventBits_t bits3 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪3), pdTRUE, pdTRUE, 0);
+                EventBits_t bits3 = xEventGroupWaitBits(InputEventGroup[扫描仪3/24], TO_BIT(扫描仪3), pdTRUE, pdTRUE, 0);
                 if (bits3 & TO_BIT(扫描仪3)) {
                     saomiaoFlags[3] = 1;
                     SetOutput(信息块3, GPIO_PIN_RESET);
@@ -423,7 +422,7 @@ void StartGameTask(void const *argument) {
                     char *fileName1 = "/34.mp3";
                     PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
                 }
-                EventBits_t bits4 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪4), pdTRUE, pdTRUE, 0);
+                EventBits_t bits4 = xEventGroupWaitBits(InputEventGroup[扫描仪4/24], TO_BIT(扫描仪4), pdTRUE, pdTRUE, 0);
                 if (bits4 & TO_BIT(扫描仪4)) {
                     saomiaoFlags[4] = 1;
                     SetOutput(信息块4, GPIO_PIN_RESET);
@@ -431,7 +430,7 @@ void StartGameTask(void const *argument) {
                     char *fileName1 = "/35.mp3";
                     PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
                 }
-                EventBits_t bits5 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪5), pdTRUE, pdTRUE, 0);
+                EventBits_t bits5 = xEventGroupWaitBits(InputEventGroup[扫描仪5/24], TO_BIT(扫描仪5), pdTRUE, pdTRUE, 0);
                 if (bits5 & TO_BIT(扫描仪5)) {
                     saomiaoFlags[5] = 1;
                     SetOutput(信息块5, GPIO_PIN_RESET);
@@ -439,7 +438,7 @@ void StartGameTask(void const *argument) {
                     char *fileName1 = "/36.mp3";
                     PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
                 }
-                EventBits_t bits6 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪6), pdTRUE, pdTRUE, 0);
+                EventBits_t bits6 = xEventGroupWaitBits(InputEventGroup[扫描仪6/24], TO_BIT(扫描仪6), pdTRUE, pdTRUE, 0);
                 if (bits6 & TO_BIT(扫描仪6)) {
                     saomiaoFlags[6] = 1;
                     SetOutput(信息块6, GPIO_PIN_RESET);
@@ -447,7 +446,7 @@ void StartGameTask(void const *argument) {
                     char *fileName1 = "/37.mp3";
                     PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
                 }
-                EventBits_t bits7 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪7), pdTRUE, pdTRUE, 0);
+                EventBits_t bits7 = xEventGroupWaitBits(InputEventGroup[扫描仪7/24], TO_BIT(扫描仪7), pdTRUE, pdTRUE, 0);
                 if (bits7 & TO_BIT(扫描仪7)) {
                     saomiaoFlags[7] = 1;
                     SetOutput(信息块7, GPIO_PIN_RESET);
@@ -455,7 +454,7 @@ void StartGameTask(void const *argument) {
                     char *fileName1 = "/38.mp3";
                     PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
                 }
-                EventBits_t bits8 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪8), pdTRUE, pdTRUE, 0);
+                EventBits_t bits8 = xEventGroupWaitBits(InputEventGroup[扫描仪8/24], TO_BIT(扫描仪8), pdTRUE, pdTRUE, 0);
                 if (bits8 & TO_BIT(扫描仪8)) {
                     saomiaoFlags[8] = 1;
                     SetOutput(信息块8, GPIO_PIN_RESET);
@@ -463,7 +462,7 @@ void StartGameTask(void const *argument) {
                     char *fileName1 = "/39.mp3";
                     PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
                 }
-                EventBits_t bits9 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪9), pdTRUE, pdTRUE, 0);
+                EventBits_t bits9 = xEventGroupWaitBits(InputEventGroup[扫描仪9/24], TO_BIT(扫描仪9), pdTRUE, pdTRUE, 0);
                 if (bits9 & TO_BIT(扫描仪9)) {
                     saomiaoFlags[9] = 1;
                     SetOutput(信息块9, GPIO_PIN_RESET);
@@ -471,7 +470,7 @@ void StartGameTask(void const *argument) {
                     char *fileName1 = "/40.mp3";
                     PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
                 }
-                EventBits_t bits10 = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(扫描仪10), pdTRUE, pdTRUE, 0);
+                EventBits_t bits10 = xEventGroupWaitBits(InputEventGroup[扫描仪10/24], TO_BIT(扫描仪10), pdTRUE, pdTRUE, 0);
                 if (bits10 & TO_BIT(扫描仪10)) {
                     saomiaoFlags[10] = 1;
                     SetOutput(信息块10, GPIO_PIN_RESET);
@@ -505,7 +504,7 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] == 32)//等待矮桌
         {
-            EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(矮桌), pdTRUE, pdTRUE, 0);
+            EventBits_t bits = xEventGroupWaitBits(InputEventGroup[矮桌/24], TO_BIT(矮桌), pdTRUE, pdTRUE, 0);
             if (bits & TO_BIT(矮桌)) {
                 gameFlags[0]++;
             }
