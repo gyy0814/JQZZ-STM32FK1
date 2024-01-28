@@ -55,8 +55,8 @@ void StartGameTask(void const *argument) {
     int RunTime = 0;
     for (;;) {
         xSemaphoreTake(xGameSemaphore[0], portMAX_DELAY);
-        switch (gameFlags[0]) {//第一次按下遥控
-            case 0://
+        switch (gameFlags[0]) {
+            case 0://第一次按下遥控
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[艾琳开始 / 24], TO_BIT(艾琳开始), pdTRUE,
                                                        pdTRUE, 0);
@@ -735,7 +735,7 @@ void StartGameTask(void const *argument) {
                 break;
             }
         }
-        if (gameFlags[0] >= 5 && gameFlags[0] <= 27)//4 个按钮，按不同的按钮会播放不同的视频
+        if (gameFlags[0] >= 5 && gameFlags[0] <= 33)//4 个按钮，按不同的按钮会播放不同的视频
         {
             EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[遥控器2 / 24], TO_BIT(遥控器2), pdTRUE,
                                                     pdTRUE, 0);
@@ -774,21 +774,24 @@ void StartGameTask(void const *argument) {
                 SetOutput(电视信号5, GPIO_PIN_RESET);
             }
         }
-        if (gameFlags[0] >= 22 && gameFlags[0] <= 27)//等待开关
+        if (gameFlags[0] >= 26 && gameFlags[0] <= 33)//等待开关
         {
             static int switchState = 0;
             EventBits_t bits1 = xEventGroupGetBits(InputEventGroup[1]);
             if ((bits1 & TO_BIT(开关面板)) && (switchState == 0)) {
                 SetOutput(书房灯带, GPIO_PIN_SET);
+                SetOutput(书房月球灯, GPIO_PIN_SET);
+                SetOutput(书房台灯, GPIO_PIN_SET);
+
                 switchState = 1;
             }
             if (!((bits1 & TO_BIT(开关面板)) || (switchState == 0))) {
                 SetOutput(书房灯带, GPIO_PIN_RESET);
+                SetOutput(书房月球灯, GPIO_PIN_RESET);
+                SetOutput(书房台灯, GPIO_PIN_RESET);
                 switchState = 0;
             }
-            if ((bits1 & TO_BIT(开关面板)) == 0) {
 
-            }
 
         }
         RunTime++;
