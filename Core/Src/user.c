@@ -796,8 +796,6 @@ void StartGameTask(void const *argument) {
                 SetOutput(摄像头灯, GPIO_PIN_SET);
                 switchState = 0;
             }
-
-
         }
         RunTime++;
         xSemaphoreGive(xGameSemaphore[0]);
