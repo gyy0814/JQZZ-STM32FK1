@@ -13,7 +13,7 @@
 #include "gpio.h"
 
 #define GameTaskNum 1
-int gameFlags[GameTaskNum] = {100};
+int gameFlags[GameTaskNum] = {51};
 SemaphoreHandle_t xGameSemaphore[GameTaskNum];
 
 extern QueueHandle_t GameMessageQueueHandle;
@@ -67,7 +67,7 @@ void StartGameTask(void const *argument) {
             case 1: //游戏开始
             {
                 char *fileName1 = "/68.mp3";
-                PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲停止);
+                PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                 char *fileName = "/01.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(主光源, GPIO_PIN_SET);
@@ -132,7 +132,7 @@ void StartGameTask(void const *argument) {
                 gameFlags[0]++;
                 break;
             }
-            case 16: // 等待路由器重启按钮
+            case 10: // 等待路由器重启按钮
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[路由器重启按钮 / 24], TO_BIT(路由器重启按钮),
                                                        pdTRUE, pdTRUE, 0);
@@ -141,14 +141,14 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 17://路由器重启按钮
+            case 11://路由器重启按钮
             {
                 char *fileName = "/05.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 gameFlags[0]++;
                 break;
             }
-            case 18://等待第二次摸门把手
+            case 12://等待第二次摸门把手
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[门把手 / 24], TO_BIT(门把手), pdTRUE, pdTRUE, 0);
                 if (bits & TO_BIT(门把手)) {
@@ -156,7 +156,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 19: //第二次摸门把手
+            case 13: //第二次摸门把手
             {
                 char *fileName = "/06.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
@@ -164,18 +164,18 @@ void StartGameTask(void const *argument) {
                 GameTimeReset;
                 break;
             }
-            case 20: //
+            case 14: //
             {
                 if (GameDelay(&RunTime, 11000)) { gameFlags[0]++; }
                 break;
             }
-            case 21: //
+            case 15: //
             {
                 SetOutput(日记柜门, GPIO_PIN_RESET);
                 gameFlags[0]++;
                 break;
             }
-            case 22: //等待小爱2
+            case 16: //等待小爱2
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[小爱2 / 24], TO_BIT(小爱2), pdTRUE, pdTRUE, 0);
                 if (bits & TO_BIT(小爱2)) {
@@ -183,13 +183,13 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 23: //小爱2
+            case 17: //小爱2
             {
                 SetOutput(游戏卡带柜, GPIO_PIN_RESET);
                 gameFlags[0]++;
                 break;
             }
-            case 24: //等待小霸王干簧管
+            case 18: //等待小霸王干簧管
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[小霸王 / 24], TO_BIT(小霸王), pdTRUE, pdTRUE, 0);
                 if (bits & TO_BIT(小霸王)) {
@@ -197,12 +197,12 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 25: //小霸王干簧管
+            case 19: //小霸王干簧管
             {
                 SetOutput(电视电源, GPIO_PIN_SET);
                 break;
             }
-            case 26: //等待小说密码器
+            case 20: //等待小说密码器
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[小说密码器 / 24], TO_BIT(小说密码器), pdTRUE,
                                                        pdTRUE, 0);
@@ -211,19 +211,19 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 27: //小说密码器
+            case 21: //小说密码器
             {
                 SetOutput(小说柜门, GPIO_PIN_RESET);
                 gameFlags[0]++;
                 GameTimeReset;
                 break;
             }
-            case 28: //
+            case 22: //
             {
                 if (GameDelay(&RunTime, 5000)) { gameFlags[0]++; }
                 break;
             }
-            case 29: //
+            case 23: //
             {
                 char *fileName = "/07.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
@@ -231,17 +231,17 @@ void StartGameTask(void const *argument) {
                 GameTimeReset;
                 break;
             }
-            case 30: //
+            case 24: //
             {
                 if (GameDelay(&RunTime, 20000)) { gameFlags[0]++; }
                 break;
             }
-            case 31: //哈利波特门
+            case 25: //哈利波特门
             {
                 SetOutput(哈利波特门, GPIO_PIN_RESET);
                 break;
             }
-            case 32: //等待电脑微信
+            case 26: //等待电脑微信
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[电脑微信 / 24], TO_BIT(电脑微信), pdTRUE,
                                                        pdTRUE, 0);
@@ -250,7 +250,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 33: //电脑微信
+            case 27: //电脑微信
             {
                 char *fileName = "/12.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
@@ -259,7 +259,7 @@ void StartGameTask(void const *argument) {
                 gameFlags[0]++;
                 break;
             }
-            case 34: //等待三摆件过关
+            case 28: //等待三摆件过关
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[三摆件过关 / 24], TO_BIT(三摆件过关), pdTRUE,
                                                        pdTRUE, 0);
@@ -268,7 +268,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 35: //三摆件过关
+            case 29: //三摆件过关
             {
                 char *fileName = "/14.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
@@ -277,12 +277,12 @@ void StartGameTask(void const *argument) {
                 GameTimeReset;
                 break;
             }
-            case 36: //等待
+            case 30: //等待
             {
                 if (GameDelay(&RunTime, 7000)) { gameFlags[0]++; }
                 break;
             }
-            case 37: //等待
+            case 31: //等待
             {
                 char *fileName = "/15.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
@@ -292,7 +292,7 @@ void StartGameTask(void const *argument) {
                 gameFlags[0]++;
                 break;
             }
-            case 38: //等待同学语音
+            case 32: //等待同学语音
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[同学语音 / 24], TO_BIT(同学语音), pdTRUE,
                                                        pdTRUE, 0);
@@ -302,19 +302,19 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 39: //等待
+            case 33: //等待
             {
                 if (GameDelay(&RunTime, 6000)) { gameFlags[0]++; }
                 break;
             }
-            case 40: //等待
+            case 34: //等待
             {
                 char *fileName = "/18.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 gameFlags[0]++;
                 break;
             }
-            case 41: //等待杂志按钮
+            case 35: //等待杂志按钮
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[杂志按钮 / 24], TO_BIT(杂志按钮), pdTRUE,
                                                        pdTRUE, 0);
@@ -323,14 +323,14 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 42: //杂志按钮
+            case 36: //杂志按钮
             {
                 char *fileName = "/19.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 gameFlags[0]++;
                 break;
             }
-            case 43: //等待时钟1
+            case 37: //等待时钟1
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[时钟1 / 24], TO_BIT(时钟1), pdTRUE,
                                                        pdTRUE, 0);
@@ -339,14 +339,14 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 44: //时钟1
+            case 38: //时钟1
             {
                 char *fileName = "/20.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 gameFlags[0]++;
                 break;
             }
-            case 45: //等待杂志按钮
+            case 39: //等待杂志按钮
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[杂志按钮 / 24], TO_BIT(杂志按钮), pdTRUE,
                                                        pdTRUE, 0);
@@ -355,7 +355,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 46: //杂志按钮
+            case 40: //杂志按钮
             {
                 SetOutput(杂志柜门, GPIO_PIN_RESET);
                 char *fileName = "/21.mp3";
@@ -363,7 +363,7 @@ void StartGameTask(void const *argument) {
                 gameFlags[0]++;
                 break;
             }
-            case 47: //等待电脑视频过关
+            case 41: //等待电脑视频过关
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[电脑视频过关 / 24], TO_BIT(电脑视频过关), pdTRUE,
                                                        pdTRUE, 0);
@@ -373,7 +373,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 48: //等待
+            case 42: //电脑视频过关
             {
                 char *fileName = "/22.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
@@ -381,19 +381,19 @@ void StartGameTask(void const *argument) {
                 GameTimeReset;
                 break;
             }
-            case 49: //等待
+            case 43: //等待
             {
                 if (GameDelay(&RunTime, 15000)) { gameFlags[0]++; }
                 break;
             }
-            case 50: //等待
+            case 44: //等待
             {
                 char *fileName = "/23.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 gameFlags[0]++;
                 break;
             }
-            case 51: //等待时钟2
+            case 45: //等待时钟2
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[时钟2 / 24], TO_BIT(时钟2), pdTRUE,
                                                        pdTRUE, 0);
@@ -402,14 +402,14 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 52: //时钟2
+            case 46: //时钟2
             {
                 char *fileName = "/24.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 gameFlags[0]++;
                 break;
             }
-            case 53: //等待时钟3
+            case 47: //等待时钟3
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[时钟3 / 24], TO_BIT(时钟3), pdTRUE,
                                                        pdTRUE, 0);
@@ -418,7 +418,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 54: //等待
+            case 48: //时钟3
             {
                 SetOutput(海贼柜门, GPIO_PIN_RESET);
                 char *fileName = "/25.mp3";
@@ -426,7 +426,7 @@ void StartGameTask(void const *argument) {
                 gameFlags[0]++;
                 break;
             }
-            case 55: //等待时钟4
+            case 49: //等待时钟4
             {
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[时钟4 / 24], TO_BIT(时钟4), pdTRUE,
                                                        pdTRUE, 0);
@@ -435,7 +435,7 @@ void StartGameTask(void const *argument) {
                 }
                 break;
             }
-            case 56: //时钟4
+            case 50: //时钟4
             {
                 SetOutput(卧室门锁, GPIO_PIN_RESET);
                 char *fileName = "/30.mp3";
@@ -443,50 +443,54 @@ void StartGameTask(void const *argument) {
                 gameFlags[0]++;
                 break;
             }
-            case 57: //
+            case 51: //
             {
                 break;
             }
-            case 58: //复位
+            case 52: //复位
             {
-//                SetOutput(入口门, GPIO_PIN_SET);
-//                SetOutput(路由器柜门, GPIO_PIN_SET);
-//                SetOutput(杂志柜门, GPIO_PIN_SET);
-//                SetOutput(主光源, GPIO_PIN_SET);
-//                SetOutput(哈利波特门, GPIO_PIN_SET);
-//                SetOutput(手办刷卡灯, GPIO_PIN_SET);
-//                SetOutput(初音cd柜门, GPIO_PIN_SET);
-//                SetOutput(日记柜门, GPIO_PIN_SET);
-//                SetOutput(小说柜门, GPIO_PIN_SET);
-//                SetOutput(海贼柜门, GPIO_PIN_SET);
-//                SetOutput(游戏卡带柜, GPIO_PIN_SET);
-//                SetOutput(卧室门锁, GPIO_PIN_SET);
-//                SetOutput(电视电源, GPIO_PIN_SET);
+                SetOutput(入口门, GPIO_PIN_SET);
+                SetOutput(路由器柜门, GPIO_PIN_SET);
+                SetOutput(杂志柜门, GPIO_PIN_SET);
+                SetOutput(主光源, GPIO_PIN_SET);
+                SetOutput(哈利波特门, GPIO_PIN_SET);
+                SetOutput(手办刷卡灯, GPIO_PIN_SET);
+                SetOutput(三摆件门, GPIO_PIN_SET);
+                SetOutput(初音cd柜门, GPIO_PIN_SET);
+                SetOutput(漫画柜门, GPIO_PIN_SET);
+                SetOutput(日记柜门, GPIO_PIN_SET);
+                SetOutput(小说柜门, GPIO_PIN_SET);
+                SetOutput(海贼柜门, GPIO_PIN_SET);
+                SetOutput(游戏卡带柜, GPIO_PIN_SET);
+                SetOutput(卧室门锁, GPIO_PIN_SET);
+                SetOutput(电视电源, GPIO_PIN_SET);
                 PauseMusic(&MUSIC_1);
                 PauseMusic(&MUSIC_2);
                 SetOutput(电脑复位, GPIO_PIN_SET);
                 osDelay(500);
                 SetOutput(电脑复位, GPIO_PIN_RESET);
-                gameFlags[0] = 57;
+                gameFlags[0] = 51;
                 break;
             }
-            case 59: //复场
+            case 53: //复场
             {
-//                SetOutput(入口门, GPIO_PIN_SET);
-//                SetOutput(路由器柜门, GPIO_PIN_SET);
-//                SetOutput(杂志柜门, GPIO_PIN_SET);
-//                SetOutput(主光源, GPIO_PIN_RESET);
-//                SetOutput(哈利波特门, GPIO_PIN_SET);
-//                SetOutput(手办刷卡灯, GPIO_PIN_SET);
-//                SetOutput(初音cd柜门, GPIO_PIN_SET);
-//                SetOutput(日记柜门, GPIO_PIN_SET);
-//                SetOutput(小说柜门, GPIO_PIN_SET);
-//                SetOutput(海贼柜门, GPIO_PIN_SET);
-//                SetOutput(游戏卡带柜, GPIO_PIN_SET);
-//                SetOutput(卧室门锁, GPIO_PIN_SET);
-//                SetOutput(电视电源, GPIO_PIN_SET);
+                SetOutput(入口门, GPIO_PIN_SET);
+                SetOutput(路由器柜门, GPIO_PIN_SET);
+                SetOutput(杂志柜门, GPIO_PIN_SET);
+                SetOutput(主光源, GPIO_PIN_RESET);
+                SetOutput(哈利波特门, GPIO_PIN_SET);
+                SetOutput(手办刷卡灯, GPIO_PIN_SET);
+                SetOutput(三摆件门, GPIO_PIN_SET);
+                SetOutput(初音cd柜门, GPIO_PIN_SET);
+                SetOutput(漫画柜门, GPIO_PIN_SET);
+                SetOutput(日记柜门, GPIO_PIN_SET);
+                SetOutput(小说柜门, GPIO_PIN_SET);
+                SetOutput(海贼柜门, GPIO_PIN_SET);
+                SetOutput(游戏卡带柜, GPIO_PIN_SET);
+                SetOutput(卧室门锁, GPIO_PIN_SET);
+                SetOutput(电视电源, GPIO_PIN_SET);
 
-                gameFlags[0] = 57;
+                gameFlags[0] = 51;
                 break;
             }
 
@@ -735,5 +739,14 @@ void StartGameTask(void const *argument) {
                 oldGameFlag = gameFlags[0];
             }
         }
+
+        static int Flag=51;
+        if(gameFlags[0]!=Flag)
+        {
+            uint8_t TxBuffer[5]={0xCC,0x05,0x00,gameFlags[0],0xFF};
+            HAL_UART_Transmit(&huart1,TxBuffer,5,portMAX_DELAY);
+            Flag=gameFlags[0];
+        }
+        xSemaphoreGive(xGameSemaphore[0]);
     }
 }

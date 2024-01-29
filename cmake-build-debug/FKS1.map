@@ -1353,7 +1353,7 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
                 0x08000000                g_pfnVectors
                 0x0800010c                . = ALIGN (0x4)
 
-.text           0x08000110     0x5390
+.text           0x08000110     0x54c0
                 0x08000110                . = ALIGN (0x4)
  *(.text)
  .text          0x08000110       0x40 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
@@ -1373,628 +1373,628 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
                 0x08000420       0x18 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
                 0x08000420                vApplicationGetIdleTaskMemory
  .text.MX_FREERTOS_Init
-                0x08000438      0x1b8 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+                0x08000438      0x1bc CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
                 0x08000438                MX_FREERTOS_Init
  .text.MX_GPIO_Init
-                0x080005f0       0xd4 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x080005f0                MX_GPIO_Init
+                0x080005f4       0xd4 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x080005f4                MX_GPIO_Init
  .text.BoardOutput
-                0x080006c4       0x68 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x080006c4                BoardOutput
+                0x080006c8       0x68 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x080006c8                BoardOutput
  .text.HC595Output
-                0x0800072c       0x68 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x0800072c                HC595Output
+                0x08000730       0x68 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x08000730                HC595Output
  .text.OutputSend
-                0x08000794       0x12 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x08000794                OutputSend
- *fill*         0x080007a6        0x2 
+                0x08000798       0x12 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x08000798                OutputSend
+ *fill*         0x080007aa        0x2 
  .text.SetOutput
-                0x080007a8       0x24 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x080007a8                SetOutput
+                0x080007ac       0x24 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x080007ac                SetOutput
  .text.HC165Input
-                0x080007cc       0xb0 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x080007cc                HC165Input
+                0x080007d0       0xb0 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x080007d0                HC165Input
  .text.ReadInput
-                0x0800087c        0xc CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x0800087c                ReadInput
+                0x08000880        0xc CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x08000880                ReadInput
  .text.IsEdgeDetected
-                0x08000888       0x1c CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x08000888                IsEdgeDetected
+                0x0800088c       0x1c CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x0800088c                IsEdgeDetected
  .text.InputRecv
-                0x080008a4       0xd0 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x080008a4                InputRecv
+                0x080008a8       0xd0 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x080008a8                InputRecv
  .text.StartGPIOTask
-                0x08000974      0x10c CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x08000974                StartGPIOTask
+                0x08000978      0x10c CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x08000978                StartGPIOTask
  .text.HAL_TIM_PeriodElapsedCallback
-                0x08000a80       0x12 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
-                0x08000a80                HAL_TIM_PeriodElapsedCallback
+                0x08000a84       0x12 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+                0x08000a84                HAL_TIM_PeriodElapsedCallback
  .text.Error_Handler
-                0x08000a92        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
-                0x08000a92                Error_Handler
+                0x08000a96        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+                0x08000a96                Error_Handler
  .text.SystemClock_Config
-                0x08000a96       0x64 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
-                0x08000a96                SystemClock_Config
- *fill*         0x08000afa        0x2 
- .text.main     0x08000afc       0x5c CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
-                0x08000afc                main
+                0x08000a9a       0x64 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+                0x08000a9a                SystemClock_Config
+ *fill*         0x08000afe        0x2 
+ .text.main     0x08000b00       0x5c CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+                0x08000b00                main
  .text.MusicSendData
-                0x08000b58       0x6a CMakeFiles/FKS1.elf.dir/Core/Src/music.c.obj
-                0x08000b58                MusicSendData
- *fill*         0x08000bc2        0x2 
+                0x08000b5c       0x6a CMakeFiles/FKS1.elf.dir/Core/Src/music.c.obj
+                0x08000b5c                MusicSendData
+ *fill*         0x08000bc6        0x2 
  .text.PlayMusicName
-                0x08000bc4       0xa8 CMakeFiles/FKS1.elf.dir/Core/Src/music.c.obj
-                0x08000bc4                PlayMusicName
+                0x08000bc8       0xa8 CMakeFiles/FKS1.elf.dir/Core/Src/music.c.obj
+                0x08000bc8                PlayMusicName
  .text.PauseMusic
-                0x08000c6c       0x38 CMakeFiles/FKS1.elf.dir/Core/Src/music.c.obj
-                0x08000c6c                PauseMusic
+                0x08000c70       0x38 CMakeFiles/FKS1.elf.dir/Core/Src/music.c.obj
+                0x08000c70                PauseMusic
  .text.StartMusicTask
-                0x08000ca4      0x12c CMakeFiles/FKS1.elf.dir/Core/Src/music.c.obj
-                0x08000ca4                StartMusicTask
+                0x08000ca8      0x12c CMakeFiles/FKS1.elf.dir/Core/Src/music.c.obj
+                0x08000ca8                StartMusicTask
  .text.HAL_MspInit
-                0x08000dd0       0x54 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj
-                0x08000dd0                HAL_MspInit
+                0x08000dd4       0x54 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj
+                0x08000dd4                HAL_MspInit
  .text.HAL_InitTick
-                0x08000e24       0xa0 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj
-                0x08000e24                HAL_InitTick
+                0x08000e28       0xa0 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj
+                0x08000e28                HAL_InitTick
  .text.NMI_Handler
-                0x08000ec4        0x2 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
-                0x08000ec4                NMI_Handler
- .text.HardFault_Handler
-                0x08000ec6        0x2 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
-                0x08000ec6                HardFault_Handler
- .text.MemManage_Handler
                 0x08000ec8        0x2 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
-                0x08000ec8                MemManage_Handler
- .text.BusFault_Handler
+                0x08000ec8                NMI_Handler
+ .text.HardFault_Handler
                 0x08000eca        0x2 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
-                0x08000eca                BusFault_Handler
- .text.UsageFault_Handler
+                0x08000eca                HardFault_Handler
+ .text.MemManage_Handler
                 0x08000ecc        0x2 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
-                0x08000ecc                UsageFault_Handler
- .text.DebugMon_Handler
+                0x08000ecc                MemManage_Handler
+ .text.BusFault_Handler
                 0x08000ece        0x2 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
-                0x08000ece                DebugMon_Handler
+                0x08000ece                BusFault_Handler
+ .text.UsageFault_Handler
+                0x08000ed0        0x2 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
+                0x08000ed0                UsageFault_Handler
+ .text.DebugMon_Handler
+                0x08000ed2        0x2 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
+                0x08000ed2                DebugMon_Handler
  .text.TIM2_IRQHandler
-                0x08000ed0       0x10 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
-                0x08000ed0                TIM2_IRQHandler
+                0x08000ed4       0x10 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
+                0x08000ed4                TIM2_IRQHandler
  .text.USART1_IRQHandler
-                0x08000ee0       0x10 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
-                0x08000ee0                USART1_IRQHandler
+                0x08000ee4       0x10 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
+                0x08000ee4                USART1_IRQHandler
  .text.USART2_IRQHandler
-                0x08000ef0       0x10 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
-                0x08000ef0                USART2_IRQHandler
+                0x08000ef4       0x10 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
+                0x08000ef4                USART2_IRQHandler
  .text.USART3_IRQHandler
-                0x08000f00       0x10 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
-                0x08000f00                USART3_IRQHandler
+                0x08000f04       0x10 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
+                0x08000f04                USART3_IRQHandler
  .text.SystemInit
-                0x08000f10        0x2 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
-                0x08000f10                SystemInit
- *fill*         0x08000f12        0x2 
+                0x08000f14        0x2 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
+                0x08000f14                SystemInit
+ *fill*         0x08000f16        0x2 
  .text.MX_USART1_UART_Init
-                0x08000f14       0x34 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
-                0x08000f14                MX_USART1_UART_Init
+                0x08000f18       0x34 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+                0x08000f18                MX_USART1_UART_Init
  .text.MX_USART2_UART_Init
-                0x08000f48       0x34 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
-                0x08000f48                MX_USART2_UART_Init
+                0x08000f4c       0x34 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+                0x08000f4c                MX_USART2_UART_Init
  .text.MX_USART3_UART_Init
-                0x08000f7c       0x34 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
-                0x08000f7c                MX_USART3_UART_Init
+                0x08000f80       0x34 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+                0x08000f80                MX_USART3_UART_Init
  .text.HAL_UART_MspInit
-                0x08000fb0      0x168 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
-                0x08000fb0                HAL_UART_MspInit
+                0x08000fb4      0x168 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+                0x08000fb4                HAL_UART_MspInit
  .text.HAL_UART_RxCpltCallback
-                0x08001118      0x208 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
-                0x08001118                HAL_UART_RxCpltCallback
+                0x0800111c      0x208 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+                0x0800111c                HAL_UART_RxCpltCallback
  .text.GameInit
-                0x08001320       0x20 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
-                0x08001320                GameInit
+                0x08001324       0x20 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+                0x08001324                GameInit
  .text.StartGameFlagTask
-                0x08001340       0x54 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
-                0x08001340                StartGameFlagTask
+                0x08001344       0x54 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+                0x08001344                StartGameFlagTask
  .text.GameDelay
-                0x08001394       0x12 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
-                0x08001394                GameDelay
- *fill*         0x080013a6        0x2 
+                0x08001398       0x12 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+                0x08001398                GameDelay
+ *fill*         0x080013aa        0x2 
  .text.StartGameTask
-                0x080013a8      0xe58 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
-                0x080013a8                StartGameTask
+                0x080013ac      0xf88 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+                0x080013ac                StartGameTask
  .text.Reset_Handler
-                0x08002200       0x48 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
-                0x08002200                Reset_Handler
+                0x08002334       0x48 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
+                0x08002334                Reset_Handler
  .text.Default_Handler
-                0x08002248        0x2 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
-                0x08002248                RTC_Alarm_IRQHandler
-                0x08002248                EXTI2_IRQHandler
-                0x08002248                TIM1_CC_IRQHandler
-                0x08002248                PVD_IRQHandler
-                0x08002248                EXTI3_IRQHandler
-                0x08002248                EXTI0_IRQHandler
-                0x08002248                I2C2_EV_IRQHandler
-                0x08002248                ADC1_2_IRQHandler
-                0x08002248                SPI1_IRQHandler
-                0x08002248                TAMPER_IRQHandler
-                0x08002248                DMA1_Channel4_IRQHandler
-                0x08002248                RTC_IRQHandler
-                0x08002248                DMA1_Channel7_IRQHandler
-                0x08002248                CAN1_RX1_IRQHandler
-                0x08002248                TIM4_IRQHandler
-                0x08002248                I2C1_EV_IRQHandler
-                0x08002248                DMA1_Channel6_IRQHandler
-                0x08002248                TIM3_IRQHandler
-                0x08002248                RCC_IRQHandler
-                0x08002248                TIM1_TRG_COM_IRQHandler
-                0x08002248                DMA1_Channel1_IRQHandler
-                0x08002248                Default_Handler
-                0x08002248                EXTI15_10_IRQHandler
-                0x08002248                EXTI9_5_IRQHandler
-                0x08002248                SPI2_IRQHandler
-                0x08002248                DMA1_Channel5_IRQHandler
-                0x08002248                EXTI4_IRQHandler
-                0x08002248                USB_LP_CAN1_RX0_IRQHandler
-                0x08002248                USB_HP_CAN1_TX_IRQHandler
-                0x08002248                DMA1_Channel3_IRQHandler
-                0x08002248                TIM1_UP_IRQHandler
-                0x08002248                WWDG_IRQHandler
-                0x08002248                TIM1_BRK_IRQHandler
-                0x08002248                EXTI1_IRQHandler
-                0x08002248                I2C2_ER_IRQHandler
-                0x08002248                DMA1_Channel2_IRQHandler
-                0x08002248                CAN1_SCE_IRQHandler
-                0x08002248                FLASH_IRQHandler
-                0x08002248                I2C1_ER_IRQHandler
-                0x08002248                USBWakeUp_IRQHandler
- *fill*         0x0800224a        0x2 
+                0x0800237c        0x2 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
+                0x0800237c                RTC_Alarm_IRQHandler
+                0x0800237c                EXTI2_IRQHandler
+                0x0800237c                TIM1_CC_IRQHandler
+                0x0800237c                PVD_IRQHandler
+                0x0800237c                EXTI3_IRQHandler
+                0x0800237c                EXTI0_IRQHandler
+                0x0800237c                I2C2_EV_IRQHandler
+                0x0800237c                ADC1_2_IRQHandler
+                0x0800237c                SPI1_IRQHandler
+                0x0800237c                TAMPER_IRQHandler
+                0x0800237c                DMA1_Channel4_IRQHandler
+                0x0800237c                RTC_IRQHandler
+                0x0800237c                DMA1_Channel7_IRQHandler
+                0x0800237c                CAN1_RX1_IRQHandler
+                0x0800237c                TIM4_IRQHandler
+                0x0800237c                I2C1_EV_IRQHandler
+                0x0800237c                DMA1_Channel6_IRQHandler
+                0x0800237c                TIM3_IRQHandler
+                0x0800237c                RCC_IRQHandler
+                0x0800237c                TIM1_TRG_COM_IRQHandler
+                0x0800237c                DMA1_Channel1_IRQHandler
+                0x0800237c                Default_Handler
+                0x0800237c                EXTI15_10_IRQHandler
+                0x0800237c                EXTI9_5_IRQHandler
+                0x0800237c                SPI2_IRQHandler
+                0x0800237c                DMA1_Channel5_IRQHandler
+                0x0800237c                EXTI4_IRQHandler
+                0x0800237c                USB_LP_CAN1_RX0_IRQHandler
+                0x0800237c                USB_HP_CAN1_TX_IRQHandler
+                0x0800237c                DMA1_Channel3_IRQHandler
+                0x0800237c                TIM1_UP_IRQHandler
+                0x0800237c                WWDG_IRQHandler
+                0x0800237c                TIM1_BRK_IRQHandler
+                0x0800237c                EXTI1_IRQHandler
+                0x0800237c                I2C2_ER_IRQHandler
+                0x0800237c                DMA1_Channel2_IRQHandler
+                0x0800237c                CAN1_SCE_IRQHandler
+                0x0800237c                FLASH_IRQHandler
+                0x0800237c                I2C1_ER_IRQHandler
+                0x0800237c                USBWakeUp_IRQHandler
+ *fill*         0x0800237e        0x2 
  .text.HAL_Init
-                0x0800224c       0x24 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
-                0x0800224c                HAL_Init
+                0x08002380       0x24 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+                0x08002380                HAL_Init
  .text.HAL_IncTick
-                0x08002270       0x18 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
-                0x08002270                HAL_IncTick
+                0x080023a4       0x18 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+                0x080023a4                HAL_IncTick
  .text.HAL_GetTick
-                0x08002288        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
-                0x08002288                HAL_GetTick
+                0x080023bc        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+                0x080023bc                HAL_GetTick
  .text.HAL_NVIC_SetPriorityGrouping
-                0x08002294       0x24 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
-                0x08002294                HAL_NVIC_SetPriorityGrouping
+                0x080023c8       0x24 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+                0x080023c8                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x080022b8       0x70 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
-                0x080022b8                HAL_NVIC_SetPriority
+                0x080023ec       0x70 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+                0x080023ec                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x08002328       0x1c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
-                0x08002328                HAL_NVIC_EnableIRQ
+                0x0800245c       0x1c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+                0x0800245c                HAL_NVIC_EnableIRQ
  .text.HAL_DMA_Abort
-                0x08002344       0x46 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
-                0x08002344                HAL_DMA_Abort
- *fill*         0x0800238a        0x2 
+                0x08002478       0x46 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
+                0x08002478                HAL_DMA_Abort
+ *fill*         0x080024be        0x2 
  .text.HAL_DMA_Abort_IT
-                0x0800238c       0x98 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
-                0x0800238c                HAL_DMA_Abort_IT
+                0x080024c0       0x98 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
+                0x080024c0                HAL_DMA_Abort_IT
  .text.HAL_GPIO_Init
-                0x08002424      0x224 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
-                0x08002424                HAL_GPIO_Init
+                0x08002558      0x224 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+                0x08002558                HAL_GPIO_Init
  .text.HAL_GPIO_ReadPin
-                0x08002648        0xe CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
-                0x08002648                HAL_GPIO_ReadPin
+                0x0800277c        0xe CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+                0x0800277c                HAL_GPIO_ReadPin
  .text.HAL_GPIO_WritePin
-                0x08002656        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
-                0x08002656                HAL_GPIO_WritePin
- *fill*         0x08002662        0x2 
+                0x0800278a        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+                0x0800278a                HAL_GPIO_WritePin
+ *fill*         0x08002796        0x2 
  .text.RCC_Delay
-                0x08002664       0x2c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002798       0x2c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
  .text.HAL_RCC_OscConfig
-                0x08002690      0x410 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002690                HAL_RCC_OscConfig
+                0x080027c4      0x410 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x080027c4                HAL_RCC_OscConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x08002aa0       0x54 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002aa0                HAL_RCC_GetSysClockFreq
+                0x08002bd4       0x54 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002bd4                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_ClockConfig
-                0x08002af4      0x16c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002af4                HAL_RCC_ClockConfig
+                0x08002c28      0x16c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002c28                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetHCLKFreq
-                0x08002c60        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002c60                HAL_RCC_GetHCLKFreq
+                0x08002d94        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002d94                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x08002c6c       0x20 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002c6c                HAL_RCC_GetPCLK1Freq
+                0x08002da0       0x20 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002da0                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_GetPCLK2Freq
-                0x08002c8c       0x20 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002c8c                HAL_RCC_GetPCLK2Freq
+                0x08002dc0       0x20 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002dc0                HAL_RCC_GetPCLK2Freq
  .text.HAL_RCC_GetClockConfig
-                0x08002cac       0x3c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002cac                HAL_RCC_GetClockConfig
+                0x08002de0       0x3c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002de0                HAL_RCC_GetClockConfig
  .text.HAL_TIM_Base_MspInit
-                0x08002ce8        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002ce8                HAL_TIM_Base_MspInit
- *fill*         0x08002cea        0x2 
+                0x08002e1c        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002e1c                HAL_TIM_Base_MspInit
+ *fill*         0x08002e1e        0x2 
  .text.HAL_TIM_Base_Start_IT
-                0x08002cec       0x68 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002cec                HAL_TIM_Base_Start_IT
+                0x08002e20       0x68 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002e20                HAL_TIM_Base_Start_IT
  .text.HAL_TIM_OC_DelayElapsedCallback
-                0x08002d54        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002d54                HAL_TIM_OC_DelayElapsedCallback
+                0x08002e88        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002e88                HAL_TIM_OC_DelayElapsedCallback
  .text.HAL_TIM_IC_CaptureCallback
-                0x08002d56        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002d56                HAL_TIM_IC_CaptureCallback
+                0x08002e8a        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002e8a                HAL_TIM_IC_CaptureCallback
  .text.HAL_TIM_PWM_PulseFinishedCallback
-                0x08002d58        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002d58                HAL_TIM_PWM_PulseFinishedCallback
+                0x08002e8c        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002e8c                HAL_TIM_PWM_PulseFinishedCallback
  .text.HAL_TIM_TriggerCallback
-                0x08002d5a        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002d5a                HAL_TIM_TriggerCallback
+                0x08002e8e        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002e8e                HAL_TIM_TriggerCallback
  .text.HAL_TIM_IRQHandler
-                0x08002d5c      0x17a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002d5c                HAL_TIM_IRQHandler
- *fill*         0x08002ed6        0x2 
+                0x08002e90      0x17a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002e90                HAL_TIM_IRQHandler
+ *fill*         0x0800300a        0x2 
  .text.TIM_Base_SetConfig
-                0x08002ed8       0x74 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002ed8                TIM_Base_SetConfig
+                0x0800300c       0x74 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x0800300c                TIM_Base_SetConfig
  .text.HAL_TIM_Base_Init
-                0x08002f4c       0x58 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002f4c                HAL_TIM_Base_Init
+                0x08003080       0x58 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08003080                HAL_TIM_Base_Init
  .text.HAL_TIMEx_CommutCallback
-                0x08002fa4        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
-                0x08002fa4                HAL_TIMEx_CommutCallback
+                0x080030d8        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
+                0x080030d8                HAL_TIMEx_CommutCallback
  .text.HAL_TIMEx_BreakCallback
-                0x08002fa6        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
-                0x08002fa6                HAL_TIMEx_BreakCallback
+                0x080030da        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
+                0x080030da                HAL_TIMEx_BreakCallback
  .text.UART_EndRxTransfer
-                0x08002fa8       0x5c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x080030dc       0x5c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.UART_Transmit_IT
-                0x08003004       0x60 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003138       0x60 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.UART_SetConfig
-                0x08003064       0x94 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003198       0x94 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.UART_WaitOnFlagUntilTimeout
-                0x080030f8       0x88 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x0800322c       0x88 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.HAL_UART_Init
-                0x08003180       0x60 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x08003180                HAL_UART_Init
+                0x080032b4       0x60 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x080032b4                HAL_UART_Init
  .text.HAL_UART_Transmit
-                0x080031e0       0xbe CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x080031e0                HAL_UART_Transmit
+                0x08003314       0xbe CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003314                HAL_UART_Transmit
  .text.HAL_UART_TxCpltCallback
-                0x0800329e        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x0800329e                HAL_UART_TxCpltCallback
+                0x080033d2        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x080033d2                HAL_UART_TxCpltCallback
  .text.UART_EndTransmit_IT
-                0x080032a0       0x1a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x080033d4       0x1a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.HAL_UART_ErrorCallback
-                0x080032ba        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x080032ba                HAL_UART_ErrorCallback
+                0x080033ee        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x080033ee                HAL_UART_ErrorCallback
  .text.UART_DMAAbortOnError
-                0x080032bc       0x10 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x080033f0       0x10 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.HAL_UARTEx_RxEventCallback
-                0x080032cc        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x080032cc                HAL_UARTEx_RxEventCallback
+                0x08003400        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003400                HAL_UARTEx_RxEventCallback
  .text.UART_Receive_IT
-                0x080032ce       0xe6 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003402       0xe6 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.HAL_UART_IRQHandler
-                0x080033b4      0x288 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x080033b4                HAL_UART_IRQHandler
+                0x080034e8      0x288 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x080034e8                HAL_UART_IRQHandler
  .text.UART_Start_Receive_IT
-                0x0800363c       0x36 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x0800363c                UART_Start_Receive_IT
+                0x08003770       0x36 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003770                UART_Start_Receive_IT
  .text.HAL_UART_Receive_IT
-                0x08003672       0x26 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x08003672                HAL_UART_Receive_IT
+                0x080037a6       0x26 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x080037a6                HAL_UART_Receive_IT
  .text.makeFreeRtosPriority
-                0x08003698        0xc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+                0x080037cc        0xc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
  .text.osKernelStart
-                0x080036a4        0xa CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
-                0x080036a4                osKernelStart
+                0x080037d8        0xa CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+                0x080037d8                osKernelStart
  .text.osThreadCreate
-                0x080036ae       0x6a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
-                0x080036ae                osThreadCreate
- .text.osDelay  0x08003718        0xe CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
-                0x08003718                osDelay
+                0x080037e2       0x6a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+                0x080037e2                osThreadCreate
+ .text.osDelay  0x0800384c        0xe CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+                0x0800384c                osDelay
  .text.prvTestWaitCondition
-                0x08003726       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+                0x0800385a       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
  .text.xEventGroupCreate
-                0x08003742       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
-                0x08003742                xEventGroupCreate
+                0x08003876       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+                0x08003876                xEventGroupCreate
  .text.xEventGroupWaitBits
-                0x0800375e      0x108 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
-                0x0800375e                xEventGroupWaitBits
+                0x08003892      0x108 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+                0x08003892                xEventGroupWaitBits
  .text.xEventGroupClearBits
-                0x08003866       0x46 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
-                0x08003866                xEventGroupClearBits
+                0x0800399a       0x46 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+                0x0800399a                xEventGroupClearBits
  .text.xEventGroupSetBits
-                0x080038ac       0x8c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
-                0x080038ac                xEventGroupSetBits
+                0x080039e0       0x8c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+                0x080039e0                xEventGroupSetBits
  .text.vListInitialise
-                0x08003938       0x16 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x08003938                vListInitialise
+                0x08003a6c       0x16 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x08003a6c                vListInitialise
  .text.vListInitialiseItem
-                0x0800394e        0x6 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x0800394e                vListInitialiseItem
+                0x08003a82        0x6 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x08003a82                vListInitialiseItem
  .text.vListInsertEnd
-                0x08003954       0x16 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x08003954                vListInsertEnd
+                0x08003a88       0x16 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x08003a88                vListInsertEnd
  .text.vListInsert
-                0x0800396a       0x32 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x0800396a                vListInsert
+                0x08003a9e       0x32 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x08003a9e                vListInsert
  .text.uxListRemove
-                0x0800399c       0x26 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x0800399c                uxListRemove
- *fill*         0x080039c2        0x2 
+                0x08003ad0       0x26 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x08003ad0                uxListRemove
+ *fill*         0x08003af6        0x2 
  .text.prvTaskExitError
-                0x080039c4       0x40 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003af8       0x40 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
  .text.prvPortStartFirstTask
-                0x08003a04       0x20 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003b38       0x20 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
  .text.pxPortInitialiseStack
-                0x08003a24       0x24 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
-                0x08003a24                pxPortInitialiseStack
- *fill*         0x08003a48        0x8 
+                0x08003b58       0x24 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003b58                pxPortInitialiseStack
+ *fill*         0x08003b7c        0x4 
  .text.SVC_Handler
-                0x08003a50       0x24 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
-                0x08003a50                SVC_Handler
+                0x08003b80       0x24 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003b80                SVC_Handler
  .text.vPortEnterCritical
-                0x08003a74       0x44 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
-                0x08003a74                vPortEnterCritical
+                0x08003ba4       0x44 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003ba4                vPortEnterCritical
  .text.vPortExitCritical
-                0x08003ab8       0x2c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
-                0x08003ab8                vPortExitCritical
- *fill*         0x08003ae4        0xc 
+                0x08003be8       0x2c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003be8                vPortExitCritical
+ *fill*         0x08003c14        0xc 
  .text.PendSV_Handler
-                0x08003af0       0x44 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
-                0x08003af0                PendSV_Handler
+                0x08003c20       0x44 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003c20                PendSV_Handler
  .text.SysTick_Handler
-                0x08003b34       0x2c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
-                0x08003b34                SysTick_Handler
+                0x08003c64       0x2c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003c64                SysTick_Handler
  .text.vPortSetupTimerInterrupt
-                0x08003b60       0x28 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
-                0x08003b60                vPortSetupTimerInterrupt
+                0x08003c90       0x28 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003c90                vPortSetupTimerInterrupt
  .text.xPortStartScheduler
-                0x08003b88       0xc0 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
-                0x08003b88                xPortStartScheduler
+                0x08003cb8       0xc0 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003cb8                xPortStartScheduler
  .text.vPortValidateInterruptPriority
-                0x08003c48       0x5c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
-                0x08003c48                vPortValidateInterruptPriority
+                0x08003d78       0x5c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x08003d78                vPortValidateInterruptPriority
  .text.prvHeapInit
-                0x08003ca4       0x64 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x08003dd4       0x64 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .text.prvInsertBlockIntoFreeList
-                0x08003d08       0x60 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x08003e38       0x60 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .text.pvPortMalloc
-                0x08003d68       0xf0 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
-                0x08003d68                pvPortMalloc
+                0x08003e98       0xf0 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x08003e98                pvPortMalloc
  .text.vPortFree
-                0x08003e58       0x70 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
-                0x08003e58                vPortFree
+                0x08003f88       0x70 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x08003f88                vPortFree
  .text.prvGetDisinheritPriorityAfterTimeout
-                0x08003ec8       0x10 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08003ff8       0x10 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.prvIsQueueFull
-                0x08003ed8       0x1e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004008       0x1e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.prvIsQueueEmpty
-                0x08003ef6       0x1a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004026       0x1a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.prvCopyDataToQueue
-                0x08003f10       0x76 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004040       0x76 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.prvCopyDataFromQueue
-                0x08003f86       0x24 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080040b6       0x24 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.prvUnlockQueue
-                0x08003faa       0x6e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080040da       0x6e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.xQueueGenericReset
-                0x08004018       0x84 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x08004018                xQueueGenericReset
+                0x08004148       0x84 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004148                xQueueGenericReset
  .text.prvInitialiseNewQueue
-                0x0800409c       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080041cc       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.xQueueGenericCreate
-                0x080040b8       0x4e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x080040b8                xQueueGenericCreate
+                0x080041e8       0x4e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080041e8                xQueueGenericCreate
  .text.xQueueGenericSend
-                0x08004106      0x188 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x08004106                xQueueGenericSend
+                0x08004236      0x188 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004236                xQueueGenericSend
  .text.prvInitialiseMutex
-                0x0800428e       0x18 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080043be       0x18 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .text.xQueueCreateMutex
-                0x080042a6       0x16 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x080042a6                xQueueCreateMutex
+                0x080043d6       0x16 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080043d6                xQueueCreateMutex
  .text.xQueueGenericSendFromISR
-                0x080042bc       0xcc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x080042bc                xQueueGenericSendFromISR
+                0x080043ec       0xcc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080043ec                xQueueGenericSendFromISR
  .text.xQueueReceive
-                0x08004388      0x15e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x08004388                xQueueReceive
+                0x080044b8      0x15e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x080044b8                xQueueReceive
  .text.xQueueSemaphoreTake
-                0x080044e6      0x1a6 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
-                0x080044e6                xQueueSemaphoreTake
+                0x08004616      0x1a6 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+                0x08004616                xQueueSemaphoreTake
  .text.prvResetNextTaskUnblockTime
-                0x0800468c       0x2c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080047bc       0x2c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvInitialiseNewTask
-                0x080046b8       0x94 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080047e8       0x94 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvInitialiseTaskLists
-                0x0800474c       0x68 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x0800487c       0x68 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvAddNewTaskToReadyList
-                0x080047b4       0xa8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080048e4       0xa8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvDeleteTCB
-                0x0800485c       0x38 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x0800498c       0x38 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvCheckTasksWaitingTermination
-                0x08004894       0x4c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080049c4       0x4c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvIdleTask
-                0x080048e0       0x28 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004a10       0x28 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.prvAddCurrentTaskToDelayedList
-                0x08004908       0x98 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004a38       0x98 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .text.xTaskCreateStatic
-                0x080049a0       0x74 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x080049a0                xTaskCreateStatic
+                0x08004ad0       0x74 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004ad0                xTaskCreateStatic
  .text.xTaskCreate
-                0x08004a14       0x68 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004a14                xTaskCreate
+                0x08004b44       0x68 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004b44                xTaskCreate
  .text.vTaskStartScheduler
-                0x08004a7c       0x74 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004a7c                vTaskStartScheduler
+                0x08004bac       0x74 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004bac                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x08004af0       0x10 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004af0                vTaskSuspendAll
+                0x08004c20       0x10 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004c20                vTaskSuspendAll
  .text.xTaskIncrementTick
-                0x08004b00      0x118 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004b00                xTaskIncrementTick
+                0x08004c30      0x118 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004c30                xTaskIncrementTick
  .text.xTaskResumeAll
-                0x08004c18       0xf8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004c18                xTaskResumeAll
+                0x08004d48       0xf8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004d48                xTaskResumeAll
  .text.vTaskDelay
-                0x08004d10       0x4c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004d10                vTaskDelay
+                0x08004e40       0x4c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004e40                vTaskDelay
  .text.vTaskSwitchContext
-                0x08004d5c       0x98 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004d5c                vTaskSwitchContext
+                0x08004e8c       0x98 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004e8c                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x08004df4       0x30 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004df4                vTaskPlaceOnEventList
+                0x08004f24       0x30 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004f24                vTaskPlaceOnEventList
  .text.vTaskPlaceOnUnorderedEventList
-                0x08004e24       0x58 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004e24                vTaskPlaceOnUnorderedEventList
+                0x08004f54       0x58 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004f54                vTaskPlaceOnUnorderedEventList
  .text.xTaskRemoveFromEventList
-                0x08004e7c       0x8c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004e7c                xTaskRemoveFromEventList
+                0x08004fac       0x8c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08004fac                xTaskRemoveFromEventList
  .text.vTaskRemoveFromUnorderedEventList
-                0x08004f08       0x88 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004f08                vTaskRemoveFromUnorderedEventList
+                0x08005038       0x88 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005038                vTaskRemoveFromUnorderedEventList
  .text.vTaskInternalSetTimeOutState
-                0x08004f90       0x18 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004f90                vTaskInternalSetTimeOutState
+                0x080050c0       0x18 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080050c0                vTaskInternalSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x08004fa8       0x84 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08004fa8                xTaskCheckForTimeOut
+                0x080050d8       0x84 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080050d8                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x0800502c        0xc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x0800502c                vTaskMissedYield
+                0x0800515c        0xc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x0800515c                vTaskMissedYield
  .text.xTaskGetSchedulerState
-                0x08005038       0x20 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005038                xTaskGetSchedulerState
+                0x08005168       0x20 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005168                xTaskGetSchedulerState
  .text.xTaskPriorityInherit
-                0x08005058       0xbc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005058                xTaskPriorityInherit
+                0x08005188       0xbc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005188                xTaskPriorityInherit
  .text.xTaskPriorityDisinherit
-                0x08005114       0xb4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005114                xTaskPriorityDisinherit
+                0x08005244       0xb4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x08005244                xTaskPriorityDisinherit
  .text.vTaskPriorityDisinheritAfterTimeout
-                0x080051c8       0xc0 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x080051c8                vTaskPriorityDisinheritAfterTimeout
+                0x080052f8       0xc0 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080052f8                vTaskPriorityDisinheritAfterTimeout
  .text.uxTaskResetEventItemValue
-                0x08005288       0x18 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x08005288                uxTaskResetEventItemValue
+                0x080053b8       0x18 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080053b8                uxTaskResetEventItemValue
  .text.pvTaskIncrementMutexHeldCount
-                0x080052a0       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x080052a0                pvTaskIncrementMutexHeldCount
+                0x080053d0       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x080053d0                pvTaskIncrementMutexHeldCount
  .text.__libc_init_array
-                0x080052bc       0x48 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-init.o)
-                0x080052bc                __libc_init_array
- .text.memset   0x08005304       0xa4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-memset.o)
-                0x08005304                memset
+                0x080053ec       0x48 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-init.o)
+                0x080053ec                __libc_init_array
+ .text.memset   0x08005434       0xa4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-memset.o)
+                0x08005434                memset
  .text.startup.register_fini
-                0x080053a8       0x14 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-__call_atexit.o)
- .text.atexit   0x080053bc        0xc d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-atexit.o)
-                0x080053bc                atexit
+                0x080054d8       0x14 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-__call_atexit.o)
+ .text.atexit   0x080054ec        0xc d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-atexit.o)
+                0x080054ec                atexit
  .text.__libc_fini_array
-                0x080053c8       0x2c d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-fini.o)
-                0x080053c8                __libc_fini_array
+                0x080054f8       0x2c d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-fini.o)
+                0x080054f8                __libc_fini_array
  .text.__retarget_lock_acquire_recursive
-                0x080053f4        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-lock.o)
-                0x080053f4                __retarget_lock_acquire_recursive
+                0x08005524        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-lock.o)
+                0x08005524                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x080053f8        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-lock.o)
-                0x080053f8                __retarget_lock_release_recursive
+                0x08005528        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-lock.o)
+                0x08005528                __retarget_lock_release_recursive
  .text.__register_exitproc
-                0x080053fc       0x8c d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-__atexit.o)
-                0x080053fc                __register_exitproc
+                0x0800552c       0x8c d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-__atexit.o)
+                0x0800552c                __register_exitproc
  *(.glue_7)
- .glue_7        0x08005488        0x0 linker stubs
+ .glue_7        0x080055b8        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08005488        0x0 linker stubs
+ .glue_7t       0x080055b8        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08005488        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .eh_frame      0x080055b8        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
  *(.init)
- .init          0x08005488        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
-                0x08005488                _init
- .init          0x0800548c        0x8 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+ .init          0x080055b8        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+                0x080055b8                _init
+ .init          0x080055bc        0x8 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
  *(.fini)
- .fini          0x08005494        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
-                0x08005494                _fini
- .fini          0x08005498        0x8 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
-                0x080054a0                . = ALIGN (0x4)
-                0x080054a0                _etext = .
+ .fini          0x080055c4        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+                0x080055c4                _fini
+ .fini          0x080055c8        0x8 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+                0x080055d0                . = ALIGN (0x4)
+                0x080055d0                _etext = .
 
-.vfp11_veneer   0x080054a0        0x0
- .vfp11_veneer  0x080054a0        0x0 linker stubs
+.vfp11_veneer   0x080055d0        0x0
+ .vfp11_veneer  0x080055d0        0x0 linker stubs
 
-.v4_bx          0x080054a0        0x0
- .v4_bx         0x080054a0        0x0 linker stubs
+.v4_bx          0x080055d0        0x0
+ .v4_bx         0x080055d0        0x0 linker stubs
 
-.iplt           0x080054a0        0x0
- .iplt          0x080054a0        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+.iplt           0x080055d0        0x0
+ .iplt          0x080055d0        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.rodata         0x080054a0      0x2a0
-                0x080054a0                . = ALIGN (0x4)
+.rodata         0x080055d0      0x2a0
+                0x080055d0                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x080054a0       0xc4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+ .rodata        0x080055d0       0xc4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
  *(.rodata*)
  .rodata.str1.4
-                0x08005564       0x59 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
- *fill*         0x080055bd        0x3 
+                0x08005694       0x59 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+ *fill*         0x080056ed        0x3 
  .rodata.AHBPrescTable
-                0x080055c0       0x10 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
-                0x080055c0                AHBPrescTable
+                0x080056f0       0x10 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
+                0x080056f0                AHBPrescTable
  .rodata.APBPrescTable
-                0x080055d0        0x8 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
-                0x080055d0                APBPrescTable
+                0x08005700        0x8 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
+                0x08005700                APBPrescTable
  .rodata.StartGameTask.str1.4
-                0x080055d8      0x148 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+                0x08005708      0x148 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
  .rodata.aPLLMULFactorTable.1
-                0x08005720       0x10 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08005850       0x10 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
  .rodata.aPredivFactorTable.0
-                0x08005730        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
- *fill*         0x08005732        0x2 
+                0x08005860        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+ *fill*         0x08005862        0x2 
  .rodata.vTaskStartScheduler.str1.4
-                0x08005734        0x5 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- *fill*         0x08005739        0x3 
+                0x08005864        0x5 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ *fill*         0x08005869        0x3 
  .rodata._global_impure_ptr
-                0x0800573c        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-impure.o)
-                0x0800573c                _global_impure_ptr
-                0x08005740                . = ALIGN (0x4)
+                0x0800586c        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-impure.o)
+                0x0800586c                _global_impure_ptr
+                0x08005870                . = ALIGN (0x4)
 
-.rel.dyn        0x08005740        0x0
- .rel.iplt      0x08005740        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+.rel.dyn        0x08005870        0x0
+ .rel.iplt      0x08005870        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.ARM.extab      0x08005740        0x0
-                0x08005740                . = ALIGN (0x4)
+.ARM.extab      0x08005870        0x0
+                0x08005870                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08005740                . = ALIGN (0x4)
+                0x08005870                . = ALIGN (0x4)
 
-.ARM            0x08005740        0x0
-                0x08005740                . = ALIGN (0x4)
-                0x08005740                __exidx_start = .
+.ARM            0x08005870        0x0
+                0x08005870                . = ALIGN (0x4)
+                0x08005870                __exidx_start = .
  *(.ARM.exidx*)
-                0x08005740                __exidx_end = .
-                0x08005740                . = ALIGN (0x4)
+                0x08005870                __exidx_end = .
+                0x08005870                . = ALIGN (0x4)
 
-.preinit_array  0x08005740        0x0
-                0x08005740                . = ALIGN (0x4)
-                0x08005740                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08005870        0x0
+                0x08005870                . = ALIGN (0x4)
+                0x08005870                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08005740                PROVIDE (__preinit_array_end = .)
-                0x08005740                . = ALIGN (0x4)
+                0x08005870                PROVIDE (__preinit_array_end = .)
+                0x08005870                . = ALIGN (0x4)
 
-.init_array     0x08005740        0x8
-                0x08005740                . = ALIGN (0x4)
-                0x08005740                PROVIDE (__init_array_start = .)
+.init_array     0x08005870        0x8
+                0x08005870                . = ALIGN (0x4)
+                0x08005870                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x08005740        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-__call_atexit.o)
+                0x08005870        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x08005744        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
-                0x08005748                PROVIDE (__init_array_end = .)
-                0x08005748                . = ALIGN (0x4)
+ .init_array    0x08005874        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x08005878                PROVIDE (__init_array_end = .)
+                0x08005878                . = ALIGN (0x4)
 
-.fini_array     0x08005748        0x4
-                0x08005748                . = ALIGN (0x4)
-                0x08005748                PROVIDE (__fini_array_start = .)
+.fini_array     0x08005878        0x4
+                0x08005878                . = ALIGN (0x4)
+                0x08005878                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08005748        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
-                0x0800574c                PROVIDE (__fini_array_end = .)
-                0x0800574c                . = ALIGN (0x4)
-                0x0800574c                _sidata = LOADADDR (.data)
+ .fini_array    0x08005878        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x0800587c                PROVIDE (__fini_array_end = .)
+                0x0800587c                . = ALIGN (0x4)
+                0x0800587c                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x444 load address 0x0800574c
+.data           0x20000000      0x44c load address 0x0800587c
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -2002,226 +2002,228 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
  .data.SystemCoreClock
                 0x20000000        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
                 0x20000000                SystemCoreClock
+ .data.Flag.0   0x20000004        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
  .data.gameFlags
-                0x20000004        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
-                0x20000004                gameFlags
- .data.oldGameFlag.0
                 0x20000008        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+                0x20000008                gameFlags
+ .data.oldGameFlag.1
+                0x2000000c        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
  .data.uwTickFreq
-                0x2000000c        0x1 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
-                0x2000000c                uwTickFreq
- *fill*         0x2000000d        0x3 
+                0x20000010        0x1 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+                0x20000010                uwTickFreq
+ *fill*         0x20000011        0x3 
  .data.uwTickPrio
-                0x20000010        0x4 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
-                0x20000010                uwTickPrio
+                0x20000014        0x4 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+                0x20000014                uwTickPrio
  .data.uxCriticalNesting
-                0x20000014        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x20000018        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+ *fill*         0x2000001c        0x4 
  .data.impure_data
-                0x20000018      0x428 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-impure.o)
+                0x20000020      0x428 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-impure.o)
  .data.__atexit_recursive_mutex
-                0x20000440        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-__call_atexit.o)
-                0x20000440                __atexit_recursive_mutex
+                0x20000448        0x4 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-__call_atexit.o)
+                0x20000448                __atexit_recursive_mutex
  *(.RamFunc)
  *(.RamFunc*)
-                0x20000444                . = ALIGN (0x4)
-                0x20000444                _edata = .
+                0x2000044c                . = ALIGN (0x4)
+                0x2000044c                _edata = .
 
-.igot.plt       0x20000444        0x0 load address 0x08005b90
- .igot.plt      0x20000444        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
-                0x20000444                . = ALIGN (0x4)
+.igot.plt       0x2000044c        0x0 load address 0x08005cc8
+ .igot.plt      0x2000044c        0x0 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x2000044c                . = ALIGN (0x4)
 
-.bss            0x20000444     0x3268 load address 0x08005b90
-                0x20000444                _sbss = .
-                0x20000444                __bss_start__ = _sbss
+.bss            0x2000044c     0x3268 load address 0x08005cc8
+                0x2000044c                _sbss = .
+                0x2000044c                __bss_start__ = _sbss
  *(.bss)
- .bss           0x20000444       0x1c d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .bss           0x2000044c       0x1c d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
  *(.bss*)
  .bss.GPIOTaskHandle
-                0x20000460        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x20000460                GPIOTaskHandle
- .bss.GameFlagTaskHandle
-                0x20000464        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x20000464                GameFlagTaskHandle
- .bss.GameMessageQueueHandle
                 0x20000468        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x20000468                GameMessageQueueHandle
- .bss.GameTaskHandle
+                0x20000468                GPIOTaskHandle
+ .bss.GameFlagTaskHandle
                 0x2000046c        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x2000046c                GameTaskHandle
+                0x2000046c                GameFlagTaskHandle
+ .bss.GameMessageQueueHandle
+                0x20000470        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+                0x20000470                GameMessageQueueHandle
+ .bss.GameTaskHandle
+                0x20000474        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+                0x20000474                GameTaskHandle
  .bss.InputEventGroup
-                0x20000470        0xc CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x20000470                InputEventGroup
+                0x20000478        0xc CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+                0x20000478                InputEventGroup
  .bss.MusicEventGroup
-                0x2000047c        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x2000047c                MusicEventGroup
- .bss.MusicMessageQueueHandle
-                0x20000480        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x20000480                MusicMessageQueueHandle
- .bss.MusicUartMessageQueueHandle
                 0x20000484        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x20000484                MusicUartMessageQueueHandle
- .bss.OutputMessageQueueHandle
+                0x20000484                MusicEventGroup
+ .bss.MusicMessageQueueHandle
                 0x20000488        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x20000488                OutputMessageQueueHandle
- .bss.Uart1ReadHandleHandle
+                0x20000488                MusicMessageQueueHandle
+ .bss.MusicUartMessageQueueHandle
                 0x2000048c        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x2000048c                Uart1ReadHandleHandle
- .bss.Uart1RxMsgQueueHandle
+                0x2000048c                MusicUartMessageQueueHandle
+ .bss.OutputMessageQueueHandle
                 0x20000490        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x20000490                Uart1RxMsgQueueHandle
- .bss.defaultTaskHandle
+                0x20000490                OutputMessageQueueHandle
+ .bss.Uart1ReadHandleHandle
                 0x20000494        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x20000494                defaultTaskHandle
- .bss.musicTaskHandle
+                0x20000494                Uart1ReadHandleHandle
+ .bss.Uart1RxMsgQueueHandle
                 0x20000498        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x20000498                musicTaskHandle
- .bss.myASCTaskHandle
+                0x20000498                Uart1RxMsgQueueHandle
+ .bss.defaultTaskHandle
                 0x2000049c        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x2000049c                myASCTaskHandle
- .bss.xConnectSemaphore
+                0x2000049c                defaultTaskHandle
+ .bss.musicTaskHandle
                 0x200004a0        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
-                0x200004a0                xConnectSemaphore
+                0x200004a0                musicTaskHandle
+ .bss.myASCTaskHandle
+                0x200004a4        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+                0x200004a4                myASCTaskHandle
+ .bss.xConnectSemaphore
+                0x200004a8        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+                0x200004a8                xConnectSemaphore
  .bss.xIdleStack
-                0x200004a4      0x200 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+                0x200004ac      0x200 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
  .bss.xIdleTaskTCBBuffer
-                0x200006a4       0x54 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+                0x200006ac       0x54 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
  .bss.InputState
-                0x200006f8       0x30 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x200006f8                InputState
+                0x20000700       0x30 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x20000700                InputState
  .bss.IsSetup.0
-                0x20000728        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x20000730        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
  .bss.OutputState
-                0x2000072c       0x30 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x2000072c                OutputState
+                0x20000734       0x30 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x20000734                OutputState
  .bss.previousInputState
-                0x2000075c       0x30 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
-                0x2000075c                previousInputState
+                0x20000764       0x30 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+                0x20000764                previousInputState
  .bss.uart1RxBuffer
-                0x2000078c       0x20 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
-                0x2000078c                uart1RxBuffer
+                0x20000794       0x20 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+                0x20000794                uart1RxBuffer
  .bss.uart1RxIndex
-                0x200007ac        0x1 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
-                0x200007ac                uart1RxIndex
- *fill*         0x200007ad        0x3 
+                0x200007b4        0x1 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+                0x200007b4                uart1RxIndex
+ *fill*         0x200007b5        0x3 
  .bss.uart2RxBuffer
-                0x200007b0       0x20 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
-                0x200007b0                uart2RxBuffer
+                0x200007b8       0x20 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+                0x200007b8                uart2RxBuffer
  .bss.uart2RxIndex
-                0x200007d0        0x1 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
-                0x200007d0                uart2RxIndex
- *fill*         0x200007d1        0x3 
+                0x200007d8        0x1 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+                0x200007d8                uart2RxIndex
+ *fill*         0x200007d9        0x3 
  .bss.uart3RxBuffer
-                0x200007d4       0x20 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
-                0x200007d4                uart3RxBuffer
+                0x200007dc       0x20 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+                0x200007dc                uart3RxBuffer
  .bss.uart3RxIndex
-                0x200007f4        0x1 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
-                0x200007f4                uart3RxIndex
- *fill*         0x200007f5        0x3 
- .bss.htim2     0x200007f8       0x48 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj
-                0x200007f8                htim2
+                0x200007fc        0x1 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+                0x200007fc                uart3RxIndex
+ *fill*         0x200007fd        0x3 
+ .bss.htim2     0x20000800       0x48 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj
+                0x20000800                htim2
  .bss.dataSize.0
-                0x20000840        0x1 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+                0x20000848        0x1 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
  .bss.dataSize.2
-                0x20000841        0x1 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
- *fill*         0x20000842        0x2 
- .bss.huart1    0x20000844       0x48 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
-                0x20000844                huart1
- .bss.huart2    0x2000088c       0x48 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
-                0x2000088c                huart2
- .bss.huart3    0x200008d4       0x48 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
-                0x200008d4                huart3
+                0x20000849        0x1 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+ *fill*         0x2000084a        0x2 
+ .bss.huart1    0x2000084c       0x48 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+                0x2000084c                huart1
+ .bss.huart2    0x20000894       0x48 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+                0x20000894                huart2
+ .bss.huart3    0x200008dc       0x48 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+                0x200008dc                huart3
  .bss.packetStart.1
-                0x2000091c        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
- .bss.packetStart.3
-                0x20000920        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
- .bss.packetStart.4
                 0x20000924        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
- .bss.CDState.1
-                0x20000928       0x28 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
- .bss.switchState.2
-                0x20000950        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+ .bss.packetStart.3
+                0x20000928        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+ .bss.packetStart.4
+                0x2000092c        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+ .bss.CDState.2
+                0x20000930       0x28 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+ .bss.switchState.3
+                0x20000958        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
  .bss.xGameSemaphore
-                0x20000954        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
-                0x20000954                xGameSemaphore
- .bss.uwTick    0x20000958        0x4 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
-                0x20000958                uwTick
+                0x2000095c        0x4 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+                0x2000095c                xGameSemaphore
+ .bss.uwTick    0x20000960        0x4 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+                0x20000960                uwTick
  .bss.ucMaxSysCallPriority
-                0x2000095c        0x1 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
- *fill*         0x2000095d        0x3 
+                0x20000964        0x1 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+ *fill*         0x20000965        0x3 
  .bss.ulMaxPRIGROUPValue
-                0x20000960        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
- .bss.pxEnd     0x20000964        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .bss.ucHeap    0x20000968     0x2c00 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+                0x20000968        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+ .bss.pxEnd     0x2000096c        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .bss.ucHeap    0x20000970     0x2c00 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .bss.xBlockAllocatedBit
-                0x20003568        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .bss.xFreeBytesRemaining
-                0x2000356c        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .bss.xMinimumEverFreeBytesRemaining
                 0x20003570        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .bss.xStart    0x20003574        0x8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .bss.xFreeBytesRemaining
+                0x20003574        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .bss.xMinimumEverFreeBytesRemaining
+                0x20003578        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .bss.xStart    0x2000357c        0x8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
  .bss.pxCurrentTCB
-                0x2000357c        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
-                0x2000357c                pxCurrentTCB
- .bss.pxDelayedTaskList
-                0x20003580        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.pxOverflowDelayedTaskList
                 0x20003584        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20003584                pxCurrentTCB
+ .bss.pxDelayedTaskList
+                0x20003588        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.pxOverflowDelayedTaskList
+                0x2000358c        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.pxReadyTasksLists
-                0x20003588       0x8c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20003590       0x8c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.uxCurrentNumberOfTasks
-                0x20003614        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.uxDeletedTasksWaitingCleanUp
-                0x20003618        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.uxPendedTicks
                 0x2000361c        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.uxSchedulerSuspended
+ .bss.uxDeletedTasksWaitingCleanUp
                 0x20003620        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.uxTaskNumber
+ .bss.uxPendedTicks
                 0x20003624        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.uxTopReadyPriority
+ .bss.uxSchedulerSuspended
                 0x20003628        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.uxTaskNumber
+                0x2000362c        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.uxTopReadyPriority
+                0x20003630        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xDelayedTaskList1
-                0x2000362c       0x14 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20003634       0x14 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xDelayedTaskList2
-                0x20003640       0x14 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20003648       0x14 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xIdleTaskHandle
-                0x20003654        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.xNextTaskUnblockTime
-                0x20003658        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
- .bss.xNumOfOverflows
                 0x2000365c        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.xNextTaskUnblockTime
+                0x20003660        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .bss.xNumOfOverflows
+                0x20003664        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xPendingReadyList
-                0x20003660       0x14 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20003668       0x14 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xSchedulerRunning
-                0x20003674        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x2000367c        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xSuspendedTaskList
-                0x20003678       0x14 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20003680       0x14 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xTasksWaitingTermination
-                0x2000368c       0x14 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x20003694       0x14 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xTickCount
-                0x200036a0        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x200036a8        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.xYieldPending
-                0x200036a4        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+                0x200036ac        0x4 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
  .bss.__lock___atexit_recursive_mutex
-                0x200036a8        0x1 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-lock.o)
-                0x200036a8                __lock___atexit_recursive_mutex
+                0x200036b0        0x1 d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg.a(lib_a-lock.o)
+                0x200036b0                __lock___atexit_recursive_mutex
  *(COMMON)
-                0x200036ac                . = ALIGN (0x4)
- *fill*         0x200036a9        0x3 
-                0x200036ac                _ebss = .
-                0x200036ac                __bss_end__ = _ebss
+                0x200036b4                . = ALIGN (0x4)
+ *fill*         0x200036b1        0x3 
+                0x200036b4                _ebss = .
+                0x200036b4                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x200036ac      0x604 load address 0x08005b90
-                0x200036b0                . = ALIGN (0x8)
- *fill*         0x200036ac        0x4 
+                0x200036b4      0x604 load address 0x08005cc8
+                0x200036b8                . = ALIGN (0x8)
+ *fill*         0x200036b4        0x4 
                 [!provide]                PROVIDE (end = .)
-                0x200036b0                PROVIDE (_end = .)
-                0x200038b0                . = (. + _Min_Heap_Size)
- *fill*         0x200036b0      0x200 
-                0x20003cb0                . = (. + _Min_Stack_Size)
- *fill*         0x200038b0      0x400 
-                0x20003cb0                . = ALIGN (0x8)
+                0x200036b8                PROVIDE (_end = .)
+                0x200038b8                . = (. + _Min_Heap_Size)
+ *fill*         0x200036b8      0x200 
+                0x20003cb8                . = (. + _Min_Stack_Size)
+ *fill*         0x200038b8      0x400 
+                0x20003cb8                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -2313,33 +2315,33 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/..
 LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libm.a
 LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a
 
-.debug_info     0x00000000    0x1d2b2
- .debug_info    0x00000000     0x112a CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
- .debug_info    0x0000112a     0x118b CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
- .debug_info    0x000022b5      0xccb CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
- .debug_info    0x00002f80      0xcf4 CMakeFiles/FKS1.elf.dir/Core/Src/music.c.obj
- .debug_info    0x00003c74      0x387 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj
- .debug_info    0x00003ffb      0xa4e CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj
- .debug_info    0x00004a49      0x9d0 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
- .debug_info    0x00005419      0x248 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
- .debug_info    0x00005661      0xf74 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
- .debug_info    0x000065d5     0x1e2c CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
- .debug_info    0x00008401       0x22 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
- .debug_info    0x00008423      0x7a8 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
- .debug_info    0x00008bcb      0xd8a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
- .debug_info    0x00009955      0x84b CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
- .debug_info    0x0000a1a0      0x66f CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
- .debug_info    0x0000a80f      0xa3b CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
- .debug_info    0x0000b24a     0x3d52 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
- .debug_info    0x0000ef9c     0x1abb CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
- .debug_info    0x00010a57     0x4212 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
- .debug_info    0x00014c69     0x220a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
- .debug_info    0x00016e73      0xd8a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
- .debug_info    0x00017bfd      0x2da CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_info    0x00017ed7      0x52b CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
- .debug_info    0x00018402      0x471 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_info    0x00018873     0x2221 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_info    0x0001aa94     0x281e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+.debug_info     0x00000000    0x1d5f3
+ .debug_info    0x00000000     0x112c CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
+ .debug_info    0x0000112c     0x118b CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
+ .debug_info    0x000022b7      0xccb CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
+ .debug_info    0x00002f82      0xcf4 CMakeFiles/FKS1.elf.dir/Core/Src/music.c.obj
+ .debug_info    0x00003c76      0x387 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj
+ .debug_info    0x00003ffd      0xa4e CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj
+ .debug_info    0x00004a4b      0x9d0 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
+ .debug_info    0x0000541b      0x248 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
+ .debug_info    0x00005663      0xf74 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
+ .debug_info    0x000065d7     0x216b CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+ .debug_info    0x00008742       0x22 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
+ .debug_info    0x00008764      0x7a8 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+ .debug_info    0x00008f0c      0xd8a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+ .debug_info    0x00009c96      0x84b CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
+ .debug_info    0x0000a4e1      0x66f CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+ .debug_info    0x0000ab50      0xa3b CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+ .debug_info    0x0000b58b     0x3d52 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+ .debug_info    0x0000f2dd     0x1abb CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
+ .debug_info    0x00010d98     0x4212 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+ .debug_info    0x00014faa     0x220a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+ .debug_info    0x000171b4      0xd8a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+ .debug_info    0x00017f3e      0x2da CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_info    0x00018218      0x52b CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+ .debug_info    0x00018743      0x471 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_info    0x00018bb4     0x2221 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_info    0x0001add5     0x281e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
 
 .debug_abbrev   0x00000000     0x396a
  .debug_abbrev  0x00000000      0x29c CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
@@ -2449,7 +2451,7 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
  .debug_aranges
                 0x00001138      0x1a8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
 
-.debug_ranges   0x00000000     0x1460
+.debug_ranges   0x00000000     0x1478
  .debug_ranges  0x00000000       0x50 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
  .debug_ranges  0x00000050       0xa0 CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
  .debug_ranges  0x000000f0       0x28 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
@@ -2459,25 +2461,25 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
  .debug_ranges  0x00000178       0x58 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
  .debug_ranges  0x000001d0       0x18 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
  .debug_ranges  0x000001e8       0x80 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
- .debug_ranges  0x00000268       0x40 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
- .debug_ranges  0x000002a8       0x20 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
- .debug_ranges  0x000002c8       0xd0 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
- .debug_ranges  0x00000398       0xe0 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
- .debug_ranges  0x00000478       0x70 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
- .debug_ranges  0x000004e8       0x48 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
- .debug_ranges  0x00000530       0xa0 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
- .debug_ranges  0x000005d0      0x3c0 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
- .debug_ranges  0x00000990      0x158 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
- .debug_ranges  0x00000ae8      0x210 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
- .debug_ranges  0x00000cf8      0x1c8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
- .debug_ranges  0x00000ec0       0x98 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
- .debug_ranges  0x00000f58       0x30 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_ranges  0x00000f88       0x68 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
- .debug_ranges  0x00000ff0       0x40 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_ranges  0x00001030      0x1c8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_ranges  0x000011f8      0x268 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_ranges  0x00000268       0x58 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+ .debug_ranges  0x000002c0       0x20 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
+ .debug_ranges  0x000002e0       0xd0 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+ .debug_ranges  0x000003b0       0xe0 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+ .debug_ranges  0x00000490       0x70 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
+ .debug_ranges  0x00000500       0x48 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+ .debug_ranges  0x00000548       0xa0 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+ .debug_ranges  0x000005e8      0x3c0 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+ .debug_ranges  0x000009a8      0x158 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
+ .debug_ranges  0x00000b00      0x210 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+ .debug_ranges  0x00000d10      0x1c8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+ .debug_ranges  0x00000ed8       0x98 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+ .debug_ranges  0x00000f70       0x30 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_ranges  0x00000fa0       0x68 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+ .debug_ranges  0x00001008       0x40 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_ranges  0x00001048      0x1c8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_ranges  0x00001210      0x268 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
 
-.debug_line     0x00000000    0x177f2
+.debug_line     0x00000000    0x17838
  .debug_line    0x00000000      0x73f CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
  .debug_line    0x0000073f      0x7af CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
  .debug_line    0x00000eee      0x426 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
@@ -2487,23 +2489,23 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
  .debug_line    0x00001deb      0x30f CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
  .debug_line    0x000020fa      0x240 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
  .debug_line    0x0000233a      0x816 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
- .debug_line    0x00002b50      0xecc CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
- .debug_line    0x00003a1c       0x9c CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
- .debug_line    0x00003ab8      0x55a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
- .debug_line    0x00004012      0x64c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
- .debug_line    0x0000465e      0xa6d CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
- .debug_line    0x000050cb      0x5f4 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
- .debug_line    0x000056bf      0xc31 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
- .debug_line    0x000062f0     0x498c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
- .debug_line    0x0000ac7c     0x1c01 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
- .debug_line    0x0000c87d     0x43cf CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
- .debug_line    0x00010c4c     0x11d1 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
- .debug_line    0x00011e1d      0xa74 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
- .debug_line    0x00012891      0x387 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_line    0x00012c18      0x638 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
- .debug_line    0x00013250      0x675 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_line    0x000138c5     0x1bdc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_line    0x000154a1     0x2351 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_line    0x00002b50      0xf12 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+ .debug_line    0x00003a62       0x9c CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
+ .debug_line    0x00003afe      0x55a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+ .debug_line    0x00004058      0x64c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+ .debug_line    0x000046a4      0xa6d CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
+ .debug_line    0x00005111      0x5f4 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+ .debug_line    0x00005705      0xc31 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+ .debug_line    0x00006336     0x498c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+ .debug_line    0x0000acc2     0x1c01 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
+ .debug_line    0x0000c8c3     0x43cf CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+ .debug_line    0x00010c92     0x11d1 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+ .debug_line    0x00011e63      0xa74 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+ .debug_line    0x000128d7      0x387 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_line    0x00012c5e      0x638 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+ .debug_line    0x00013296      0x675 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_line    0x0001390b     0x1bdc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_line    0x000154e7     0x2351 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
 
 .debug_str      0x00000000     0x60c2
  .debug_str     0x00000000      0xb40 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
@@ -2525,7 +2527,7 @@ LOAD d:/app/stm32cubemx/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/th
  .debug_str     0x00001947       0xd1 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
                                 0xb92 (size before relaxing)
  .debug_str     0x00001a18       0xe7 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
-                                0x816 (size before relaxing)
+                                0x824 (size before relaxing)
  .debug_str     0x00001aff       0x4c CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
                                  0x77 (size before relaxing)
  .debug_str     0x00001b4b      0x2ce CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
