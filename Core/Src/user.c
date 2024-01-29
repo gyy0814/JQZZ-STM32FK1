@@ -13,7 +13,7 @@
 #include "gpio.h"
 
 #define GameTaskNum 1
-int gameFlags[GameTaskNum] = {19};
+int gameFlags[GameTaskNum] = {100};
 SemaphoreHandle_t xGameSemaphore[GameTaskNum];
 
 extern QueueHandle_t GameMessageQueueHandle;
@@ -23,19 +23,15 @@ extern QueueHandle_t OutputMessageQueueHandle;
 bool ASCTaskHandle[9];
 TaskHandle_t BlinkTaskHandle = NULL;
 
-void GameInit(void)
-{
-    for(int i=0;i<GameTaskNum;i++)
+void GameInit(void) {
+    for (int i = 0; i < GameTaskNum; i++)
         xGameSemaphore[i] = xSemaphoreCreateMutex();
 }
 
-void StartGameFlagTask(void const *argument)
-{
+void StartGameFlagTask(void const *argument) {
     GameMessage newMessage;
-    for(;;)
-    {
-        if(xQueueReceive(GameMessageQueueHandle, &newMessage, portMAX_DELAY) == pdTRUE)
-        {
+    for (;;) {
+        if (xQueueReceive(GameMessageQueueHandle, &newMessage, portMAX_DELAY) == pdTRUE) {
             xSemaphoreTake(xGameSemaphore[newMessage.num], portMAX_DELAY);
             gameFlags[newMessage.num] = newMessage.Data;
             xSemaphoreGive(xGameSemaphore[newMessage.num]);
@@ -45,143 +41,239 @@ void StartGameFlagTask(void const *argument)
 
 
 #define GameTimeReset RunTime = 0
-bool GameDelay(int *pvRunTime,int waitTime)
-{
-    if(waitTime<*pvRunTime)
-    {
-        *pvRunTime=0;
+
+bool GameDelay(int *pvRunTime, int waitTime) {
+    if (waitTime < *pvRunTime) {
+        *pvRunTime = 0;
         return true;
     }
     return false;
 }
 
-void StartGameTask(void const *argument)
-{
+void StartGameTask(void const *argument) {
     int RunTime = 0;
-    for(;;)
-    {
+    for (;;) {
         xSemaphoreTake(xGameSemaphore[0], portMAX_DELAY);
         switch (gameFlags[0]) {
-            case 0:// 打开门锁
+            case 0://等待游戏开始
             {
-                SetOutput(门锁,GPIO_PIN_RESET);
-                gameFlags[0]++;
-                break;
-            }
-            case 1: // 等待关门
-            {
-                if(xEventGroupWaitBits(InputEventGroup[0], TO_BIT(关门检测),pdTRUE,pdTRUE,0)==pdPASS)
-                {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[游戏开始 / 24], TO_BIT(游戏开始), pdTRUE, pdTRUE,
+                                                       0);
+                if (bits & TO_BIT(游戏开始)) {
                     gameFlags[0]++;
                 }
                 break;
             }
-            case 2: // 播放语音1
+            case 1: //游戏开始
             {
-                SetOutput(门锁,GPIO_PIN_RESET);
-                char *fileName="/BGM/001.mp3";
-                PlayMusicName(&MUSIC_1,fileName, strlen(fileName),单曲停止);
-                GameTimeReset;
+                char *fileName = "/01.mp3";
+                PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                SetOutput(主光源, GPIO_PIN_SET);
                 gameFlags[0]++;
                 break;
             }
-            case 3:// 等待播放完毕
+            case 2: // 等待第一次门把手
             {
-                if (GameDelay(&RunTime,98000))
-                    gameFlags[0]++;
-                break;
-            }
-            case 4:// 打开语音识别
-            {
-                SetOutput(语音识别电源,GPIO_PIN_SET);
-                gameFlags[0]++;
-                break;
-            }
-            case 5:// 等待语音识别1
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(语音识别1),pdTRUE,pdTRUE,0);
-                if(bits&TO_BIT(语音识别1))
-                {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[门把手 / 24], TO_BIT(门把手), pdTRUE, pdTRUE, 0);
+                if (bits & TO_BIT(门把手)) {
                     gameFlags[0]++;
                 }
                 break;
             }
-            case 6:// 关闭语音识别 播放语音2
-            {
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
-                char *fileName="/BGM/002.mp3";
-                PlayMusicName(&MUSIC_1,fileName, strlen(fileName),单曲停止);
-                GameTimeReset;
-                gameFlags[0]++;
-                break;
-            }
-            case 7://等待播放结束
-            {
-                if (GameDelay(&RunTime,55000))
-                    gameFlags[0]++;
-                break;
-            }
-            case 8:// 打开语音识别
-            {
-                SetOutput(文房四宝柜,GPIO_PIN_SET);
-                SetOutput(语音识别电源,GPIO_PIN_SET);
-                gameFlags[0]++;
-                break;
-            }
-            case 9:// 等待语音识别2
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(语音识别2),pdTRUE,pdTRUE,0);
-                if(bits&TO_BIT(语音识别2))
-                {
-                    gameFlags[0]=16;
-                }
-                break;
-            }
-            case 16:
+            case 3:// 第一次门把手
             {
 
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
-                //钥匙掉落?
-                SetOutput(钥匙掉下,GPIO_PIN_SET);
-                gameFlags[0]++;
-                break;
+                char *fileName = "/02.mp3";
+                PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
             }
-            case 17://等待钥匙
+            case 4:// 等待小爱同学1
             {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(钥匙开门),pdTRUE,pdTRUE,0);
-                if (bits& TO_BIT(钥匙开门))
-                {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[小爱1 / 24], TO_BIT(小爱1), pdTRUE, pdTRUE, 0);
+                if (bits & TO_BIT(小爱1)) {
                     gameFlags[0]++;
                 }
                 break;
             }
-            case 18://开门
+            case 5:// 小爱同学1
             {
-                SetOutput(门锁,GPIO_PIN_SET);
+                SetOutput(路由器柜门, GPIO_PIN_RESET);
+            }
+            case 6:// 等待路由器重启按钮
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[路由器重启按钮 / 24], TO_BIT(路由器重启按钮),
+                                                       pdTRUE, pdTRUE, 0);
+                if (bits & TO_BIT(路由器重启按钮)) {
+                    gameFlags[0]++;
+                }
+                break;
+            }
+            case 7://路由器重启按钮
+            {
+                char *fileName = "/03.mp3";
+                PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 gameFlags[0]++;
                 break;
             }
-            case 19: //空
+            case 8:// 等待密码器
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[密码器 / 24], TO_BIT(密码器),
+                                                       pdTRUE, pdTRUE, 0);
+                if (bits & TO_BIT(密码器)) {
+                    gameFlags[0]++;
+                }
+                break;
+            }
+            case 9:// 密码器
+            {
+                char *fileName = "/04.mp3";
+                PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                gameFlags[0]++;
+                break;
+            }
+            case 16: // 等待路由器重启按钮
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[路由器重启按钮 / 24], TO_BIT(路由器重启按钮),
+                                                       pdTRUE, pdTRUE, 0);
+                if (bits & TO_BIT(路由器重启按钮)) {
+                    gameFlags[0]++;
+                }
+                break;
+            }
+            case 17://路由器重启按钮
+            {
+                char *fileName = "/05.mp3";
+                PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                gameFlags[0]++;
+                break;
+            }
+            case 18://等待第二次摸门把手
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[门把手 / 24], TO_BIT(门把手), pdTRUE, pdTRUE, 0);
+                if (bits & TO_BIT(门把手)) {
+                    gameFlags[0]++;
+                }
+                break;
+            }
+            case 19: //第二次摸门把手
+            {
+                char *fileName = "/06.mp3";
+                PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                gameFlags[0]++;
+                GameTimeReset;
+                break;
+            }
+            case 20: //
+            {
+                if (GameDelay(&RunTime, 11000)) { gameFlags[0]++; }
+                break;
+            }
+            case 21: //
+            {
+                SetOutput(小说柜门, GPIO_PIN_RESET);
+                gameFlags[0]++;
+                break;
+            }
+            case 22: //等待小爱2
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[小爱2 / 24], TO_BIT(小爱2), pdTRUE, pdTRUE, 0);
+                if (bits & TO_BIT(小爱2)) {
+                    gameFlags[0]++;
+                }
+                break;
+            }
+            case 23: //小爱2
+            {
+                SetOutput(游戏卡带柜, GPIO_PIN_RESET);
+                gameFlags[0]++;
+                break;
+            }
+            case 24: //等待小霸王干簧管
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[小霸王 / 24], TO_BIT(小霸王), pdTRUE, pdTRUE, 0);
+                if (bits & TO_BIT(小霸王)) {
+                    gameFlags[0]++;
+                }
+                break;
+            }
+            case 25: //小霸王干簧管
+            {
+                SetOutput(电视电源, GPIO_PIN_SET);
+                break;
+            }
+            case 26: //等待小说密码器
+            {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[小说密码器 / 24], TO_BIT(小说密码器), pdTRUE,
+                                                       pdTRUE, 0);
+                if (bits & TO_BIT(小说密码器)) {
+                    gameFlags[0]++;
+                }
+                break;
+            }
+            case 27: //小说密码器
+            {
+                SetOutput(杂志柜门, GPIO_PIN_RESET);
+                gameFlags[0]++;
+                GameTimeReset;
+                break;
+            }
+            case 28: //
+            {
+                if (GameDelay(&RunTime, 5000)) { gameFlags[0]++; }
+                break;
+            }
+            case 29: //
+            {
+                char *fileName = "/07.mp3";
+                PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                gameFlags[0]++;
+                GameTimeReset;
+                break;
+            }
+            case 30: //
+            {
+                if (GameDelay(&RunTime, 20000)) { gameFlags[0]++; }
+                break;
+            }
+            case 31: //哈利波特门
+            {
+                SetOutput(电视电源, GPIO_PIN_SET);
+                break;
+            }
+            case 32: //复位
             {
                 break;
             }
-            case 20: //复位
+            case 33: //空
             {
-                SetOutput(钥匙掉下,GPIO_PIN_RESET);
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
-                SetOutput(门锁,GPIO_PIN_SET);
-                SetOutput(文房四宝柜,GPIO_PIN_RESET);
-                gameFlags[0] = 19;
+                break;
             }
+            case 34: //复位
+            {
+                break;
+            }
+            case 35: //空
+            {
+                break;
+            }
+            case 36: //复位
+            {
+                break;
+            }
+
         }
+        if (gameFlags[0] >= 31 && gameFlags[0] <= 31)
+        {
+
+        }
+
+
         RunTime++;
         xSemaphoreGive(xGameSemaphore[0]);
         osDelay(1); //等待音频播放
-        static int oldGameFlag = 19;
-        if(gameFlags[0]!=oldGameFlag)
-        {
-            uint8_t TxBuff[5] = {0xCC,0x05,0x00,gameFlags[0],0xFF};
-            HAL_UART_Transmit(&huart1,TxBuff,5,HAL_MAX_DELAY);
+        static int oldGameFlag = 100;
+        if (gameFlags[0] != oldGameFlag) {
+            uint8_t TxBuff[5] = {0xCC, 0x05, 0x00, gameFlags[0], 0xFF};
+            HAL_UART_Transmit(&huart1, TxBuff, 5, HAL_MAX_DELAY);
             oldGameFlag = gameFlags[0];
         }
     }
