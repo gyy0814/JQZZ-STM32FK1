@@ -22,6 +22,7 @@ extern QueueHandle_t OutputMessageQueueHandle;
 bool ASCTaskHandle[9];
 TaskHandle_t BlinkTaskHandle = NULL;
 
+int GameFlag=0;
 void GameInit(void)
 {
     for(int i=0;i<GameTaskNum;i++)
@@ -46,6 +47,11 @@ void SetHP(int hp) {
     for (int i = 0; i < 16 ;i++)
     {
         SetOutput(HP_PIN_START+i,(i<hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    }
+    if(hp==1)
+    {
+        char FileName[] = "/TimeComing.mp3";
+        PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
     }
 }
 
@@ -117,10 +123,23 @@ void StartBoxTask(void const *argument)
 
 void StartGameTask(void const *argument)
 {
-    long int RunTime = 0;
+    long int RunTime = 100*60*1000;
     for(;;)
     {
-
+        switch (GameFlag) {
+            case 1:
+            {
+                //如果游戏即将结束 播放提示音
+                if(RunTime==10*60*1000)
+                {
+                    char FileName[] = "/TimeComing.mp3";
+                    PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
+                }
+                osDelay(1);
+                RunTime--;
+                break;
+            }
+        }
     }
 }
 /*
