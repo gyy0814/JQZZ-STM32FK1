@@ -12,6 +12,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "music.h"
+//#include "stdbool.h"
 
 typedef struct {
     uint8_t num;
@@ -21,14 +22,16 @@ void GameInit(void);
 
 #define TO_BIT(num) (1<<(num%32))
 
-#define 关门检测 0
-#define 语音识别1 1
-#define 语音识别2 2
-#define 钥匙开门 3
+/*****************************/
+static int HP = 16;
+#define HP_PIN_START 23
+/*****************************/
 
-#define 门锁 2
-#define 语音识别电源 3
-#define 文房四宝柜 4
-#define 钥匙掉下 7
+#define LIGHT_A 28
+#define LIGHT_B 29
+#define LIGHT_C 30
+#define LIGHT_D 31
+#define LIGHT_E 32
+
 
 #endif //FKS1_USER_H

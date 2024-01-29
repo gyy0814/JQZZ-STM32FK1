@@ -74,6 +74,8 @@ osThreadId musicTaskHandle;
 osThreadId myASCTaskHandle;
 osThreadId GameFlagTaskHandle;
 osThreadId GameTaskHandle;
+osThreadId BoxTaskHandle;
+osThreadId DoorTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -87,6 +89,8 @@ void StartMusicTask(void const * argument);
 void StartASCTask(void const * argument);
 void StartGameFlagTask(void const * argument);
 void StartGameTask(void const * argument);
+void StartBoxTask(void const * argument);
+void StartDoorTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -173,6 +177,14 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of GameTask */
   osThreadDef(GameTask, StartGameTask, osPriorityIdle, 0, 128);
   GameTaskHandle = osThreadCreate(osThread(GameTask), NULL);
+
+  /* definition and creation of BoxTask */
+  osThreadDef(BoxTask, StartBoxTask, osPriorityIdle, 0, 128);
+  BoxTaskHandle = osThreadCreate(osThread(BoxTask), NULL);
+
+  /* definition and creation of DoorTask */
+  osThreadDef(DoorTask, StartDoorTask, osPriorityIdle, 0, 128);
+  DoorTaskHandle = osThreadCreate(osThread(DoorTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -386,6 +398,42 @@ __weak void StartGameTask(void const * argument)
     osDelay(1);
   }
   /* USER CODE END StartGameTask */
+}
+
+/* USER CODE BEGIN Header_StartBoxTask */
+/**
+* @brief Function implementing the BoxTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartBoxTask */
+__weak void StartBoxTask(void const * argument)
+{
+  /* USER CODE BEGIN StartBoxTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartBoxTask */
+}
+
+/* USER CODE BEGIN Header_StartDoorTask */
+/**
+* @brief Function implementing the DoorTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartDoorTask */
+__weak void StartDoorTask(void const * argument)
+{
+  /* USER CODE BEGIN StartDoorTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartDoorTask */
 }
 
 /* Private application code --------------------------------------------------*/

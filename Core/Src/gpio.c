@@ -28,10 +28,9 @@ GPIO_PinState OutputState[OUTPUT_NUM];
 GPIO_PinState InputState[INPUT_NUM];
 GPIO_PinState previousInputState[INPUT_NUM];
 
-extern SemaphoreHandle_t xConnectSemaphore;
-extern QueueHandle_t OutputMessageQueueHandle;
 
-extern EventGroupHandle_t InputEventGroup[(INPUT_NUM / 24) + 1];
+SemaphoreHandle_t inputArrayLock;
+SemaphoreHandle_t outputArrayLock;
 
 /* USER CODE END 0 */
 
@@ -126,16 +125,16 @@ void HC595Output(const GPIO_PinState *pOutputState, int OutputNum) {
         } else {
             HC595_DSH;
         }
-        /*--step2CLK引脚实现上升�???????????????*/
+        /*--step2CLK引脚实现上升�?????????????????*/
         HC595_SHCPL;
-        osDelay(1);
-        //是否�???????????????要延�???????????????
+        osDelay(2);
+        //是否�?????????????????要延�?????????????????
         HC595_SHCPH;
     }
     /*--step3发�?�完成后存储到寄存器*/
     HC595_STCPL;
     osDelay(1);
-    //是否�???????????????要延�???????????????
+    //是否�?????????????????要延�?????????????????
     HC595_STCPH;
 }
 
@@ -144,13 +143,17 @@ void OutputSend(const GPIO_PinState *pOutputState) {
     HC595Output(pOutputState, OUTPUT_NUM);
 }
 
-BaseType_t SetOutput(int Pin, GPIO_PinState state) {
-    GPIOMessage OutputMessage = {
-            .GPIO_Pin = Pin,
-            .PinState = state,
-    };
-    BaseType_t result = xQueueSend(OutputMessageQueueHandle, &OutputMessage, 0);
-    return result;
+void SetOutput(int Pin, GPIO_PinState state) {
+    xSemaphoreTake(outputArrayLock, portMAX_DELAY);
+    if (OutputState[Pin] != state) {
+        OutputState[Pin] = state;
+        xSemaphoreGive(inputArrayLock);
+        uint8_t TxBuffer[5] = {0xCC, 0x02, Pin, state ? 1 : 0,
+                               0xFF};
+        HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
+    }
+    else
+        xSemaphoreGive(inputArrayLock);
 }
 /* OUTPUT END */
 
@@ -186,7 +189,10 @@ void HC165Input(GPIO_PinState *pInputState, int InputNum) {
 }
 
 GPIO_PinState ReadInput(int Pin) {
-    return InputState[Pin];
+    xSemaphoreTake(outputArrayLock, portMAX_DELAY);
+    GPIO_PinState state = InputState[Pin];
+    xSemaphoreGive(inputArrayLock);
+    return state;
 }
 
 // 判断是否有边沿产生的函数
@@ -203,55 +209,28 @@ void InputRecv(GPIO_PinState *pInputState) {
     HC165Input(pInputState, INPUT_NUM);
     for (int i = 0; i < INPUT_NUM; i++) {
         if (IsEdgeDetected(i)) {
-            if (ReadInput(i) == GPIO_PIN_SET) {
-                xEventGroupSetBits(InputEventGroup[i / 24], (1 << (i % 24)));
-            } else {
-                xEventGroupClearBits(InputEventGroup[i / 24], (1 << (i % 24)));
-            }
             if (IsSetup != 0) {
                 uint8_t TxBuffer[5] = {0xCC, 0x01, i, ReadInput(i), 0xFF};
                 HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
             }
-
             previousInputState[i] = InputState[i];
         }
     }
     IsSetup = 1;
-
 }
 /* INPUT END */
 
 
 void StartGPIOTask(void const *argument) {
-    GPIOMessage newMessage;
     while (1) {
-        if (xQueueReceive(OutputMessageQueueHandle, &newMessage, 0) == pdTRUE) {
-            if (OutputState[newMessage.GPIO_Pin] != newMessage.PinState) {
-                OutputState[newMessage.GPIO_Pin] = newMessage.PinState;
-                uint8_t TxBuffer[5] = {0xCC, 0x02, newMessage.GPIO_Pin, (newMessage.PinState == GPIO_PIN_SET) ? 1 : 0,
-                                       0xFF};
-                HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
-            }
-        }
-        if (xSemaphoreTake(xConnectSemaphore, 0) == pdPASS) {
-            for (int i = 0; i < INPUT_NUM; ++i) {
-                if (InputState[i]==GPIO_PIN_SET)
-                {
-                    uint8_t TxBuffer[5] = {0xCC,0x01,i,0x01,0xFF};
-                    HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
-                }
-            }
-            for (int i = 0; i < OUTPUT_NUM; ++i) {
-                if (OutputState[i]==GPIO_PIN_SET)
-                {
-                    uint8_t TxBuffer[5] = {0xCC,0x02,i,0x01,0xFF};
-                    HAL_UART_Transmit(&huart1, TxBuffer, 5, HAL_MAX_DELAY);
-                }
-            }
-        }
-        osDelay(1);
+        xSemaphoreTake(outputArrayLock, portMAX_DELAY);
         OutputSend((GPIO_PinState *) OutputState);
+        xSemaphoreGive(outputArrayLock);
+
+        xSemaphoreTake(inputArrayLock, portMAX_DELAY);
         InputRecv((GPIO_PinState *) InputState);
+        xSemaphoreGive(inputArrayLock);
+        osDelay(10);
     }
 }
 /* USER CODE END 2 */

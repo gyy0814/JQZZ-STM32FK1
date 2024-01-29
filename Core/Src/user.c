@@ -4,14 +4,13 @@
 //
 
 #include <string.h>
-#include <stdio.h>
-#include <stdbool.h>
+//#include <stdio.h>
 #include "user.h"
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "cmsis_os.h"
 #include "gpio.h"
-
+#include <stdbool.h>
 #define GameTaskNum 1
 int gameFlags[GameTaskNum] = {19};
 SemaphoreHandle_t xGameSemaphore[GameTaskNum];
@@ -29,32 +28,102 @@ void GameInit(void)
         xGameSemaphore[i] = xSemaphoreCreateMutex();
 }
 
-void StartGameFlagTask(void const *argument)
+/**********************
+         门 锁
+**********************/
+void StartDoorTask(void const *argument)
 {
-    GameMessage newMessage;
     for(;;)
     {
-        if(xQueueReceive(GameMessageQueueHandle, &newMessage, portMAX_DELAY) == pdTRUE)
+
+    }
+}
+
+/**********************
+        蜡烛(HP)
+**********************/
+void SetHP(int hp) {
+    for (int i = 0; i < 16 ;i++)
+    {
+        SetOutput(HP_PIN_START+i,(i<hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    }
+}
+
+/**********************
+        箱子
+**********************/
+//箱子数量
+#define BOX_NUM 70
+//箱子刷卡输入pin
+uint8_t BoxInputPin[BOX_NUM];
+//箱子电锁输出pin
+uint8_t BoxOutputPin[BOX_NUM];
+//箱子是否打开过
+bool OpenState[BOX_NUM];
+//箱子目前状态
+bool BoxState[BOX_NUM];
+//箱子属性
+bool BoxProperties[BOX_NUM];
+void StartBoxTask(void const *argument)
+{
+    for(;;)
+    {
+        for(int i=0;i<BOX_NUM;i++)
         {
-            xSemaphoreTake(xGameSemaphore[newMessage.num], portMAX_DELAY);
-            gameFlags[newMessage.num] = newMessage.Data;
-            xSemaphoreGive(xGameSemaphore[newMessage.num]);
+            if((ReadInput(BoxInputPin[i])==GPIO_PIN_SET)&&(!BoxState[i]))
+            {
+                BoxState[i]=true;
+                SetOutput(BoxOutputPin[i],GPIO_PIN_SET);
+                osDelay(500);
+                SetOutput(BoxOutputPin[i],GPIO_PIN_RESET);
+                if(OpenState[i]==false)
+                {
+                    if (!BoxProperties[i])
+                    {
+                        char FileName[] = "/success.mp3";
+                        PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
+                    }
+                    else
+                    {
+                        char FileName[] = "/failure.mp3";
+                        PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
+                        for(int j=0;j<2;j++)
+                        {
+                            SetOutput(LIGHT_A,GPIO_PIN_SET);
+                            SetOutput(LIGHT_B,GPIO_PIN_SET);
+                            SetOutput(LIGHT_C,GPIO_PIN_SET);
+                            SetOutput(LIGHT_D,GPIO_PIN_SET);
+                            SetOutput(LIGHT_E,GPIO_PIN_SET);
+                            osDelay(500);
+                            SetOutput(LIGHT_A,GPIO_PIN_RESET);
+                            SetOutput(LIGHT_B,GPIO_PIN_RESET);
+                            SetOutput(LIGHT_C,GPIO_PIN_RESET);
+                            SetOutput(LIGHT_D,GPIO_PIN_RESET);
+                            SetOutput(LIGHT_E,GPIO_PIN_RESET);
+                            osDelay(500);
+                        }
+                        SetHP(--HP);
+                    }
+                }
+                BoxState[i]=true;
+            }
+            if(ReadInput(BoxInputPin[i])!=GPIO_PIN_SET)
+            {
+                BoxState[i]=false;
+            }
         }
     }
 }
 
-
-#define GameTimeReset RunTime = 0
-bool GameDelay(int *pvRunTime,int waitTime)
+void StartGameTask(void const *argument)
 {
-    if(waitTime<*pvRunTime)
+    long int RunTime = 0;
+    for(;;)
     {
-        *pvRunTime=0;
-        return true;
-    }
-    return false;
-}
 
+    }
+}
+/*
 void StartGameTask(void const *argument)
 {
     int RunTime = 0;
@@ -186,3 +255,4 @@ void StartGameTask(void const *argument)
         }
     }
 }
+*/
