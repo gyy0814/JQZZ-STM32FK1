@@ -19,7 +19,7 @@ typedef struct {
 } GameMessage;
 void GameInit(void);
 
-#define TO_BIT(num) (1<<(num%32))
+#define TO_BIT(num) (1<<(num%24))
 //输入
 #define 游戏开始 0
 #define 路由器重启按钮 1

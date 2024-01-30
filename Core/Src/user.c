@@ -87,6 +87,8 @@ void StartGameTask(void const *argument) {
 
                 char *fileName = "/02.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                gameFlags[0]++;
+                break;
             }
             case 4:// 等待小爱同学1
             {
@@ -99,6 +101,8 @@ void StartGameTask(void const *argument) {
             case 5:// 小爱同学1
             {
                 SetOutput(路由器柜门, GPIO_PIN_RESET);
+                gameFlags[0]++;
+                break;
             }
             case 6:// 等待路由器重启按钮
             {
