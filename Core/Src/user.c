@@ -96,6 +96,7 @@ void StartGameTask(void const *argument) {
                 if (bits & TO_BIT(小爱1)) {
                     gameFlags[0]++;
                 }
+
                 break;
             }
             case 5:// 小爱同学1
