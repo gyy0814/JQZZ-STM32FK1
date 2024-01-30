@@ -87,7 +87,7 @@ void PauseMusic(UART_HandleTypeDef *huart)
             .DataLength=1
     };
 
-    newMusicMessage.Data[0] = 0x02;
+    newMusicMessage.Data[0] = 0x03;
     xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
 }
 

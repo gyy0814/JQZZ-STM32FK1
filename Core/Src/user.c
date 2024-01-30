@@ -68,7 +68,11 @@ void StartGameTask(void const *argument) {
             {
                 char *fileName1 = "/68.mp3";
                 PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
+                osDelay(300);
+                PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                 char *fileName = "/01.mp3";
+                PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                osDelay(300);
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(主光源, GPIO_PIN_SET);
                 gameFlags[0]++;
@@ -162,7 +166,7 @@ void StartGameTask(void const *argument) {
             }
             case 13: //第二次摸门把手
             {
-                char *fileName = "/06.mp3";
+                char fileName[] = "/06.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 gameFlags[0]++;
                 GameTimeReset;
@@ -170,7 +174,9 @@ void StartGameTask(void const *argument) {
             }
             case 14: //
             {
-                if (GameDelay(&RunTime, 11000)) { gameFlags[0]++; }
+                if (GameDelay(&RunTime, 11000)) {
+                    gameFlags[0]++;
+                }
                 break;
             }
             case 15: //
@@ -204,6 +210,7 @@ void StartGameTask(void const *argument) {
             case 19: //小霸王干簧管
             {
                 SetOutput(电视电源, GPIO_PIN_SET);
+                gameFlags[0]++;
                 break;
             }
             case 20: //等待小说密码器
@@ -243,6 +250,7 @@ void StartGameTask(void const *argument) {
             case 25: //哈利波特门
             {
                 SetOutput(哈利波特门, GPIO_PIN_RESET);
+                gameFlags[0]++;
                 break;
             }
             case 26: //等待电脑微信
@@ -483,7 +491,7 @@ void StartGameTask(void const *argument) {
                 SetOutput(杂志柜门, GPIO_PIN_SET);
                 SetOutput(主光源, GPIO_PIN_RESET);
                 SetOutput(哈利波特门, GPIO_PIN_SET);
-                SetOutput(手办刷卡灯, GPIO_PIN_SET);
+                SetOutput(手办刷卡灯, GPIO_PIN_RESET);
                 SetOutput(三摆件门, GPIO_PIN_SET);
                 SetOutput(初音cd柜门, GPIO_PIN_SET);
                 SetOutput(漫画柜门, GPIO_PIN_SET);
@@ -492,7 +500,7 @@ void StartGameTask(void const *argument) {
                 SetOutput(海贼柜门, GPIO_PIN_SET);
                 SetOutput(游戏卡带柜, GPIO_PIN_SET);
                 SetOutput(卧室门锁, GPIO_PIN_SET);
-                SetOutput(电视电源, GPIO_PIN_SET);
+                SetOutput(电视电源, GPIO_PIN_RESET);
 
                 gameFlags[0] = 51;
                 break;
@@ -500,222 +508,222 @@ void StartGameTask(void const *argument) {
 
 
         }
-        if (gameFlags[0] >= 31 && gameFlags[0] <= 31) {
-            static int switchState = 0;
+        if (gameFlags[0] >= 25 && gameFlags[0] < 51) {
+            static int switchState[9];
             EventBits_t bits1 = xEventGroupGetBits(InputEventGroup[手办赫敏 / 24]);
-            if ((bits1 & TO_BIT(手办赫敏)) && (switchState == 0)) {
-                switchState = 1;
+            if ((bits1 & TO_BIT(手办赫敏)) && (switchState[0] == 0)) {
+                switchState[0] = 1;
                 char *fileName = "/08.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(手办刷卡灯, GPIO_PIN_SET);
             }
-            if (!((bits1 & TO_BIT(手办赫敏)) || (switchState == 0))) {
+            if (((bits1 & TO_BIT(手办赫敏))==0) && (switchState[0] == 1)){
                 PauseMusic(&MUSIC_1);
-                switchState = 0;
+                switchState[0] = 0;
                 SetOutput(手办刷卡灯, GPIO_PIN_RESET);
             }
-            if ((bits1 & TO_BIT(手办哈里)) && (switchState == 0)) {
-                switchState = 1;
+            if ((bits1 & TO_BIT(手办哈里)) && (switchState[1] == 0)) {
+                switchState[1] = 1;
                 char *fileName = "/09.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(手办刷卡灯, GPIO_PIN_SET);
             }
-            if (!((bits1 & TO_BIT(手办哈里)) || (switchState == 0))) {
+            if (((bits1 & TO_BIT(手办哈里))==0) && (switchState[1] == 1)) {
                 PauseMusic(&MUSIC_1);
-                switchState = 0;
+                switchState[1] = 0;
                 SetOutput(手办刷卡灯, GPIO_PIN_RESET);
             }
-            if ((bits1 & TO_BIT(手办斯内普)) && (switchState == 0)) {
-                switchState = 1;
+            if ((bits1 & TO_BIT(手办斯内普)) && (switchState[2] == 0)) {
+                switchState[2] = 1;
                 char *fileName = "/10.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(手办刷卡灯, GPIO_PIN_SET);
             }
-            if (!((bits1 & TO_BIT(手办斯内普)) || (switchState == 0))) {
+            if (((bits1 & TO_BIT(手办斯内普))==0) && (switchState[2] == 1)){
                 PauseMusic(&MUSIC_1);
                 SetOutput(手办刷卡灯, GPIO_PIN_RESET);
-                switchState = 0;
+                switchState[2] = 0;
             }
-            if ((bits1 & TO_BIT(手办纽特)) && (switchState == 0)) {
-                switchState = 1;
+            if ((bits1 & TO_BIT(手办纽特)) && (switchState[3] == 0)) {
+                switchState[3] = 1;
                 char *fileName = "/11.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(手办刷卡灯, GPIO_PIN_SET);
             }
-            if (!((bits1 & TO_BIT(手办纽特)) || (switchState == 0))) {
+            if (((bits1 & TO_BIT(手办纽特))==0) && (switchState[3] == 1)) {
                 PauseMusic(&MUSIC_1);
-                switchState = 0;
+                switchState[3] = 0;
                 SetOutput(手办刷卡灯, GPIO_PIN_RESET);
             }
 
-            if ((bits1 & TO_BIT(手办初音)) && (switchState == 0)) {
-                switchState = 1;
+            if ((bits1 & TO_BIT(手办初音)) && (switchState[4] == 0)) {
+                switchState[4] = 1;
                 char *fileName = "/13.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(手办刷卡灯, GPIO_PIN_SET);
             }
-            if (!((bits1 & TO_BIT(手办初音)) || (switchState == 0))) {
+            if (((bits1 & TO_BIT(手办初音))==0) && (switchState[4] == 1)) {
                 PauseMusic(&MUSIC_1);
-                switchState = 0;
+                switchState[4] = 0;
                 SetOutput(手办刷卡灯, GPIO_PIN_RESET);
             }
 
-            if ((bits1 & TO_BIT(手办路飞)) && (switchState == 0)) {
-                switchState = 1;
+            if ((bits1 & TO_BIT(手办路飞)) && (switchState[5] == 0)) {
+                switchState[5] = 1;
                 char *fileName = "/26.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(手办刷卡灯, GPIO_PIN_SET);
             }
-            if (!((bits1 & TO_BIT(手办路飞)) || (switchState == 0))) {
+            if (((bits1 & TO_BIT(手办路飞))==0) && (switchState[5] == 1)) {
                 PauseMusic(&MUSIC_1);
-                switchState = 0;
+                switchState[5] = 0;
                 SetOutput(手办刷卡灯, GPIO_PIN_RESET);
             }
-            if ((bits1 & TO_BIT(手办乔巴)) && (switchState == 0)) {
-                switchState = 1;
+            if ((bits1 & TO_BIT(手办乔巴)) && (switchState[6] == 0)) {
+                switchState[6] = 1;
                 char *fileName = "/27.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(手办刷卡灯, GPIO_PIN_SET);
             }
-            if (!((bits1 & TO_BIT(手办乔巴)) || (switchState == 0))) {
+            if (((bits1 & TO_BIT(手办乔巴))==0) && (switchState[6] == 1)) {
                 PauseMusic(&MUSIC_1);
-                switchState = 0;
+                switchState[6] = 0;
                 SetOutput(手办刷卡灯, GPIO_PIN_RESET);
             }
-            if ((bits1 & TO_BIT(手办索隆)) && (switchState == 0)) {
-                switchState = 1;
+            if ((bits1 & TO_BIT(手办索隆)) && (switchState[7] == 0)) {
+                switchState[7] = 1;
                 char *fileName = "/29.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(手办刷卡灯, GPIO_PIN_SET);
             }
-            if (!((bits1 & TO_BIT(手办索隆)) || (switchState == 0))) {
+            if (((bits1 & TO_BIT(手办索隆))==0) && (switchState[7] == 1)){
                 PauseMusic(&MUSIC_1);
-                switchState = 0;
+                switchState[7] = 0;
                 SetOutput(手办刷卡灯, GPIO_PIN_RESET);
             }
-            if ((bits1 & TO_BIT(手办娜美)) && (switchState == 0)) {
-                switchState = 1;
+            if ((bits1 & TO_BIT(手办娜美)) && (switchState[8] == 0)) {
+                switchState[8] = 1;
                 char *fileName = "/28.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 SetOutput(手办刷卡灯, GPIO_PIN_SET);
             }
-            if (!((bits1 & TO_BIT(手办娜美)) || (switchState == 0))) {
+            if (((bits1 & TO_BIT(手办娜美))==0) && (switchState[8] == 1)) {
                 PauseMusic(&MUSIC_1);
-                switchState = 0;
+                switchState[8] = 0;
                 SetOutput(手办刷卡灯, GPIO_PIN_RESET);
             }
 
 
-            if (gameFlags[0] >= 31 && gameFlags[0] <= 31) {
-                static int CDState[10];
+            if (gameFlags[0] >= 25 && gameFlags[0] < 51) {
+                static int CDState[12];
                 EventBits_t bits1 = xEventGroupGetBits(InputEventGroup[cd输入1 / 24]);
-                if ((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入2))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入2))) && (CDState[0] == 0)) {
+                    CDState[0] = 1;
                     char *fileName = "/70.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入2)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入2)))==0)&& (CDState[0] == 1)) {
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[0] = 0;
                 }
                 if ((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入5))) && (CDState[1] == 0)) {
                     CDState[1] = 1;
                     char *fileName = "/78.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入5)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入5)))==0)&& (CDState[1] == 1)) {
                     PauseMusic(&MUSIC_1);
                     CDState[1] = 0;
                 }
-                if ((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入6))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入6))) && (CDState[2] == 0)) {
+                    CDState[2] = 1;
                     char *fileName = "/76.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入6)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入6)))==0)&& (CDState[2] == 1)) {
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[2] = 0;
                 }
-                if ((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入3))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入3))) && (CDState[3] == 0)) {
+                    CDState[3] = 1;
                     char *fileName = "/77.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入3)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入3)))==0)&& (CDState[3] == 1)) {
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[3] = 0;
                 }
-                if ((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入4))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入4))) && (CDState[4] == 0)) {
+                    CDState[4] = 1;
                     char *fileName = "/73.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入4)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入4)))==0)&& (CDState[4] == 1)) {
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[4] = 0;
                 }
-                if ((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入5))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入5))) && (CDState[5] == 0)) {
+                    CDState[5] = 1;
                     char *fileName = "/72.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入5)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入5)))==0)&& (CDState[5] == 1)) {
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[5] = 0;
                 }
-                if ((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入6))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入6))) && (CDState[6] == 0)) {
+                    CDState[6] = 1;
                     char *fileName = "/74.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入6)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入6)))==0)&& (CDState[6] == 1)) {
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[6] = 0;
                 }
-                if ((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入6))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入6))) && (CDState[7] == 0)) {
+                    CDState[7] = 1;
                     char *fileName = "/71.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入6)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入6)))==0)&& (CDState[7] == 1)) {
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[7] = 0;
                 }
-                if ((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入3))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入3))) && (CDState[8] == 0)) {
+                    CDState[8] = 1;
                     char *fileName = "/80.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入3)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入3)))==0)&& (CDState[8] == 1)) {
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[8] = 0;
                 }
-                if ((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入4))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入4))) && (CDState[9] == 0)) {
+                    CDState[9] = 1;
                     char *fileName = "/75.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入4)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入4)))==0)&& (CDState[9] == 1)) {
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[9] = 0;
                 }
-                if ((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入5))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入5))) && (CDState[10] == 0)) {
+                    CDState[10] = 1;
                     char *fileName = "/79.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入5)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入5)))==0)&& (CDState[10] == 1)){
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[10] = 0;
                 }
-                if ((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入4))) && (CDState[1] == 0)) {
-                    CDState[1] = 1;
+                if ((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入4))) && (CDState[11] == 0)) {
+                    CDState[11] = 1;
                     char *fileName = "/69.mp3";
                     PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 }
-                if (!(bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入4)) || (CDState[1] == 0))) {
+                if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入4)))==0)&& (CDState[11] == 1)) {
                     PauseMusic(&MUSIC_1);
-                    CDState[1] = 0;
+                    CDState[11] = 0;
                 }
 //                帝国 1-2     	70
 //                生物股长2-5    78
@@ -733,16 +741,20 @@ void StartGameTask(void const *argument) {
             }
 
 
-            RunTime++;
-            xSemaphoreGive(xGameSemaphore[0]);
-            osDelay(1); //等待音频播放
-            static int oldGameFlag = 100;
-            if (gameFlags[0] != oldGameFlag) {
-                uint8_t TxBuff[5] = {0xCC, 0x05, 0x00, gameFlags[0], 0xFF};
-                HAL_UART_Transmit(&huart1, TxBuff, 5, HAL_MAX_DELAY);
-                oldGameFlag = gameFlags[0];
-            }
+
         }
+        xSemaphoreGive(xGameSemaphore[0]);
+
+
+        RunTime++;
+        osDelay(1); //等待音频播放
+        static int oldGameFlag = 100;
+        if (gameFlags[0] != oldGameFlag) {
+            uint8_t TxBuff[5] = {0xCC, 0x05, 0x00, gameFlags[0], 0xFF};
+            HAL_UART_Transmit(&huart1, TxBuff, 5, HAL_MAX_DELAY);
+            oldGameFlag = gameFlags[0];
+        }
+
 
         static int Flag=51;
         if(gameFlags[0]!=Flag)
