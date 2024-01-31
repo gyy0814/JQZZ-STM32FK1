@@ -65,7 +65,7 @@ void PlayMusicName(UART_HandleTypeDef *huart,const char* FileName,size_t FileNam
     xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
 }
 
-void PlayMusic(UART_HandleTypeDef *huart)
+void StopMusic(UART_HandleTypeDef *huart)
 {
     /* Plau Music */
     MusicMessage newMusicMessage = (MusicMessage){
@@ -74,7 +74,7 @@ void PlayMusic(UART_HandleTypeDef *huart)
             .DataLength=1
     };
 
-    newMusicMessage.Data[0] = 0x01;
+    newMusicMessage.Data[0] = 0x03;
     xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
 }
 
