@@ -43,6 +43,10 @@ void StartDoorTask(void const *argument)
 /**********************
         蜡烛(HP)
 **********************/
+static int HP = 16;
+
+#define HP_PIN_START 23
+
 void SetHP(int hp) {
     for (int i = 0; i < 16 ;i++)
     {
@@ -54,7 +58,27 @@ void SetHP(int hp) {
         PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
     }
 }
-
+void SubHP()
+{
+    char FileName[] = "/failure.mp3";
+    PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
+    for(int j=0;j<2;j++)
+    {
+        SetOutput(LIGHT_A,GPIO_PIN_SET);
+        SetOutput(LIGHT_B,GPIO_PIN_SET);
+        SetOutput(LIGHT_C,GPIO_PIN_SET);
+        SetOutput(LIGHT_D,GPIO_PIN_SET);
+        SetOutput(LIGHT_E,GPIO_PIN_SET);
+        osDelay(500);
+        SetOutput(LIGHT_A,GPIO_PIN_RESET);
+        SetOutput(LIGHT_B,GPIO_PIN_RESET);
+        SetOutput(LIGHT_C,GPIO_PIN_RESET);
+        SetOutput(LIGHT_D,GPIO_PIN_RESET);
+        SetOutput(LIGHT_E,GPIO_PIN_RESET);
+        osDelay(500);
+    }
+    SetHP(--HP);
+}
 /**********************
         箱子
 **********************/
@@ -91,24 +115,7 @@ void StartBoxTask(void const *argument)
                     }
                     else
                     {
-                        char FileName[] = "/failure.mp3";
-                        PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
-                        for(int j=0;j<2;j++)
-                        {
-                            SetOutput(LIGHT_A,GPIO_PIN_SET);
-                            SetOutput(LIGHT_B,GPIO_PIN_SET);
-                            SetOutput(LIGHT_C,GPIO_PIN_SET);
-                            SetOutput(LIGHT_D,GPIO_PIN_SET);
-                            SetOutput(LIGHT_E,GPIO_PIN_SET);
-                            osDelay(500);
-                            SetOutput(LIGHT_A,GPIO_PIN_RESET);
-                            SetOutput(LIGHT_B,GPIO_PIN_RESET);
-                            SetOutput(LIGHT_C,GPIO_PIN_RESET);
-                            SetOutput(LIGHT_D,GPIO_PIN_RESET);
-                            SetOutput(LIGHT_E,GPIO_PIN_RESET);
-                            osDelay(500);
-                        }
-                        SetHP(--HP);
+                        SubHP();
                     }
                 }
                 BoxState[i]=true;
@@ -127,10 +134,22 @@ void StartGameTask(void const *argument)
     for(;;)
     {
         switch (GameFlag) {
+            case 0:
+            {
+                char FileName[] = "/Setup.mp3";
+                PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
+                for(int i=0;i<BOX_NUM;i++)//复位所有箱子状态
+                {
+                    OpenState[i]=false;
+                    BoxState[i]=false;
+                }
+                SetHP(HP=16);//复位血量
+                RunTime = 100*60*1000;//复位倒计时时间
+                GameFlag++;
+            }
             case 1:
             {
-                //如果游戏即将结束 播放提示音
-                if(RunTime==10*60*1000)
+                if(RunTime==10*60*1000)//如果游戏即将结束 播放提示音
                 {
                     char FileName[] = "/TimeComing.mp3";
                     PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
