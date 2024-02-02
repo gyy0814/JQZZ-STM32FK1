@@ -53,6 +53,7 @@ bool GameDelay(int *pvRunTime,int waitTime)
 void StartGameTask(void const *argument)
 {
     int RunTime = 0;
+    int LGFlag =0;
     for(;;)
     {
         xSemaphoreTake(xGameSemaphore, portMAX_DELAY);
@@ -421,7 +422,7 @@ void StartGameTask(void const *argument)
             }
             case 45:
             {
-                if(!WaitBit(记忆卡拿开,pdFALSE))
+                if(WaitBit(记忆卡拿开,pdTRUE))
                 {
                     gameFlag++;
                 }
@@ -434,6 +435,208 @@ void StartGameTask(void const *argument)
 
                 break;
             }
+            case 48:
+            {
+                if(WaitBit(记忆卡刷卡,pdTRUE))
+                {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 49:
+            {
+                SetPin(记忆卡视频);
+                osDelay(300);
+                ResetPin(记忆卡视频);
+                GameTimeReset;
+                gameFlag++;
+                break;
+            }
+            case 50:
+            {
+                if(LGFlag==0|LGFlag==1|LGFlag==3)
+                {
+                    if(WaitBit(拉杆上,pdTRUE))
+                    {
+                        LGFlag++;
+                    }
+                    else if(WaitBit(拉杆下,pdTRUE))
+                    {
+                        LGFlag=0;
+                    }
+                }
+                else if(LGFlag==2|LGFlag==4)
+                {
+                    if(WaitBit(拉杆下,pdTRUE))
+                    {
+                        LGFlag++;
+                    }
+                    else if(WaitBit(拉杆上,pdTRUE))
+                    {
+                        LGFlag=0;
+                    }
+                }
+                if(LGFlag==5)
+                {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 51:
+            {
+                ResetPin(炉子平移门关);
+                SetPin(炉子平移门开);
+                PlayMusicA("/73.mp3",单曲循环)
+                gameFlag++;
+                break;
+            }
+            case 52:
+            {
+                if(WaitBit(信拿走,pdTRUE))
+                {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 53:
+            {
+                PlayMusicA("/85.mp3",单曲停止)
+                GameTimeReset;
+                gameFlag++;
+                break;
+            }
+            case 54:
+            {
+                delay(97*1000)
+                break;
+            }
+            case 55:
+            {
+                PlayMusicA("/74.mp3",单曲停止)
+                PlayMusicB("/75.mp3",单曲循环)
+                GameTimeReset;
+                gameFlag++;
+                break;
+            }
+            case 56:
+            {
+                delay(10*1000)
+                break;
+            }
+            case 57:
+            {
+                SetPin(答案选择灯);
+                gameFlag++;
+                break;
+
+            }
+            case 58:
+            {
+                if(WaitBit(答案确认,pdTRUE))
+                {
+                    if(NWaitBit(答案1_A,pdFALSE)&&
+                       WaitBit(答案1_B,pdFALSE)&&
+                       NWaitBit(答案1_C,pdFALSE)&&
+                       WaitBit(答案2_A,pdFALSE)&&
+                       WaitBit(答案2_B,pdFALSE)&&
+                       NWaitBit(答案2_C,pdFALSE)&&
+                       NWaitBit(答案3_A,pdFALSE)&&
+                       WaitBit(答案3_B,pdFALSE)&&
+                       NWaitBit(答案3_C,pdFALSE))
+                    {
+                        PlayMusicA("/77.mp3",单曲停止)
+                        PlayMusicB("/76.mp3",单曲停止)
+                        gameFlag++;
+                    }
+                    else if(NWaitBit(答案1_A,pdFALSE)&&
+                            WaitBit(答案1_B,pdFALSE)&&
+                            NWaitBit(答案1_C,pdFALSE)&&
+                            WaitBit(答案2_A,pdFALSE)&&
+                            NWaitBit(答案2_B,pdFALSE)&&
+                            NWaitBit(答案2_C,pdFALSE)&&
+                            WaitBit(答案3_A,pdFALSE)&&
+                            NWaitBit(答案3_B,pdFALSE)&&
+                            NWaitBit(答案3_C,pdFALSE))
+                    {
+                        PlayMusicA("/78.mp3",单曲停止)
+                        PlayMusicB("/76.mp3",单曲停止)
+                        gameFlag++;
+                    }
+                    else
+                    {
+                        PlayMusicA("/84.mp3",单曲停止)
+                    }
+                }
+                break;
+            }
+            case 59: {
+                SetPin(火箭升空视频);
+                osDelay(300);
+                ResetPin(火箭升空视频);
+                GameTimeReset;
+                gameFlag++;
+                break;
+            }
+            case 60:{
+                delay(60*1000)
+                if(WaitBit(紧急停止,pdTRUE))
+                {
+                    gameFlag=62;
+                }
+                break;
+            }
+            case 61:{
+                ResetPin(实验室灯);
+                SetPin(炉子平移门关);
+                SetPin(窗户火箭视频);
+                SetPin(成功发射视频);
+                osDelay(300);
+                ResetPin(窗户火箭视频);
+                ResetPin(成功发射视频);
+                PlayMusicA("/80.mp3",单曲停止)
+                PlayMusicB("/81.mp3",单曲循环)
+                GameTimeReset;
+                gameFlag=63;
+                break;
+            }
+            case 62:
+            {
+                ResetPin(实验室灯);
+                ResetPin(炉子灯带);
+                SetPin(窗户警察视频);
+                SetPin(取消发射视频);
+                osDelay(300);
+                ResetPin(窗户警察视频);
+                ResetPin(取消发射视频);
+                PlayMusicA("/83.mp3",单曲停止)
+                PlayMusicB("/82.mp3",单曲循环)
+                GameTimeReset;
+                gameFlag++;
+                break;
+            }
+            case 63:
+            {
+                delay(8*1000)
+                break;
+            }
+            case 64:
+            {
+                ResetPin(出口门);
+                gameFlag=0;
+                break;
+            }
+            case 65://复位
+            {
+                gameFlag=0;
+                break;
+            }
+            case 66://复位
+            {
+                gameFlag=0;
+                break;
+            }
+
+
         }
         RunTime++;
         xSemaphoreGive(xGameSemaphore);
