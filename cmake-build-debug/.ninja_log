@@ -79,3 +79,17 @@
 3	118	7285716688358272	CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj	820cb2e614bc127b
 8	156	7285716688746831	CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj	854fb0d37b1bcfb7
 156	342	7285716690097069	FKS1.elf	3e8d7cd5cae3b65
+2	124	7285730630183712	CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj	820cb2e614bc127b
+7	125	7285730630183712	CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj	3c73996f2763220
+11	169	7285730630638434	CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj	854fb0d37b1bcfb7
+169	359	7285730632004992	FKS1.elf	3e8d7cd5cae3b65
+2	116	7285731848865332	CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj	820cb2e614bc127b
+7	154	7285731849244502	CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj	854fb0d37b1bcfb7
+154	330	7285731850464577	FKS1.elf	3e8d7cd5cae3b65
+3	173	7285733724365645	CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj	854fb0d37b1bcfb7
+173	387	7285733725791009	FKS1.elf	3e8d7cd5cae3b65
+2	151	7285735895505864	CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj	854fb0d37b1bcfb7
+151	328	7285735896769421	FKS1.elf	3e8d7cd5cae3b65
+3	136	7285749007820912	CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj	820cb2e614bc127b
+8	172	7285749008175050	CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj	854fb0d37b1bcfb7
+172	377	7285749009553308	FKS1.elf	3e8d7cd5cae3b65

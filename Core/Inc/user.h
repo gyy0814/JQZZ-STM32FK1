@@ -90,12 +90,11 @@ void GameInit(void);
 #define 遥控器5 5
 #define 记忆卡刷卡1 6
 #define 记忆卡刷卡2 7
+#define 扫描仪3 12
 #define 扫描仪1  9
-#define 扫描仪2 11
-
 #define 打电话 10
-#define 扫描仪3 8
-#define 扫描仪4 24
+#define 扫描仪2 11
+#define 扫描仪10 8
 #define 卧室密码器 13
 #define 录取通知 14
 #define 记忆卡拿走 15
@@ -103,17 +102,18 @@ void GameInit(void);
 #define 扫描仪6 17
 #define 书房数独 18
 #define 卧室抽屉打开 19
-
 #define 快递柜密码器 20
 #define 线路过关 21
 #define 艾利刷卡 22
+
+#define 艾琳开始 5
+
+#define 扫描仪4 24
 #define 扫描仪5 25
-#define 扫描仪6 17
-#define 扫描仪7 31
-#define 扫描仪8 28
-#define 扫描仪9 27
-#define 扫描仪10 12
+
+#define 扫描仪9 28
+#define 扫描仪8 27
 #define 矮桌 29
 #define 开关面板 30
-#define 艾琳开始 31
+#define 扫描仪7 31
 #endif //FKS1_USER_H
