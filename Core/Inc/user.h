@@ -59,8 +59,8 @@ void GameInit(void);
 #define 快递音效 17
 #define 外卖音效 18
 
-#define 冷风 20
-#define 暖风 21
+#define 冷风 21
+#define 暖风 20
 //#define 窗户推杆 22
 #define 电箱电源 23
 #define 墙壁视频2 24
@@ -69,8 +69,8 @@ void GameInit(void);
 #define 手机视频1 32
 #define 手机视频2 33
 
-#define 窗户开 46
-#define 窗户关 47
+#define 窗户开 47
+#define 窗户关 46
 
 
 #define WaitBit(pin,clear) (xEventGroupWaitBits(InputEventGroup[pin/24],TO_BIT(pin),clear,pdTRUE,0) & TO_BIT(pin))==TO_BIT(pin)
