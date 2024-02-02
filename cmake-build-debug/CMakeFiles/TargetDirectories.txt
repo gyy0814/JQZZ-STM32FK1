@@ -1,3 +1,0 @@
-C:/Users/26913/Documents/stm32/FKS1/cmake-build-debug/CMakeFiles/FKS1.elf.dir
-C:/Users/26913/Documents/stm32/FKS1/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/26913/Documents/stm32/FKS1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
