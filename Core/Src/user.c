@@ -115,26 +115,6 @@ void StartGameTask(void const *argument)
             }
             case 7:
             {
-                if(WaitBit(动物按钮_鸡,pdTRUE))
-                {
-                    PlayMusicA("/51.mp3",单曲停止)
-                }
-                if(WaitBit(动物按钮_猫,pdTRUE))
-                {
-                    PlayMusicA("/52.mp3",单曲停止)
-                }
-                if(WaitBit(动物按钮_狗,pdTRUE))
-                {
-                    PlayMusicA("/53.mp3",单曲停止)
-                }
-                if(WaitBit(动物按钮_蛙,pdTRUE))
-                {
-                    PlayMusicA("/54.mp3",单曲停止)
-                }
-                if(WaitBit(动物按钮_牛,pdTRUE))
-                {
-                    PlayMusicA("/55.mp3",单曲停止)
-                }
                 if(WaitBit(动物摆放,pdTRUE))
                 {
                     PlayMusicA("/56.mp3",单曲停止)
@@ -258,12 +238,13 @@ void StartGameTask(void const *argument)
             }
             case 23:
             {
-                ResetPin(出口灯);
                 PlayMusicB("/65.mp3",单曲停止)
                 PlayMusicA("/66-1.mp3",单曲停止)
                 ResetPin(出口平移门开);
                 ResetPin(出口平移门关);
+                SetPin(电脑开机);
                 osDelay(300);
+                ResetPin(电脑开机);
                 SetPin(出口平移门开);
                 GameTimeReset;
                 gameFlag++;
@@ -279,7 +260,6 @@ void StartGameTask(void const *argument)
                 ResetPin(出口平移门开);
                 ResetPin(出口平移门关);
                 PlayMusicA("/49.mp3",单曲停止)
-                SetPin(蓝色聚光灯2);
                 osDelay(1300);
                 PlayMusicA("/66.mp3",单曲停止)
                 gameFlag=0;
@@ -287,7 +267,7 @@ void StartGameTask(void const *argument)
             }
             case 26:
             {
-                ResetPin(蓝色聚光灯2);
+                ResetPin(出口灯);
                 PlayMusicB("/67-1.mp3",单曲循环)
                 PlayMusicA("/67.mp3",单曲停止)
                 ResetPin(出口平移门开);
@@ -340,7 +320,7 @@ void StartGameTask(void const *argument)
                 gameFlag++;
                 break;
             }
-            case 33://改为视频10时长
+            case 33:
             {
                 delay(10*1000)
                 break;
@@ -361,16 +341,15 @@ void StartGameTask(void const *argument)
             }
             case 36:
             {
-                //开启音效
-                //打开金属柜门
-                GameTimeReset;
-                gameFlag++;
+                ResetPin(三柜锁);
+//                GameTimeReset;
+                gameFlag=38;
                 break;
             }
             case 37:
             {
                 //等待打开柜门时间
-                delay(10*1000)
+//                delay(10*1000)
                 break;
             }
             case 38:
@@ -526,6 +505,7 @@ void StartGameTask(void const *argument)
             case 57:
             {
                 SetPin(答案选择灯);
+                SetPin(答案按钮灯);
                 gameFlag++;
                 break;
 
@@ -570,9 +550,12 @@ void StartGameTask(void const *argument)
                 break;
             }
             case 59: {
+                ResetPin(火箭升空视频);
+                ResetPin(火箭升空视频);
                 SetPin(火箭升空视频);
                 osDelay(300);
                 ResetPin(火箭升空视频);
+                SetPin(急停射灯);
                 GameTimeReset;
                 gameFlag++;
                 break;
@@ -585,8 +568,10 @@ void StartGameTask(void const *argument)
                 }
                 break;
             }
-            case 61:{
-                ResetPin(实验室灯);
+            case 61:
+            {
+                ResetPin(答案选择灯);
+                ResetPin(答案按钮灯);
                 SetPin(炉子平移门关);
                 SetPin(窗户火箭视频);
                 SetPin(成功发射视频);
@@ -601,6 +586,7 @@ void StartGameTask(void const *argument)
             }
             case 62:
             {
+                ResetPin(急停射灯);
                 ResetPin(实验室灯);
                 ResetPin(炉子灯带);
                 SetPin(窗户警察视频);
@@ -629,16 +615,113 @@ void StartGameTask(void const *argument)
             {
                 StopMusicA;
                 StopMusicB;
+                SetPin(蓝色聚光灯);
+                ResetPin(婴儿床灯);
+                ResetPin(游戏灯);
+                ResetPin(酒吧灯);
+                ResetPin(医院灯);
+                ResetPin(片子灯);
+                SetPin(出口门);
+                ResetPin(出口灯);
+                SetPin(实验室台灯);
+                SetPin(实验室灯);
+                SetPin(三柜锁);
+                ResetPin(柜子白光);
+                ResetPin(答案按钮灯);
+                ResetPin(急停射灯);
+                ResetPin(炉子灯带);
+                ResetPin(答案选择灯);
+                ResetPin(取消发射视频);
+                ResetPin(火箭升空视频);
+                ResetPin(进入飞船视频);
+                ResetPin(准备升空视频);
+                ResetPin(记忆卡2视频);
+                ResetPin(记忆卡视频);
+                SetPin(电脑复位);
+                osDelay(500);
+                ResetPin(电脑复位);
+                ResetPin(电脑开机);
+                ResetPin(成功发射视频);
+
+                ResetPin(炉子平移门开);
+                ResetPin(炉子平移门关);
+                ResetPin(入口平移门开);
+                ResetPin(入口平移门关);
+                ResetPin(出口平移门开);
+                ResetPin(出口平移门关);
+                osDelay(300);
+                SetPin(炉子平移门开);
+                SetPin(入口平移门开);
+                SetPin(出口平移门开);
+                osDelay(15*1000);
+                ResetPin(炉子平移门开);
+                ResetPin(炉子平移门关);
+                ResetPin(入口平移门开);
+                ResetPin(入口平移门关);
+                ResetPin(出口平移门开);
+                ResetPin(出口平移门关);
+
                 gameFlag=0;
                 break;
             }
             case 66://复位
             {
+                ResetPin(炉子平移门开);
+                ResetPin(炉子平移门关);
+                ResetPin(入口平移门开);
+                ResetPin(入口平移门关);
+                ResetPin(出口平移门开);
+                ResetPin(出口平移门关);
+                osDelay(300);
+                SetPin(炉子平移门关);
+                SetPin(入口平移门关);
+                SetPin(出口平移门关);
+                osDelay(15*1000);
+                ResetPin(炉子平移门开);
+                ResetPin(炉子平移门关);
+                ResetPin(入口平移门开);
+                ResetPin(入口平移门关);
+                ResetPin(出口平移门开);
+                ResetPin(出口平移门关);
+
+                ResetPin(蓝色聚光灯);
+                ResetPin(婴儿床灯);
+                ResetPin(游戏灯);
+                ResetPin(酒吧灯);
+                ResetPin(医院灯);
+                ResetPin(片子灯);
+                ResetPin(出口灯);
+                ResetPin(实验室台灯);
+                ResetPin(实验室灯);
+                ResetPin(柜子白光);
+                ResetPin(答案按钮灯);
+                ResetPin(急停射灯);
+                ResetPin(炉子灯带);
+                ResetPin(答案选择灯);
+
                 gameFlag=0;
                 break;
             }
 
 
+        }
+        if(gameFlag>=51&&gameFlag<=58)
+        {
+            static int a=0;
+            if(WaitBit(记忆卡2刷卡,pdFALSE))
+            {
+                if(a==0){
+                    SetPin(记忆卡2视频);
+                    a=1;
+                }
+            }
+            else
+            {
+                if(a==1) {
+                    ResetPin(记忆卡2视频);
+                    a=0;
+                }
+            }
         }
         RunTime++;
         xSemaphoreGive(xGameSemaphore);

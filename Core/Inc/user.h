@@ -32,73 +32,81 @@ void GameInit(void);
 #define ResetPin(pin) SetOutput(pin,GPIO_PIN_RESET)
 
 
-#define 动物按钮_鸡 2
-#define 动物按钮_猫 2
-#define 动物按钮_狗 2
-#define 动物按钮_蛙 2
-#define 动物按钮_牛 2
-#define 动物摆放 2
-#define 游戏过关 3
-#define 酒吧过关 3
+#define 动物摆放 0
+#define 游戏过关 1
+#define 酒吧过关 2
 #define 医院过关 3
-#define 敲门 3
-#define 医院过关 3
-#define 储存库过关 3
+#define 记忆卡刷卡 4
+#define 记忆卡2刷卡 5
+#define 储存库过关 6
 #define 密码器 7
-#define 记忆卡拿开 9
-
-
-#define 入口平移门开 0
-#define 入口平移门关 1
-#define 蓝色聚光灯 4
-#define 婴儿床灯 4
-#define 游戏灯 4
-#define 酒吧灯 4
-#define 医院灯 4
-#define 片子灯 4
-#define 出口灯 4
-#define 出口平移门开 0
-#define 出口平移门关 1
-#define 蓝色聚光灯2 4
-#define 实验室灯 9
-#define 准备升空视频 1
-#define 实验室台灯 9
-#define 进入飞船视频 3
-#define 柜子白光 3
-#define 贝塔锁 3
-#define 记忆卡刷卡 3
-#define 记忆卡视频 3
-#define 拉杆上 3
-#define 拉杆下 3
-#define 炉子平移门开 0
-#define 炉子平移门关 1
-#define 炉子灯带 1
-#define 信拿走 1
-
-#define 答案选择灯 4
+#define 记忆卡拿开 8
+#define 拉杆上 9
+#define 紧急停止 10
+#define 信拿走 11
 
 //答案选择按钮
-#define 答案1_A 4
-#define 答案1_B 4
-#define 答案1_C 4
+#define 答案1_A 13
+#define 答案1_B 12
+#define 答案1_C 15
 
-#define 答案2_A 4
-#define 答案2_B 4
-#define 答案2_C 4
+#define 答案2_A 14
+#define 答案2_B 17
+#define 答案2_C 16
 
-#define 答案3_A 4
-#define 答案3_B 4
-#define 答案3_C 4
+#define 答案3_A 19
+#define 答案3_B 18
+#define 答案3_C 21
 
-#define 答案确认 4
+#define 答案确认 20
+////////////////
 
-#define 火箭升空视频 4
-#define 紧急停止 4
-#define 窗户火箭视频 4
-#define 窗户警察视频 4
-#define 成功发射视频 4
-#define 取消发射视频 4
-#define 出口门 4
+#define 敲门 22
+#define 拉杆下 23
+//？//？//？//？//
+#define 贝塔锁 23
 
 
+
+///////////////////
+#define 蓝色聚光灯 0
+#define 婴儿床灯 1
+#define 游戏灯 2
+#define 酒吧灯 3
+#define 医院灯 4
+#define 片子灯 5
+// 消防门
+#define 出口门 7
+#define 出口灯 8
+
+#define 实验室台灯 10
+#define 实验室灯 11
+#define 三柜锁 12
+#define 柜子白光 13
+
+
+
+#define 答案按钮灯 17
+#define 急停射灯 18
+#define 炉子灯带 19
+#define 答案选择灯 20
+#define 取消发射视频 21
+#define 火箭升空视频 22
+#define 进入飞船视频 23
+#define 准备升空视频 24
+#define 记忆卡2视频 25
+#define 记忆卡视频 26
+#define 电脑复位 27
+#define 电脑开机 28
+#define 成功发射视频 29
+
+#define 炉子平移门开 48
+#define 炉子平移门关 49
+#define 入口平移门开 50
+#define 入口平移门关 51
+#define 出口平移门开 52
+#define 出口平移门关 53
+
+#define 窗户火箭视频 38
+#define 窗户警察视频 39
 #endif //FKS1_USER_H
