@@ -62,26 +62,32 @@ void StartGameTask(void const *argument) {
                                                        pdTRUE, 0);
                 if (bits & TO_BIT(艾琳开始)) {
                     gameFlags[0]++;
+                    SetOutput(开场语音, GPIO_PIN_SET);
+                    GameTimeReset;
                 }
                 break;
             }
             case 1://
             {
-                SetOutput(电视背景灯带, GPIO_PIN_SET);
-                GameTimeReset;
-                gameFlags[0]++;
+                if (GameDelay(&RunTime, 13000)) {
+                    gameFlags[0]++;
+                    SetOutput(开场语音, GPIO_PIN_RESET);
+                }
                 break;
             }
             case 2://
             {
-                if (GameDelay(&RunTime, 13000)) {
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[游戏开始 / 24], TO_BIT(游戏开始), pdTRUE,
+                                                       pdTRUE, 0);
+                if (bits & TO_BIT(游戏开始)) {
                     gameFlags[0]++;
                 }
+                gameFlags[0]++;
                 break;
             }
             case 3://播放bgm开场,播放语音,这就是王晗雨的家了,开灯
             {
-                SetOutput(电视背景灯带, GPIO_PIN_RESET);
+
                 char *fileName1 = "/02.mp3";
                 PlayMusicName(&MUSIC_1, fileName1, strlen(fileName1), 单曲循环);
                 char *fileName2 = "/03.mp3";
@@ -139,9 +145,9 @@ void StartGameTask(void const *argument) {
             }
             case 9://延时触发语音
             {
-                if (GameDelay(&RunTime, 40000)) {
+//                if (GameDelay(&RunTime, 40000)) {
                     gameFlags[0]++;
-                }
+//                }
                 break;
             }
             case 10://
@@ -574,7 +580,7 @@ void StartGameTask(void const *argument) {
             }
             case 46://
             {
-                if (GameDelay(&RunTime, 7000)) { gameFlags[0]++; }
+                if (GameDelay(&RunTime, 8000)) { gameFlags[0]++; }
                 break;
             }
             case 47://
@@ -605,13 +611,14 @@ void StartGameTask(void const *argument) {
             }
             case 50://
             {
-                if (GameDelay(&RunTime, 25000)) { gameFlags[0]++; }
+                if (GameDelay(&RunTime, 26000)) { gameFlags[0]++; }
                 break;
             }
             case 51://
             {
                 SetOutput(电脑显示器, GPIO_PIN_RESET);
                 SetOutput(信息投影灯, GPIO_PIN_RESET);
+                SetOutput(灯带, GPIO_PIN_RESET);
                 gameFlags[0]++;
                 break;
             }
@@ -675,6 +682,7 @@ void StartGameTask(void const *argument) {
                 SetOutput(卧室月球灯, GPIO_PIN_SET);
                 SetOutput(客厅房顶灯带, GPIO_PIN_SET);
                 SetOutput(卧室灯带, GPIO_PIN_SET);
+                SetOutput(敲门锁, GPIO_PIN_SET);
                 SetOutput(前场电脑复位, GPIO_PIN_SET);
                 osDelay(1000);
                 SetOutput(前场电脑复位, GPIO_PIN_RESET);

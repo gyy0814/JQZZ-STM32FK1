@@ -78,6 +78,7 @@ void GameInit(void);
 #define 前场电脑复位 52
 #define 前场电脑触发 53
 #define 电视信号7 54
+#define 开场语音 55
 
 
 //输入
@@ -93,7 +94,7 @@ void GameInit(void);
 #define 扫描仪2 11
 
 #define 打电话 10
-#define 扫描仪3 12
+#define 扫描仪3 8
 #define 扫描仪4 24
 #define 卧室密码器 13
 #define 录取通知 14
@@ -109,10 +110,10 @@ void GameInit(void);
 #define 扫描仪5 25
 #define 扫描仪6 17
 #define 扫描仪7 31
-#define 扫描仪8 27
-#define 扫描仪9 28
-#define 扫描仪10 8
+#define 扫描仪8 28
+#define 扫描仪9 27
+#define 扫描仪10 12
 #define 矮桌 29
 #define 开关面板 30
-#define 艾琳开始 0
+#define 艾琳开始 31
 #endif //FKS1_USER_H
