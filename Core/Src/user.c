@@ -93,9 +93,9 @@ void StartGameTask(void const *argument) {
             }
             case 4://等待检测遥控器1
             {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[遥控器1 / 24], TO_BIT(遥控器1), pdTRUE,
+                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[遥控器5 / 24], TO_BIT(遥控器5), pdTRUE,
                                                        pdTRUE, 0);
-                if (bits & TO_BIT(遥控器1)) {
+                if (bits & TO_BIT(遥控器5)) {
                     gameFlags[0]++;
                 }
                 break;
@@ -293,9 +293,10 @@ void StartGameTask(void const *argument) {
                 break;
             }
             case 28://记忆卡2
-            {   //SetOutput(电视信号7, GPIO_PIN_SET);
+            {
+                SetOutput(电视信号7, GPIO_PIN_SET);
                 osDelay(500);
-                //SetOutput(电视信号7, GPIO_PIN_RESET);
+                SetOutput(电视信号7, GPIO_PIN_RESET);
                 gameFlags[0]++;
                 GameTimeReset;
                 break;
@@ -741,9 +742,9 @@ void StartGameTask(void const *argument) {
         }
         if (gameFlags[0] >= 5 && gameFlags[0] <= 33)//4 个按钮，按不同的按钮会播放不同的视频
         {
-            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[遥控器2 / 24], TO_BIT(遥控器2), pdTRUE,
+            EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[遥控器4 / 24], TO_BIT(遥控器4), pdTRUE,
                                                     pdTRUE, 0);
-            if (bits1 & TO_BIT(遥控器2)) {
+            if (bits1 & TO_BIT(遥控器4)) {
                 SetOutput(电视信号2, GPIO_PIN_SET);
                 char *fileName = "/05.mp3";
                 PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
@@ -759,18 +760,18 @@ void StartGameTask(void const *argument) {
                 osDelay(500);
                 SetOutput(电视信号3, GPIO_PIN_RESET);
             }
-            EventBits_t bits3 = xEventGroupWaitBits(InputEventGroup[遥控器4 / 24], TO_BIT(遥控器4), pdTRUE,
+            EventBits_t bits3 = xEventGroupWaitBits(InputEventGroup[遥控器2 / 24], TO_BIT(遥控器2), pdTRUE,
                                                     pdTRUE, 0);
-            if (bits3 & TO_BIT(遥控器4)) {
+            if (bits3 & TO_BIT(遥控器2)) {
                 SetOutput(电视信号4, GPIO_PIN_SET);
                 char *fileName = "/11.mp3";
                 PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 osDelay(500);
                 SetOutput(电视信号4, GPIO_PIN_RESET);
             }
-            EventBits_t bits4 = xEventGroupWaitBits(InputEventGroup[遥控器5 / 24], TO_BIT(遥控器5), pdTRUE,
+            EventBits_t bits4 = xEventGroupWaitBits(InputEventGroup[遥控器1 / 24], TO_BIT(遥控器1), pdTRUE,
                                                     pdTRUE, 0);
-            if (bits4 & TO_BIT(遥控器5)) {
+            if (bits4 & TO_BIT(遥控器1)) {
                 SetOutput(电视信号5, GPIO_PIN_SET);
                 char *fileName = "/12.mp3";
                 PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);

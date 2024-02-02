@@ -55,17 +55,17 @@ void GameInit(void);
 
 #define 灯带 31
 #define 线路射灯 32
-#define 扫描灯1 33
-#define 扫描灯2 34
+#define 扫描灯1 34
+#define 扫描灯2 36
 #define 扫描灯3 35
-#define 扫描灯4 36
-#define 扫描灯5 37
+#define 扫描灯4 37
+#define 扫描灯5 40
 #define 扫描灯6 38
 #define 扫描灯7 39
-#define 扫描灯8 40
+#define 扫描灯8 42
 
 #define 扫描灯9 41
-#define 扫描灯10 42
+#define 扫描灯10 33
 #define 扫描激光 43
 #define 电脑显示器 44
 #define 书房月球灯 45
@@ -77,6 +77,7 @@ void GameInit(void);
 #define 卧室灯带 51
 #define 前场电脑复位 52
 #define 前场电脑触发 53
+#define 电视信号7 54
 
 
 //输入
@@ -88,12 +89,12 @@ void GameInit(void);
 #define 遥控器5 5
 #define 记忆卡刷卡1 6
 #define 记忆卡刷卡2 7
-#define 扫描仪1  8
-#define 扫描仪2 9
+#define 扫描仪1  9
+#define 扫描仪2 11
 
 #define 打电话 10
-#define 扫描仪3 11
-#define 扫描仪4 12
+#define 扫描仪3 12
+#define 扫描仪4 24
 #define 卧室密码器 13
 #define 录取通知 14
 #define 记忆卡拿走 15
@@ -105,13 +106,13 @@ void GameInit(void);
 #define 快递柜密码器 20
 #define 线路过关 21
 #define 艾利刷卡 22
-#define 扫描仪5 23
-#define 扫描仪6 24
-#define 扫描仪7 25
-#define 扫描仪8 26
-#define 扫描仪9 27
-#define 扫描仪10 28
+#define 扫描仪5 25
+#define 扫描仪6 17
+#define 扫描仪7 31
+#define 扫描仪8 27
+#define 扫描仪9 28
+#define 扫描仪10 8
 #define 矮桌 29
 #define 开关面板 30
-#define 艾琳开始 31
+#define 艾琳开始 0
 #endif //FKS1_USER_H
