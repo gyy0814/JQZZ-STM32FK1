@@ -64,7 +64,6 @@ void GameInit(void);
 #define 敲门 22
 #define 拉杆下 23
 //？//？//？//？//
-#define 贝塔锁 23
 
 
 
@@ -84,7 +83,7 @@ void GameInit(void);
 #define 三柜锁 12
 #define 柜子白光 13
 
-
+#define 贝塔锁 15
 
 #define 答案按钮灯 17
 #define 急停射灯 18
@@ -100,13 +99,13 @@ void GameInit(void);
 #define 电脑开机 28
 #define 成功发射视频 29
 
-#define 炉子平移门开 48
-#define 炉子平移门关 49
-#define 入口平移门开 50
-#define 入口平移门关 51
-#define 出口平移门开 52
-#define 出口平移门关 53
+#define 炉子平移门关 48
+#define 炉子平移门开 49
+#define 出口平移门关 50
+#define 出口平移门开 51
+#define 入口平移门关 52
+#define 入口平移门开 53
 
-#define 窗户火箭视频 38
-#define 窗户警察视频 39
+#define 窗户火箭视频 54
+#define 窗户警察视频 55
 #endif //FKS1_USER_H

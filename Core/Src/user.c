@@ -232,7 +232,7 @@ void StartGameTask(void const *argument)
             {
                 if(WaitBit(敲门,pdTRUE))
                 {
-                    gameFlag++;
+                    //gameFlag++;
                 }
                 break;
             }
@@ -403,6 +403,7 @@ void StartGameTask(void const *argument)
             {
                 if(WaitBit(记忆卡拿开,pdTRUE))
                 {
+                    gameFlag++;
                     gameFlag++;
                 }
                 break;
@@ -586,6 +587,8 @@ void StartGameTask(void const *argument)
             }
             case 62:
             {
+                ResetPin(答案选择灯);
+                ResetPin(答案按钮灯);
                 ResetPin(急停射灯);
                 ResetPin(实验室灯);
                 ResetPin(炉子灯带);
