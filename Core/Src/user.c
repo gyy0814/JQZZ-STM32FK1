@@ -627,6 +627,8 @@ void StartGameTask(void const *argument)
             }
             case 65://复位
             {
+                StopMusicA;
+                StopMusicB;
                 gameFlag=0;
                 break;
             }

@@ -90,6 +90,18 @@ void PauseMusic(UART_HandleTypeDef *huart)
     newMusicMessage.Data[0] = 0x02;
     xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
 }
+void StopMusic(UART_HandleTypeDef *huart)
+{
+    /* Pause Music */
+    MusicMessage newMusicMessage = (MusicMessage){
+            .huart = huart,
+            .CMD = 0x04,
+            .DataLength=1
+    };
+
+    newMusicMessage.Data[0] = 0x03;
+    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+}
 
 //音乐事件处理任务
 void StartMusicTask(void const * argument)
