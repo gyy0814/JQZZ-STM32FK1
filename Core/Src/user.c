@@ -556,8 +556,6 @@ void StartGameTask(void const *argument)
                 ResetPin(火箭升空视频);
                 ResetPin(火箭升空视频);
                 SetPin(火箭升空视频);
-                osDelay(300);
-                ResetPin(火箭升空视频);
                 SetPin(急停射灯);
                 GameTimeReset;
                 gameFlag++;
