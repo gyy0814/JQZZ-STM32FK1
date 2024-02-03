@@ -1,0 +1,3 @@
+C:/Users/26913/Desktop/BeiJing/JQZZ-STM32FK1/cmake-build-debug/CMakeFiles/FKS1.elf.dir
+C:/Users/26913/Desktop/BeiJing/JQZZ-STM32FK1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/26913/Desktop/BeiJing/JQZZ-STM32FK1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
