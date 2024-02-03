@@ -27,6 +27,7 @@
       <change beforePath="$PROJECT_DIR$/Core/Src/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/user.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.hex" afterDir="false" />

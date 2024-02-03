@@ -69,7 +69,7 @@ void StartGameTask(void const *argument) {
             }
             case 1://
             {
-                if (GameDelay(&RunTime, 13000)) {
+                if (GameDelay(&RunTime, 16000)) {
                     gameFlags[0]++;
                     SetOutput(开场语音, GPIO_PIN_RESET);
                 }
@@ -443,7 +443,7 @@ void StartGameTask(void const *argument) {
             {
                 EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[扫描仪1 / 24], TO_BIT(扫描仪1), pdTRUE,
                                                         pdTRUE, 0);
-                if (bits1 & TO_BIT(扫描仪1)) {
+                if ((bits1 & TO_BIT(扫描仪1))&&saomiaoFlags[1] == 0) {
                     saomiaoFlags[1] = 1;
                     SetOutput(信息块1, GPIO_PIN_RESET);
                     SetOutput(扫描灯1, GPIO_PIN_RESET);
@@ -452,7 +452,7 @@ void StartGameTask(void const *argument) {
                 }
                 EventBits_t bits2 = xEventGroupWaitBits(InputEventGroup[扫描仪2 / 24], TO_BIT(扫描仪2), pdTRUE,
                                                         pdTRUE, 0);
-                if (bits2 & TO_BIT(扫描仪2)) {
+                if ((bits2 & TO_BIT(扫描仪2))&&saomiaoFlags[2] == 0) {
                     saomiaoFlags[2] = 1;
                     SetOutput(信息块2, GPIO_PIN_RESET);
                     SetOutput(扫描灯2, GPIO_PIN_RESET);
@@ -461,7 +461,7 @@ void StartGameTask(void const *argument) {
                 }
                 EventBits_t bits3 = xEventGroupWaitBits(InputEventGroup[扫描仪3 / 24], TO_BIT(扫描仪3), pdTRUE,
                                                         pdTRUE, 0);
-                if (bits3 & TO_BIT(扫描仪3)) {
+                if ((bits3 & TO_BIT(扫描仪3))&&saomiaoFlags[3] == 0) {
                     saomiaoFlags[3] = 1;
                     SetOutput(信息块3, GPIO_PIN_RESET);
                     SetOutput(扫描灯3, GPIO_PIN_RESET);
@@ -470,7 +470,7 @@ void StartGameTask(void const *argument) {
                 }
                 EventBits_t bits4 = xEventGroupWaitBits(InputEventGroup[扫描仪4 / 24], TO_BIT(扫描仪4), pdTRUE,
                                                         pdTRUE, 0);
-                if (bits4 & TO_BIT(扫描仪4)) {
+                if ((bits4 & TO_BIT(扫描仪4))&&saomiaoFlags[4] == 0) {
                     saomiaoFlags[4] = 1;
                     SetOutput(信息块4, GPIO_PIN_RESET);
                     SetOutput(扫描灯4, GPIO_PIN_RESET);
@@ -479,7 +479,7 @@ void StartGameTask(void const *argument) {
                 }
                 EventBits_t bits5 = xEventGroupWaitBits(InputEventGroup[扫描仪5 / 24], TO_BIT(扫描仪5), pdTRUE,
                                                         pdTRUE, 0);
-                if (bits5 & TO_BIT(扫描仪5)) {
+                if ((bits5 & TO_BIT(扫描仪5))&&saomiaoFlags[5] == 0) {
                     saomiaoFlags[5] = 1;
                     SetOutput(信息块5, GPIO_PIN_RESET);
                     SetOutput(扫描灯5, GPIO_PIN_RESET);
@@ -488,7 +488,7 @@ void StartGameTask(void const *argument) {
                 }
                 EventBits_t bits6 = xEventGroupWaitBits(InputEventGroup[扫描仪6 / 24], TO_BIT(扫描仪6), pdTRUE,
                                                         pdTRUE, 0);
-                if (bits6 & TO_BIT(扫描仪6)) {
+                if ((bits6 & TO_BIT(扫描仪6))&&saomiaoFlags[6] == 0) {
                     saomiaoFlags[6] = 1;
                     SetOutput(信息块6, GPIO_PIN_RESET);
                     SetOutput(扫描灯6, GPIO_PIN_RESET);
@@ -497,7 +497,7 @@ void StartGameTask(void const *argument) {
                 }
                 EventBits_t bits7 = xEventGroupWaitBits(InputEventGroup[扫描仪7 / 24], TO_BIT(扫描仪7), pdTRUE,
                                                         pdTRUE, 0);
-                if (bits7 & TO_BIT(扫描仪7)) {
+                if ((bits7 & TO_BIT(扫描仪7))&&saomiaoFlags[7] == 0) {
                     saomiaoFlags[7] = 1;
                     SetOutput(信息块7, GPIO_PIN_RESET);
                     SetOutput(扫描灯7, GPIO_PIN_RESET);
@@ -506,7 +506,7 @@ void StartGameTask(void const *argument) {
                 }
                 EventBits_t bits8 = xEventGroupWaitBits(InputEventGroup[扫描仪8 / 24], TO_BIT(扫描仪8), pdTRUE,
                                                         pdTRUE, 0);
-                if (bits8 & TO_BIT(扫描仪8)) {
+                if ((bits8 & TO_BIT(扫描仪8))&&saomiaoFlags[8] == 0) {
                     saomiaoFlags[8] = 1;
                     SetOutput(信息块8, GPIO_PIN_RESET);
                     SetOutput(扫描灯8, GPIO_PIN_RESET);
@@ -515,7 +515,7 @@ void StartGameTask(void const *argument) {
                 }
                 EventBits_t bits9 = xEventGroupWaitBits(InputEventGroup[扫描仪9 / 24], TO_BIT(扫描仪9), pdTRUE,
                                                         pdTRUE, 0);
-                if (bits9 & TO_BIT(扫描仪9)) {
+                if ((bits9 & TO_BIT(扫描仪9))&&saomiaoFlags[9] == 0) {
                     saomiaoFlags[9] = 1;
                     SetOutput(信息块9, GPIO_PIN_RESET);
                     SetOutput(扫描灯9, GPIO_PIN_RESET);
@@ -524,7 +524,7 @@ void StartGameTask(void const *argument) {
                 }
                 EventBits_t bits10 = xEventGroupWaitBits(InputEventGroup[扫描仪10 / 24], TO_BIT(扫描仪10),
                                                          pdTRUE, pdTRUE, 0);
-                if (bits10 & TO_BIT(扫描仪10)) {
+                if ((bits10 & TO_BIT(扫描仪10))&&saomiaoFlags[10] == 0) {
                     saomiaoFlags[10] = 1;
                     SetOutput(信息块10, GPIO_PIN_RESET);
                     SetOutput(扫描灯10, GPIO_PIN_RESET);
@@ -548,7 +548,7 @@ void StartGameTask(void const *argument) {
             }
             case 42://十个扫描过关
             {
-                if (GameDelay(&RunTime, 3000)) { gameFlags[0]++; }
+                if (GameDelay(&RunTime, 8000)) { gameFlags[0]++; }
                 break;
             }
             case 43://十个扫描过关
@@ -586,8 +586,9 @@ void StartGameTask(void const *argument) {
             {
                 char *fileName2 = "/44.mp3";
                 PlayMusicName(&MUSIC_2, fileName2, strlen(fileName2), 单曲停止);
+                SetOutput(信息投影灯, GPIO_PIN_RESET);
                 SetOutput(前场电脑触发, GPIO_PIN_SET);
-                osDelay(500);
+                osDelay(300);
                 SetOutput(前场电脑触发, GPIO_PIN_RESET);
                 gameFlags[0]++;
                 GameTimeReset;
@@ -595,7 +596,7 @@ void StartGameTask(void const *argument) {
             }
             case 48://
             {
-                if (GameDelay(&RunTime, 45000)) { gameFlags[0]++; }
+                if (GameDelay(&RunTime, 60000)) { gameFlags[0]++; }
                 break;
             }
             case 49://
@@ -784,6 +785,21 @@ void StartGameTask(void const *argument) {
 //                PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 osDelay(500);
                 SetOutput(电视信号5, GPIO_PIN_RESET);
+            }
+
+            EventBits_t bits5 = xEventGroupWaitBits(InputEventGroup[记忆卡刷卡1 / 24], TO_BIT(记忆卡刷卡1), pdTRUE,
+                                                    pdTRUE, 0);
+            if (bits5 & TO_BIT(记忆卡刷卡1)) {
+                SetOutput(电视信号6, GPIO_PIN_SET);
+                osDelay(500);
+                SetOutput(电视信号6, GPIO_PIN_RESET);
+            }
+            EventBits_t bits6 = xEventGroupWaitBits(InputEventGroup[记忆卡刷卡2 / 24], TO_BIT(记忆卡刷卡2), pdTRUE,
+                                                    pdTRUE, 0);
+            if (bits6 & TO_BIT(记忆卡刷卡2)) {
+                SetOutput(电视信号7, GPIO_PIN_SET);
+                osDelay(500);
+                SetOutput(电视信号7, GPIO_PIN_RESET);
             }
         }
         if (gameFlags[0] >= 26 && gameFlags[0] <= 33)//等待开关

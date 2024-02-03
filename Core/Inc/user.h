@@ -79,7 +79,7 @@ void GameInit(void);
 #define 前场电脑触发 53
 #define 电视信号7 54
 #define 开场语音 55
-
+#define 深呼吸蓝灯 56
 
 //输入
 #define 游戏开始 0
