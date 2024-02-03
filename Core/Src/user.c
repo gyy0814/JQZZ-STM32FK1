@@ -533,6 +533,7 @@ void StartGameTask(void const *argument)
                     {
                         PlayMusicA("/77.mp3",单曲停止)
                         PlayMusicB("/76.mp3",单曲停止)
+                        GameTimeReset;
                         gameFlag=59;
                     }
                     else if(NWaitBit(答案1_A,pdFALSE)&&
@@ -596,6 +597,7 @@ void StartGameTask(void const *argument)
                 ResetPin(电视起飞);
                 ResetPin(成功发射视频);
                 PlayMusicA("/80.mp3",单曲停止)
+                osDelay(10000);
                 PlayMusicB("/81.mp3",单曲停止)
                 GameTimeReset;
                 gameFlag=64;
@@ -614,6 +616,7 @@ void StartGameTask(void const *argument)
                 ResetPin(电视直升机);
                 ResetPin(取消发射视频);
                 PlayMusicA("/83.mp3",单曲停止)
+                osDelay(10000);
                 PlayMusicB("/82.mp3",单曲停止)
                 GameTimeReset;
                 gameFlag++;
