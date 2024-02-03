@@ -74,10 +74,10 @@ void GameInit(void);
 #define 酒吧灯 3
 #define 医院灯 4
 #define 片子灯 5
-// 消防门
-#define 出口门 7
+#define 出口门 6
+#define 消防门 7
 #define 出口灯 8
-
+#define 电视待机 9
 #define 实验室台灯 10
 #define 实验室灯 11
 #define 三柜锁 12
@@ -98,6 +98,8 @@ void GameInit(void);
 #define 电脑复位 27
 #define 电脑开机 28
 #define 成功发射视频 29
+#define 电视直升机 30
+#define 电视起飞 31
 
 #define 炉子平移门关 48
 #define 炉子平移门开 49
@@ -106,6 +108,4 @@ void GameInit(void);
 #define 入口平移门关 52
 #define 入口平移门开 53
 
-#define 窗户火箭视频 54
-#define 窗户警察视频 55
 #endif //FKS1_USER_H
