@@ -91,6 +91,7 @@ void StartGameTask(void const *argument) {
                 PlayMusicName(&MUSIC_1, fileName1, strlen(fileName1), 单曲循环);
                 char *fileName2 = "/03.mp3";
                 PlayMusicName(&MUSIC_2, fileName2, strlen(fileName2), 单曲停止);
+                osDelay(15000);
                 SetOutput(电视背景灯带, GPIO_PIN_SET);
                 SetOutput(客厅房顶灯带, GPIO_PIN_SET);
                 gameFlags[0]++;
