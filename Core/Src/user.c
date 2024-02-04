@@ -63,6 +63,7 @@ void StartGameTask(void const *argument)
             case 1:
             {
                 PlayMusicB("/66.mp3",单曲循环)
+                SetOutput(后场灯带, GPIO_PIN_SET);
                 SetOutput(入口门,GPIO_PIN_RESET);
                 SetOutput(视频1, GPIO_PIN_SET);
                 osDelay(300);
@@ -309,7 +310,10 @@ void StartGameTask(void const *argument)
             }
             case 35:
             {
+
+
                 SetOutput(手机视频1,GPIO_PIN_SET);
+                osDelay(500);
                 PlayMusicA("/81.mp3",单曲停止)
                 GameTimeReset;
                 gameFlag++;
@@ -340,9 +344,9 @@ void StartGameTask(void const *argument)
             }
             case 40:
             {
-                if(WaitBit(温度控制_1,pdTRUE))
-                PlayMusicA("/56.mp3",单曲停止)
                 if(WaitBit(温度控制_2,pdTRUE))
+                PlayMusicA("/56.mp3",单曲停止)
+                if(WaitBit(温度控制_1,pdTRUE))
                 {
                     PlayMusicA("/57.mp3",单曲停止)
                     GameTimeReset;
@@ -441,6 +445,12 @@ void StartGameTask(void const *argument)
             {
                 PlayMusicA("/64.mp3",单曲停止)
                 StopMusicB;
+                SetOutput(电箱电源, GPIO_PIN_RESET);
+                SetOutput(电箱射灯, GPIO_PIN_RESET);
+                SetOutput(后场灯带, GPIO_PIN_RESET);
+                SetOutput(温度控制电源, GPIO_PIN_RESET);
+                SetOutput(行程管理电源, GPIO_PIN_RESET);
+
                 GameTimeReset;
                 gameFlag++;
                 break;
@@ -474,14 +484,18 @@ void StartGameTask(void const *argument)
                 SetOutput(红灯,GPIO_PIN_RESET);
                 SetOutput(蓝灯,GPIO_PIN_RESET);
                 SetOutput(电箱锁,GPIO_PIN_SET);
-                SetOutput(电箱射灯,GPIO_PIN_RESET);
+                SetOutput(电箱射灯,GPIO_PIN_SET);
                 SetOutput(电箱电源,GPIO_PIN_RESET);
+                SetOutput(出口门,GPIO_PIN_SET);
+                SetOutput(入口门,GPIO_PIN_SET);
+                SetOutput(后场灯带,GPIO_PIN_SET);
                 gameFlag=51;
                 break;
             }
             case 53://复场
             {
-                SetOutput(出口门,GPIO_PIN_SET);
+                SetOutput(电箱射灯,GPIO_PIN_RESET);
+                SetOutput(后场灯带,GPIO_PIN_RESET);
                 gameFlag=51;
                 break;
             }

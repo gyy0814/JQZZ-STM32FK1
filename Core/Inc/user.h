@@ -31,8 +31,8 @@ void GameInit(void);
 #define 电箱密码 6
 #define 电箱开 7
 #define 电箱关 8
-#define 对讲_播放 9
-#define 对接_重播 10
+#define 对接_重播 9
+#define 对讲_播放 10
 #define 行程管理_4 11
 #define 温度控制_1 12
 #define 温度控制_2 13
@@ -47,12 +47,12 @@ void GameInit(void);
 #define 快递门 6
 #define 外卖柜门 5
 #define 红灯 7
-
+#define 后场灯带 8
 #define 蓝灯 9
 
-#define 电视视频 11
-#define 视频1 12
-#define 视频2 13
+#define 视频1 11
+#define 视频2 12
+#define 电视视频 13
 #define 温度控制电源 14
 #define 行程管理电源 15
 #define 门铃音效 16
@@ -69,8 +69,8 @@ void GameInit(void);
 #define 手机视频1 32
 #define 手机视频2 33
 
-#define 窗户开 47
-#define 窗户关 46
+#define 窗户关 47
+#define 窗户开 46
 
 
 #define WaitBit(pin,clear) (xEventGroupWaitBits(InputEventGroup[pin/24],TO_BIT(pin),clear,pdTRUE,0) & TO_BIT(pin))==TO_BIT(pin)
