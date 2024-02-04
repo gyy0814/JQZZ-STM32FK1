@@ -68,13 +68,11 @@ void StartGameTask(void const *argument) {
             {
                 char *fileName1 = "/68.mp3";
                 PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
-                osDelay(300);
-                PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                 char *fileName = "/01.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
-                osDelay(300);
-                PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+
                 SetOutput(主光源, GPIO_PIN_SET);
+                osDelay(7000);
                 gameFlags[0]++;
                 break;
             }
@@ -344,6 +342,13 @@ void StartGameTask(void const *argument) {
             }
             case 37: //等待时钟1
             {
+                EventBits_t bits1 = xEventGroupWaitBits(InputEventGroup[杂志按钮 / 24], TO_BIT(杂志按钮), pdTRUE,
+                                                       pdTRUE, 0);
+                if (bits1 & TO_BIT(杂志按钮)) {
+                    char *fileName = "/19.mp3";
+                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                }
+
                 EventBits_t bits = xEventGroupWaitBits(InputEventGroup[时钟1 / 24], TO_BIT(时钟1), pdTRUE,
                                                        pdTRUE, 0);
                 if (bits & TO_BIT(时钟1)) {
@@ -479,8 +484,12 @@ void StartGameTask(void const *argument) {
                 PauseMusic(&MUSIC_1);
                 PauseMusic(&MUSIC_2);
                 SetOutput(电脑复位, GPIO_PIN_SET);
+                SetOutput(游戏柜门, GPIO_PIN_RESET);
+                SetOutput(时钟电源, GPIO_PIN_RESET);
                 osDelay(500);
                 SetOutput(电脑复位, GPIO_PIN_RESET);
+                SetOutput(游戏柜门, GPIO_PIN_SET);
+                SetOutput(时钟电源, GPIO_PIN_SET);
                 gameFlags[0] = 51;
                 break;
             }

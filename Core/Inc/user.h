@@ -82,4 +82,6 @@ void GameInit(void);
 #define 电脑复位 14
 #define 卧室门锁 15
 #define 电视电源 16
+#define 时钟电源 17
+#define 游戏柜门 18
 #endif //FKS1_USER_H
