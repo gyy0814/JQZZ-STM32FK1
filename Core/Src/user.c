@@ -11,286 +11,684 @@
 #include "cmsis_os.h"
 #include "gpio.h"
 #include <stdbool.h>
-#define GameTaskNum 1
-int gameFlags[GameTaskNum] = {19};
-SemaphoreHandle_t xGameSemaphore[GameTaskNum];
+SemaphoreHandle_t xGameSemaphore;
 
 extern QueueHandle_t GameMessageQueueHandle;
 extern EventGroupHandle_t InputEventGroup[(INPUT_NUM / 24) + 1];
 extern EventGroupHandle_t MusicEventGroup;
 extern QueueHandle_t OutputMessageQueueHandle;
-bool ASCTaskHandle[9];
-TaskHandle_t BlinkTaskHandle = NULL;
 
-int GameFlag=0;
+int gameFlag=0;
 void GameInit(void)
 {
-    for(int i=0;i<GameTaskNum;i++)
-        xGameSemaphore[i] = xSemaphoreCreateMutex();
+        xGameSemaphore = xSemaphoreCreateMutex();
 }
-
-/**********************
-         门 锁
-**********************/
-void StartDoorTask(void const *argument)
-{
-    for(;;)
-    {
-
-    }
-}
-
+bool HC1,HC2;
 /**********************
         蜡烛(HP)
 **********************/
-static int HP = 16;
-
-#define HP_PIN_START 23
-
+int HP = 16;
+bool HPLow;
 void SetHP(int hp) {
-    for (int i = 0; i < 16 ;i++)
+
+    SetOutput(蜡烛1,(1<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛2,(2<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛3,(3<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛4,(4<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛5,(5<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛6,(6<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛7,(7<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛8,(8<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛9,(9<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛10,(10<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛11,(11<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛12,(12<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛13,(13<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛14,(14<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛15,(15<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    SetOutput(蜡烛16,(16<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
+    if((hp==1)&&(!HPLow))
     {
-        SetOutput(HP_PIN_START+i,(i<hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
-    }
-    if(hp==1)
-    {
-        char FileName[] = "/TimeComing.mp3";
+        HPLow=true;
+        char FileName[] = "/32.mp3";
         PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
     }
 }
 void SubHP()
 {
-    char FileName[] = "/failure.mp3";
-    PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
-    for(int j=0;j<2;j++)
-    {
-        SetOutput(LIGHT_A,GPIO_PIN_SET);
-        SetOutput(LIGHT_B,GPIO_PIN_SET);
-        SetOutput(LIGHT_C,GPIO_PIN_SET);
-        SetOutput(LIGHT_D,GPIO_PIN_SET);
-        SetOutput(LIGHT_E,GPIO_PIN_SET);
-        osDelay(500);
-        SetOutput(LIGHT_A,GPIO_PIN_RESET);
-        SetOutput(LIGHT_B,GPIO_PIN_RESET);
-        SetOutput(LIGHT_C,GPIO_PIN_RESET);
-        SetOutput(LIGHT_D,GPIO_PIN_RESET);
-        SetOutput(LIGHT_E,GPIO_PIN_RESET);
-        osDelay(500);
-    }
+    PlayMusicA("/02.mp3",单曲停止)
     SetHP(--HP);
 }
 /**********************
         箱子
 **********************/
 //箱子数量
-#define BOX_NUM 70
+#define BOX_NUM 68
 //箱子刷卡输入pin
-uint8_t BoxInputPin[BOX_NUM];
+uint8_t BoxInputPin[BOX_NUM]=
+        {
+                输入茶室1,
+                输入茶室2,
+                输入茶室3,
+                输入茶室4,
+                输入茶室5,
+                输入茶室6,
+                输入茶室7,
+                输入茶室8,
+                输入扫雷1,
+                输入扫雷2,
+                输入扫雷3,
+                输入扫雷4,
+                输入扫雷5,
+                输入扫雷6,
+                输入扫雷7,
+                输入扫雷8,
+                输入扫雷9,
+                输入扫雷10,
+                输入扫雷11,
+                输入扫雷12,
+                输入扫雷14,
+                输入扫雷15,
+                输入扫雷16,
+                输入扫雷17,
+                输入扫雷18,
+                输入扫雷19,
+                输入扫雷20,
+                输入扫雷21,
+                输入扫雷22,
+                输入扫雷23,
+                输入扫雷24,
+                输入扫雷25,
+                输入卧室1,
+                输入卧室2,
+                输入卧室3,
+                输入卧室4,
+                输入卧室5,
+                输入卧室6,
+                输入厕所1,
+                输入厕所2,
+                输入厕所3,
+                输入厕所4,
+                输入厕所5,
+                输入厕所6,
+                输入厕所7,
+                输入厕所8,
+                输入儿童房1,
+                输入儿童房2,
+                输入儿童房3,
+                输入儿童房4,
+                输入儿童房5,
+                输入儿童房6,
+                输入儿童房7,
+                输入儿童房8,
+                输入儿童房9,
+                输入走廊1,
+                输入走廊2,
+                输入走廊3,
+                输入走廊4,
+                输入楼梯1,
+                输入楼梯2,
+                输入楼梯3,
+                输入楼梯4,
+                输入大厅1,
+                输入大厅2,
+                输入电视1,
+                输入电视2,
+                输入开场
+        };
 //箱子电锁输出pin
-uint8_t BoxOutputPin[BOX_NUM];
+uint8_t BoxOutputPin[BOX_NUM]=
+        {
+
+                输出茶室1,
+                输出茶室2,
+                输出茶室3,
+                输出茶室4,
+                输出茶室5,
+                输出茶室6,
+                输出茶室7,
+                输出茶室8,
+                输出扫雷1,
+                输出扫雷2,
+                输出扫雷3,
+                输出扫雷4,
+                输出扫雷5,
+                输出扫雷6,
+                输出扫雷7,
+                输出扫雷8,
+                输出扫雷9,
+                输出扫雷10,
+                输出扫雷11,
+                输出扫雷12,
+                输出扫雷14,
+                输出扫雷15,
+                输出扫雷16,
+                输出扫雷17,
+                输出扫雷18,
+                输出扫雷19,
+                输出扫雷20,
+                输出扫雷21,
+                输出扫雷22,
+                输出扫雷23,
+                输出扫雷24,
+                输出扫雷25,
+                输出卧室1,
+                输出卧室2,
+                输出卧室3,
+                输出卧室4,
+                输出卧室5,
+                输出卧室6,
+                输出厕所1,
+                输出厕所2,
+                输出厕所3,
+                输出厕所4,
+                输出厕所5,
+                输出厕所6,
+                输出厕所7,
+                输出厕所8,
+                输出儿童房1,
+                输出儿童房2,
+                输出儿童房3,
+                输出儿童房4,
+                输出儿童房5,
+                输出儿童房6,
+                输出儿童房7,
+                输出儿童房8,
+                输出儿童房9,
+                输出走廊1,
+                输出走廊2,
+                输出走廊3,
+                输出走廊4,
+                输出楼梯1,
+                输出楼梯2,
+                输出楼梯3,
+                输出楼梯4,
+                输出大厅1,
+                输出大厅2,
+                输出电视1,
+                输出电视2,
+                输出开场
+        };
 //箱子是否打开过
 bool OpenState[BOX_NUM];
-//箱子目前状态
-bool BoxState[BOX_NUM];
 //箱子属性
-bool BoxProperties[BOX_NUM];
+bool BoxProperties[BOX_NUM]=
+        {
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                true,
+                true,
+                false,
+                true,
+                true,
+                false,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                true,
+                true,
+                true,
+                false,
+                true,
+                false,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                false,
+                false
+        };
+
+int Lz=0;
+long int GameTime = 100*60*1000;
+
+int Ls=0;
 void StartBoxTask(void const *argument)
 {
     for(;;)
     {
         for(int i=0;i<BOX_NUM;i++)
         {
-            if((ReadInput(BoxInputPin[i])==GPIO_PIN_SET)&&(!BoxState[i]))
+            if(WaitBit(BoxInputPin[i],pdTRUE))
             {
-                BoxState[i]=true;
-                SetOutput(BoxOutputPin[i],GPIO_PIN_SET);
-                osDelay(500);
-                SetOutput(BoxOutputPin[i],GPIO_PIN_RESET);
-                if(OpenState[i]==false)
-                {
-                    if (!BoxProperties[i])
-                    {
-                        char FileName[] = "/success.mp3";
-                        PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
-                    }
-                    else
-                    {
+                OpenLock(BoxOutputPin[i])
+                if(OpenState[i]) {
+                    if (BoxProperties[i]) {
+                        if(i==10)
+                        {
+                            PlayMusicA("/24.mp3",单曲停止)
+                        }
+                        else if(i==12)
+                        {
+                            PlayMusicA("/31.mp3",单曲停止)
+                        }
+                        else if(i==14)
+                        {
+                            PlayMusicA("/29.mp3",单曲停止)
+                        }
+                        else if(i==15)
+                        {
+                            PlayMusicA("/30.mp3",单曲停止)
+                        }
+                        else if(i==18)
+                        {
+                            PlayMusicA("/27.mp3",单曲停止)
+                        }
+                        else if(i==24)
+                        {
+                            PlayMusicA("/25.mp3",单曲停止)
+                        }
+                        else if(i==26)
+                        {
+                            PlayMusicA("/28.mp3",单曲停止)
+                        }
+                        else if(i==28)
+                        {
+                            PlayMusicA("/26.mp3",单曲停止)
+                        }
+                        else
+                        {
+                            PlayMusicA("/07.mp3", 单曲停止)
+                        }
+                    } else {
                         SubHP();
                     }
                 }
-                BoxState[i]=true;
             }
-            if(ReadInput(BoxInputPin[i])!=GPIO_PIN_SET)
+        }
+
+        if(WaitBit(听诊器1,pdTRUE))
+        PlayMusicA("/41.mp3",单曲停止)
+        if(WaitBit(听诊器2,pdTRUE))
+        PlayMusicA("/42.mp3",单曲停止)
+        if(WaitBit(听诊器3,pdTRUE))
+        PlayMusicA("/43.mp3",单曲停止)
+        if(WaitBit(听诊器4,pdTRUE))
+        PlayMusicA("/44.mp3",单曲停止)
+        if(WaitBit(听诊器5,pdTRUE))
+        PlayMusicA("/45.mp3",单曲停止)
+        if(WaitBit(听诊器6,pdTRUE))
+        PlayMusicA("/46.mp3",单曲停止)
+        if(WaitBit(听诊器7,pdTRUE))
+        PlayMusicA("/47.mp3",单曲停止)
+        if(WaitBit(听诊器8,pdTRUE))
+        PlayMusicA("/48.mp3",单曲停止)
+        if(WaitBit(猜拳失败,pdTRUE))
+        {
+            if(++Lz==5)
             {
-                BoxState[i]=false;
+                SubHP();
+                Lz=0;
+            }
+            PlayMusicA("/20.mp3",单曲停止)
+            Ls++;
+        }
+        if(WaitBit(猜拳胜利,pdTRUE))
+        {
+            PlayMusicA("/19.mp3",单曲停止)
+            Ls++;
+        }
+        if(Lz==9)
+        {
+            PlayMusicA("/21.mp3",单曲停止)
+            Lz=9;
+        }
+        EventBits_t bits = xEventGroupWaitBits(InputEventGroup[4], TO_BIT(娃娃1)|TO_BIT(娃娃2)|TO_BIT(娃娃3)|TO_BIT(娃娃4),pdTRUE,pdTRUE,0);
+        if(bits&(TO_BIT(娃娃1)|TO_BIT(娃娃2)|TO_BIT(娃娃3)|TO_BIT(娃娃4)))
+        {
+            ResetPin(伸缩楼梯);
+            PlayMusicA("/14.mp4",单曲停止);
+        }
+        if(WaitBit(火柴1,pdTRUE)| WaitBit(火柴2,pdTRUE))
+        {
+            if(HP<16)
+            {
+                HC1=true;
+                SetHP(++HP);
+                PlayMusicA("/15.mp4",单曲停止);
             }
         }
     }
 }
-
-void StartGameTask(void const *argument)
+int playerNum=0;
+#define GameTimeReset RunTime = 0
+bool GameDelay(int *pvRunTime,int waitTime)
 {
-    long int RunTime = 100*60*1000;
+    if(waitTime<*pvRunTime)
+    {
+        *pvRunTime=0;
+        return true;
+    }
+    return false;
+}
+void StartGameFlagTask(void const *argument)
+{
+    GameMessage newMessage;
     for(;;)
     {
-        switch (GameFlag) {
-            case 0:
-            {
-                char FileName[] = "/Setup.mp3";
-                PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
-                for(int i=0;i<BOX_NUM;i++)//复位所有箱子状态
-                {
-                    OpenState[i]=false;
-                    BoxState[i]=false;
-                }
-                SetHP(HP=16);//复位血量
-                RunTime = 100*60*1000;//复位倒计时时间
-                GameFlag++;
-            }
-            case 1:
-            {
-                if(RunTime==10*60*1000)//如果游戏即将结束 播放提示音
-                {
-                    char FileName[] = "/TimeComing.mp3";
-                    PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
-                }
-                osDelay(1);
-                RunTime--;
-                break;
-            }
+        if(xQueueReceive(GameMessageQueueHandle, &newMessage, portMAX_DELAY) == pdTRUE)
+        {
+            xSemaphoreTake(xGameSemaphore, portMAX_DELAY);
+            gameFlag= newMessage.Data;
+            xSemaphoreGive(xGameSemaphore);
         }
     }
 }
-/*
 void StartGameTask(void const *argument)
 {
     int RunTime = 0;
     for(;;)
     {
-        xSemaphoreTake(xGameSemaphore[0], portMAX_DELAY);
-        switch (gameFlags[0]) {
-            case 0:// 打开门锁
-            {
-                SetOutput(门锁,GPIO_PIN_RESET);
-                gameFlags[0]++;
+        xSemaphoreTake(xGameSemaphore, portMAX_DELAY);
+        switch (gameFlag) {
+            case 1: {
+                for (int i = 0; i < BOX_NUM; i++)//复位所有箱子状态
+                {
+                    OpenState[i] = false;
+                }
+                SetHP(HP = 16);//复位血量
+                GameTime = 100 * 60 * 1000;//复位倒计时时间
+                gameFlag++;
                 break;
             }
-            case 1: // 等待关门
-            {
-                if(xEventGroupWaitBits(InputEventGroup[0], TO_BIT(关门检测),pdTRUE,pdTRUE,0)==pdPASS)
-                {
-                    gameFlags[0]++;
+            case 2: {
+                if (WaitBit(开始游戏, pdTRUE)) {
+                    PlayMusicB("/01.mp3", 单曲停止)
+                    gameFlag++;
                 }
                 break;
             }
-            case 2: // 播放语音1
-            {
-                SetOutput(门锁,GPIO_PIN_RESET);
-                char *fileName="/BGM/001.mp3";
-                PlayMusicName(&MUSIC_1,fileName, strlen(fileName),单曲停止);
-                GameTimeReset;
-                gameFlags[0]++;
-                break;
-            }
-            case 3:// 等待播放完毕
-            {
-                if (GameDelay(&RunTime,98000))
-                    gameFlags[0]++;
-                break;
-            }
-            case 4:// 打开语音识别
-            {
-                SetOutput(语音识别电源,GPIO_PIN_SET);
-                gameFlags[0]++;
-                break;
-            }
-            case 5:// 等待语音识别1
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(语音识别1),pdTRUE,pdTRUE,0);
-                if(bits&TO_BIT(语音识别1))
-                {
-                    gameFlags[0]++;
+            case 3: {
+                if (WaitBit(醒来正确, pdTRUE)) {
+                    OpenLock(开场正确锁)
+                    PlayMusicA("/04.mp3", 单曲停止)
+                    gameFlag = 6;
+                }
+                if (WaitBit(醒来错误, pdTRUE)) {
+                    OpenLock(开场错误锁)
+                    SubHP();
+                    osDelay(7000);
+                    PlayMusicA("/03.mp3", 单曲停止)
+                    GameTimeReset;
+                    gameFlag++;
                 }
                 break;
             }
-            case 6:// 关闭语音识别 播放语音2
-            {
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
-                char *fileName="/BGM/002.mp3";
-                PlayMusicName(&MUSIC_1,fileName, strlen(fileName),单曲停止);
-                GameTimeReset;
-                gameFlags[0]++;
+            case 4: {
+                delay(34 * 1000)
                 break;
             }
-            case 7://等待播放结束
-            {
-                if (GameDelay(&RunTime,55000))
-                    gameFlags[0]++;
+            case 5: {
+                OpenLock(开场正确锁)
+                gameFlag++;
                 break;
             }
-            case 8:// 打开语音识别
-            {
-                SetOutput(文房四宝柜,GPIO_PIN_SET);
-                SetOutput(语音识别电源,GPIO_PIN_SET);
-                gameFlags[0]++;
-                break;
-            }
-            case 9:// 等待语音识别2
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(语音识别2),pdTRUE,pdTRUE,0);
-                if(bits&TO_BIT(语音识别2))
-                {
-                    gameFlags[0]=16;
+            case 6: {
+                if (NWaitBit(黑卡移开, pdTRUE)) {
+                    gameFlag++;
                 }
+                break;
+            }
+            case 7: {
+                if (playerNum < 8) {
+                    PlayMusicA("/05.mp3", 单曲停止)
+                    GameTimeReset;
+                    gameFlag++;
+                } else {
+                    PlayMusicA("/06.mp3", 单曲停止)
+                    gameFlag = 10;
+                }
+                break;
+            }
+            case 8: {
+                delay(41 * 1000)
+                break;
+            }
+            case 9: {
+                OpenLock(电视下箱锁)
+                gameFlag++;
+                break;
+            }
+            case 10: {
+                if (WaitBit(茶室门牌, pdTRUE)) {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 11: {
+                ResetPin(茶室门锁);
+                SetPin(茶室灯);
+                PlayMusicA("/09.mp3", 单曲停止)
+                PlayMusicB("/08.mp3", 单曲循环)
+                gameFlag++;
+                break;
+            }
+            case 12: {
+                if (WaitBit(厕所门牌, pdTRUE)) {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 13:
+            {
+                ResetPin(厕所门锁);
+                SetPin(厕所灯);
+                gameFlag++;
+                break;
+            }
+            case 14:
+            {
+                if (WaitBit(卧室门牌, pdTRUE)) {
+                    gameFlag++;
+                }
+                break;
+            }
+            case 15:
+            {
+                ResetPin(卧室门锁);
+                PlayMusicB("/12.mp3",单曲循环)
+                PlayMusicA("/13.mp3",单曲循环)
+                gameFlag++;
                 break;
             }
             case 16:
             {
-
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
-                //钥匙掉落?
-                SetOutput(钥匙掉下,GPIO_PIN_SET);
-                gameFlags[0]++;
-                break;
-            }
-            case 17://等待钥匙
-            {
-                EventBits_t bits = xEventGroupWaitBits(InputEventGroup[0], TO_BIT(钥匙开门),pdTRUE,pdTRUE,0);
-                if (bits& TO_BIT(钥匙开门))
+                if(WaitBit(儿童房门牌,pdTRUE))
                 {
-                    gameFlags[0]++;
+                    gameFlag++;
                 }
                 break;
             }
-            case 18://开门
+            case 17:
             {
-                SetOutput(门锁,GPIO_PIN_SET);
-                gameFlags[0]++;
+                ResetPin(儿童房门锁);
+                SetPin(儿童房灯);
+                PlayMusicB("/16.mp3",单曲循环)
+                PlayMusicA("/18.mp3",单曲循环)
+                gameFlag++;
                 break;
             }
-            case 19: //空
+            case 18:
             {
+                if(WaitBit(书房门牌,pdTRUE))
+                {
+                    gameFlag++;
+                }
                 break;
             }
-            case 20: //复位
+            case 19:
             {
-                SetOutput(钥匙掉下,GPIO_PIN_RESET);
-                SetOutput(语音识别电源,GPIO_PIN_RESET);
-                SetOutput(门锁,GPIO_PIN_SET);
-                SetOutput(文房四宝柜,GPIO_PIN_RESET);
-                gameFlags[0] = 19;
+                ResetPin(书房门锁);
+                SetPin(书房灯);
+                PlayMusicB("/22.mp3",单曲循环)
+                PlayMusicA("/23.mp3",单曲循环)
+                gameFlag++;
+                break;
+            }
+            case 20:
+            {
+                if(WaitBit(彩球过关,pdTRUE))
+                {
+                    ResetPin(八罪外门);
+                    gameFlag++;
+                }
+                break;
+            }
+            case 21:
+            {
+                if(WaitBit(八罪过关,pdTRUE))
+                {
+                    gameFlag=32;
+                }
+                break;
+            }
+
+            case 30:
+            {
+                SetPin(草灯);
+                SetPin(茶室灯);
+                SetPin(厕所灯);
+                SetPin(卧室灯);
+                SetPin(儿童房灯);
+                SetPin(书房灯);
+                SetPin(草灯);
+                SetPin(楼梯主灯);
+                SetPin(楼梯侧窗灯);
+                SetPin(二楼走廊灯);
+
+                SetPin(楼梯主灯红);
+                SetPin(楼梯侧窗灯红);
+
+                PlayMusicA("/33.mp3",单曲停止)
+                osDelay(85*1000);
+
+                ResetPin(草灯);
+                ResetPin(茶室灯);
+                ResetPin(厕所灯);
+                ResetPin(卧室灯);
+                ResetPin(儿童房灯);
+                ResetPin(书房灯);
+                ResetPin(草灯);
+                ResetPin(楼梯主灯);
+                ResetPin(楼梯侧窗灯);
+                ResetPin(二楼走廊灯);
+
+                ResetPin(出口门锁);
+                gameFlag=0;
+                break;
+            }
+            case 31:
+            {
+                SetPin(草灯);
+                SetPin(茶室灯);
+                SetPin(厕所灯);
+                SetPin(卧室灯);
+                SetPin(儿童房灯);
+                SetPin(书房灯);
+                SetPin(草灯);
+                SetPin(楼梯主灯);
+                SetPin(楼梯侧窗灯);
+                SetPin(二楼走廊灯);
+
+                SetPin(楼梯主灯红);
+                SetPin(楼梯侧窗灯红);
+
+                PlayMusicA("/34.mp3",单曲停止)
+                osDelay(81*1000);
+
+                ResetPin(草灯);
+                ResetPin(茶室灯);
+                ResetPin(厕所灯);
+                ResetPin(卧室灯);
+                ResetPin(儿童房灯);
+                ResetPin(书房灯);
+                ResetPin(草灯);
+                ResetPin(楼梯主灯);
+                ResetPin(楼梯侧窗灯);
+                ResetPin(二楼走廊灯);
+
+                ResetPin(出口门锁);
+                gameFlag=0;
+                break;
+            }
+            case 32://好结局
+            {
+
+                PlayMusicA("/35.mp3",单曲停止)
+                osDelay(81*1000);
+
+                ResetPin(出口门锁);
+                gameFlag=0;
+                break;
             }
         }
+        if(GameTime>0)
+        {
+            GameTime--;
+        }
+        else
+        {
+            gameFlag=30;
+        }
+        if(GameTime==10*60000)
+        {
+            PlayMusicA("/1.mp3",单曲停止)
+        }
+        GameTime--;
         RunTime++;
-        xSemaphoreGive(xGameSemaphore[0]);
+        xSemaphoreGive(xGameSemaphore);
         osDelay(1); //等待音频播放
         static int oldGameFlag = 19;
-        if(gameFlags[0]!=oldGameFlag)
+        if(gameFlag!=oldGameFlag)
         {
-            uint8_t TxBuff[5] = {0xCC,0x05,0x00,gameFlags[0],0xFF};
+            uint8_t TxBuff[5] = {0xCC,0x05,0x00,gameFlag,0xFF};
             HAL_UART_Transmit(&huart1,TxBuff,5,HAL_MAX_DELAY);
-            oldGameFlag = gameFlags[0];
+            oldGameFlag = gameFlag;
         }
     }
 }
-*/
