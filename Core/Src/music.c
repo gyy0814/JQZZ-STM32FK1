@@ -77,6 +77,18 @@ void PlayMusic(UART_HandleTypeDef *huart)
     newMusicMessage.Data[0] = 0x01;
     xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
 }
+void StopMusic(UART_HandleTypeDef *huart)
+{
+    /* Plau Music */
+    MusicMessage newMusicMessage = (MusicMessage){
+            .huart = huart,
+            .CMD = 0x04,
+            .DataLength=1
+    };
+
+    newMusicMessage.Data[0] = 0x03;
+    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+}
 
 void PauseMusic(UART_HandleTypeDef *huart)
 {

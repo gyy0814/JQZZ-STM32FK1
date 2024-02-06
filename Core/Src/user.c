@@ -393,6 +393,10 @@ void StartBoxTask(void const *argument)
                 PlayMusicA("/15.mp4",单曲停止);
             }
         }
+        if(WaitBit(数字摆放,pdTRUE))
+        {
+           ResetPin(保险箱);
+        }
     }
 }
 int playerNum=0;
@@ -431,7 +435,6 @@ void StartGameTask(void const *argument)
                 {
                     OpenState[i] = false;
                 }
-                SetHP(HP = 16);//复位血量
                 GameTime = 100 * 60 * 1000;//复位倒计时时间
                 gameFlag++;
                 break;
@@ -439,6 +442,8 @@ void StartGameTask(void const *argument)
             case 2: {
                 if (WaitBit(开始游戏, pdTRUE)) {
                     PlayMusicB("/01.mp3", 单曲停止)
+
+                    SetPin(电视信号);
                     gameFlag++;
                 }
                 break;
@@ -663,6 +668,47 @@ void StartGameTask(void const *argument)
                 osDelay(81*1000);
 
                 ResetPin(出口门锁);
+                gameFlag=0;
+                break;
+            }
+            case 40:
+            {
+                SetHP(HP = 16);//复位血量
+                StopMusicA;
+                StopMusicB;
+                ResetPin(书房灯);
+                ResetPin(卧室灯);
+                ResetPin(厕所灯);
+                ResetPin(茶室灯);
+                ResetPin(草灯);
+                ResetPin(楼梯主灯);
+                ResetPin(楼梯侧窗灯);
+                ResetPin(二楼走廊灯);
+                ResetPin(楼梯侧窗灯);
+
+                SetPin(出口门锁);
+                SetPin(书房门锁);
+                SetPin(儿童房门锁);
+                SetPin(卧室门锁);
+                SetPin(厕所门锁);
+                SetPin(茶室门锁);
+                ResetPin(电视信号);
+                SetPin(保险箱);
+                SetPin(八罪外门);
+                gameFlag=0;
+                break;
+            }
+            case 41:
+            {
+                SetPin(书房灯);
+                SetPin(卧室灯);
+                SetPin(厕所灯);
+                SetPin(茶室灯);
+                SetPin(草灯);
+                SetPin(楼梯主灯);
+                SetPin(楼梯侧窗灯);
+                SetPin(二楼走廊灯);
+                SetPin(楼梯侧窗灯);
                 gameFlag=0;
                 break;
             }

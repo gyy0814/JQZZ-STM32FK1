@@ -263,4 +263,9 @@ void GameInit(void);
 #define 伸缩楼梯 10
 #define 火柴1 98
 #define 火柴2 99
+
+#define 数字摆放 2
+#define 保险箱 1
+
+#define 电视信号 2
 #endif //FKS1_USER_H

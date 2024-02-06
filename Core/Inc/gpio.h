@@ -82,7 +82,7 @@ void MX_GPIO_Init(void);
 
 void StartGPIOTask(void const *argument);
 GPIO_PinState ReadInput(int Pin);
-void SetOutput(int Pin, GPIO_PinState state);
+BaseType_t SetOutput(int Pin, GPIO_PinState state);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

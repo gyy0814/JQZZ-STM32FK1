@@ -103,10 +103,10 @@ static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
 
 void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize )
 {
-  *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
-  *ppxIdleTaskStackBuffer = &xIdleStack[0];
-  *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
-  /* place for user code */
+    *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+    *ppxIdleTaskStackBuffer = &xIdleStack[0];
+    *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+    /* place for user code */
 }
 
 /* USER CODE END GET_IDLE_TASK_MEMORY */
@@ -122,15 +122,15 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
+    /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
+    /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
-  /* start timers, add new ones, ... */
+    /* start timers, add new ones, ... */
     for (int i = 0; i <= INPUT_NUM / 24; ++i) {
 
         InputEventGroup[i] = xEventGroupCreate();
@@ -141,12 +141,12 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
-    Uart1RxMsgQueueHandle = xQueueCreate(15, sizeof(UartMessage));  // 创建队列，可以容�???????????????????10个uint8_t大小的元�???????????????????
-    MusicUartMessageQueueHandle = xQueueCreate(15, sizeof(UartMessage));  // 创建队列，可以容�???????????????????10个uint8_t大小的元�???????????????????
-    OutputMessageQueueHandle = xQueueCreate(15, sizeof(GPIOMessage));  // 创建队列，可以容�???????????????????10个uint8_t大小的元�???????????????????
-    MusicMessageQueueHandle = xQueueCreate(15, sizeof(MusicMessage));  // 创建队列，可以容�???????????????????10个uint8_t大小的元�???????????????????
-    GameMessageQueueHandle = xQueueCreate(15, sizeof(GameMessage));  // 创建队列，可以容�???????????????????10个uint8_t大小的元�???????????????????
+    /* add queues, ... */
+    Uart1RxMsgQueueHandle = xQueueCreate(15, sizeof(UartMessage));  // 创建队列，可以容 ???????????????????10个uint8_t大小的元 ???????????????????
+    MusicUartMessageQueueHandle = xQueueCreate(15, sizeof(UartMessage));  // 创建队列，可以容 ???????????????????10个uint8_t大小的元 ???????????????????
+    OutputMessageQueueHandle = xQueueCreate(128, sizeof(GPIOMessage));  // 创建队列，可以容 ???????????????????10个uint8_t大小的元 ???????????????????
+    MusicMessageQueueHandle = xQueueCreate(15, sizeof(MusicMessage));  // 创建队列，可以容 ???????????????????10个uint8_t大小的元 ???????????????????
+    GameMessageQueueHandle = xQueueCreate(15, sizeof(GameMessage));  // 创建队列，可以容 ???????????????????10个uint8_t大小的元 ???????????????????
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -187,7 +187,7 @@ void MX_FREERTOS_Init(void) {
   DoorTaskHandle = osThreadCreate(osThread(DoorTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
+    /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
 }
@@ -202,11 +202,11 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void const * argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+    /* Infinite loop */
+    for(;;)
+    {
+        osDelay(1);
+    }
   /* USER CODE END StartDefaultTask */
 }
 
@@ -221,92 +221,92 @@ void Uart1ReadHandler(void const * argument)
 {
   /* USER CODE BEGIN Uart1ReadHandler */
     UartMessage newMessage;
-  /* Infinite loop */
+    /* Infinite loop */
     for (;;)
-  {
-      if (xQueueReceive(Uart1RxMsgQueueHandle, &newMessage, portMAX_DELAY) == pdTRUE)
-      {
-          // 处理接收到的数据
-          switch (newMessage.data[1]) {
+    {
+        if (xQueueReceive(Uart1RxMsgQueueHandle, &newMessage, portMAX_DELAY) == pdTRUE)
+        {
+            // 处理接收到的数据
+            switch (newMessage.data[1]) {
 
-              case 0x01:
-              {
-                  if(newMessage.data[3]==0x01)
-                    xEventGroupSetBits(InputEventGroup[newMessage.data[2] / 32], (1 << (newMessage.data[2] % 32)));
-                  else if(newMessage.data[3]==0x00)
-                      xEventGroupClearBits(InputEventGroup[newMessage.data[2] / 32], (1 << (newMessage.data[2] % 32)));
-                  break;
-              }
-              case CMD_OUTPUT:
-              {
-                  GPIOMessage OutputMessage = {
-                          .GPIO_Pin = newMessage.data[2],
-                          .PinState = (newMessage.data[3] == 0)?GPIO_PIN_RESET:GPIO_PIN_SET,
-                  };
-                  BaseType_t result = xQueueSend(OutputMessageQueueHandle,&OutputMessage,0);
-                  if (result != pdPASS)
-                  {
-                      newMessage.data[0]=0xEE;
-                      HAL_UART_Transmit(&huart1,newMessage.data,newMessage.length,HAL_MAX_DELAY);
-                  }
-                  break;
-              }
+                case 0x01:
+                {
+                    if(newMessage.data[3]==0x01)
+                        xEventGroupSetBits(InputEventGroup[newMessage.data[2] / 32], (1 << (newMessage.data[2] % 32)));
+                    else if(newMessage.data[3]==0x00)
+                        xEventGroupClearBits(InputEventGroup[newMessage.data[2] / 32], (1 << (newMessage.data[2] % 32)));
+                    break;
+                }
+                case CMD_OUTPUT:
+                {
+                    GPIOMessage OutputMessage = {
+                            .GPIO_Pin = newMessage.data[2],
+                            .PinState = (newMessage.data[3] == 0)?GPIO_PIN_RESET:GPIO_PIN_SET,
+                    };
+                    BaseType_t result = xQueueSend(OutputMessageQueueHandle,&OutputMessage,0);
+                    if (result != pdPASS)
+                    {
+                        newMessage.data[0]=0xEE;
+                        HAL_UART_Transmit(&huart1,newMessage.data,newMessage.length,HAL_MAX_DELAY);
+                    }
+                    break;
+                }
 
-              case CMD_MUSIC1:
-              {
-                  // 0xCC CMD MUSIC_CMD DATA0 DATA1 DATA2... 0xFF
+                case CMD_MUSIC1:
+                {
+                    // 0xCC CMD MUSIC_CMD DATA0 DATA1 DATA2... 0xFF
 
-                  MusicMessage MusicMessage;
-                  MusicMessage.huart = &MUSIC_1;
-                  MusicMessage.CMD = newMessage.data[2];
-                  MusicMessage.DataLength = newMessage.length-4;
-                  memcpy(MusicMessage.Data,&newMessage.data[3],MusicMessage.DataLength);
-                  BaseType_t result = xQueueSend(MusicMessageQueueHandle,&MusicMessage,0);
-                  if (result != pdPASS)
-                  {
-                      newMessage.data[0]=0xEE;
-                      HAL_UART_Transmit(&huart1,newMessage.data,newMessage.length,HAL_MAX_DELAY);
-                  }
+                    MusicMessage MusicMessage;
+                    MusicMessage.huart = &MUSIC_1;
+                    MusicMessage.CMD = newMessage.data[2];
+                    MusicMessage.DataLength = newMessage.length-4;
+                    memcpy(MusicMessage.Data,&newMessage.data[3],MusicMessage.DataLength);
+                    BaseType_t result = xQueueSend(MusicMessageQueueHandle,&MusicMessage,0);
+                    if (result != pdPASS)
+                    {
+                        newMessage.data[0]=0xEE;
+                        HAL_UART_Transmit(&huart1,newMessage.data,newMessage.length,HAL_MAX_DELAY);
+                    }
 
-                  break;
-              }
-              case CMD_MUSIC2:
-              {
+                    break;
+                }
+                case CMD_MUSIC2:
+                {
 // 0xCC CMD MUSIC_CMD DATA0 DATA1 DATA2... 0xFF
 
-                  MusicMessage MusicMessage;
-                  MusicMessage.huart = &MUSIC_2;
-                  MusicMessage.CMD = newMessage.data[2];
-                  MusicMessage.DataLength = newMessage.length-4;
-                  memcpy(MusicMessage.Data,&newMessage.data[3],MusicMessage.DataLength);
-                  BaseType_t result = xQueueSend(MusicMessageQueueHandle,&MusicMessage,0);
-                  if (result != pdPASS)
-                  {
-                      newMessage.data[0]=0xEE;
-                      HAL_UART_Transmit(&huart1,newMessage.data,newMessage.length,HAL_MAX_DELAY);
-                  }
+                    MusicMessage MusicMessage;
+                    MusicMessage.huart = &MUSIC_2;
+                    MusicMessage.CMD = newMessage.data[2];
+                    MusicMessage.DataLength = newMessage.length-4;
+                    memcpy(MusicMessage.Data,&newMessage.data[3],MusicMessage.DataLength);
+                    BaseType_t result = xQueueSend(MusicMessageQueueHandle,&MusicMessage,0);
+                    if (result != pdPASS)
+                    {
+                        newMessage.data[0]=0xEE;
+                        HAL_UART_Transmit(&huart1,newMessage.data,newMessage.length,HAL_MAX_DELAY);
+                    }
 
-                  break;
-              }
-              case 0x05:
-              {
-                  GameMessage newGameMessage;
-                  newGameMessage.num = newMessage.data[2];
-                  newGameMessage.Data = newMessage.data[3];
-                  xQueueSend(GameMessageQueueHandle,&newGameMessage,0);
-                  break;
-              }
-              case 0x10:
-              {
-                  xSemaphoreGive(xConnectSemaphore);
-                  break;
-              }
-              default:
-                  break;
-          }
-      }
+                    break;
+                }
+                case 0x05:
+                {
+                    GameMessage newGameMessage;
+                    newGameMessage.num = newMessage.data[2];
+                    newGameMessage.Data = newMessage.data[3];
+                    xQueueSend(GameMessageQueueHandle,&newGameMessage,0);
+                    break;
+                }
+                case 0x10:
+                {
+                    xSemaphoreGive(xConnectSemaphore);
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
 
-  }
+    }
   /* USER CODE END Uart1ReadHandler */
 }
 
@@ -320,11 +320,11 @@ void Uart1ReadHandler(void const * argument)
 __weak void StartGPIOTask(void const * argument)
 {
   /* USER CODE BEGIN StartGPIOTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+    /* Infinite loop */
+    for(;;)
+    {
+        osDelay(1);
+    }
   /* USER CODE END StartGPIOTask */
 }
 
@@ -338,11 +338,11 @@ __weak void StartGPIOTask(void const * argument)
 __weak void StartMusicTask(void const * argument)
 {
   /* USER CODE BEGIN StartMusicTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+    /* Infinite loop */
+    for(;;)
+    {
+        osDelay(1);
+    }
   /* USER CODE END StartMusicTask */
 }
 
@@ -356,11 +356,11 @@ __weak void StartMusicTask(void const * argument)
 __weak void StartASCTask(void const * argument)
 {
   /* USER CODE BEGIN StartASCTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+    /* Infinite loop */
+    for(;;)
+    {
+        osDelay(1);
+    }
   /* USER CODE END StartASCTask */
 }
 
@@ -374,11 +374,11 @@ __weak void StartASCTask(void const * argument)
 __weak void StartGameFlagTask(void const * argument)
 {
   /* USER CODE BEGIN StartGameFlagTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+    /* Infinite loop */
+    for(;;)
+    {
+        osDelay(1);
+    }
   /* USER CODE END StartGameFlagTask */
 }
 
@@ -392,11 +392,11 @@ __weak void StartGameFlagTask(void const * argument)
 __weak void StartGameTask(void const * argument)
 {
   /* USER CODE BEGIN StartGameTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+    /* Infinite loop */
+    for(;;)
+    {
+        osDelay(1);
+    }
   /* USER CODE END StartGameTask */
 }
 
