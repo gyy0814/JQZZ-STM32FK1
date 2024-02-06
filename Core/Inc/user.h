@@ -46,8 +46,8 @@ void GameInit(void);
 #define cd输入 22
 #define 三摆件过关 23
 #define 小霸王 24
-#define 时钟1 25
-#define 时钟2 26
+#define 时钟2 25
+#define 时钟1 26
 #define 时钟3 27
 #define 时钟4 28
 #define 电脑视频过关 29
