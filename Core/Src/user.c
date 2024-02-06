@@ -28,7 +28,6 @@ bool HC1,HC2;
         蜡烛(HP)
 **********************/
 int HP = 16;
-bool HPLow;
 void SetHP(int hp) {
 
     SetOutput(蜡烛1,(1<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
@@ -47,16 +46,23 @@ void SetHP(int hp) {
     SetOutput(蜡烛14,(14<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
     SetOutput(蜡烛15,(15<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
     SetOutput(蜡烛16,(16<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
-    if((hp==1)&&(!HPLow))
-    {
-        HPLow=true;
-        char FileName[] = "/32.mp3";
-        PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
-    }
+
 }
 void SubHP()
 {
     PlayMusicA("/02.mp3",单曲停止)
+    SetPin(楼梯主灯);
+    SetPin(楼梯侧窗灯);
+    SetPin(二楼走廊灯);
+    osDelay(1000);
+    ResetPin(楼梯主灯);
+    ResetPin(楼梯侧窗灯);
+    ResetPin(二楼走廊灯);
+    if(HP==2)
+    {
+        char FileName[] = "/32.mp3";
+        PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
+    }
     SetHP(--HP);
 }
 /**********************
@@ -384,11 +390,20 @@ void StartBoxTask(void const *argument)
             ResetPin(伸缩楼梯);
             PlayMusicA("/14.mp4",单曲停止);
         }
-        if(WaitBit(火柴1,pdTRUE)| WaitBit(火柴2,pdTRUE))
+        if(WaitBit(火柴1,pdTRUE))
         {
-            if(HP<16)
+            if((!HC1)&&(HP<16))
             {
                 HC1=true;
+                SetHP(++HP);
+                PlayMusicA("/15.mp4",单曲停止);
+            }
+        }
+        if(WaitBit(火柴2,pdTRUE))
+        {
+            if((!HC2)&&(HP<16))
+            {
+                HC2=true;
                 SetHP(++HP);
                 PlayMusicA("/15.mp4",单曲停止);
             }
@@ -442,20 +457,34 @@ void StartGameTask(void const *argument)
             case 2: {
                 if (WaitBit(开始游戏, pdTRUE)) {
                     PlayMusicB("/01.mp3", 单曲停止)
-
+                    GameTimeReset;
                     SetPin(电视信号);
-                    gameFlag++;
+                    gameFlag=90;
                 }
                 break;
             }
+            case 90:
+            {
+                delay(117*1000)
+                break;
+            }
+            case 91:
+            {
+                ResetPin(草灯);
+                gameFlag=3;
+                break;
+            }
             case 3: {
+
                 if (WaitBit(醒来正确, pdTRUE)) {
                     OpenLock(开场正确锁)
                     PlayMusicA("/04.mp3", 单曲停止)
+                    SetPin(草灯);
                     gameFlag = 6;
                 }
                 if (WaitBit(醒来错误, pdTRUE)) {
                     OpenLock(开场错误锁)
+                    SetPin(草灯);
                     SubHP();
                     osDelay(7000);
                     PlayMusicA("/03.mp3", 单曲停止)
@@ -709,6 +738,7 @@ void StartGameTask(void const *argument)
                 SetPin(楼梯侧窗灯);
                 SetPin(二楼走廊灯);
                 SetPin(楼梯侧窗灯);
+                SetPin(伸缩楼梯);
                 gameFlag=0;
                 break;
             }
