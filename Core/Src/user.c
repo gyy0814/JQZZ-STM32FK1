@@ -54,7 +54,7 @@ void SubHP()
     SetPin(楼梯主灯);
     SetPin(楼梯侧窗灯);
     SetPin(二楼走廊灯);
-    osDelay(1000);
+    osDelay(2000);
     ResetPin(楼梯主灯);
     ResetPin(楼梯侧窗灯);
     ResetPin(二楼走廊灯);
@@ -119,15 +119,15 @@ uint8_t BoxInputPin[BOX_NUM]=
                 输入厕所6,
                 输入厕所7,
                 输入厕所8,
-                输入儿童房1,
-                输入儿童房2,
-                输入儿童房3,
-                输入儿童房4,
-                输入儿童房5,
                 输入儿童房6,
                 输入儿童房7,
-                输入儿童房8,
+                输入儿童房4,
+                输入儿童房1,
                 输入儿童房9,
+                输入儿童房5,
+                输入儿童房3,
+                输入儿童房8,
+                输入儿童房2,
                 输入走廊1,
                 输入走廊2,
                 输入走廊3,
@@ -298,121 +298,123 @@ void StartBoxTask(void const *argument)
 {
     for(;;)
     {
-        for(int i=0;i<BOX_NUM;i++)
-        {
-            if(WaitBit(BoxInputPin[i],pdTRUE))
-            {
-                OpenLock(BoxOutputPin[i])
-                if(OpenState[i]) {
-                    if (BoxProperties[i]) {
-                        if(i==10)
-                        {
-                            PlayMusicA("/24.mp3",单曲停止)
+
+//        xSemaphoreTake(xGameSemaphore, portMAX_DELAY);
+//        int GF = gameFlag;
+//        xSemaphoreGive(xGameSemaphore);
+//
+//        if((GF>0)&&(GF<30)) {
+            for (int i = 0; i < BOX_NUM; i++) {
+                if (WaitBit(BoxInputPin[i], pdTRUE)) {
+                    OpenLock(BoxOutputPin[i])
+                    if (!OpenState[i]) {
+                        if (BoxProperties[i]) {
+                            if (i == 10) {
+                                PlayMusicA("/24.mp3", 单曲停止)
+                            } else if (i == 12) {
+                                PlayMusicA("/31.mp3", 单曲停止)
+                            } else if (i == 14) {
+                                PlayMusicA("/29.mp3", 单曲停止)
+                            } else if (i == 15) {
+                                PlayMusicA("/30.mp3", 单曲停止)
+                            } else if (i == 18) {
+                                PlayMusicA("/27.mp3", 单曲停止)
+                            } else if (i == 24) {
+                                PlayMusicA("/25.mp3", 单曲停止)
+                            } else if (i == 26) {
+                                PlayMusicA("/28.mp3", 单曲停止)
+                            } else if (i == 28) {
+                                PlayMusicA("/26.mp3", 单曲停止)
+                            } else {
+                                PlayMusicA("/07.mp3", 单曲停止)
+                            }
+                        } else {
+                            SubHP();
                         }
-                        else if(i==12)
-                        {
-                            PlayMusicA("/31.mp3",单曲停止)
-                        }
-                        else if(i==14)
-                        {
-                            PlayMusicA("/29.mp3",单曲停止)
-                        }
-                        else if(i==15)
-                        {
-                            PlayMusicA("/30.mp3",单曲停止)
-                        }
-                        else if(i==18)
-                        {
-                            PlayMusicA("/27.mp3",单曲停止)
-                        }
-                        else if(i==24)
-                        {
-                            PlayMusicA("/25.mp3",单曲停止)
-                        }
-                        else if(i==26)
-                        {
-                            PlayMusicA("/28.mp3",单曲停止)
-                        }
-                        else if(i==28)
-                        {
-                            PlayMusicA("/26.mp3",单曲停止)
-                        }
-                        else
-                        {
-                            PlayMusicA("/07.mp3", 单曲停止)
-                        }
-                    } else {
-                        SubHP();
+                        OpenState[i] = true;
                     }
                 }
             }
-        }
 
-        if(WaitBit(听诊器1,pdTRUE))
-        PlayMusicA("/41.mp3",单曲停止)
-        if(WaitBit(听诊器2,pdTRUE))
-        PlayMusicA("/42.mp3",单曲停止)
-        if(WaitBit(听诊器3,pdTRUE))
-        PlayMusicA("/43.mp3",单曲停止)
-        if(WaitBit(听诊器4,pdTRUE))
-        PlayMusicA("/44.mp3",单曲停止)
-        if(WaitBit(听诊器5,pdTRUE))
-        PlayMusicA("/45.mp3",单曲停止)
-        if(WaitBit(听诊器6,pdTRUE))
-        PlayMusicA("/46.mp3",单曲停止)
-        if(WaitBit(听诊器7,pdTRUE))
-        PlayMusicA("/47.mp3",单曲停止)
-        if(WaitBit(听诊器8,pdTRUE))
-        PlayMusicA("/48.mp3",单曲停止)
-        if(WaitBit(猜拳失败,pdTRUE))
-        {
-            if(++Lz==5)
-            {
-                SubHP();
-                Lz=0;
+            if (WaitBit(听诊器1, pdTRUE)) {
+                PlayMusicA("/41.mp3", 单曲停止)
             }
-            PlayMusicA("/20.mp3",单曲停止)
-            Ls++;
-        }
-        if(WaitBit(猜拳胜利,pdTRUE))
-        {
-            PlayMusicA("/19.mp3",单曲停止)
-            Ls++;
-        }
-        if(Lz==9)
-        {
-            PlayMusicA("/21.mp3",单曲停止)
-            Lz=9;
-        }
-        EventBits_t bits = xEventGroupWaitBits(InputEventGroup[4], TO_BIT(娃娃1)|TO_BIT(娃娃2)|TO_BIT(娃娃3)|TO_BIT(娃娃4),pdTRUE,pdTRUE,0);
-        if(bits&(TO_BIT(娃娃1)|TO_BIT(娃娃2)|TO_BIT(娃娃3)|TO_BIT(娃娃4)))
-        {
-            ResetPin(伸缩楼梯);
-            PlayMusicA("/14.mp4",单曲停止);
-        }
-        if(WaitBit(火柴1,pdTRUE))
-        {
-            if((!HC1)&&(HP<16))
-            {
-                HC1=true;
-                SetHP(++HP);
-                PlayMusicA("/15.mp4",单曲停止);
+            if (WaitBit(听诊器2, pdTRUE)) {
+                PlayMusicA("/42.mp3", 单曲停止)
+            }
+            if (WaitBit(听诊器3, pdTRUE)) {
+                PlayMusicA("/43.mp3", 单曲停止)
+            }
+            if (WaitBit(听诊器4, pdTRUE)) {
+                PlayMusicA("/44.mp3", 单曲停止)
+            }
+            if (WaitBit(听诊器5, pdTRUE)) {
+                PlayMusicA("/45.mp3", 单曲停止)
+            }
+            if (WaitBit(听诊器6, pdTRUE)) {
+                PlayMusicA("/46.mp3", 单曲停止)
+            }
+            if (WaitBit(听诊器7, pdTRUE)) {
+                PlayMusicA("/47.mp3", 单曲停止)
+            }
+            if (WaitBit(听诊器8, pdTRUE)) {
+                PlayMusicA("/48.mp3", 单曲停止)
+            }
+
+
+            if (WaitBit(猜拳失败, pdTRUE)) {
+                Lz++;
+                if (Lz == 5) {
+                    SubHP();
+                    Lz = 0;
+                    osDelay(7000);
+                }
+                PlayMusicA("/20.mp3", 单曲停止)
+            }
+            if (WaitBit(猜拳胜利, pdTRUE)) {
+                PlayMusicA("/19.mp3", 单曲停止)
+                Ls++;
+            }
+            if (Ls == 10) {
+                PlayMusicA("/21.mp3", 单曲停止)
+                Ls = 11;
+            }
+
+            EventBits_t bits = xEventGroupWaitBits(InputEventGroup[3],
+                                                   TO_BIT(娃娃1) | TO_BIT(娃娃2) | TO_BIT(娃娃3) | TO_BIT(娃娃4),
+                                                   pdTRUE, pdTRUE, 0);
+            if ((bits & (TO_BIT(娃娃1) | TO_BIT(娃娃2) | TO_BIT(娃娃3) | TO_BIT(娃娃4)))==(TO_BIT(娃娃1) | TO_BIT(娃娃2) | TO_BIT(娃娃3) | TO_BIT(娃娃4))) {
+                ResetPin(伸缩楼梯);
+                PlayMusicA("/14.mp3", 单曲停止)
+            }
+            if (WaitBit(火柴1, pdTRUE)) {
+                if ((!HC1) && (HP < 16)) {
+                    HC1 = true;
+                    SetHP(++HP);
+                    PlayMusicA("/15.mp3", 单曲停止)
+                }
+            }
+            if (WaitBit(火柴2, pdTRUE)) {
+                if ((!HC2) && (HP < 16)) {
+                    HC2 = true;
+                    SetHP(++HP);
+                    PlayMusicA("/15.mp3", 单曲停止)
+                }
+            }
+            if (WaitBit(数字摆放, pdTRUE)) {
+                ResetPin(保险箱);
+            }
+
+            if (WaitBit(拉绳1, pdTRUE)) {
+                SetPin(卧室灯);
+                ResetPin(厕所灯);
+            }
+            if (WaitBit(拉绳2, pdTRUE)) {
+                SetPin(厕所灯);
+                ResetPin(卧室灯);
             }
         }
-        if(WaitBit(火柴2,pdTRUE))
-        {
-            if((!HC2)&&(HP<16))
-            {
-                HC2=true;
-                SetHP(++HP);
-                PlayMusicA("/15.mp4",单曲停止);
-            }
-        }
-        if(WaitBit(数字摆放,pdTRUE))
-        {
-           ResetPin(保险箱);
-        }
-    }
+//    }
 }
 int playerNum=0;
 #define GameTimeReset RunTime = 0
@@ -420,7 +422,6 @@ bool GameDelay(int *pvRunTime,int waitTime)
 {
     if(waitTime<*pvRunTime)
     {
-        *pvRunTime=0;
         return true;
     }
     return false;
@@ -445,27 +446,49 @@ void StartGameTask(void const *argument)
     {
         xSemaphoreTake(xGameSemaphore, portMAX_DELAY);
         switch (gameFlag) {
+            case 100:
+            {
+                if (WaitBit(开始游戏, pdTRUE)) {
+
+                    playerNum=8;
+                    gameFlag=2;
+                }
+                break;
+            }
             case 1: {
+                if (WaitBit(开始游戏, pdTRUE)) {
+
+                    playerNum=7;
+                    gameFlag++;
+                }
+                break;
+            }
+            case 2: {
                 for (int i = 0; i < BOX_NUM; i++)//复位所有箱子状态
                 {
                     OpenState[i] = false;
                 }
                 GameTime = 100 * 60 * 1000;//复位倒计时时间
-                gameFlag++;
+                PlayMusicB("/01.mp3", 单曲停止)
+                GameTimeReset;
+                gameFlag=88;
                 break;
             }
-            case 2: {
-                if (WaitBit(开始游戏, pdTRUE)) {
-                    PlayMusicB("/01.mp3", 单曲停止)
-                    GameTimeReset;
-                    SetPin(电视信号);
-                    gameFlag=90;
-                }
+            case 88:
+            {
+                delay(72*1000)
+                break;
+            }
+            case 89:
+            {
+                SetPin(电视信号);
+                GameTimeReset;
+                gameFlag++;
                 break;
             }
             case 90:
             {
-                delay(117*1000)
+                delay(45*1000)
                 break;
             }
             case 91:
@@ -480,21 +503,28 @@ void StartGameTask(void const *argument)
                     OpenLock(开场正确锁)
                     PlayMusicA("/04.mp3", 单曲停止)
                     SetPin(草灯);
+                    ResetPin(楼梯主灯);
+                    ResetPin(楼梯侧窗灯);
+                    ResetPin(书房灯);
                     gameFlag = 6;
                 }
                 if (WaitBit(醒来错误, pdTRUE)) {
                     OpenLock(开场错误锁)
+                    OpenState[67]=true;
                     SetPin(草灯);
-                    SubHP();
-                    osDelay(7000);
+                    SetHP(--HP);
                     PlayMusicA("/03.mp3", 单曲停止)
+                    osDelay(7000);
+                    ResetPin(楼梯主灯);
+                    ResetPin(楼梯侧窗灯);
+                    ResetPin(书房灯);
                     GameTimeReset;
                     gameFlag++;
                 }
                 break;
             }
             case 4: {
-                delay(34 * 1000)
+                delay(30 * 1000)
                 break;
             }
             case 5: {
@@ -503,7 +533,7 @@ void StartGameTask(void const *argument)
                 break;
             }
             case 6: {
-                if (NWaitBit(黑卡移开, pdTRUE)) {
+                if (NWaitBit(黑卡移开, pdFALSE)) {
                     gameFlag++;
                 }
                 break;
@@ -536,7 +566,7 @@ void StartGameTask(void const *argument)
             }
             case 11: {
                 ResetPin(茶室门锁);
-                SetPin(茶室灯);
+                ResetPin(茶室灯);
                 PlayMusicA("/09.mp3", 单曲停止)
                 PlayMusicB("/08.mp3", 单曲循环)
                 gameFlag++;
@@ -551,7 +581,7 @@ void StartGameTask(void const *argument)
             case 13:
             {
                 ResetPin(厕所门锁);
-                SetPin(厕所灯);
+                ResetPin(厕所灯);
                 gameFlag++;
                 break;
             }
@@ -566,7 +596,7 @@ void StartGameTask(void const *argument)
             {
                 ResetPin(卧室门锁);
                 PlayMusicB("/12.mp3",单曲循环)
-                PlayMusicA("/13.mp3",单曲循环)
+                PlayMusicA("/13.mp3",单曲停止)
                 gameFlag++;
                 break;
             }
@@ -581,9 +611,9 @@ void StartGameTask(void const *argument)
             case 17:
             {
                 ResetPin(儿童房门锁);
-                SetPin(儿童房灯);
+                ResetPin(儿童房灯);
                 PlayMusicB("/16.mp3",单曲循环)
-                PlayMusicA("/18.mp3",单曲循环)
+                PlayMusicA("/18.mp3",单曲停止)
                 gameFlag++;
                 break;
             }
@@ -598,9 +628,10 @@ void StartGameTask(void const *argument)
             case 19:
             {
                 ResetPin(书房门锁);
-                SetPin(书房灯);
+                ResetPin(书房灯);
                 PlayMusicB("/22.mp3",单曲循环)
-                PlayMusicA("/23.mp3",单曲循环)
+
+                PlayMusicA("/23.mp3",单曲停止)
                 gameFlag++;
                 break;
             }
@@ -617,13 +648,15 @@ void StartGameTask(void const *argument)
             {
                 if(WaitBit(八罪过关,pdTRUE))
                 {
-                    gameFlag=32;
+                    gameFlag=50;
                 }
                 break;
             }
 
             case 30:
             {
+                StopMusicB;
+
                 SetPin(草灯);
                 SetPin(茶室灯);
                 SetPin(厕所灯);
@@ -637,44 +670,33 @@ void StartGameTask(void const *argument)
 
                 SetPin(楼梯主灯红);
                 SetPin(楼梯侧窗灯红);
+                SetPin(红色射灯);
 
                 PlayMusicA("/33.mp3",单曲停止)
-                osDelay(85*1000);
-
-                ResetPin(草灯);
-                ResetPin(茶室灯);
-                ResetPin(厕所灯);
-                ResetPin(卧室灯);
-                ResetPin(儿童房灯);
-                ResetPin(书房灯);
-                ResetPin(草灯);
-                ResetPin(楼梯主灯);
-                ResetPin(楼梯侧窗灯);
-                ResetPin(二楼走廊灯);
-
-                ResetPin(出口门锁);
-                gameFlag=0;
+                GameTimeReset;
+                gameFlag++;
                 break;
             }
             case 31:
             {
-                SetPin(草灯);
-                SetPin(茶室灯);
-                SetPin(厕所灯);
-                SetPin(卧室灯);
-                SetPin(儿童房灯);
-                SetPin(书房灯);
-                SetPin(草灯);
-                SetPin(楼梯主灯);
-                SetPin(楼梯侧窗灯);
-                SetPin(二楼走廊灯);
-
-                SetPin(楼梯主灯红);
-                SetPin(楼梯侧窗灯红);
-
-                PlayMusicA("/34.mp3",单曲停止)
-                osDelay(81*1000);
-
+                delay(38*1000)
+                break;
+            }
+            case 32:
+            {
+                ResetPin(楼梯主灯红);
+                ResetPin(楼梯侧窗灯红);
+                ResetPin(红色射灯);
+                gameFlag++;
+                break;
+            }
+            case 33:
+            {
+                delay(79*1000)
+                break;
+            }
+            case 34:
+            {
                 ResetPin(草灯);
                 ResetPin(茶室灯);
                 ResetPin(厕所灯);
@@ -685,22 +707,129 @@ void StartGameTask(void const *argument)
                 ResetPin(楼梯主灯);
                 ResetPin(楼梯侧窗灯);
                 ResetPin(二楼走廊灯);
-
-                ResetPin(出口门锁);
-                gameFlag=0;
-                break;
-            }
-            case 32://好结局
-            {
-
-                PlayMusicA("/35.mp3",单曲停止)
-                osDelay(81*1000);
 
                 ResetPin(出口门锁);
                 gameFlag=0;
                 break;
             }
             case 40:
+            {
+                StopMusicB;
+
+                SetPin(草灯);
+                SetPin(茶室灯);
+                SetPin(厕所灯);
+                SetPin(卧室灯);
+                SetPin(儿童房灯);
+                SetPin(书房灯);
+                SetPin(草灯);
+                SetPin(楼梯主灯);
+                SetPin(楼梯侧窗灯);
+                SetPin(二楼走廊灯);
+
+                SetPin(楼梯主灯红);
+                SetPin(楼梯侧窗灯红);
+                SetPin(红色射灯);
+
+                PlayMusicA("/34.mp3",单曲停止)
+                GameTimeReset;
+                gameFlag++;
+                break;
+            }
+            case 41:
+            {
+                delay(33*1000)
+                break;
+            }
+            case 42:
+            {
+                ResetPin(楼梯主灯红);
+                ResetPin(楼梯侧窗灯红);
+                ResetPin(红色射灯);
+                gameFlag++;
+                break;
+            }
+            case 43:
+            {
+                delay(79*1000)
+                break;
+            }
+            case 44:
+            {
+                ResetPin(草灯);
+                ResetPin(茶室灯);
+                ResetPin(厕所灯);
+                ResetPin(卧室灯);
+                ResetPin(儿童房灯);
+                ResetPin(书房灯);
+                ResetPin(草灯);
+                ResetPin(楼梯主灯);
+                ResetPin(楼梯侧窗灯);
+                ResetPin(二楼走廊灯);
+
+                ResetPin(出口门锁);
+                gameFlag=0;
+                break;
+            }
+
+            case 50:
+            {
+                StopMusicB;
+
+                SetPin(草灯);
+                SetPin(茶室灯);
+                SetPin(厕所灯);
+                SetPin(卧室灯);
+                SetPin(儿童房灯);
+                SetPin(书房灯);
+                SetPin(草灯);
+                SetPin(楼梯主灯);
+                SetPin(楼梯侧窗灯);
+                SetPin(二楼走廊灯);
+
+                ResetPin(楼梯主灯红);
+                ResetPin(楼梯侧窗灯红);
+
+                PlayMusicA("/35.mp3",单曲停止)
+                GameTimeReset;
+                gameFlag++;
+                break;
+            }
+            case 51:
+            {
+                delay(56*1000)
+                break;
+            }
+            case 52:
+            {
+                SetPin(红色射灯);
+                gameFlag++;
+                break;
+            }
+
+            case 53:
+            {
+                delay(79*1000)
+                break;
+            }
+            case 54:
+            {
+                ResetPin(草灯);
+                ResetPin(茶室灯);
+                ResetPin(厕所灯);
+                ResetPin(卧室灯);
+                ResetPin(儿童房灯);
+                ResetPin(书房灯);
+                ResetPin(草灯);
+                ResetPin(楼梯主灯);
+                ResetPin(楼梯侧窗灯);
+                ResetPin(二楼走廊灯);
+
+                ResetPin(出口门锁);
+                gameFlag=0;
+                break;
+            }
+            case 60:
             {
                 SetHP(HP = 16);//复位血量
                 StopMusicA;
@@ -727,7 +856,7 @@ void StartGameTask(void const *argument)
                 gameFlag=0;
                 break;
             }
-            case 41:
+            case 61:
             {
                 SetPin(书房灯);
                 SetPin(卧室灯);
@@ -736,35 +865,42 @@ void StartGameTask(void const *argument)
                 SetPin(草灯);
                 SetPin(楼梯主灯);
                 SetPin(楼梯侧窗灯);
+                SetPin(儿童房灯);
                 SetPin(二楼走廊灯);
                 SetPin(楼梯侧窗灯);
                 SetPin(伸缩楼梯);
+                ResetPin(红色射灯);
+                Ls=0;
+                Lz=0;
+                HC1=false;
+                HC2=false;
                 gameFlag=0;
                 break;
             }
         }
-        if(GameTime>0)
+        if((gameFlag>0)&&(gameFlag<30))
         {
-            GameTime--;
+            if(GameTime>0)
+            {
+                GameTime--;
+            } else
+            {
+                gameFlag=30;
+            }
         }
-        else
+        if(WaitBit(出口门牌,pdTRUE))
         {
-            gameFlag=30;
+            gameFlag=40;
         }
-        if(GameTime==10*60000)
-        {
-            PlayMusicA("/1.mp3",单曲停止)
-        }
-        GameTime--;
         RunTime++;
-        xSemaphoreGive(xGameSemaphore);
-        osDelay(1); //等待音频播放
-        static int oldGameFlag = 19;
+        static int oldGameFlag = 0;
         if(gameFlag!=oldGameFlag)
         {
             uint8_t TxBuff[5] = {0xCC,0x05,0x00,gameFlag,0xFF};
             HAL_UART_Transmit(&huart1,TxBuff,5,HAL_MAX_DELAY);
             oldGameFlag = gameFlag;
         }
+        xSemaphoreGive(xGameSemaphore);
+        osDelay(1); //等待音频播放
     }
 }

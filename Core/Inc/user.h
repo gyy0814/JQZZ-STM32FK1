@@ -108,10 +108,10 @@ void GameInit(void);
 #define 输入走廊3 17
 #define 输入走廊4 16
 
-#define 输入楼梯1 7
-#define 输入楼梯2 6
-#define 输入楼梯3 9
-#define 输入楼梯4 8
+#define 输入楼梯1 8
+#define 输入楼梯2 7
+#define 输入楼梯3 10
+#define 输入楼梯4 9
 
 #define 输入大厅1 94
 #define 输入大厅2 93
@@ -217,9 +217,9 @@ void GameInit(void);
 #define 楼梯主灯红 67
 #define 楼梯侧窗灯红 69
 #define 二楼走廊灯 65
-#define 开场正确锁 61
-#define 开场错误锁 60
-#define 电视下箱锁 4
+#define 开场正确锁 63
+#define 开场错误锁 62
+#define 电视下箱锁 3
 #define 茶室门锁 14
 #define 茶室灯 72
 #define 厕所灯 73
@@ -230,6 +230,8 @@ void GameInit(void);
 #define 儿童房门锁 90
 #define 书房灯 70
 #define 书房门锁 15
+
+#define 出口门牌 1
 
 #define 猜拳胜利 70
 #define 猜拳失败 69
@@ -268,4 +270,8 @@ void GameInit(void);
 #define 保险箱 1
 
 #define 电视信号 2
+#define 红色射灯 12
+
+#define 拉绳1 74
+#define 拉绳2 75
 #endif //FKS1_USER_H
