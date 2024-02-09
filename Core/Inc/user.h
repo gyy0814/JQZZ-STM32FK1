@@ -25,8 +25,8 @@ void GameInit(void);
 #define NWaitBit(pin,clear) (xEventGroupWaitBits(InputEventGroup[pin/24],TO_BIT(pin),clear,pdTRUE,0) & TO_BIT(pin))==0
 #define WaitBit(pin,clear) (xEventGroupWaitBits(InputEventGroup[pin/24],TO_BIT(pin),clear,pdTRUE,0) & TO_BIT(pin))==TO_BIT(pin)
 #define delay(ms) if(GameDelay(&RunTime,ms)){gameFlag++;}
-#define PlayMusicA(Name,Mode) {char FileName[]=Name;PlayMusicName(&MUSIC_1, FileName, strlen(FileName),Mode);}
-#define PlayMusicB(Name,Mode) {char FileName[]=Name;PlayMusicName(&MUSIC_2, FileName, strlen(FileName),Mode);}
+#define PlayMusicA(Name,Mode) {char FileName[]=Name;PlayMusicName(&MUSIC_2, FileName, strlen(FileName),Mode);}
+#define PlayMusicB(Name,Mode) {char FileName[]=Name;PlayMusicName(&MUSIC_1, FileName, strlen(FileName),Mode);}
 #define StopMusicA StopMusic(&MUSIC_1)
 #define StopMusicB StopMusic(&MUSIC_2)
 #define SetPin(pin) SetOutput(pin,GPIO_PIN_SET)

@@ -54,14 +54,29 @@ void SubHP()
     SetPin(楼梯主灯);
     SetPin(楼梯侧窗灯);
     SetPin(二楼走廊灯);
-    osDelay(2000);
+    SetPin(书房灯);
+    SetHP(0);
+    osDelay(1000);
     ResetPin(楼梯主灯);
     ResetPin(楼梯侧窗灯);
     ResetPin(二楼走廊灯);
+    ResetPin(书房灯);
+    SetHP(HP);
+    osDelay(1000);
+    SetPin(楼梯主灯);
+    SetPin(楼梯侧窗灯);
+    SetPin(二楼走廊灯);
+    SetPin(书房灯);
+    SetHP(0);
+    osDelay(1000);
+    ResetPin(楼梯主灯);
+    ResetPin(楼梯侧窗灯);
+    ResetPin(二楼走廊灯);
+    ResetPin(书房灯);
+    SetHP(HP);
     if(HP==2)
     {
-        char FileName[] = "/32.mp3";
-        PlayMusicName(&MUSIC_1,FileName, strlen(FileName),单曲停止);
+        PlayMusicB("/32.mp3",单曲停止)
     }
     SetHP(--HP);
 }
@@ -269,10 +284,10 @@ bool BoxProperties[BOX_NUM]=
                 false,
                 true,
                 true,
-                true,
-                true,
-                true,
                 false,
+                true,
+                true,
+                true,
                 false,
                 true,
                 true,
@@ -307,31 +322,33 @@ void StartBoxTask(void const *argument)
             for (int i = 0; i < BOX_NUM; i++) {
                 if (WaitBit(BoxInputPin[i], pdTRUE)) {
                     OpenLock(BoxOutputPin[i])
-                    if (!OpenState[i]) {
-                        if (BoxProperties[i]) {
-                            if (i == 10) {
-                                PlayMusicA("/24.mp3", 单曲停止)
-                            } else if (i == 12) {
-                                PlayMusicA("/31.mp3", 单曲停止)
-                            } else if (i == 14) {
-                                PlayMusicA("/29.mp3", 单曲停止)
-                            } else if (i == 15) {
-                                PlayMusicA("/30.mp3", 单曲停止)
-                            } else if (i == 18) {
-                                PlayMusicA("/27.mp3", 单曲停止)
-                            } else if (i == 24) {
-                                PlayMusicA("/25.mp3", 单曲停止)
-                            } else if (i == 26) {
-                                PlayMusicA("/28.mp3", 单曲停止)
-                            } else if (i == 28) {
-                                PlayMusicA("/26.mp3", 单曲停止)
-                            } else {
+                    if (i == 10) {
+                        PlayMusicA("/24.mp3", 单曲停止)
+                    } else if (i == 12) {
+                        PlayMusicA("/31.mp3", 单曲停止)
+                    } else if (i == 14) {
+                        PlayMusicA("/29.mp3", 单曲停止)
+                    } else if (i == 15) {
+                        PlayMusicA("/30.mp3", 单曲停止)
+                    } else if (i == 18) {
+                        PlayMusicA("/27.mp3", 单曲停止)
+                    } else if (i == 24) {
+                        PlayMusicA("/25.mp3", 单曲停止)
+                    } else if (i == 26) {
+                        PlayMusicA("/28.mp3", 单曲停止)
+                    } else if (i == 28) {
+                        PlayMusicA("/26.mp3", 单曲停止)
+                    } else {
+                        if (!OpenState[i]) {
+                            if (BoxProperties[i]) {
                                 PlayMusicA("/07.mp3", 单曲停止)
+
+                            } else {
+                                SubHP();
+                                GameTime=GameTime-7000;
                             }
-                        } else {
-                            SubHP();
+                            OpenState[i] = true;
                         }
-                        OpenState[i] = true;
                     }
                 }
             }
@@ -368,6 +385,7 @@ void StartBoxTask(void const *argument)
                     SubHP();
                     Lz = 0;
                     osDelay(7000);
+                    GameTime=GameTime-7000;
                 }
                 PlayMusicA("/20.mp3", 单曲停止)
             }
@@ -482,6 +500,9 @@ void StartGameTask(void const *argument)
             case 89:
             {
                 SetPin(电视信号);
+                GameTime = 100 * 60 * 1000;//复位倒计时时间
+                GameTime-5000;
+                SetHP(HP);
                 GameTimeReset;
                 gameFlag++;
                 break;
@@ -515,6 +536,7 @@ void StartGameTask(void const *argument)
                     SetHP(--HP);
                     PlayMusicA("/03.mp3", 单曲停止)
                     osDelay(7000);
+                    GameTime=GameTime-7000;
                     ResetPin(楼梯主灯);
                     ResetPin(楼梯侧窗灯);
                     ResetPin(书房灯);
@@ -565,9 +587,10 @@ void StartGameTask(void const *argument)
                 break;
             }
             case 11: {
+                PlayMusicA("/09.mp3", 单曲停止)
                 ResetPin(茶室门锁);
                 ResetPin(茶室灯);
-                PlayMusicA("/09.mp3", 单曲停止)
+
                 PlayMusicB("/08.mp3", 单曲循环)
                 gameFlag++;
                 break;
@@ -594,8 +617,9 @@ void StartGameTask(void const *argument)
             }
             case 15:
             {
-                ResetPin(卧室门锁);
                 PlayMusicB("/12.mp3",单曲循环)
+                ResetPin(卧室门锁);
+
                 PlayMusicA("/13.mp3",单曲停止)
                 gameFlag++;
                 break;
@@ -610,9 +634,10 @@ void StartGameTask(void const *argument)
             }
             case 17:
             {
+                PlayMusicB("/16.mp3",单曲循环)
                 ResetPin(儿童房门锁);
                 ResetPin(儿童房灯);
-                PlayMusicB("/16.mp3",单曲循环)
+
                 PlayMusicA("/18.mp3",单曲停止)
                 gameFlag++;
                 break;
@@ -627,10 +652,9 @@ void StartGameTask(void const *argument)
             }
             case 19:
             {
+                PlayMusicB("/22.mp3",单曲循环)
                 ResetPin(书房门锁);
                 ResetPin(书房灯);
-                PlayMusicB("/22.mp3",单曲循环)
-
                 PlayMusicA("/23.mp3",单曲停止)
                 gameFlag++;
                 break;
@@ -655,7 +679,7 @@ void StartGameTask(void const *argument)
 
             case 30:
             {
-                StopMusicB;
+                StopMusicA;
 
                 SetPin(草灯);
                 SetPin(茶室灯);
@@ -668,11 +692,13 @@ void StartGameTask(void const *argument)
                 SetPin(楼梯侧窗灯);
                 SetPin(二楼走廊灯);
 
+                ResetPin(电视信号);
                 SetPin(楼梯主灯红);
                 SetPin(楼梯侧窗灯红);
                 SetPin(红色射灯);
 
-                PlayMusicA("/33.mp3",单曲停止)
+                SetPlayMode(&MUSIC_1,单曲停止);
+                PlayMusicB("/33.mp3",单曲停止)
                 GameTimeReset;
                 gameFlag++;
                 break;
@@ -714,7 +740,7 @@ void StartGameTask(void const *argument)
             }
             case 40:
             {
-                StopMusicB;
+                StopMusicA;
 
                 SetPin(草灯);
                 SetPin(茶室灯);
@@ -731,7 +757,8 @@ void StartGameTask(void const *argument)
                 SetPin(楼梯侧窗灯红);
                 SetPin(红色射灯);
 
-                PlayMusicA("/34.mp3",单曲停止)
+                SetPlayMode(&MUSIC_1,单曲停止);
+                PlayMusicB("/34.mp3",单曲停止)
                 GameTimeReset;
                 gameFlag++;
                 break;
@@ -774,7 +801,7 @@ void StartGameTask(void const *argument)
 
             case 50:
             {
-                StopMusicB;
+                StopMusicA;
 
                 SetPin(草灯);
                 SetPin(茶室灯);
@@ -790,7 +817,8 @@ void StartGameTask(void const *argument)
                 ResetPin(楼梯主灯红);
                 ResetPin(楼梯侧窗灯红);
 
-                PlayMusicA("/35.mp3",单曲停止)
+                SetPlayMode(&MUSIC_1,单曲停止);
+                PlayMusicB("/35.mp3",单曲停止)
                 GameTimeReset;
                 gameFlag++;
                 break;
@@ -831,9 +859,15 @@ void StartGameTask(void const *argument)
             }
             case 60:
             {
-                SetHP(HP = 16);//复位血量
                 StopMusicA;
                 StopMusicB;
+
+                SetUsbMusic(&MUSIC_1);
+                SetUsbMusic(&MUSIC_2);
+
+                SetPlayMode(&MUSIC_2,单曲停止);
+                SetPlayMode(&MUSIC_1,单曲循环);
+
                 ResetPin(书房灯);
                 ResetPin(卧室灯);
                 ResetPin(厕所灯);
@@ -854,6 +888,7 @@ void StartGameTask(void const *argument)
                 SetPin(保险箱);
                 SetPin(八罪外门);
                 gameFlag=0;
+                SetHP(16);
                 break;
             }
             case 61:
@@ -874,11 +909,14 @@ void StartGameTask(void const *argument)
                 Lz=0;
                 HC1=false;
                 HC2=false;
+                HP=16;
+                SetHP(0);
                 gameFlag=0;
+                GameTime = 100 * 60 * 1000;//复位倒计时时间
                 break;
             }
         }
-        if((gameFlag>0)&&(gameFlag<30))
+        if(((gameFlag>2)&&(gameFlag<30))||((gameFlag>88)&&(gameFlag<91)))
         {
             if(GameTime>0)
             {
@@ -887,11 +925,16 @@ void StartGameTask(void const *argument)
             {
                 gameFlag=30;
             }
+            if (HP==0)
+            {
+                gameFlag=30;
+            }
         }
         if(WaitBit(出口门牌,pdTRUE))
         {
             gameFlag=40;
         }
+
         RunTime++;
         static int oldGameFlag = 0;
         if(gameFlag!=oldGameFlag)

@@ -28,8 +28,10 @@ typedef struct {
 
 void PlayMusicName(UART_HandleTypeDef *huart,const char* FileName,size_t FileNameSize, uint8_t PlayMode);
 void StopMusic(UART_HandleTypeDef *huart);
+void SetUsbMusic(UART_HandleTypeDef *huart);
+void SetPlayMode(UART_HandleTypeDef *huart, uint8_t PlayMode);
+
 #define 单曲循环 0x01
 #define 单曲停止 0x04
-
 
 #endif //FKS1_MUSIC_H

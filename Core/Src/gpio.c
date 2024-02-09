@@ -126,7 +126,7 @@ void HC595Output(const GPIO_PinState *pOutputState, int OutputNum) {
         //是否 ???????????????要延 ???????????????
         HC595_SHCPH;
     }
-    /*--step3�? ? 完成后存储到寄存�?*/
+    /*--step3�? ? 完成后存储到寄存�?*/
     HC595_STCPL;
     osDelay(1);
     //是否 ???????????????要延 ???????????????
@@ -219,7 +219,7 @@ void InputRecv(GPIO_PinState *pInputState) {
 void StartGPIOTask(void const *argument) {
     GPIOMessage newMessage;
     while (1) {
-        if (xQueueReceive(OutputMessageQueueHandle, &newMessage, 0) == pdTRUE) {
+        while (xQueueReceive(OutputMessageQueueHandle, &newMessage, 0) == pdTRUE) {
             if (OutputState[newMessage.GPIO_Pin] != newMessage.PinState) {
                 OutputState[newMessage.GPIO_Pin] = newMessage.PinState;
                 uint8_t TxBuffer[5] = {0xCC, 0x02, newMessage.GPIO_Pin, (newMessage.PinState == GPIO_PIN_SET) ? 1 : 0,
