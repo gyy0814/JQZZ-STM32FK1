@@ -315,7 +315,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
             if (uart1RxBuffer[uart1RxIndex - 1] == 0xFF)
             {
-                // 完整数据包接收完成，添加到消息队�???????????????
+                // 完整数据包接收完成，添加到消息队�????????????????
                 BaseType_t xHigherPriorityTaskWoken = pdFALSE;
                 UartMessage newMessage;
                 newMessage.from = 0x02;
@@ -328,7 +328,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
             }
         }
 
-        // 启动下一次接�??????????????
+        // 启动下一次接�???????????????
         HAL_UART_Receive_IT(&huart1, &uart1RxBuffer[uart1RxIndex], 1);
     }
     /*else if(huart->Instance == USART2)
