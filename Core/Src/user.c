@@ -636,6 +636,9 @@ void StartGameTask(void const *argument)
             }
             case 66://复位
             {
+
+
+
                 SetPin(电脑复位);
                 SetPin(电视直升机);
                 osDelay(300);
@@ -644,6 +647,15 @@ void StartGameTask(void const *argument)
 
                 StopMusicA;
                 StopMusicB;
+
+                SetUsbMusic(&MUSIC_1);
+                SetUsbMusic(&MUSIC_2);
+
+                SetPlayMode(&MUSIC_1,单曲停止);
+                SetPlayMode(&MUSIC_2,单曲循环);
+
+
+
                 SetPin(蓝色聚光灯);
                 SetPin(婴儿床灯);
                 SetPin(游戏灯);
