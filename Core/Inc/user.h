@@ -52,6 +52,7 @@ void GameInit(void);
 #define 信息块8 26
 #define 信息块9 27
 #define 信息块10 28
+#define 信息块复位锁 29
 
 #define 灯带 31
 #define 线路射灯 32

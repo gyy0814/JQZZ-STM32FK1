@@ -670,6 +670,7 @@ void StartGameTask(void const *argument) {
                 SetOutput(信息块8, GPIO_PIN_SET);
                 SetOutput(信息块9, GPIO_PIN_SET);
                 SetOutput(信息块10, GPIO_PIN_SET);
+                SetOutput(信息块复位锁, GPIO_PIN_RESET);
 
                 SetOutput(灯带, GPIO_PIN_SET);
                 SetOutput(线路射灯, GPIO_PIN_SET);
@@ -731,6 +732,7 @@ void StartGameTask(void const *argument) {
                 SetOutput(信息块8, GPIO_PIN_SET);
                 SetOutput(信息块9, GPIO_PIN_SET);
                 SetOutput(信息块10, GPIO_PIN_SET);
+                SetOutput(信息块复位锁, GPIO_PIN_SET);
 
                 SetOutput(灯带, GPIO_PIN_RESET);
                 SetOutput(线路射灯, GPIO_PIN_RESET);
