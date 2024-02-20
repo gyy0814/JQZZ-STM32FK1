@@ -466,6 +466,15 @@ void StartGameTask(void const *argument) {
             }
             case 52: //复位
             {
+                PauseMusic(&MUSIC_1);
+                PauseMusic(&MUSIC_2);
+
+                SetUsbMusic(&MUSIC_1);
+                SetUsbMusic(&MUSIC_2);
+
+                SetPlayMode(&MUSIC_1,单曲停止);
+                SetPlayMode(&MUSIC_2,单曲循环);
+
                 SetOutput(入口门, GPIO_PIN_SET);
                 SetOutput(路由器柜门, GPIO_PIN_SET);
                 SetOutput(杂志柜门, GPIO_PIN_SET);
@@ -481,8 +490,6 @@ void StartGameTask(void const *argument) {
                 SetOutput(游戏卡带柜, GPIO_PIN_SET);
                 SetOutput(卧室门锁, GPIO_PIN_SET);
                 SetOutput(电视电源, GPIO_PIN_SET);
-                PauseMusic(&MUSIC_1);
-                PauseMusic(&MUSIC_2);
                 SetOutput(电脑复位, GPIO_PIN_SET);
                 SetOutput(游戏柜门, GPIO_PIN_RESET);
                 SetOutput(时钟电源, GPIO_PIN_RESET);
