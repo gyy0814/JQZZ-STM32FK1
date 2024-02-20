@@ -663,12 +663,17 @@ void StartGameTask(void const *argument)
             {
                 if(WaitBit(彩球过关,pdTRUE))
                 {
-                    ResetPin(八罪外门);
                     gameFlag++;
                 }
                 break;
             }
             case 21:
+            {
+                ResetPin(八罪外门);
+                gameFlag++;
+                break;
+            }
+            case 22:
             {
                 if(WaitBit(八罪过关,pdTRUE))
                 {
