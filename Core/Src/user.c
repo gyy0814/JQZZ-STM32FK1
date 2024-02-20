@@ -474,6 +474,11 @@ void StartGameTask(void const *argument)
             {
                 StopMusicA;
                 StopMusicB;
+                SetUsbMusic(&MUSIC_1);
+                SetUsbMusic(&MUSIC_2);
+                SetPlayMode(&MUSIC_1,单曲停止);
+                SetPlayMode(&MUSIC_2,单曲循环);
+
                 SetOutput(手机视频1,GPIO_PIN_RESET);
                 SetOutput(手机视频2,GPIO_PIN_RESET);
                 SetOutput(行程管理电源,GPIO_PIN_RESET);
