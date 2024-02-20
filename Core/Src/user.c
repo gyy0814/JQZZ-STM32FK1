@@ -543,6 +543,16 @@ void StartGameTask(void const *argument) {
                     saomiaoFlags[9] == 1 &&
                     saomiaoFlags[10] == 1) {
                     gameFlags[0]++;
+                    saomiaoFlags[1] = 0;
+                    saomiaoFlags[2] = 0;
+                    saomiaoFlags[3] = 0;
+                    saomiaoFlags[4] = 0;
+                    saomiaoFlags[5] = 0;
+                    saomiaoFlags[6] = 0;
+                    saomiaoFlags[7] = 0;
+                    saomiaoFlags[8] = 0;
+                    saomiaoFlags[9] = 0;
+                    saomiaoFlags[10] = 0;
                     GameTimeReset;
                 }
                 break;
