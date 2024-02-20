@@ -96,9 +96,9 @@ void StartMusicTask(void const * argument)
 {
     /* USER CODE BEGIN StartMusicTask */
     MusicMessage newMusicMessage;
-    UartMessage newUartMessage;
-    GPIO_PinState Music1BusyState = HAL_GPIO_ReadPin(MUSIC1_BUSY_GPIO_Port,MUSIC1_BUSY_Pin);
-    GPIO_PinState Music2BusyState = HAL_GPIO_ReadPin(MUSIC2_BUSY_GPIO_Port,MUSIC2_BUSY_Pin);
+//    UartMessage newUartMessage;
+//    GPIO_PinState Music1BusyState = HAL_GPIO_ReadPin(MUSIC1_BUSY_GPIO_Port,MUSIC1_BUSY_Pin);
+//    GPIO_PinState Music2BusyState = HAL_GPIO_ReadPin(MUSIC2_BUSY_GPIO_Port,MUSIC2_BUSY_Pin);
     /* Infinite loop */
     for(;;)
     {
@@ -106,6 +106,7 @@ void StartMusicTask(void const * argument)
         {
             MusicSendData(newMusicMessage.huart,newMusicMessage.CMD,newMusicMessage.Data,newMusicMessage.DataLength);
         }
+        /*
         if(xQueueReceive(MusicUartMessageQueueHandle,&newUartMessage,0) == pdTRUE) {
             uint8_t TxBuffer[67];
             TxBuffer[0] = 0xCC;
@@ -136,7 +137,7 @@ void StartMusicTask(void const * argument)
         }
         Music1BusyState = HAL_GPIO_ReadPin(MUSIC1_BUSY_GPIO_Port,MUSIC1_BUSY_Pin);
         Music2BusyState = HAL_GPIO_ReadPin(MUSIC2_BUSY_GPIO_Port,MUSIC2_BUSY_Pin);
-
+*/
         osDelay(1);
     }
     /* USER CODE END StartMusicTask */
