@@ -641,6 +641,10 @@ void StartGameTask(void const *argument) {
             {
                 PauseMusic(&MUSIC_1);
                 PauseMusic(&MUSIC_2);
+                SetUsbMusic(&MUSIC_1);
+                SetUsbMusic(&MUSIC_2);
+                SetPlayMode(&MUSIC_1,单曲循环);
+                SetPlayMode(&MUSIC_2,单曲停止);
                 SetOutput(电视信号1, GPIO_PIN_RESET);
                 SetOutput(电视信号2, GPIO_PIN_RESET);
                 SetOutput(电视信号3, GPIO_PIN_RESET);
@@ -695,8 +699,11 @@ void StartGameTask(void const *argument) {
                 SetOutput(客厅房顶灯带, GPIO_PIN_SET);
                 SetOutput(卧室灯带, GPIO_PIN_SET);
                 SetOutput(敲门锁, GPIO_PIN_SET);
+
+                SetOutput(入口门锁, GPIO_PIN_RESET);
                 SetOutput(前场电脑复位, GPIO_PIN_SET);
                 osDelay(1000);
+                SetOutput(入口门锁, GPIO_PIN_SET);
                 SetOutput(前场电脑复位, GPIO_PIN_RESET);
                 gameFlags[0] = 52;
                 break;
@@ -757,6 +764,7 @@ void StartGameTask(void const *argument) {
                 SetOutput(客厅房顶灯带, GPIO_PIN_RESET);
                 SetOutput(卧室灯带, GPIO_PIN_RESET);
 
+                SetOutput(入口门锁, GPIO_PIN_SET);
                 gameFlags[0] = 52;
                 break;
             }

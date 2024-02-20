@@ -44,17 +44,17 @@ void PlayMusicName(UART_HandleTypeDef *huart,const char* FileName,size_t FileNam
             .CMD = 0x0B,
             .DataLength=2
     };
-
-    newMusicMessage.CMD = 0x04;
-    newMusicMessage.Data[0] = 0x0A;
-    newMusicMessage.DataLength=1;
-    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
-
-    newMusicMessage.CMD = 0x0B;
-    newMusicMessage.Data[0] = 0x01;
-    newMusicMessage.Data[1] = PlayMode;
-    newMusicMessage.DataLength=2;
-    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+//
+//    newMusicMessage.CMD = 0x04;
+//    newMusicMessage.Data[0] = 0x0A;
+//    newMusicMessage.DataLength=1;
+//    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+//
+//    newMusicMessage.CMD = 0x0B;
+//    newMusicMessage.Data[0] = 0x01;
+//    newMusicMessage.Data[1] = PlayMode;
+//    newMusicMessage.DataLength=2;
+//    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
 
     /* Play music form fileName */
     newMusicMessage.CMD = 0x04;
@@ -87,10 +87,33 @@ void PauseMusic(UART_HandleTypeDef *huart)
             .DataLength=1
     };
 
-    newMusicMessage.Data[0] = 0x02;
+    newMusicMessage.Data[0] = 0x03;
     xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
 }
 
+void SetUsbMusic(UART_HandleTypeDef *huart)
+{
+    MusicMessage newMusicMessage = (MusicMessage){
+            .huart = huart,
+            .CMD = 0x04,
+            .DataLength=1
+    };
+
+    newMusicMessage.Data[0] = 0x0A;
+    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+}
+void SetPlayMode(UART_HandleTypeDef *huart, uint8_t PlayMode)
+{
+    MusicMessage newMusicMessage = (MusicMessage){
+            .huart = huart,
+            .CMD = 0x0B,
+            .DataLength=2
+    };
+
+    newMusicMessage.Data[0] = 0x01;
+    newMusicMessage.Data[1] = PlayMode;
+    xQueueSend(MusicMessageQueueHandle,&newMusicMessage,0);
+}
 //音乐事件处理任务
 void StartMusicTask(void const * argument)
 {
