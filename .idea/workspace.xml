@@ -20,26 +20,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1367dda7-aca8-44d5-9c94-00cdecdd0995" name="更改" comment="2024/02/06x2">
+    <list default="true" id="1367dda7-aca8-44d5-9c94-00cdecdd0995" name="更改" comment="2024/01/31 15:19,v1.4你好前场程序">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/user.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rtc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rtc.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.elf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.hex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,11 +102,6 @@
     </key>
   </component>
   <component name="RunManager" selected="OpenOCD 下载并运行.FKS1.elf">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FKS1.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FKS1" TARGET_NAME="FKS1.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FKS1" RUN_TARGET_NAME="FKS1.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -183,6 +160,7 @@
       <workItem from="1707452399009" duration="2000" />
       <workItem from="1707459358827" duration="2187000" />
       <workItem from="1708479395377" duration="2000" />
+      <workItem from="1708520355171" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交GIT &#10;串口正常板 大概运行正常">
       <option name="closed" value="true" />
@@ -232,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707218247063</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="2024/01/31 15:19,v1.4你好前场程序">
+      <option name="closed" value="true" />
+      <created>1708505728135</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708505728135</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,7 +259,8 @@
     <MESSAGE value="2023/12/28 侦缉处 调试到敲门机关" />
     <MESSAGE value="2024/01/24双子前场程序创建" />
     <MESSAGE value="2024/02/06x2" />
-    <option name="LAST_COMMIT_MESSAGE" value="2024/02/06x2" />
+    <MESSAGE value="2024/01/31 15:19,v1.4你好前场程序" />
+    <option name="LAST_COMMIT_MESSAGE" value="2024/01/31 15:19,v1.4你好前场程序" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
