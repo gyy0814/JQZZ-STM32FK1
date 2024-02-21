@@ -524,6 +524,7 @@ void StartGameTask(void const *argument)
             case 89:
             {
                 SetPin(电视信号);
+
                 // 获取起始时间
                 HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
                 start_time = sTime.Hours * 3600 + sTime.Minutes * 60 +sTime.Seconds;
