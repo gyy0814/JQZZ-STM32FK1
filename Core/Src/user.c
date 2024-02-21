@@ -406,9 +406,11 @@ void StartBoxTask(void const *argument)
                 if (Lz == 5) {
                     SubHP();
                     Lz = 0;
-                    osDelay(7000);
+                    //osDelay(7000);
+                } else{
+                    PlayMusicA("/20.mp3", 单曲停止)
                 }
-                PlayMusicA("/20.mp3", 单曲停止)
+
             }
             if (WaitBit(猜拳胜利, pdTRUE)) {
                 PlayMusicA("/19.mp3", 单曲停止)
@@ -792,7 +794,7 @@ void StartGameTask(void const *argument)
                 SetPin(楼梯主灯红);
                 SetPin(楼梯侧窗灯红);
                 SetPin(红色射灯);
-
+                ResetPin(电视信号);
                 SetPlayMode(&MUSIC_1,单曲停止);
                 PlayMusicB("/34.mp3",单曲停止)
                 GameTimeReset;
@@ -852,7 +854,7 @@ void StartGameTask(void const *argument)
 
                 ResetPin(楼梯主灯红);
                 ResetPin(楼梯侧窗灯红);
-
+                ResetPin(电视信号);
                 SetPlayMode(&MUSIC_1,单曲停止);
                 PlayMusicB("/35.mp3",单曲停止)
                 GameTimeReset;
