@@ -10,6 +10,8 @@
 #include "queue.h"
 #include "cmsis_os.h"
 #include "gpio.h"
+#include "stm32f1xx_hal_rtc.h"
+#include "stm32f1xx_hal.h"
 #include <stdbool.h>
 SemaphoreHandle_t xGameSemaphore;
 
@@ -48,6 +50,20 @@ void SetHP(int hp) {
     SetOutput(蜡烛16,(16<=hp)?GPIO_PIN_SET:GPIO_PIN_RESET);
 
 }
+extern RTC_HandleTypeDef hrtc;
+
+void Get_RTC_Counter(uint32_t *counter)
+{
+    RTC_TimeTypeDef sTime;
+//    RTC_DateTypeDef sDate;
+
+    HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+//    HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
+
+    // 计算RTC计数器值（秒数）
+    *counter = sTime.Seconds + sTime.Minutes * 60 + sTime.Hours * 3600;
+}
+
 void SubHP()
 {
     PlayMusicA("/02.mp3",单曲停止)
@@ -306,7 +322,6 @@ bool BoxProperties[BOX_NUM]=
         };
 
 int Lz=0;
-long int GameTime = 100*60*1000;
 
 int Ls=0;
 void StartBoxTask(void const *argument)
@@ -345,7 +360,6 @@ void StartBoxTask(void const *argument)
 
                             } else {
                                 SubHP();
-                                GameTime=GameTime-7000;
                             }
                             OpenState[i] = true;
                         }
@@ -385,7 +399,6 @@ void StartBoxTask(void const *argument)
                     SubHP();
                     Lz = 0;
                     osDelay(7000);
-                    GameTime=GameTime-7000;
                 }
                 PlayMusicA("/20.mp3", 单曲停止)
             }
@@ -460,6 +473,10 @@ void StartGameFlagTask(void const *argument)
 void StartGameTask(void const *argument)
 {
     int RunTime = 0;
+
+    RTC_TimeTypeDef sTime;
+    uint32_t start_time, current_time;
+
     for(;;)
     {
         xSemaphoreTake(xGameSemaphore, portMAX_DELAY);
@@ -486,7 +503,6 @@ void StartGameTask(void const *argument)
                 {
                     OpenState[i] = false;
                 }
-                GameTime = 100 * 60 * 1000;//复位倒计时时间
                 PlayMusicB("/01.mp3", 单曲停止)
                 GameTimeReset;
                 gameFlag=88;
@@ -500,8 +516,11 @@ void StartGameTask(void const *argument)
             case 89:
             {
                 SetPin(电视信号);
-                GameTime = 100 * 60 * 1000;//复位倒计时时间
-                GameTime-5000;
+
+                // 获取起始时间
+                HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+                start_time = sTime.Hours * 3600 + sTime.Minutes * 60 +sTime.Seconds;
+
                 SetHP(HP);
                 GameTimeReset;
                 gameFlag++;
@@ -536,7 +555,6 @@ void StartGameTask(void const *argument)
                     SetHP(--HP);
                     PlayMusicA("/03.mp3", 单曲停止)
                     osDelay(7000);
-                    GameTime=GameTime-7000;
                     ResetPin(楼梯主灯);
                     ResetPin(楼梯侧窗灯);
                     ResetPin(书房灯);
@@ -743,6 +761,7 @@ void StartGameTask(void const *argument)
                 gameFlag=0;
                 break;
             }
+
             case 40:
             {
                 StopMusicA;
@@ -839,7 +858,6 @@ void StartGameTask(void const *argument)
                 gameFlag++;
                 break;
             }
-
             case 53:
             {
                 delay(79*1000)
@@ -862,6 +880,7 @@ void StartGameTask(void const *argument)
                 gameFlag=0;
                 break;
             }
+
             case 60:
             {
                 StopMusicA;
@@ -917,16 +936,15 @@ void StartGameTask(void const *argument)
                 HP=16;
                 SetHP(0);
                 gameFlag=0;
-                GameTime = 100 * 60 * 1000;//复位倒计时时间
                 break;
             }
         }
-        if(((gameFlag>2)&&(gameFlag<30))||((gameFlag>88)&&(gameFlag<91)))
+        if((gameFlag>2)&&(gameFlag<30))
         {
-            if(GameTime>0)
-            {
-                GameTime--;
-            } else
+            // 获取起始时间
+            HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+            current_time  = sTime.Hours * 3600 + sTime.Minutes * 60 + sTime.Seconds;
+            if ((current_time - start_time) >= (100 * 60)) // 100分钟
             {
                 gameFlag=30;
             }
