@@ -627,7 +627,7 @@ void StartGameTask(void const *argument) {
             }
             case 51://
             {
-                SetOutput(电脑显示器, GPIO_PIN_RESET);
+                SetOutput(电脑显示器, GPIO_PIN_SET);
                 SetOutput(信息投影灯, GPIO_PIN_RESET);
                 SetOutput(灯带, GPIO_PIN_RESET);
                 gameFlags[0]++;
@@ -690,7 +690,7 @@ void StartGameTask(void const *argument) {
                 SetOutput(扫描灯9, GPIO_PIN_RESET);
                 SetOutput(扫描灯10, GPIO_PIN_RESET);
                 SetOutput(扫描激光, GPIO_PIN_RESET);
-                SetOutput(电脑显示器, GPIO_PIN_SET);
+                SetOutput(电脑显示器, GPIO_PIN_RESET);
                 SetOutput(书房月球灯, GPIO_PIN_SET);
                 SetOutput(电视背景灯带, GPIO_PIN_SET);
                 SetOutput(书房台灯, GPIO_PIN_SET);
@@ -755,7 +755,7 @@ void StartGameTask(void const *argument) {
                 SetOutput(扫描灯9, GPIO_PIN_RESET);
                 SetOutput(扫描灯10, GPIO_PIN_RESET);
                 SetOutput(扫描激光, GPIO_PIN_RESET);
-                SetOutput(电脑显示器, GPIO_PIN_SET);
+                SetOutput(电脑显示器, GPIO_PIN_RESET);
                 SetOutput(书房月球灯, GPIO_PIN_RESET);
                 SetOutput(电视背景灯带, GPIO_PIN_RESET);
                 SetOutput(书房台灯, GPIO_PIN_RESET);
