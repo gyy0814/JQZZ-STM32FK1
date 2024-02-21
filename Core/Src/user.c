@@ -71,24 +71,32 @@ void SubHP()
     SetPin(楼梯侧窗灯);
     SetPin(二楼走廊灯);
     SetPin(书房灯);
+    SetPin(茶室灯);
+    SetPin(儿童房灯);
     SetHP(0);
     osDelay(1000);
     ResetPin(楼梯主灯);
     ResetPin(楼梯侧窗灯);
     ResetPin(二楼走廊灯);
     ResetPin(书房灯);
+    ResetPin(茶室灯);
+    ResetPin(儿童房灯);
     SetHP(HP);
     osDelay(1000);
     SetPin(楼梯主灯);
     SetPin(楼梯侧窗灯);
     SetPin(二楼走廊灯);
     SetPin(书房灯);
+    SetPin(茶室灯);
+    SetPin(儿童房灯);
     SetHP(0);
     osDelay(1000);
     ResetPin(楼梯主灯);
     ResetPin(楼梯侧窗灯);
     ResetPin(二楼走廊灯);
     ResetPin(书房灯);
+    ResetPin(茶室灯);
+    ResetPin(儿童房灯);
     SetHP(HP);
     if(HP==2)
     {
@@ -546,6 +554,8 @@ void StartGameTask(void const *argument)
                     ResetPin(楼梯主灯);
                     ResetPin(楼梯侧窗灯);
                     ResetPin(书房灯);
+                    ResetPin(茶室灯);
+                    ResetPin(儿童房灯);
                     gameFlag = 6;
                 }
                 if (WaitBit(醒来错误, pdTRUE)) {
@@ -558,6 +568,8 @@ void StartGameTask(void const *argument)
                     ResetPin(楼梯主灯);
                     ResetPin(楼梯侧窗灯);
                     ResetPin(书房灯);
+                    ResetPin(茶室灯);
+                    ResetPin(儿童房灯);
                     GameTimeReset;
                     gameFlag++;
                 }
@@ -944,7 +956,7 @@ void StartGameTask(void const *argument)
             // 获取起始时间
             HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
             current_time  = sTime.Hours * 3600 + sTime.Minutes * 60 + sTime.Seconds;
-            if ((current_time - start_time) >= (100 * 60)) // 100分钟
+            if ((current_time - start_time) >= ((100 * 60)+50)) // 100分钟
             {
                 gameFlag=30;
             }

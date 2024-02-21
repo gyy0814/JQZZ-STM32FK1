@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/26913/Desktop/BeiJing/JQZZ-STM32FK1
+# Install script for directory: C:/Users/D/Desktop/FK1.4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/26913/Desktop/BeiJing/JQZZ-STM32FK1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/D/Desktop/FK1.4/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -22,19 +22,24 @@
   <component name="ChangeListManager">
     <list default="true" id="1367dda7-aca8-44d5-9c94-00cdecdd0995" name="更改" comment="2024/02/06x2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32f1xx_hal_conf.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32f1xx_hal_conf.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/user.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FKS1.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/FKS1.ioc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rtc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rtc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,13 +120,18 @@
     </key>
   </component>
   <component name="RunManager" selected="OpenOCD 下载并运行.FKS1.elf">
-    <configuration name="FKS1.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FKS1" TARGET_NAME="FKS1.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FKS1" RUN_TARGET_NAME="FKS1.elf">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FKS1.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FKS1" TARGET_NAME="FKS1.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FKS1" RUN_TARGET_NAME="FKS1.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FKS1.elf" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FKS1" TARGET_NAME="FKS1.elf" CONFIG_NAME="Debug" version="1" RUN_TARGET_PROJECT_NAME="FKS1" RUN_TARGET_NAME="FKS1.elf">
-      <openocd version="1" gdb-port="3333" telnet-port="4444" board-config="C:\Users\26913\Desktop\BeiJing\JQZZ-STM32FK1\config\stmlink.cfg" reset-type="INIT" download-type="UPDATED_ONLY">
+    <configuration name="FKS1.elf" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FKS1" TARGET_NAME="FKS1.elf" CONFIG_NAME="Debug" version="1" RUN_TARGET_PROJECT_NAME="FKS1" RUN_TARGET_NAME="FKS1.elf">
+      <openocd version="1" gdb-port="3333" telnet-port="4444" board-config="C:\Users\D\Desktop\FK1.4\config\stmlink.cfg" reset-type="INIT" download-type="UPDATED_ONLY">
         <debugger kind="GDB" isBundled="true" />
       </openocd>
       <method v="2">
@@ -229,10 +239,9 @@
     <option name="version" value="3" />
   </component>
   <component name="VCPKGProject">
-    <isAutomaticEditVcpkgJson value="true" />
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
-    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
