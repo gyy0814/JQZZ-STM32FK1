@@ -20,7 +20,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1367dda7-aca8-44d5-9c94-00cdecdd0995" name="更改" comment="2024/01/31 15:19,v1.4你好前场程序" />
+    <list default="true" id="1367dda7-aca8-44d5-9c94-00cdecdd0995" name="更改" comment="2024/01/31 15:19,v1.4你好前场程序">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,11 +102,6 @@
     </key>
   </component>
   <component name="RunManager" selected="OpenOCD 下载并运行.FKS1.elf">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FKS1.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FKS1" TARGET_NAME="FKS1.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FKS1" RUN_TARGET_NAME="FKS1.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -164,6 +161,7 @@
       <workItem from="1707459358827" duration="2187000" />
       <workItem from="1708479395377" duration="2000" />
       <workItem from="1708520355171" duration="6000" />
+      <workItem from="1708574165352" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交GIT &#10;串口正常板 大概运行正常">
       <option name="closed" value="true" />
@@ -221,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708505728135</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="2024/01/31 15:19,v1.4你好前场程序">
+      <option name="closed" value="true" />
+      <created>1708526661943</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708526661943</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

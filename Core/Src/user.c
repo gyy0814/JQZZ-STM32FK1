@@ -855,6 +855,7 @@ void StartGameTask(void const *argument)
                 ResetPin(楼梯主灯红);
                 ResetPin(楼梯侧窗灯红);
                 ResetPin(电视信号);
+
                 SetPlayMode(&MUSIC_1,单曲停止);
                 PlayMusicB("/35.mp3",单曲停止)
                 GameTimeReset;
