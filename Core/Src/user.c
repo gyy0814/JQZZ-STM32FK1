@@ -403,13 +403,16 @@ void StartBoxTask(void const *argument)
 
             if (WaitBit(猜拳失败, pdTRUE)) {
                 Lz++;
-                if (Lz == 5) {
-                    SubHP();
-                    Lz = 0;
-                    //osDelay(7000);
-                } else{
+                if (Lz < 5)
+                {
                     PlayMusicA("/20.mp3", 单曲停止)
                 }
+                if (Lz == 5) {
+                    Lz = 0;
+                    SubHP();
+                }
+
+
 
             }
             if (WaitBit(猜拳胜利, pdTRUE)) {

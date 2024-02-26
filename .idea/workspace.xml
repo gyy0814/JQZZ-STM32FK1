@@ -20,7 +20,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1367dda7-aca8-44d5-9c94-00cdecdd0995" name="更改" comment="2024/02/22 11:59,v1.5更新倒计时" />
+    <list default="true" id="1367dda7-aca8-44d5-9c94-00cdecdd0995" name="更改" comment="2024/02/22 11:59,v1.5更新倒计时">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/user.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.elf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.hex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/FKS1.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/FKS1.map" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,12 +65,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "GVNDDD"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;GVNDDD&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="8159df2c-a5e6-44d8-938e-04b8e224987c" />
   </component>
@@ -86,28 +96,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "OpenOCD 下载并运行.FKS1.elf.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "JQZZ-XN",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/STM32/ProgramFiles/JQZZ-STM32FK1/JQZZ-STM32FK1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;OpenOCD 下载并运行.FKS1.elf.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;JQZZ-XN&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/STM32/ProgramFiles/JQZZ-STM32FK1/JQZZ-STM32FK1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\26913\Documents\stm32\FKS1" />
@@ -176,7 +186,10 @@
       <workItem from="1707459358827" duration="2187000" />
       <workItem from="1708479395377" duration="2000" />
       <workItem from="1708520355171" duration="6000" />
-      <workItem from="1708574165352" duration="350000" />
+      <workItem from="1708574165352" duration="1484000" />
+      <workItem from="1708576892421" duration="1417000" />
+      <workItem from="1708913380555" duration="1012000" />
+      <workItem from="1708934163672" duration="1465000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交GIT &#10;串口正常板 大概运行正常">
       <option name="closed" value="true" />
@@ -250,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708574426273</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="2024/02/22 11:59,v1.5更新倒计时">
+      <option name="closed" value="true" />
+      <created>1708574530746</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708574530747</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
