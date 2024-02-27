@@ -1512,233 +1512,232 @@ LOAD c:/progra~1/stmicr~1/stm32c~1/gcc-ar~1/bin/../lib/gcc/arm-none-eabi/10.3.1/
                 0x08001240                GameDelay
  *fill*         0x08001252        0x2 
  .text.StartGameTask
-                0x08001254      0xf4c CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+                0x08001254      0xf54 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
                 0x08001254                StartGameTask
  .text.Reset_Handler
-                0x080021a0       0x48 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
-                0x080021a0                Reset_Handler
+                0x080021a8       0x48 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
+                0x080021a8                Reset_Handler
  .text.Default_Handler
-                0x080021e8        0x2 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
-                0x080021e8                RTC_Alarm_IRQHandler
-                0x080021e8                EXTI2_IRQHandler
-                0x080021e8                TIM1_CC_IRQHandler
-                0x080021e8                PVD_IRQHandler
-                0x080021e8                EXTI3_IRQHandler
-                0x080021e8                EXTI0_IRQHandler
-                0x080021e8                I2C2_EV_IRQHandler
-                0x080021e8                ADC1_2_IRQHandler
-                0x080021e8                SPI1_IRQHandler
-                0x080021e8                TAMPER_IRQHandler
-                0x080021e8                DMA1_Channel4_IRQHandler
-                0x080021e8                RTC_IRQHandler
-                0x080021e8                DMA1_Channel7_IRQHandler
-                0x080021e8                CAN1_RX1_IRQHandler
-                0x080021e8                TIM4_IRQHandler
-                0x080021e8                I2C1_EV_IRQHandler
-                0x080021e8                DMA1_Channel6_IRQHandler
-                0x080021e8                TIM3_IRQHandler
-                0x080021e8                RCC_IRQHandler
-                0x080021e8                TIM1_TRG_COM_IRQHandler
-                0x080021e8                DMA1_Channel1_IRQHandler
-                0x080021e8                Default_Handler
-                0x080021e8                EXTI15_10_IRQHandler
-                0x080021e8                EXTI9_5_IRQHandler
-                0x080021e8                SPI2_IRQHandler
-                0x080021e8                DMA1_Channel5_IRQHandler
-                0x080021e8                EXTI4_IRQHandler
-                0x080021e8                USB_LP_CAN1_RX0_IRQHandler
-                0x080021e8                USB_HP_CAN1_TX_IRQHandler
-                0x080021e8                DMA1_Channel3_IRQHandler
-                0x080021e8                TIM1_UP_IRQHandler
-                0x080021e8                WWDG_IRQHandler
-                0x080021e8                TIM1_BRK_IRQHandler
-                0x080021e8                EXTI1_IRQHandler
-                0x080021e8                I2C2_ER_IRQHandler
-                0x080021e8                DMA1_Channel2_IRQHandler
-                0x080021e8                CAN1_SCE_IRQHandler
-                0x080021e8                FLASH_IRQHandler
-                0x080021e8                I2C1_ER_IRQHandler
-                0x080021e8                USBWakeUp_IRQHandler
- *fill*         0x080021ea        0x2 
+                0x080021f0        0x2 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
+                0x080021f0                RTC_Alarm_IRQHandler
+                0x080021f0                EXTI2_IRQHandler
+                0x080021f0                TIM1_CC_IRQHandler
+                0x080021f0                PVD_IRQHandler
+                0x080021f0                EXTI3_IRQHandler
+                0x080021f0                EXTI0_IRQHandler
+                0x080021f0                I2C2_EV_IRQHandler
+                0x080021f0                ADC1_2_IRQHandler
+                0x080021f0                SPI1_IRQHandler
+                0x080021f0                TAMPER_IRQHandler
+                0x080021f0                DMA1_Channel4_IRQHandler
+                0x080021f0                RTC_IRQHandler
+                0x080021f0                DMA1_Channel7_IRQHandler
+                0x080021f0                CAN1_RX1_IRQHandler
+                0x080021f0                TIM4_IRQHandler
+                0x080021f0                I2C1_EV_IRQHandler
+                0x080021f0                DMA1_Channel6_IRQHandler
+                0x080021f0                TIM3_IRQHandler
+                0x080021f0                RCC_IRQHandler
+                0x080021f0                TIM1_TRG_COM_IRQHandler
+                0x080021f0                DMA1_Channel1_IRQHandler
+                0x080021f0                Default_Handler
+                0x080021f0                EXTI15_10_IRQHandler
+                0x080021f0                EXTI9_5_IRQHandler
+                0x080021f0                SPI2_IRQHandler
+                0x080021f0                DMA1_Channel5_IRQHandler
+                0x080021f0                EXTI4_IRQHandler
+                0x080021f0                USB_LP_CAN1_RX0_IRQHandler
+                0x080021f0                USB_HP_CAN1_TX_IRQHandler
+                0x080021f0                DMA1_Channel3_IRQHandler
+                0x080021f0                TIM1_UP_IRQHandler
+                0x080021f0                WWDG_IRQHandler
+                0x080021f0                TIM1_BRK_IRQHandler
+                0x080021f0                EXTI1_IRQHandler
+                0x080021f0                I2C2_ER_IRQHandler
+                0x080021f0                DMA1_Channel2_IRQHandler
+                0x080021f0                CAN1_SCE_IRQHandler
+                0x080021f0                FLASH_IRQHandler
+                0x080021f0                I2C1_ER_IRQHandler
+                0x080021f0                USBWakeUp_IRQHandler
+ *fill*         0x080021f2        0x2 
  .text.HAL_Init
-                0x080021ec       0x24 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
-                0x080021ec                HAL_Init
+                0x080021f4       0x24 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+                0x080021f4                HAL_Init
  .text.HAL_IncTick
-                0x08002210       0x18 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
-                0x08002210                HAL_IncTick
+                0x08002218       0x18 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+                0x08002218                HAL_IncTick
  .text.HAL_GetTick
-                0x08002228        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
-                0x08002228                HAL_GetTick
+                0x08002230        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+                0x08002230                HAL_GetTick
  .text.HAL_NVIC_SetPriorityGrouping
-                0x08002234       0x24 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
-                0x08002234                HAL_NVIC_SetPriorityGrouping
+                0x0800223c       0x24 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+                0x0800223c                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x08002258       0x70 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
-                0x08002258                HAL_NVIC_SetPriority
+                0x08002260       0x70 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+                0x08002260                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x080022c8       0x1c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
-                0x080022c8                HAL_NVIC_EnableIRQ
+                0x080022d0       0x1c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+                0x080022d0                HAL_NVIC_EnableIRQ
  .text.HAL_DMA_Abort
-                0x080022e4       0x46 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
-                0x080022e4                HAL_DMA_Abort
- *fill*         0x0800232a        0x2 
+                0x080022ec       0x46 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
+                0x080022ec                HAL_DMA_Abort
+ *fill*         0x08002332        0x2 
  .text.HAL_DMA_Abort_IT
-                0x0800232c       0x98 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
-                0x0800232c                HAL_DMA_Abort_IT
+                0x08002334       0x98 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
+                0x08002334                HAL_DMA_Abort_IT
  .text.HAL_GPIO_Init
-                0x080023c4      0x224 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
-                0x080023c4                HAL_GPIO_Init
+                0x080023cc      0x224 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+                0x080023cc                HAL_GPIO_Init
  .text.HAL_GPIO_ReadPin
-                0x080025e8        0xe CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
-                0x080025e8                HAL_GPIO_ReadPin
+                0x080025f0        0xe CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+                0x080025f0                HAL_GPIO_ReadPin
  .text.HAL_GPIO_WritePin
-                0x080025f6        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
-                0x080025f6                HAL_GPIO_WritePin
- *fill*         0x08002602        0x2 
+                0x080025fe        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+                0x080025fe                HAL_GPIO_WritePin
+ *fill*         0x0800260a        0x2 
  .text.RCC_Delay
-                0x08002604       0x2c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x0800260c       0x2c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
  .text.HAL_RCC_OscConfig
-                0x08002630      0x410 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002630                HAL_RCC_OscConfig
+                0x08002638      0x410 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002638                HAL_RCC_OscConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x08002a40       0x54 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002a40                HAL_RCC_GetSysClockFreq
+                0x08002a48       0x54 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002a48                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_ClockConfig
-                0x08002a94      0x16c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002a94                HAL_RCC_ClockConfig
+                0x08002a9c      0x16c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002a9c                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetHCLKFreq
-                0x08002c00        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002c00                HAL_RCC_GetHCLKFreq
+                0x08002c08        0xc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002c08                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x08002c0c       0x20 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002c0c                HAL_RCC_GetPCLK1Freq
+                0x08002c14       0x20 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002c14                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_GetPCLK2Freq
-                0x08002c2c       0x20 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002c2c                HAL_RCC_GetPCLK2Freq
+                0x08002c34       0x20 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002c34                HAL_RCC_GetPCLK2Freq
  .text.HAL_RCC_GetClockConfig
-                0x08002c4c       0x3c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
-                0x08002c4c                HAL_RCC_GetClockConfig
+                0x08002c54       0x3c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+                0x08002c54                HAL_RCC_GetClockConfig
  .text.HAL_TIM_Base_MspInit
-                0x08002c88        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002c88                HAL_TIM_Base_MspInit
- *fill*         0x08002c8a        0x2 
+                0x08002c90        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002c90                HAL_TIM_Base_MspInit
+ *fill*         0x08002c92        0x2 
  .text.HAL_TIM_Base_Start_IT
-                0x08002c8c       0x68 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002c8c                HAL_TIM_Base_Start_IT
+                0x08002c94       0x68 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002c94                HAL_TIM_Base_Start_IT
  .text.HAL_TIM_OC_DelayElapsedCallback
-                0x08002cf4        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002cf4                HAL_TIM_OC_DelayElapsedCallback
+                0x08002cfc        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002cfc                HAL_TIM_OC_DelayElapsedCallback
  .text.HAL_TIM_IC_CaptureCallback
-                0x08002cf6        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002cf6                HAL_TIM_IC_CaptureCallback
+                0x08002cfe        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002cfe                HAL_TIM_IC_CaptureCallback
  .text.HAL_TIM_PWM_PulseFinishedCallback
-                0x08002cf8        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002cf8                HAL_TIM_PWM_PulseFinishedCallback
+                0x08002d00        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002d00                HAL_TIM_PWM_PulseFinishedCallback
  .text.HAL_TIM_TriggerCallback
-                0x08002cfa        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002cfa                HAL_TIM_TriggerCallback
+                0x08002d02        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002d02                HAL_TIM_TriggerCallback
  .text.HAL_TIM_IRQHandler
-                0x08002cfc      0x17a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002cfc                HAL_TIM_IRQHandler
- *fill*         0x08002e76        0x2 
+                0x08002d04      0x17a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002d04                HAL_TIM_IRQHandler
+ *fill*         0x08002e7e        0x2 
  .text.TIM_Base_SetConfig
-                0x08002e78       0x74 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002e78                TIM_Base_SetConfig
+                0x08002e80       0x74 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002e80                TIM_Base_SetConfig
  .text.HAL_TIM_Base_Init
-                0x08002eec       0x58 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
-                0x08002eec                HAL_TIM_Base_Init
+                0x08002ef4       0x58 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+                0x08002ef4                HAL_TIM_Base_Init
  .text.HAL_TIMEx_CommutCallback
-                0x08002f44        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
-                0x08002f44                HAL_TIMEx_CommutCallback
+                0x08002f4c        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
+                0x08002f4c                HAL_TIMEx_CommutCallback
  .text.HAL_TIMEx_BreakCallback
-                0x08002f46        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
-                0x08002f46                HAL_TIMEx_BreakCallback
+                0x08002f4e        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
+                0x08002f4e                HAL_TIMEx_BreakCallback
  .text.UART_EndRxTransfer
-                0x08002f48       0x5c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08002f50       0x5c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.UART_Transmit_IT
-                0x08002fa4       0x60 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08002fac       0x60 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.UART_SetConfig
-                0x08003004       0x94 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x0800300c       0x94 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.UART_WaitOnFlagUntilTimeout
-                0x08003098       0x88 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x080030a0       0x88 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.HAL_UART_Init
-                0x08003120       0x60 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x08003120                HAL_UART_Init
+                0x08003128       0x60 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003128                HAL_UART_Init
  .text.HAL_UART_Transmit
-                0x08003180       0xbe CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x08003180                HAL_UART_Transmit
+                0x08003188       0xbe CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003188                HAL_UART_Transmit
  .text.HAL_UART_TxCpltCallback
-                0x0800323e        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x0800323e                HAL_UART_TxCpltCallback
+                0x08003246        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003246                HAL_UART_TxCpltCallback
  .text.UART_EndTransmit_IT
-                0x08003240       0x1a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003248       0x1a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.HAL_UART_ErrorCallback
-                0x0800325a        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x0800325a                HAL_UART_ErrorCallback
+                0x08003262        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003262                HAL_UART_ErrorCallback
  .text.UART_DMAAbortOnError
-                0x0800325c       0x10 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003264       0x10 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.HAL_UARTEx_RxEventCallback
-                0x0800326c        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x0800326c                HAL_UARTEx_RxEventCallback
+                0x08003274        0x2 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003274                HAL_UARTEx_RxEventCallback
  .text.UART_Receive_IT
-                0x0800326e       0xe6 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x08003276       0xe6 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
  .text.HAL_UART_IRQHandler
-                0x08003354      0x288 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x08003354                HAL_UART_IRQHandler
+                0x0800335c      0x288 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x0800335c                HAL_UART_IRQHandler
  .text.UART_Start_Receive_IT
-                0x080035dc       0x36 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x080035dc                UART_Start_Receive_IT
+                0x080035e4       0x36 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x080035e4                UART_Start_Receive_IT
  .text.HAL_UART_Receive_IT
-                0x08003612       0x26 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
-                0x08003612                HAL_UART_Receive_IT
+                0x0800361a       0x26 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+                0x0800361a                HAL_UART_Receive_IT
  .text.makeFreeRtosPriority
-                0x08003638        0xc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+                0x08003640        0xc CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
  .text.osKernelStart
-                0x08003644        0xa CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
-                0x08003644                osKernelStart
+                0x0800364c        0xa CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+                0x0800364c                osKernelStart
  .text.osThreadCreate
-                0x0800364e       0x6a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
-                0x0800364e                osThreadCreate
- .text.osDelay  0x080036b8        0xe CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
-                0x080036b8                osDelay
+                0x08003656       0x6a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+                0x08003656                osThreadCreate
+ .text.osDelay  0x080036c0        0xe CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+                0x080036c0                osDelay
  .text.prvTestWaitCondition
-                0x080036c6       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+                0x080036ce       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
  .text.xEventGroupCreate
-                0x080036e2       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
-                0x080036e2                xEventGroupCreate
+                0x080036ea       0x1c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+                0x080036ea                xEventGroupCreate
  .text.xEventGroupWaitBits
-                0x080036fe      0x108 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
-                0x080036fe                xEventGroupWaitBits
+                0x08003706      0x108 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+                0x08003706                xEventGroupWaitBits
  .text.xEventGroupClearBits
-                0x08003806       0x46 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
-                0x08003806                xEventGroupClearBits
+                0x0800380e       0x46 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+                0x0800380e                xEventGroupClearBits
  .text.xEventGroupSetBits
-                0x0800384c       0x8c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
-                0x0800384c                xEventGroupSetBits
+                0x08003854       0x8c CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+                0x08003854                xEventGroupSetBits
  .text.vListInitialise
-                0x080038d8       0x16 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x080038d8                vListInitialise
+                0x080038e0       0x16 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x080038e0                vListInitialise
  .text.vListInitialiseItem
-                0x080038ee        0x6 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x080038ee                vListInitialiseItem
+                0x080038f6        0x6 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x080038f6                vListInitialiseItem
  .text.vListInsertEnd
-                0x080038f4       0x16 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x080038f4                vListInsertEnd
+                0x080038fc       0x16 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x080038fc                vListInsertEnd
  .text.vListInsert
-                0x0800390a       0x32 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x0800390a                vListInsert
+                0x08003912       0x32 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x08003912                vListInsert
  .text.uxListRemove
-                0x0800393c       0x26 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
-                0x0800393c                uxListRemove
- *fill*         0x08003962        0x2 
+                0x08003944       0x26 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+                0x08003944                uxListRemove
+ *fill*         0x0800396a        0x2 
  .text.prvTaskExitError
-                0x08003964       0x40 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x0800396c       0x40 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
  .text.prvPortStartFirstTask
-                0x080039a4       0x20 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x080039ac       0x20 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
  .text.pxPortInitialiseStack
-                0x080039c4       0x24 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
-                0x080039c4                pxPortInitialiseStack
- *fill*         0x080039e8        0x8 
+                0x080039cc       0x24 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+                0x080039cc                pxPortInitialiseStack
  .text.SVC_Handler
                 0x080039f0       0x24 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
                 0x080039f0                SVC_Handler
@@ -2310,7 +2309,7 @@ LOAD c:/progra~1/stmicr~1/stm32c~1/gcc-ar~1/bin/../lib/gcc/arm-none-eabi/10.3.1/
 LOAD c:/progra~1/stmicr~1/stm32c~1/gcc-ar~1/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libm.a
 LOAD c:/progra~1/stmicr~1/stm32c~1/gcc-ar~1/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a
 
-.debug_info     0x00000000    0x1d41f
+.debug_info     0x00000000    0x1d437
  .debug_info    0x00000000     0x1127 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
  .debug_info    0x00001127     0x119a CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
  .debug_info    0x000022c1      0xccb CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
@@ -2320,23 +2319,23 @@ LOAD c:/progra~1/stmicr~1/stm32c~1/gcc-ar~1/bin/../lib/gcc/arm-none-eabi/10.3.1/
  .debug_info    0x00004b08      0x9d0 CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
  .debug_info    0x000054d8      0x248 CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
  .debug_info    0x00005720      0xde2 CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
- .debug_info    0x00006502     0x206c CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
- .debug_info    0x0000856e       0x22 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
- .debug_info    0x00008590      0x7a8 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
- .debug_info    0x00008d38      0xd8a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
- .debug_info    0x00009ac2      0x84b CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
- .debug_info    0x0000a30d      0x66f CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
- .debug_info    0x0000a97c      0xa3b CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
- .debug_info    0x0000b3b7     0x3d52 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
- .debug_info    0x0000f109     0x1abb CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
- .debug_info    0x00010bc4     0x4212 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
- .debug_info    0x00014dd6     0x220a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
- .debug_info    0x00016fe0      0xd8a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
- .debug_info    0x00017d6a      0x2da CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_info    0x00018044      0x52b CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
- .debug_info    0x0001856f      0x471 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_info    0x000189e0     0x2221 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_info    0x0001ac01     0x281e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_info    0x00006502     0x2084 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+ .debug_info    0x00008586       0x22 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
+ .debug_info    0x000085a8      0x7a8 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+ .debug_info    0x00008d50      0xd8a CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+ .debug_info    0x00009ada      0x84b CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
+ .debug_info    0x0000a325      0x66f CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+ .debug_info    0x0000a994      0xa3b CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+ .debug_info    0x0000b3cf     0x3d52 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+ .debug_info    0x0000f121     0x1abb CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
+ .debug_info    0x00010bdc     0x4212 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+ .debug_info    0x00014dee     0x220a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+ .debug_info    0x00016ff8      0xd8a CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+ .debug_info    0x00017d82      0x2da CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_info    0x0001805c      0x52b CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+ .debug_info    0x00018587      0x471 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_info    0x000189f8     0x2221 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_info    0x0001ac19     0x281e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
 
 .debug_abbrev   0x00000000     0x392e
  .debug_abbrev  0x00000000      0x2a5 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
@@ -2474,7 +2473,7 @@ LOAD c:/progra~1/stmicr~1/stm32c~1/gcc-ar~1/bin/../lib/gcc/arm-none-eabi/10.3.1/
  .debug_ranges  0x00001028      0x1c8 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
  .debug_ranges  0x000011f0      0x268 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
 
-.debug_line     0x00000000    0x17857
+.debug_line     0x00000000    0x17858
  .debug_line    0x00000000      0x7d7 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj
  .debug_line    0x000007d7      0x83f CMakeFiles/FKS1.elf.dir/Core/Src/gpio.c.obj
  .debug_line    0x00001016      0x4a2 CMakeFiles/FKS1.elf.dir/Core/Src/main.c.obj
@@ -2484,23 +2483,23 @@ LOAD c:/progra~1/stmicr~1/stm32c~1/gcc-ar~1/bin/../lib/gcc/arm-none-eabi/10.3.1/
  .debug_line    0x000020cb      0x34f CMakeFiles/FKS1.elf.dir/Core/Src/stm32f1xx_it.c.obj
  .debug_line    0x0000241a      0x26c CMakeFiles/FKS1.elf.dir/Core/Src/system_stm32f1xx.c.obj
  .debug_line    0x00002686      0x71b CMakeFiles/FKS1.elf.dir/Core/Src/usart.c.obj
- .debug_line    0x00002da1      0x8c8 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
- .debug_line    0x00003669       0xb0 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
- .debug_line    0x00003719      0x5ae CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
- .debug_line    0x00003cc7      0x68c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
- .debug_line    0x00004353      0xaad CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
- .debug_line    0x00004e00      0x634 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
- .debug_line    0x00005434      0xc71 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
- .debug_line    0x000060a5     0x49cc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
- .debug_line    0x0000aa71     0x1c41 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
- .debug_line    0x0000c6b2     0x4423 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
- .debug_line    0x00010ad5     0x1225 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
- .debug_line    0x00011cfa      0xab6 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
- .debug_line    0x000127b0      0x3c7 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
- .debug_line    0x00012b77      0x678 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
- .debug_line    0x000131ef      0x6b7 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
- .debug_line    0x000138a6     0x1c1e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
- .debug_line    0x000154c4     0x2393 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+ .debug_line    0x00002da1      0x8c9 CMakeFiles/FKS1.elf.dir/Core/Src/user.c.obj
+ .debug_line    0x0000366a       0xb0 CMakeFiles/FKS1.elf.dir/Core/Startup/startup_stm32f103c8tx.s.obj
+ .debug_line    0x0000371a      0x5ae CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj
+ .debug_line    0x00003cc8      0x68c CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj
+ .debug_line    0x00004354      0xaad CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj
+ .debug_line    0x00004e01      0x634 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj
+ .debug_line    0x00005435      0xc71 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj
+ .debug_line    0x000060a6     0x49cc CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj
+ .debug_line    0x0000aa72     0x1c41 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj
+ .debug_line    0x0000c6b3     0x4423 CMakeFiles/FKS1.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj
+ .debug_line    0x00010ad6     0x1225 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+ .debug_line    0x00011cfb      0xab6 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+ .debug_line    0x000127b1      0x3c7 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+ .debug_line    0x00012b78      0x678 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c.obj
+ .debug_line    0x000131f0      0x6b7 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+ .debug_line    0x000138a7     0x1c1e CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+ .debug_line    0x000154c5     0x2393 CMakeFiles/FKS1.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
 
 .debug_str      0x00000000     0x62bd
  .debug_str     0x00000000      0xb68 CMakeFiles/FKS1.elf.dir/Core/Src/freertos.c.obj

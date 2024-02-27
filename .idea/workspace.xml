@@ -22,7 +22,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1367dda7-aca8-44d5-9c94-00cdecdd0995" name="更改" comment="2024/01/31 流程">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/user.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/user.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/user.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
@@ -281,7 +280,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Core/Src/user.c</url>
-          <line>534</line>
+          <line>535</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>

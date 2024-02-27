@@ -493,7 +493,7 @@ void StartGameTask(void const *argument)
                 SetOutput(手机视频1,GPIO_PIN_RESET);
                 SetOutput(手机视频2,GPIO_PIN_RESET);
                 SetOutput(行程管理电源,GPIO_PIN_RESET);
-                SetOutput(快递门,GPIO_PIN_SET);
+                SetOutput(快递门,GPIO_PIN_RESET);
                 SetOutput(温度控制电源,GPIO_PIN_RESET);
                 SetOutput(暖风,GPIO_PIN_RESET);
                 SetOutput(冷风,GPIO_PIN_RESET);
@@ -511,6 +511,7 @@ void StartGameTask(void const *argument)
             case 53://复场
             {
                 SetOutput(电箱射灯,GPIO_PIN_RESET);
+                SetOutput(快递门,GPIO_PIN_SET);
                 SetOutput(红灯,GPIO_PIN_RESET);
                 SetOutput(绿灯,GPIO_PIN_RESET);
                 SetOutput(蓝灯,GPIO_PIN_RESET);
