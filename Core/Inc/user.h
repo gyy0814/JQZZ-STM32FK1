@@ -47,7 +47,7 @@ void GameInit(void);
 #define 快递门 6
 #define 外卖柜门 5
 #define 红灯 7
-#define 后场灯带 8
+#define 绿灯 8
 #define 蓝灯 9
 
 #define 视频1 11
