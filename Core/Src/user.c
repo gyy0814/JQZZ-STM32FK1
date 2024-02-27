@@ -458,6 +458,8 @@ void StartGameTask(void const *argument) {
                 char *fileName = "/30.mp3";
                 PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
                 gameFlags[0]++;
+//                PauseMusic(&MUSIC_1);
+                PauseMusic(&MUSIC_2);
                 break;
             }
             case 51: //
@@ -636,109 +638,133 @@ void StartGameTask(void const *argument) {
                 if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入2)))==(TO_BIT(cd输入1) | TO_BIT(cd输入2))) && (CDState[0] == 0)) {
                     CDState[0] = 1;
                     char *fileName = "/70.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入2)))==0)&& (CDState[0] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[0] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入5)))== (TO_BIT(cd输入2) | TO_BIT(cd输入5))) && (CDState[1] == 0)) {
                     CDState[1] = 1;
                     char *fileName = "/78.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入5)))==0)&& (CDState[1] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[1] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入6)))==(TO_BIT(cd输入2) | TO_BIT(cd输入6))) && (CDState[2] == 0)) {
                     CDState[2] = 1;
                     char *fileName = "/76.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入6)))==0)&& (CDState[2] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[2] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入3)))==(TO_BIT(cd输入2) | TO_BIT(cd输入3))) && (CDState[3] == 0)) {
                     CDState[3] = 1;
                     char *fileName = "/77.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入3)))==0)&& (CDState[3] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[3] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入4)))==(TO_BIT(cd输入3) | TO_BIT(cd输入4))) && (CDState[4] == 0)) {
                     CDState[4] = 1;
                     char *fileName = "/73.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入4)))==0)&& (CDState[4] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[4] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入5)))==(TO_BIT(cd输入3) | TO_BIT(cd输入5))) && (CDState[5] == 0)) {
                     CDState[5] = 1;
                     char *fileName = "/72.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入5)))==0)&& (CDState[5] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[5] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入6)))==(TO_BIT(cd输入1) | TO_BIT(cd输入6))) && (CDState[6] == 0)) {
                     CDState[6] = 1;
                     char *fileName = "/74.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入6)))==0)&& (CDState[6] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[6] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入6)))==(TO_BIT(cd输入3) | TO_BIT(cd输入6))) && (CDState[7] == 0)) {
                     CDState[7] = 1;
                     char *fileName = "/71.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入3) | TO_BIT(cd输入6)))==0)&& (CDState[7] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[7] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入3)))==(TO_BIT(cd输入1) | TO_BIT(cd输入3))) && (CDState[8] == 0)) {
                     CDState[8] = 1;
                     char *fileName = "/80.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入3)))==0)&& (CDState[8] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[8] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入4)))==(TO_BIT(cd输入1) | TO_BIT(cd输入4))) && (CDState[9] == 0)) {
                     CDState[9] = 1;
                     char *fileName = "/75.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入4)))==0)&& (CDState[9] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[9] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入5)))==(TO_BIT(cd输入1) | TO_BIT(cd输入5))) && (CDState[10] == 0)) {
                     CDState[10] = 1;
                     char *fileName = "/79.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入1) | TO_BIT(cd输入5)))==0)&& (CDState[10] == 1)){
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[10] = 0;
                 }
                 if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入4)))==(TO_BIT(cd输入2) | TO_BIT(cd输入4))) && (CDState[11] == 0)) {
                     CDState[11] = 1;
                     char *fileName = "/69.mp3";
-                    PlayMusicName(&MUSIC_1, fileName, strlen(fileName), 单曲停止);
+                    PlayMusicName(&MUSIC_2, fileName, strlen(fileName), 单曲停止);
                 }
                 if (((bits1 & (TO_BIT(cd输入2) | TO_BIT(cd输入4)))==0)&& (CDState[11] == 1)) {
-                    PauseMusic(&MUSIC_1);
+//                    PauseMusic(&MUSIC_1);
+                    char *fileName1 = "/68.mp3";
+                    PlayMusicName(&MUSIC_2, fileName1, strlen(fileName1), 单曲循环);
                     CDState[11] = 0;
                 }
 //                帝国 1-2     	70
