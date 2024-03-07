@@ -790,12 +790,7 @@ void StartGameTask(void const *argument) {
 
         RunTime++;
         osDelay(1); //等待音频播放
-        static int oldGameFlag = 100;
-        if (gameFlags[0] != oldGameFlag) {
-            uint8_t TxBuff[5] = {0xCC, 0x05, 0x00, gameFlags[0], 0xFF};
-            HAL_UART_Transmit(&huart1, TxBuff, 5, HAL_MAX_DELAY);
-            oldGameFlag = gameFlags[0];
-        }
+
 
 
         static int Flag=51;
