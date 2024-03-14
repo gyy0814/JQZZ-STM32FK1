@@ -70,7 +70,7 @@ void StartGameTask(void const *argument)
 
                 SetOutput(入口门,GPIO_PIN_RESET);
                 SetOutput(视频1, GPIO_PIN_SET);
-                osDelay(300);
+                osDelay(700);
                 SetOutput(视频1, GPIO_PIN_RESET);
                 gameFlag++;
                 break;
@@ -401,7 +401,7 @@ void StartGameTask(void const *argument)
                 SetOutput(手机视频2,GPIO_PIN_SET);
                 SetOutput(墙壁视频,GPIO_PIN_SET);
                 SetOutput(墙壁视频2,GPIO_PIN_SET);
-                osDelay(500);
+                osDelay(700);
                 SetOutput(视频2,GPIO_PIN_RESET);
                 SetOutput(墙壁视频,GPIO_PIN_RESET);
                 SetOutput(墙壁视频2,GPIO_PIN_RESET);
